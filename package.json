@@ -1,0 +1,22 @@
+{
+  "name": "ac-test-server",
+  "version": "1.0.0",
+  "description": "ac test server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Astro-Chaser/AC-test-Backend-Server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Astro-Chaser/AC-test-Backend-Server/issues"
+  },
+  "homepage": "https://github.com/Astro-Chaser/AC-test-Backend-Server#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
