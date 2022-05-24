@@ -93,3 +93,4 @@ typings/
 # Secret files
 database.js
 secret.js
+*.json

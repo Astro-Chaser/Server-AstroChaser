@@ -1,6 +1,10 @@
+const userService = require("./userService");
 
 const response = require("../../../config/response");
 const baseResponse = require("../../../config/baseResponseStatus");
+
+
+
 /**
  * 1. 회원가입 API
  * @param {json} req 
@@ -11,9 +15,18 @@ exports.postUsers = async function (req, res) {
 
     if(!name)
         return res.send(response.response(baseResponse.SIGNUP_NAME_EMPTY));
-    else if(!email)
+    if(!email)
         return res.send(response.response(baseResponse.SIGNUP_EMAIL_EMPTY));
-    else if(!password)
+    if(!password)
         return res.send(response.response(baseResponse.SIGNUP_PASSWORD_EMPTY));
     
+    const signupUserResponse = await userService.creteUser(
+        name,
+        email,
+        password,
+        member,
+        generation
+    )
+
+    return res.send(signupUserResponse);
 }
