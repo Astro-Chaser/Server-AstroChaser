@@ -89,3 +89,8 @@ typings/
 
 # Mac ignore files 
 .DS_Store
+
+# Secret files
+database.js
+secret.js
+*.json
