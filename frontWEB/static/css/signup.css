@@ -1,0 +1,50 @@
+body {
+    display: flex;
+    background: linear-gradient(110deg, rgb(9, 17, 11), #011244);
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .box
+  {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    background-color: #CCDC;
+    border-radius: 25px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #login
+  {
+    height: 530px;
+    width: 400px;
+  }
+  
+  .emailLabel{
+      margin-top: 30px;
+      margin-left: 30px;
+      font-size: 16px;
+  }
+  
+  .button{
+      padding-top: 2px;
+      z-index: 1000000;
+  }
+
+  .class{
+      padding-top: 0px;
+  }
+
+  #sigupBtn{
+      margin-left: 110px;
+  }
+
+  #selectBox{
+      padding-top: 0px;
+  }
+
+  #selectLabel{
+      padding-bottom: 0px;
+  }
