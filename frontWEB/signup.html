@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/css/signup.css" />
+    <title>AC 회원가입</title>
+</head>
+<body>
+    <img src="/image/Astro logo intro.png" class="text3d" alt="Astro Chaser" width="450px" style="z-index: 999;" >
+    <form class="box" id="login">
+        <div class="field">  
+            <label class="label">이름</label>
+            <div class="control">
+              <input class="input" type="text" id="name" placeholder="e.g. 이시형">
+            </div>
+        </div>
+
+        <div class="field">  
+          <label class="label">Email</label>
+          <div class="control">
+            <input class="input" type="email" id="email" placeholder="e.g. jjh63360@example.com">
+          </div>
+        </div>
+      
+        <div class="field">
+          <label class="label">비밀번호</label>
+          <div class="control">
+            <input class="input" type="password" id="password1" placeholder="********">
+          </div>
+          <label class="label">비밀번호 재입력</label>
+          <div class="control">
+            <input class="input" type="password" id="password2" placeholder="********">
+          </div>
+        </div>
+
+        <div class="field">
+            
+            <div class="columns is-mobile">
+                <div class="column"><label class="label" id="selectLabel">회원 구분</label></div>
+                <div class="column"><label class="label" id="selectLabel">기수</label></div>
+            </div>
+            <div class="columns is-mobile">
+                <div class="column" id="selectBox">
+                    <div class="select">
+                        <select id="memberOption">
+                          <option>방문자</option>
+                          <option>일반 회원</option>
+                          <option>운영진</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="column" id="selectBox">
+                    <div class="column" style="padding-top: 0px; padding-left: 0px;">
+                        <div class="select" >
+                            <select id="generationOption">
+                              <option>1기</option>
+                              <option>2기</option>
+                              <option>3기</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <button class="button is-hovered" id="sigupBtn">회원가입</button>
+            
+        </div>
+    </form>
+</body>
+<script src="/js/hostAddr.js"></script>
+<script src="/js/signup.js"></script>
+<script type="text/javascript" src="./js/navHref.js"></script>
+</html>

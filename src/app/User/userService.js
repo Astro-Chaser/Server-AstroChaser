@@ -30,8 +30,9 @@ exports.creteUser = async function (name, email, password, member, generation){
 
          const connection = await pool.getConnection(async (conn) => conn);
          const userCreateResult = await userDao.insertUserInfo(connection, insertUserParams);
-
-         console.log('추가된 회원: ' + userCreateResult);
+        
+         
+         console.log('추가된 회원: ' + email);
          connection.release();
          return response(baseResponse.SUCCESS);
     }

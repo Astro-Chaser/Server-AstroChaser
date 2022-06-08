@@ -9,7 +9,6 @@ async function selectUserEmail(connection, email) {
     return emailRows;
 }
 
-
 // 유저 생성
 async function insertUserInfo(connection, insertUserInfoParams) {
     const insertUserInfoQuery = `

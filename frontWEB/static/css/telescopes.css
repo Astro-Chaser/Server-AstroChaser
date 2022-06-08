@@ -1,0 +1,60 @@
+body{
+    background-color: rgb(7, 9, 39);
+    width: 100vw;
+    
+}
+
+.leftNavBar{
+    float: left;
+
+    margin-left: 8vw;
+    width: 120px;
+    height: 80vh;
+}
+
+.rightContentBox{
+   float: left;
+
+   border-left: 3px solid rgba(229, 229, 227, 0.6);
+   
+   padding-left: 20px;
+
+    width: 80vw;
+    
+}
+
+.leftNavContents{
+  position: relative;
+  width: 100%;
+  height: 70px;
+  margin-top: 10px;
+  
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+
+  border-radius: 10px;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.leftNavContents:hover{
+    background-color: rgb(217, 216, 216);
+    color: black;
+}
+
+.leftNavText{
+  margin-top: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.mainContents{
+    margin-top: 10px;
+}
+
+img{
+    height: 450px;
+}
