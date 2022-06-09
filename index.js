@@ -14,7 +14,7 @@ app.use(expressForStatic.static(__dirname + "/frontWeb/static"));
 
 //html 정의 시작
 app.get('/', function(req, res) {
-    res.sendFile(__dirname+"/frontWeb/index");
+    res.sendFile(__dirname+"/frontWEB/index");
 })
 
 app.get('/user/signup', function(req, res) {
@@ -26,7 +26,7 @@ app.get('/telescopes/owned', function(req, res) {
 })
 
 app.get('/telescopes/manual', function(req, res) {
-    res.sendFile(__dirname+"/frontWeb/telescope-setting");
+    res.sendFile(__dirname+"/frontWEB/telescope-setting");
 })
 
 
