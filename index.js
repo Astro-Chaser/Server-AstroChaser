@@ -14,19 +14,19 @@ app.use(expressForStatic.static(__dirname + "/frontWeb/static"));
 
 //html 정의 시작
 app.get('/', function(req, res) {
-    res.sendFile(__dirname+"/frontWEB/index");
+    res.sendFile(__dirname+"/frontWEB/index.html");
 })
 
 app.get('/user/signup', function(req, res) {
-    res.sendFile(__dirname+"/frontWEB/signup");
+    res.sendFile(__dirname+"/frontWEB/signup.html");
 })
 
 app.get('/telescopes/owned', function(req, res) {
-    res.sendFile(__dirname+"/frontWEB/telescopes");
+    res.sendFile(__dirname+"/frontWEB/telescopes.html");
 })
 
 app.get('/telescopes/manual', function(req, res) {
-    res.sendFile(__dirname+"/frontWEB/telescope-setting");
+    res.sendFile(__dirname+"/frontWEB/telescope-setting.html");
 })
 
 
