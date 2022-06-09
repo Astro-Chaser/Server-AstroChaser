@@ -10,7 +10,7 @@ var app = express()
 var port = app.listen(process.env.PORT || 8000);
 
 // 정적 파일 불러오기
-app.use(expressForStatic.static(__dirname + "/frontWeb/static"));
+app.use(expressForStatic.static(__dirname + "/frontWEB/static"));
 
 //html 정의 시작
 app.get('/', function(req, res) {
