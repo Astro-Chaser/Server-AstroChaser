@@ -93,5 +93,4 @@ typings/
 # Secret files
 database.js
 secret.js
-*.json
 자료들/
