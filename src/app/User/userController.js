@@ -30,3 +30,20 @@ exports.postUsers = async function (req, res) {
 
     return res.send(signupUserResponse);
 }
+
+exports.signinUser = async function (req, res){
+    const {email, password} = req.body;
+
+    if(!email)
+        return res.send(response.response(baseResponse.SIGNIN_EMAIL_EMPTY))
+    if(!password)
+        return res.send(response.response(baseResponse.SIGNIN_PASSWORD_EMPTY))
+
+    const signinUserResponse = await userService.signinUser(
+        email,
+        password
+    ) 
+
+    return res.send(signinUserResponse);
+
+}

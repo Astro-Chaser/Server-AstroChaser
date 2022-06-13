@@ -23,7 +23,24 @@ async function insertUserInfo(connection, insertUserInfoParams) {
     return insertUserInfoRow;
 }
 
+//유저 로그인
+async function signinUser(connection, signinUserParams){
+  const signinUserQuery =`
+    select COUNT(email)
+    from USER
+    WHERE email = ? AND password = ?;
+  `
+  const signinUserRow = await connection.query(
+    signinUserQuery,
+    signinUserParams
+  )
+  console.log(signinUserRow);
+
+  return signinUserRow;
+}
+
 module.exports = {
     selectUserEmail,
-    insertUserInfo
+    insertUserInfo,
+    signinUser
 }

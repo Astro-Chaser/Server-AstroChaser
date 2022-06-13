@@ -11,6 +11,7 @@ const userProvider = require("./userProvider");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const {connect} = require("http2");
+const res = require("express/lib/response");
 
 exports.creteUser = async function (name, email, password, member, generation){
 
@@ -41,4 +42,30 @@ exports.creteUser = async function (name, email, password, member, generation){
         return errResponse(baseResponse.DB_ERROR);
     }
     
+}
+
+exports.signinUser = async function (email, password)
+{
+    try{
+        
+         // 비밀번호 암호화
+         const hashedPassword = await crypto
+         .createHash("sha512")
+         .update(password)
+         .digest("hex");
+
+         const signinUserParams = [email, hashedPassword];
+
+         const connection = await pool.getConnection(async (conn) => conn);
+         const userCreateResult = await userDao.signinUser(connection, signinUserParams);         
+
+         if(userCreateResult[0][0]['COUNT(email)'] == 1)
+            return response(baseResponse.SUCCESS);
+         if(userCreateResult[0][0]['COUNT(email)'] == 0)
+            return errResponse(baseResponse.SIGNIN_FAILED);
+    }
+    catch{
+        // logger.error(`App - signIn Service error\n: ${"signInUser Error"}`);
+        return errResponse(baseResponse.DB_ERROR);
+    }
 }

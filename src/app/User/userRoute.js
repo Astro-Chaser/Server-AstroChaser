@@ -7,6 +7,9 @@ module.exports = function(app){
 
     // 1. 유저 생성 (회원가입) API
     app.post('/app/users', user.postUsers);
+
+    // 2. 유저 로그인 API
+    app.post('/app/users/signin', user.signinUser);
 };
 
 
