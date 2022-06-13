@@ -21,6 +21,10 @@ app.get('/user/signup', function(req, res) {
     res.sendFile(__dirname+"/frontWEB/signup.html");
 })
 
+app.get('/user/signin', function(req, res) {
+    res.sendFile(__dirname+"/frontWEB/signin.html");
+})
+
 app.get('/telescopes/owned', function(req, res) {
     res.sendFile(__dirname+"/frontWEB/telescopes.html");
 })
