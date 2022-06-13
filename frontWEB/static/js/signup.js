@@ -21,7 +21,6 @@ sigupBtn.onclick = signupBtnClicked;
     }
     else{
       // ************************************
-      // 안에선 안됨??
       const signUpData = {
         name: name,
         email: email,

@@ -12,24 +12,25 @@
     <title>AC 로그인</title>
 </head>
 <body>
-    <img src="./image/Astro logo intro.png" class="text3d" alt="Astro Chaser" width="450px" style="z-index: 999;" >
+    <a id="nav-home"><img src="./image/Astro logo intro.png" class="text3d" alt="Astro Chaser" width="450px" style="z-index: 999;" ></a>
     <form class="box" id="login">
         <div class="field">
           <label class="label">Email</label>
           <div class="control">
-            <input class="input" type="email" placeholder="e.g. alex@example.com">
+            <input class="input" type="email" id="email" placeholder="e.g. alex@example.com">
           </div>
         </div>
       
         <div class="field">
           <label class="label">Password</label>
           <div class="control">
-            <input class="input" type="password" placeholder="********">
+            <input class="input" type="password" id="password" placeholder="********">
           </div>
         </div>
-        <button class="button is-primary">Sign in</button>
+        <button class="button is-primary" id="signinBtn">Sign in</button>
         <br>아직 회원이 아니시라면? <a>Astro Chaser 회원가입하기</a>
     </form>
 </body>
-<script type="text/javascript" src="./js/navHref.js"></script>
+<script type="text/javascript" src="./js/hostAddr.js"></script>
+<script type="text/javascript" src="./js/signin.js"></script>
 </html>

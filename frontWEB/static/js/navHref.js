@@ -2,6 +2,7 @@ const navHome = document.getElementById("nav-home");
 const navAboutUs = document.getElementById("nav-aboutus");
 const navChasingHistory = document.getElementById("nav-chasinghistory");
 const navSignUp = document.getElementById("nav-sign-up");
+const navSignIn = document.getElementById("nav-sign-in");
 
 const navOwnedTelescopes = document.getElementById("nav-owned-telescopes");
 const navSettingTelescopes = document.getElementById("nav-setting-telescope");
@@ -22,6 +23,10 @@ navChasingHistory.addEventListener('click', (event) => {
 
 navSignUp.addEventListener('click', (event) => {
     location.href = '/user/signup'
+})
+
+navSignIn.addEventListener('click', (event) => {
+    location.href = "/user/signin"
 })
 
 //======
