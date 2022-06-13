@@ -13,6 +13,15 @@ const crypto = require("crypto");
 const {connect} = require("http2");
 const res = require("express/lib/response");
 
+/**
+ * 회원가입 API
+ * @param {*} name 
+ * @param {*} email 
+ * @param {*} password 
+ * @param {*} member 
+ * @param {*} generation 
+ * @returns 
+ */
 exports.creteUser = async function (name, email, password, member, generation){
 
     const isEmailDuplicated = await userProvider.emailDuplicateCheck(email);
@@ -32,10 +41,22 @@ exports.creteUser = async function (name, email, password, member, generation){
          const connection = await pool.getConnection(async (conn) => conn);
          const userCreateResult = await userDao.insertUserInfo(connection, insertUserParams);
         
-         
+         //토큰 생성 Service
+        let token = await jwt.sign(
+            {
+                userEmail: email,
+            }, // 토큰의 내용(payload)
+            secret_config.jwtsecret, // 비밀키
+            {
+                expiresIn: "3h",
+                subject: "userInfo",
+            } // 유효 기간 365일
+        );
+
+        
          console.log('추가된 회원: ' + email);
          connection.release();
-         return response(baseResponse.SUCCESS);
+         return response(baseResponse.SUCCESS, {'email': email, 'jwt': token});
     }
     catch{
         logger.error(`App - createUser Service error\n: ${err.message}`);
@@ -44,6 +65,12 @@ exports.creteUser = async function (name, email, password, member, generation){
     
 }
 
+/**
+ * 로그인 API
+ * @param {*} email 
+ * @param {*} password 
+ * @returns 
+ */
 exports.signinUser = async function (email, password)
 {
     try{
@@ -60,12 +87,27 @@ exports.signinUser = async function (email, password)
          const userCreateResult = await userDao.signinUser(connection, signinUserParams);         
 
          if(userCreateResult[0][0]['COUNT(email)'] == 1)
-            return response(baseResponse.SUCCESS);
+         {
+             //토큰 생성 Service
+            let token = await jwt.sign(
+                {
+                    userEmail: email,
+                }, // 토큰의 내용(payload)
+                secret_config.jwtsecret, // 비밀키
+                {
+                    expiresIn: "3h",
+                    subject: "userInfo",
+                } // 유효 기간 3시간
+            );
+
+            return response(baseResponse.SUCCESS, {'email': email, 'jwt': token});
+         }
+           
          if(userCreateResult[0][0]['COUNT(email)'] == 0)
             return errResponse(baseResponse.SIGNIN_FAILED);
     }
     catch{
-        // logger.error(`App - signIn Service error\n: ${"signInUser Error"}`);
+        logger.error(`App - signIn Service error\n: ${err.message}`);
         return errResponse(baseResponse.DB_ERROR);
     }
 }

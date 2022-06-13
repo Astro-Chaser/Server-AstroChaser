@@ -34,7 +34,6 @@ async function signinUser(connection, signinUserParams){
     signinUserQuery,
     signinUserParams
   )
-  console.log(signinUserRow);
 
   return signinUserRow;
 }
