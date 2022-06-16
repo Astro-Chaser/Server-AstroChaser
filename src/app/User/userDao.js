@@ -2,7 +2,7 @@
 async function selectUserEmail(connection, email) {
     const selectUserEmailQuery = `
                     SELECT COUNT(email) AS userCount
-                    FROM USER
+                    FROM User
                     WHERE email = ?
                   `;
     const [emailRows] = await connection.query(selectUserEmailQuery, email);
@@ -12,7 +12,7 @@ async function selectUserEmail(connection, email) {
 // 유저 생성
 async function insertUserInfo(connection, insertUserInfoParams) {
     const insertUserInfoQuery = `
-        insert into USER(name, email, password, member, generation) 
+        insert into User(name, email, password, member, generation) 
         VALUES(?, ?, ?, ?, ?);
       `;
     const insertUserInfoRow = await connection.query(
@@ -27,7 +27,7 @@ async function insertUserInfo(connection, insertUserInfoParams) {
 async function signinUser(connection, signinUserParams){
   const signinUserQuery =`
     select COUNT(email)
-    from USER
+    from User
     WHERE email = ? AND password = ?;
   `
   const signinUserRow = await connection.query(
@@ -36,6 +36,13 @@ async function signinUser(connection, signinUserParams){
   )
 
   return signinUserRow;
+}
+
+//Refresh Token 저장
+async function saveRefreshToken(connection, refreshTokenParams){
+  const refrechTokenQuery = `
+    
+  `
 }
 
 module.exports = {
