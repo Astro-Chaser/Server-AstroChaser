@@ -42,13 +42,24 @@ exports.creteUser = async function (name, email, password, member, generation){
          const userCreateResult = await userDao.insertUserInfo(connection, insertUserParams);
         
          //토큰 생성 Service
-        let token = await jwt.sign(
+        let AccessToken = await jwt.sign(
             {
                 userEmail: email,
             }, // 토큰의 내용(payload)
-            secret_config.jwtsecret, // 비밀키
+            secret_config.ACCESSjwtsecret, // 비밀키
             {
                 expiresIn: "3h",
+                subject: "userInfo",
+            } // 유효 기간 365일
+        );
+
+        let RefreshToken = await jwt.sign(
+            {
+                userEmail: email,
+            }, // 토큰의 내용(payload)
+            secret_config.REFRESHjwtsecret, // 비밀키
+            {
+                expiresIn: "6h",
                 subject: "userInfo",
             } // 유효 기간 365일
         );
@@ -56,7 +67,9 @@ exports.creteUser = async function (name, email, password, member, generation){
         
          console.log('추가된 회원: ' + email);
          connection.release();
-         return response(baseResponse.SUCCESS, {'email': email, 'jwt': token});
+         return response(baseResponse.SUCCESS, {'email': email, 
+                                                'AccessJWT': AccessToken,
+                                                'RefreshJWT': RefreshToken});
     }
     catch{
         logger.error(`App - createUser Service error\n: ${err.message}`);
@@ -74,7 +87,6 @@ exports.creteUser = async function (name, email, password, member, generation){
 exports.signinUser = async function (email, password)
 {
     try{
-        
          // 비밀번호 암호화
          const hashedPassword = await crypto
          .createHash("sha512")
@@ -89,19 +101,33 @@ exports.signinUser = async function (email, password)
          if(userCreateResult[0][0]['COUNT(email)'] == 1)
          {
              //토큰 생성 Service
-            let token = await jwt.sign(
+            let AccessToken = await jwt.sign(
                 {
                     userEmail: email,
                 }, // 토큰의 내용(payload)
-                secret_config.jwtsecret, // 비밀키
+                secret_config.ACCESSjwtsecret, // 비밀키
                 {
                     expiresIn: "3h",
                     subject: "userInfo",
                 } // 유효 기간 3시간
             );
 
-            return response(baseResponse.SUCCESS, {'email': email, 'jwt': token});
-         }
+            let RefreshToken = await jwt.sign(
+                {
+                    userEmail: email,
+                }, // 토큰의 내용(payload)
+                secret_config.REFRESHjwtsecret, // 비밀키
+                {
+                    expiresIn: "6h",
+                    subject: "userInfo",
+                } // 유효 기간 6시간
+            );
+
+
+            return response(baseResponse.SUCCESS, {'email': email, 
+                                                    'AccessJWT': AccessToken,
+                                                    'RefreshJWT': RefreshToken});
+        }
            
          if(userCreateResult[0][0]['COUNT(email)'] == 0)
             return errResponse(baseResponse.SIGNIN_FAILED);

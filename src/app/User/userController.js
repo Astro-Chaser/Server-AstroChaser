@@ -31,6 +31,12 @@ exports.postUsers = async function (req, res) {
     return res.send(signupUserResponse);
 }
 
+/**
+ * 2. 로그인 API
+ * @param {*} req 
+ * @param {*} res 
+ * @returns 
+ */
 exports.signinUser = async function (req, res){
     const {email, password} = req.body;
 
@@ -45,5 +51,4 @@ exports.signinUser = async function (req, res){
     ) 
 
     return res.send(signinUserResponse);
-
 }
