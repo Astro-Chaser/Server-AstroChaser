@@ -40,13 +40,43 @@ async function signinUser(connection, signinUserParams){
 
 //Refresh Token 저장
 async function saveRefreshToken(connection, refreshTokenParams){
-  const refrechTokenQuery = `
-    
+  const refreshTokenQuery = `
+    insert into RefreshToken (email, refreshToken) VALUES (?, ?)
   `
+  
+  connection.query(
+    refreshTokenQuery,
+    refreshTokenParams,
+    function (err, result) {
+      if (err) throw err;
+      
+      console.log(`${result.affectedRows}개의 Refresh Token 추가됨.`);
+    });
+
+  return 1;
+}
+
+//Refresh Token 업데이트
+async function updqteRefreshToken(connection, refreshTokenParams){
+  const refreshTokenQuery = `
+    UPDATE RefreshToken SET refreshToken = ? WHERE email = ?
+  `
+  
+  connection.query(
+    refreshTokenQuery,
+    refreshTokenParams,
+    function (err, result) {
+      if (err) throw err;
+      
+      console.log(`${result.affectedRows}개의 Refresh Token 추가됨.`);
+    });
+
+  return 1;
 }
 
 module.exports = {
     selectUserEmail,
     insertUserInfo,
-    signinUser
+    signinUser,
+    saveRefreshToken
 }

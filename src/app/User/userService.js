@@ -65,7 +65,7 @@ exports.creteUser = async function (name, email, password, member, generation){
         );
         
         const refreshTokenParams = [email, RefreshToken]
-        //const refreshTokenSaveResult = await userDao.saveRefreshToken(connection, refreshTokenParams)
+        const refreshTokenSaveResult = await userDao.saveRefreshToken(connection, refreshTokenParams)
 
         
          console.log('추가된 회원: ' + email);
@@ -126,10 +126,12 @@ exports.signinUser = async function (email, password)
                 } // 유효 기간 6시간
             );
 
+            const refreshTokenParams = [RefreshToken, email]
+            const refreshTokenSaveResult = await userDao.updateRefreshToken(connection, refreshTokenParams)
 
             connection.release();
             return response(baseResponse.SUCCESS, {'email': email, 
-                                                    'AccessJWT': AccessToken,
+                                                   'AccessJWT': AccessToken,
                                                     'RefreshJWT': RefreshToken});
         }
            
