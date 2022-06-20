@@ -57,7 +57,7 @@ async function saveRefreshToken(connection, refreshTokenParams){
 }
 
 //Refresh Token 업데이트
-async function updqteRefreshToken(connection, refreshTokenParams){
+async function updateRefreshToken(connection, refreshTokenParams){
   const refreshTokenQuery = `
     UPDATE RefreshToken SET refreshToken = ? WHERE email = ?
   `
@@ -78,5 +78,6 @@ module.exports = {
     selectUserEmail,
     insertUserInfo,
     signinUser,
-    saveRefreshToken
+    saveRefreshToken,
+    updateRefreshToken
 }

@@ -13,8 +13,12 @@ var port = app.listen(process.env.PORT || 8000);
 app.use(expressForStatic.static(__dirname + "/frontWEB/static"));
 
 //html 정의 시작
+//1. index 페이지
 app.get('/', function(req, res) {
     res.sendFile(__dirname+"/frontWEB/index.html");
+})
+app.get('/m', function(req, res) {
+    res.sendFile(__dirname+"/frontWEB/mobile_index.html");
 })
 
 app.get('/user/signup', function(req, res) {
