@@ -6,7 +6,6 @@ const {response} = require("../../../config/response");
 const {errResponse} = require("../../../config/response");
 
 const guestbookDao = require("./guestbookDao");
-const guestbookProvider = require("./guestbookProvider");
 
 const {connect} = require("http2");
 const res = require("express/lib/response");
