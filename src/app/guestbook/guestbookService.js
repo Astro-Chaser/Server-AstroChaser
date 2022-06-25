@@ -30,7 +30,7 @@ exports.createGuestBook = async function (writer, content){
                                                 'content' : content});
     }
     catch{
-        //logger.error(`App - signIn Service error\n: ${err.message}`);
+        logger.error(`App - signIn Service error\n: ${err.message}`);
         return errResponse(baseResponse.DB_ERROR);
     }
 }

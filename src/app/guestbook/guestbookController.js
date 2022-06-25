@@ -27,3 +27,11 @@ exports.postGuestbook = async function (req, res){
 
     return res.send(postGuestbookResponse);
 }
+
+
+exports.getGuestbook = async function (req, res){
+    
+    const getGuestbookResponse = await guestbookProvider.getGuestbook();
+
+    return res.send(getGuestbookResponse);
+}
