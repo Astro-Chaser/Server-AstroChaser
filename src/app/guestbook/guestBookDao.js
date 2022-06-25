@@ -12,7 +12,7 @@ async function createGuestBook(connection, createGuestBookParams){
     return createGuestBookRow;
 }
 
-//방명록 반환
+//방명록 조회
 async function getGuestbook(connection){
     const getGuestbookQuery = `select writer, content, createdAt
                                 from GuestBook
