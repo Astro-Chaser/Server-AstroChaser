@@ -6,8 +6,8 @@ const navSignIn = document.getElementById("nav-sign-in");
 
 const navOwnedTelescopes = document.getElementById("nav-owned-telescopes");
 const navSettingTelescopes = document.getElementById("nav-setting-telescope");
-const navContentsOwnedTelescopes = document.getElementById("nav-contents-owned-telescopes");
-const navContentsSettingTelescopes = document.getElementById("nav-contents-setting-telescope");
+// const navContentsOwnedTelescopes = document.getElementById("nav-contents-owned-telescopes");
+// const navContentsSettingTelescopes = document.getElementById("nav-contents-setting-telescope");
 
 navHome.addEventListener('click', (event) => {
     location.href = '/'
@@ -38,10 +38,10 @@ navSettingTelescopes.addEventListener('click', (event) => {
     location.href = '/telescopes/manual'
 })
 
-navContentsOwnedTelescopes.addEventListener('click', (event) => {
-    location.href = '/telescopes/owned'
-})
+// navContentsOwnedTelescopes.addEventListener('click', (event) => {
+//     location.href = '/telescopes/owned'
+// })
 
-navContentsSettingTelescopes.addEventListener('click', (event) => {
-    location.href = '/telescopes/manual'
-})
+// navContentsSettingTelescopes.addEventListener('click', (event) => {
+//     location.href = '/telescopes/manual'
+// })

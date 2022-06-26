@@ -16,6 +16,7 @@ async function signinBtnClicked(event){
     .then((data) => {
         if(data.isSuccess == true)
         {
+            alert("로그인에 성공!! 은 했으나... \n 아직 기능을 개발하고 있어요. 일단 홈페이지로 이동합니다!")
             location.href="/"
         }
         else

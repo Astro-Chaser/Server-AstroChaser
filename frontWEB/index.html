@@ -9,13 +9,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bulma-extensions@6.2.7/dist/js/bulma-extensions.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="./css/index.css" />
     <link rel="stylesheet" type="text/css" href="./css/reset.css" />
     <link rel="stylesheet" type="text/css" href="./css/interactive.css" />
+    <link href='./packages/core/main.css' rel='stylesheet' />
+    <link href='./packages/daygrid/main.css' rel='stylesheet' />
+    <script src='./packages/core/main.js'></script>
+    <script src='./packages/interaction/main.js'></script>
+    <script src='./packages/daygrid/main.js'></script>
+    <script type="text/javascript" src="./js/spaceCalendar.js"></script>
     <script type="text/javascript" src="./js/index.js"></script>
     <script type="text/javascript" src="./js/hostAddr.js"></script>
-    
-
 </head>
 <body>
     <main>
@@ -24,15 +34,15 @@
               <a class="navbar-item" id="nav-home">
                 <img src="./image/Astro logo intro.png" alt="AC logo" width="130" height="50">
               </a>
-              <div class="navbar-burger" data-target="navbarExampleTransparentExample">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
+              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
             </div>
           
             <div id="navbarExampleTransparentExample" class="navbar-menu">
-              <div class="navbar-start">
+              <div class="navbar-start is-active">
                 <a class="navbar-item" id="nav-home">
                   Home
                 </a>
@@ -61,10 +71,10 @@
                 <div class="navbar-item">
                   <div class="buttons">
                     <a class="button is-primary" id="nav-sign-up">
-                      <strong>Sign up</strong>
+                      <strong>회원가입</strong>
                     </a>
                     <a class="button is-light" id="nav-sign-in">
-                      Sign in
+                      로그인
                     </a>
                   </div>
                 </div>
@@ -84,24 +94,114 @@
          
         <section class="subPage upperPage">
             <div class="innerWrap">
-                <div class="contWrap" id = "firstIntroduce">
-                    <p>한국항공대<br>아스트로체이서</p>
+                <div class="contWrap" id = "firstIntroduce" style="height: auto;">
+                  
+                  <div class="tile is-ancestor">
+                    <div class="tile is-4 is-vertical is-parent">
+                      <div class="tile is-child box">
+                        <p class="title">공지사항</p>
+                        <p>
+                          <div class="content">
+                            <ul>
+                              <li>2022 6월 정기관측회 안내</li>
+                              <li>MT안내</li>
+                              <li>홈페이지가 개설되었습니다!</li>
+                            </ul>
+                          </div>
+                        </p>
+                      </div>
+                      <div class="tile is-child box">
+                        <p class="title">별지기 게시판</p>
+                        <p>
+                          <div class="content">
+                            <ul>
+                              <li>이런</li>
+                              <li>저런</li>
+                              <li>게시글들</li>
+                            </ul>
+                          </div>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="tile is-parent">
+                      <div class="tile is-child box">
+                        <p class="title">천문력</p>
+                        <div id='calendar'></div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <div class="contWrap" id = "firstIntroduce" style="margin-top: 700px;">
-                    <image src="./image/Sattellite.png" id="sattelliteImg"></image>
-                    <p>2022년 소모임으로 시작된 Astro chaser는 현재<br>150명의 별지기와 함께 순항하고 있습니다.</p>
-                </div>
+                <div class="contWrap" id = "firstIntroduce" style="margin-top: 200px; height: 150vh;">
+                  <div class="tile is-ancestor">
+                    <div class="tile is-parent" style="height: 15vh;">
+                      <article class="tile is-child box">
+                        <p class="title" style="margin-top: 0px; margin-bottom: 5px;">방명록</p>
+                       
+                      </article>
+                    </div>
+                  </div>
+                  <div class="tile is-ancestor">
+                    <div class="tile is-parent" style="height: 130vh;">
+                      <article class="tile is-child box">
+                        <textarea class="textarea is-info has-fixed-size" 
+                                  placeholder="방명록을 작성해주세요(200자 이내)" 
+                                  style="height: 50px; width: 50px;"
+                                  id="guestbookContent"></textarea> 
+                        <div class="guestBookWriterInfoBox">
+                          <div id="guestbookContent_cnt">(0 / 200)</div>
+                          <div id="guestbookCommit">
+                            <input class="input is-link" type="text" placeholder="닉네임" style="width: 200px; height: 100%; max-height: 40px;">
+                            <button class="button is-primary" id="guestbookCommitBtn" style="height: 100%; max-height: 40px;">등록</button>
+                          </div>
+                        </div>
 
-                <div class="contWrap" id = "firstIntroduce" style="margin-top: 700px;">
-                    <p>6대의 망원경과 천문대와의 협약이 맺어진<br> Astro chaser!<br>우리의 활동을 확인해보세요.<br><br>
-                        <button class="button is-link" onclick="window.open('https://www.instagram.com/kau_astro_chaser/')">Astro Chaser 인스타그램</button></p>
-                    <script type="text/javascript">
-                    </script>
+                        <hr>
+                        <div class="guestbook-area">
+                          <div class="guestbook-area-contents">
+                            <div class="guestbook-writer-info-area">
+                              <div class="guestbook-writer-name-info">17 전준휘</div>
+                              <div class="guestbook-writer-time-info">2022/06/24 13:24</div>
+                            </div>
+                            <div class="guestbook-user-content">새로운 사이트를 열심히 만들고 있습니다! 기대해주세요~~</div>                        
+                          </div>
+                          <div class="guestbook-area-contents">
+                            <div class="guestbook-writer-info-area">
+                              <div class="guestbook-writer-name-info">17 전준휘</div>
+                              <div class="guestbook-writer-time-info">2022/06/24 13:24</div>
+                            </div>
+                            <div class="guestbook-user-content">새로운 사이트를 열심히 만들고 있습니다! 기대해주세요~~</div>                        
+                          </div>
+                          <div class="guestbook-area-contents">
+                            <div class="guestbook-writer-info-area">
+                              <div class="guestbook-writer-name-info">17 전준휘</div>
+                              <div class="guestbook-writer-time-info">2022/06/24 13:24</div>
+                            </div>
+                            <div class="guestbook-user-content">새로운 사이트를 열심히 만들고 있습니다! 기대해주세요~~</div>                        
+                          </div>
+                          <div class="guestbook-area-contents">
+                            <div class="guestbook-writer-info-area">
+                              <div class="guestbook-writer-name-info">17 전준휘</div>
+                              <div class="guestbook-writer-time-info">2022/06/24 13:24</div>
+                            </div>
+                            <div class="guestbook-user-content">새로운 사이트를 열심히 만들고 있습니다! 기대해주세요~~</div>                        
+                          </div>
+                          <div class="guestbook-area-contents">
+                            <div class="guestbook-writer-info-area">
+                              <div class="guestbook-writer-name-info">17 전준휘</div>
+                              <div class="guestbook-writer-time-info">2022/06/24 13:24</div>
+                            </div>
+                            <div class="guestbook-user-content">새로운 사이트를 열심히 만들고 있습니다! 기대해주세요~~</div>                        
+                          </div>
+                        </div>
+                      </article>
+                    </div>
+                  </div>
                 </div>
             </div>
         </section> 
     </main>
 </body>
 <script type="text/javascript" src="./js/navHref.js"></script>
+
 </html>
