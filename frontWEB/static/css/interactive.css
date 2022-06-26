@@ -18,7 +18,7 @@
 
 body {
   overflow-x: hidden;
-  background: linear-gradient(110deg, rgb(9, 17, 11), #060b33);
+  background: linear-gradient(110deg, rgb(9, 17, 11), #011244);
   height: 30000px;
 }
 
@@ -29,7 +29,7 @@ main {
 .textWrap {
   position : absolute;
   left: 45vw;
-  top: 300px;
+  top: 45vh;
   transform: translate(-50%, -50%);
   z-index : 3;
   transform-style: preserve-3d; 
@@ -102,7 +102,22 @@ section.subPage .innerWrap .contWrap {
   margin: 0 auto;
   /* background-color: rgba(0, 0, 0, 0.6); */
   padding: 20px 40px;
-  width: 700px;
+  width: 70vw;
+  height: 60vw;;
+  border-radius: 10px;
+}
+
+section.subPage.upperPage .innerWrap .contWrap {
+  background-color: rgba(106, 106, 106, 0.62);
+}
+
+section.subPage .innerWrap .contWrap p {
+  font-family: 'EliceDigitalBaeum_Bold';
+  text-align: center;
+  font-size: 30px;
+  line-height: 40px;
+  /* color: #fff; */
+  margin: 50px 0;
 }
 
 @media only screen and (max-width: 768px) {
@@ -111,14 +126,8 @@ section.subPage .innerWrap .contWrap {
   }
 }
 
-section.subPage .innerWrap .contWrap p {
-  font-family: 'EliceDigitalBaeum_Bold';
-  text-align: center;
-  font-size: 30px;
-  line-height: 40px;
-  color: #fff;
-  margin: 50px 0;
-}
+
+
 
 section.subPage.upperPage {
   margin-top: 2000px;
@@ -132,9 +141,7 @@ section.subPage.upperPage .innerWrap {
   /* background-color: rgba(0, 0, 0, 0.2); */
 }
 
-section.subPage.upperPage .innerWrap .contWrap {
-  background-color: rgba(0, 0, 0, 0);
-}
+
 
 #stars1 {
   width: 90%;
