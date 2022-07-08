@@ -16,7 +16,8 @@ async function createGuestBook(connection, createGuestBookParams){
 async function getGuestbook(connection){
     const getGuestbookQuery = `select writer, content, createdAt
                                 from GuestBook
-                                where state='A';`
+                                where state='A'
+                                ORDER BY createdAt DESC;`
 
     const [getGuestbookRow] = await connection.query(getGuestbookQuery);
 
