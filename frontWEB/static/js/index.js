@@ -12,10 +12,11 @@ let scrollCnt = 0;
 var context, canvas;
 var sattelliteStartScroll, sattellite;
 var isIntoTheStarsEnd = false; 
+const animalNames =[
+  "강아지", "고양이", "고릴라", "침팬지", "갈매기", "비둘기", "호랑이", "야옹이", "폼폼이", "재경이", "이시형", "전준휘", "별지기", "송골매",
+  "강호동", "남도일", "케로로", "호돌이", "코뿔소", "구렁이", "사다리", "북극곰", "탄지로", "뽀로로", "스컹크", "김동헌", "원숭이", "알파카"
+]
 
-const responseRes = get("nickname.hwanmoo.kr", "?format=text")  
-      .then((data) => {console.log(data)})
-      
 window.onload = function(){
 
   stars1 = document.getElementById("stars1");
@@ -35,7 +36,38 @@ window.onload = function(){
     y = (e.clientY - window.innerHeight / 2);
   }
   loop();
+  //랜덤 닉네임 생성하기
+  console.log(getRandomArbitrary(0, animalNames.length));
+  $("#guestbookCommit_nickname").attr("placeholder", "익명의 " + animalNames[getRandomArbitrary(0, animalNames.length)])
+
+  //방명록 전시하기
+  async function showGuestbookData(){
+    const guestbookData = await getAPI(hostAddress, 'app/guestbook');
   
+    console.log(guestbookData.result);
+    for(var i=0; i<guestbookData.result.length; i++)
+    {
+      var writer = guestbookData.result[i].writer;
+      var time = guestbookData.result[i].createdAt.substring(0,10) + " " + guestbookData.result[i].createdAt.substring(12,16);
+      var message = guestbookData.result[i].content;
+
+      var html ='';
+      html=(`<div class="guestbook-area-contents">
+              <div class="guestbook-writer-info-area">
+                <div class="guestbook-writer-name-info">${writer}</div>
+                <div class="guestbook-writer-time-info">${time}</div>
+              </div>
+              <div class="guestbook-user-content">${message}</div>                        
+            </div>`)
+
+      $(".guestbook-area").append(html);
+    }
+  }
+  showGuestbookData();
+
+  //방명록 게시하기
+  const guestbookCommitBtn = document.getElementById("guestbookCommitBtn");
+  guestbookCommitBtn.onclick = guestbookCommitBtnClicked;
 }
 
 function loop(){
@@ -129,18 +161,45 @@ $(document).ready(function() {
   });
 });
 
-async function request() {
-  const response = await fetch('http://nickname.hwanmoo.kr/?format=json&count=1',
-  {
-    mode : 'no-cors',
-    method: 'GET',
-  });
-  console.log(response)
+//방명록 게시하기
+async function guestbookCommitBtnClicked(event){
+  event.preventDefault();
 
-  
+  var nickname="";
+  if(document.getElementById("guestbookCommit_nickname").value == "") {
+    nickname = $("#guestbookCommit_nickname").attr("placeholder");
+  }
+  else nickname = document.getElementById("guestbookCommit_nickname").value();
+
+  var message="";
+  if(guestbookContent.value=="") alert("방명록 내용을 입력해주세요.");
+  else{
+    const postGuestbookData = {
+      writer: nickname,
+      content: guestbookContent.value
+    }
+    postAPI(hostAddress, 'app/guestbook', postGuestbookData)
+      .then((data) => {
+        // console.log(data)
+        // console.log(data.isSuccess);
+        // console.log(data.message);
+        if(data.isSuccess == false){
+          alert("방명록을 작성에 실패했습니다.");
+        }
+
+        if(data.isSuccess == true){
+          window.location.reload()
+        }
+      })
+      .catch((error) => console.log(error));
+      
+    
+  }
+
 }
 
-async function post(host, path, body, headers = {}) {
+//post API
+async function postAPI(host, path, body, headers = {}) {
   const url = `http://${host}/${path}`;
   const options = {
     method: "POST",
@@ -159,20 +218,17 @@ async function post(host, path, body, headers = {}) {
   }
 }
 
-async function get(host, path, headers = {}) {
-  const url = `https://${host}/${path}`;
+//get API
+async function getAPI(host, path, headers = {}) {
+  const url = `http://${host}/${path}`;
+  console.log(url);
   const options = {
-    method: "GET",
-    mode: "no-cors",
-    headers: {
-      "Content-Type": "application/json",
-      ...headers,
-    },
+    method: "GET"
   };
   const res = await fetch(url, options);
   const data = res.json();
-  console.log(res)
-  console.log(data)
+  // console.log(res)
+  // console.log(data)
   if (res.ok) {
     return data;
   } else {
@@ -180,3 +236,8 @@ async function get(host, path, headers = {}) {
   }
 }
 
+function getRandomArbitrary(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최솟값은 포함
+}
