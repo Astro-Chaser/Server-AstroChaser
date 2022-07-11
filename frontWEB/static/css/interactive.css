@@ -28,7 +28,7 @@ main {
 
 .textWrap {
   position : absolute;
-  left: 45vw;
+  left: 43vw;
   top: 45vh;
   transform: translate(-50%, -50%);
   z-index : 3;
@@ -262,4 +262,8 @@ section.subPage.hexagons {
 	height: 100%;
 	pointer-events: none;
 	background: rgba(255,255,255,0.02);
+}
+
+.guestbook-page-navigator{
+  margin-top: 5px;
 }

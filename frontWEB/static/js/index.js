@@ -12,6 +12,8 @@ let scrollCnt = 0;
 var context, canvas;
 var sattelliteStartScroll, sattellite;
 var isIntoTheStarsEnd = false; 
+
+
 const animalNames =[
   "강아지", "고양이", "고릴라", "침팬지", "갈매기", "비둘기", "호랑이", "야옹이", "폼폼이", "재경이", "이시형", "전준휘", "별지기", "송골매",
   "강호동", "남도일", "케로로", "호돌이", "코뿔소", "구렁이", "사다리", "북극곰", "탄지로", "뽀로로", "스컹크", "김동헌", "원숭이", "알파카"
@@ -36,38 +38,8 @@ window.onload = function(){
     y = (e.clientY - window.innerHeight / 2);
   }
   loop();
-  //랜덤 닉네임 생성하기
-  console.log(getRandomArbitrary(0, animalNames.length));
-  $("#guestbookCommit_nickname").attr("placeholder", "익명의 " + animalNames[getRandomArbitrary(0, animalNames.length)])
 
-  //방명록 전시하기
-  async function showGuestbookData(){
-    const guestbookData = await getAPI(hostAddress, 'app/guestbook');
   
-    console.log(guestbookData.result);
-    for(var i=0; i<guestbookData.result.length; i++)
-    {
-      var writer = guestbookData.result[i].writer;
-      var time = guestbookData.result[i].createdAt.substring(0,10) + " " + guestbookData.result[i].createdAt.substring(12,16);
-      var message = guestbookData.result[i].content;
-
-      var html ='';
-      html=(`<div class="guestbook-area-contents">
-              <div class="guestbook-writer-info-area">
-                <div class="guestbook-writer-name-info">${writer}</div>
-                <div class="guestbook-writer-time-info">${time}</div>
-              </div>
-              <div class="guestbook-user-content">${message}</div>                        
-            </div>`)
-
-      $(".guestbook-area").append(html);
-    }
-  }
-  showGuestbookData();
-
-  //방명록 게시하기
-  const guestbookCommitBtn = document.getElementById("guestbookCommitBtn");
-  guestbookCommitBtn.onclick = guestbookCommitBtnClicked;
 }
 
 function loop(){
@@ -147,7 +119,6 @@ function introduceScroll()
 function endIntoTheStarsImg()
 {
   isIntoTheStarsEnd=true;
- 
 }
 
 $(document).ready(function() {
@@ -169,7 +140,7 @@ async function guestbookCommitBtnClicked(event){
   if(document.getElementById("guestbookCommit_nickname").value == "") {
     nickname = $("#guestbookCommit_nickname").attr("placeholder");
   }
-  else nickname = document.getElementById("guestbookCommit_nickname").value();
+  else nickname = document.getElementById("guestbookCommit_nickname").value;
 
   var message="";
   if(guestbookContent.value=="") alert("방명록 내용을 입력해주세요.");
@@ -195,8 +166,37 @@ async function guestbookCommitBtnClicked(event){
       
     
   }
-
 }
+  //방명록 전시하기
+  async function showGuestbookData(guestbookPageCnt){
+    const guestbookData = await getAPI(hostAddress, 'app/guestbook');
+  
+    console.log(guestbookData.result);
+    for(var i=0; i<5; i++)
+    {
+      console.log(guestbookPageCnt*5+i)
+      var writer = guestbookData.result[guestbookPageCnt*5+i].writer;
+      var time = guestbookData.result[guestbookPageCnt*5+i].createdAt.substring(0,10) + " " + guestbookData.result[guestbookPageCnt*5+i].createdAt.substring(12,16);
+      var message = guestbookData.result[guestbookPageCnt*5+i].content;
+
+      var html ='';
+      html=(`<div class="guestbook-area-contents">
+              <div class="guestbook-writer-info-area">
+                <div class="guestbook-writer-name-info">${writer}</div>
+                <div class="guestbook-writer-time-info">${time}</div>
+              </div>
+              <div class="guestbook-user-content">${message}</div>                        
+            </div>`)
+
+      $(".guestbook-area").append(html);
+    }
+  }
+
+//방명록 이전, 다음 게시글 불러오기
+// guetbookPrevBtn.onclick = showGuestbookData(guestbookPageCnt-1);
+
+// guetbookNextBtn.onclick = showGuestbookData(guestbookPageCnt+1)
+
 
 //post API
 async function postAPI(host, path, body, headers = {}) {
@@ -218,7 +218,7 @@ async function postAPI(host, path, body, headers = {}) {
   }
 }
 
-//get API
+//get API AS JSON
 async function getAPI(host, path, headers = {}) {
   const url = `http://${host}/${path}`;
   console.log(url);
@@ -236,6 +236,27 @@ async function getAPI(host, path, headers = {}) {
   }
 }
 
+//XML 형식 응답 -> json으로 반환하기
+async function getXMLAPI(host, path, headers = {}) {
+  const url = `http://${host}/${path}`;
+  console.log(url);
+  const options = {
+    method: "GET"
+  };
+  const res = await fetch(url, options);
+
+  var x2js = new X2JS();
+  const data = JSON.stringify(x2js.xml_str2json(res));
+  // console.log(res)
+  // console.log(data)
+  if (res.ok) {
+    return data;
+  } else {
+    throw new Error(data);
+  }
+}
+
+//min <-> max 사이 랜덤 숫자 반환
 function getRandomArbitrary(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);

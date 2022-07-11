@@ -94,3 +94,7 @@ typings/
 database.js
 secret.js
 자료들/
+
+frontWEB/static/js/APIsecretKey.js
+
+log/
