@@ -22,11 +22,13 @@
     <link href='./packages/daygrid/main.css' rel='stylesheet' />
     <script src='./packages/core/main.js'></script>
     <script src='./packages/interaction/main.js'></script>
-    <script src='./packages/daygrid/main.js'></script>
+    <script src='./packages/daygrid/main.js'></script> 
     
+    <script type="text/javascript" src="./js/APIsecretKey.js"></script>
     <script type="text/javascript" src="./js/hostAddr.js"></script>
     <script type="text/javascript" src="./js/spaceCalendar.js"></script>
     <script type="text/javascript" src="./js/index.js"></script>
+    
 </head>
 <body>
     <main>
@@ -161,6 +163,15 @@
                         <div class="guestbook-area">
               
                         </div>
+                        <div class="guestbook-page-navigator">
+                          <button class="button is-responsive" id="guetbook-prev-btn" style="float: left;">
+                            이전글
+                          </button>
+                          <button class="button is-responsive" id="guetbook-next-btn" style="float: right;">
+                            다음글
+                          </button>
+                        </div>
+                        
                       </article>
                     </div>
                   </div>
@@ -170,5 +181,6 @@
     </main>
 </body>
 <script type="text/javascript" src="./js/navHref.js"></script>
+<script type="text/javascript" src="./js/index_guestbook.js"></script>
 
 </html>
