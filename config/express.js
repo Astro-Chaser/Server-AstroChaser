@@ -19,6 +19,7 @@ module.exports = function () {
     //domain 추가
     require('../src/app/User/userRoute')(app);
     require('../src/app/guestbook/guestbookRoute')(app);
+    require('../src/app/externalAPI/externalAPIRoute')(app);
 
     return app;
 };
