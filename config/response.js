@@ -15,4 +15,4 @@ const errResponse = ({isSuccess, code, message}) => {
     }
 };
 
-module.exports = { response, errResponse };
+module.exports = {response, errResponse };
