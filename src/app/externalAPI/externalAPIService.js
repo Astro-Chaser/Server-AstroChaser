@@ -46,10 +46,12 @@ exports.getAstroInfo = async function(req, res){
             astroEventData.date = astroInfoJson.elements[0].elements[1].elements[0].elements[property].elements[3].elements[0].text;
             astroInfoParams.push(astroEventData);
         }
-        console.log(astroInfoParams);
+        //console.log(astroInfoParams);
         
         //정보 DAO에 저장하기
-
+        const connection = await pool.getConnection(async (conn) => conn);
+        const insertAstroEventResult = await externalAPIDao.insertAstroEvent(connection, astroInfoParams);
+        console.log(insertAstroEventResult);
 
 
         function doRequest(url) {
