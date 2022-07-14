@@ -11,7 +11,7 @@ const {connect} = require("http2");
 
 exports.getAstroInfo = async function(req, res){
     try{
-        let astroInfo;
+
         const paramSolYear = req.year;
         const paramSolMonth = req.month;
 
@@ -23,8 +23,43 @@ exports.getAstroInfo = async function(req, res){
             'headers': {
             }
         };
-        astroInfo = await doRequest(options);
-        console.log(astroInfo)
+        let astroInfo = await doRequest(options);
+        astroInfoJson = JSON.parse(astroInfo);
+
+        let astroInfoParams = new Array();
+
+        for(const property in astroInfoJson.elements[0].elements[1].elements[0].elements){
+            var astroEventData = new Object();
+            if(property==0){
+                // console.log(`${property}: ${astroInfoJson.elements[0].elements[1].elements[0].elements[property].elements[0].elements[0].text}`)   
+                // console.log(`${property}: ${astroInfoJson.elements[0].elements[1].elements[0].elements[0].elements[3].elements[0].text}`) 
+                astroEventData.content = astroInfoJson.elements[0].elements[1].elements[0].elements[property].elements[0].elements[0].text;
+                astroEventData.date = astroInfoJson.elements[0].elements[1].elements[0].elements[0].elements[3].elements[0].text;
+                astroInfoParams.push(astroEventData);
+                continue;
+            }
+            // console.log(`${property}: ${astroInfoJson.elements[0].elements[1].elements[0].elements[property].elements[0].elements[0].text}`)   
+            // console.log(`${property}: ${astroInfoJson.elements[0].elements[1].elements[0].elements[property].elements[1].elements[0].text}`)  
+            // console.log(`${property}: ${astroInfoJson.elements[0].elements[1].elements[0].elements[property].elements[3].elements[0].text}`)
+            astroEventData.content = astroInfoJson.elements[0].elements[1].elements[0].elements[property].elements[0].elements[0].text;
+            astroEventData.time = astroInfoJson.elements[0].elements[1].elements[0].elements[property].elements[1].elements[0].text;
+            astroEventData.date = astroInfoJson.elements[0].elements[1].elements[0].elements[property].elements[3].elements[0].text;
+            astroInfoParams.push(astroEventData);
+        }
+        //console.log(astroInfoParams);
+        
+        //정보 DAO에 저장하기
+        const connection = await pool.getConnection(async (conn) => conn);
+        const insertAstroEventResult = await externalAPIDao.insertAstroEvent(connection, astroInfoParams);
+        console.log(insertAstroEventResult);
+        if(insertAstroEventResult==0)
+        {
+            return errResponse(baseResponse.EXTERNAL_API_CONNECTION_ERROR)
+        }
+        else{
+            return response(baseResponse.SUCCESS, `${req.year}년 ${req.month}월 천문현상 정보 추가됨.`);
+        }
+
 
         function doRequest(url) {
             return new Promise(function (resolve, reject) {
@@ -39,22 +74,6 @@ exports.getAstroInfo = async function(req, res){
               });
             });
         }
-          
-        // function doRequest(options){
-        //     request(options, function (error, response) {
-        //         if (error) 
-        //         {
-        //             console.log(error)
-        //             throw new Error(error);
-        //         }
-        //         if (!error) {
-        //             var xmlTOjs = require('xml-js');
-        //             var getAstroInfo = xmlTOjs.xml2json(response.body);
-        //             return(getAstroInfo);
-        //           }
-        //     });
-        // }
-        return response(baseResponse.SUCCESS, astroInfo);
         
     }
     catch{
