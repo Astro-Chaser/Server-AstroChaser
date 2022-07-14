@@ -11,7 +11,7 @@ const {connect} = require("http2");
 
 exports.getAstroInfo = async function(req, res){
     try{
-        let astroInfo;
+
         const paramSolYear = req.year;
         const paramSolMonth = req.month;
 
@@ -23,8 +23,58 @@ exports.getAstroInfo = async function(req, res){
             'headers': {
             }
         };
-        astroInfo = await doRequest(options);
-        console.log(astroInfo)
+        let astroInfo = await doRequest(options);
+        astroInfoJson = JSON.parse(astroInfo);
+        console.log(astroInfoJson)
+        console.log("=====================")
+        console.log(astroInfoJson.elements[0]);
+        console.log("*********************");
+        console.log("+++++")
+        console.log(astroInfoJson.elements[0].elements[1]);
+        console.log(astroInfoJson.elements[0].elements[1].elements[0]);
+        console.log(astroInfoJson.elements[0].elements[1].elements[1]);
+        console.log("stop")
+        console.log(astroInfoJson.elements[0].elements[1].elements[0].elements)
+        console.log(astroInfoJson.elements[0].elements[1].elements[0].elements[0])
+        console.log(astroInfoJson.elements[0].elements[1].elements[0].elements[0].elements[0])
+        console.log(astroInfoJson.elements[0].elements[1].elements[0].elements[0].elements[1])
+        console.log(astroInfoJson.elements[0].elements[1].elements[0].elements[0].elements[3])
+
+        console.log(astroInfoJson.elements[0].elements[1].elements[0].elements[1])
+        console.log(astroInfoJson.elements[0].elements[1].elements[0].elements[1].elements[0])
+        console.log(astroInfoJson.elements[0].elements[1].elements[0].elements[1].elements[1])
+        console.log(astroInfoJson.elements[0].elements[1].elements[0].elements[1].elements[3])
+
+        console.log(astroInfoJson.elements[0].elements[1].elements[0].elements[0].elements[3].elements[0].text)
+
+        console.log("for....in start")
+        for(const property in astroInfoJson.elements[0].elements[1].elements[0].elements){
+            if(property==0){
+                console.log(`${property}: ${astroInfoJson.elements[0].elements[1].elements[0].elements[property].elements[0].elements[0].text}`)   
+                console.log(`${property}: ${astroInfoJson.elements[0].elements[1].elements[0].elements[0].elements[3].elements[0].text}`)   
+                continue;
+            }
+            console.log(`${property}: ${astroInfoJson.elements[0].elements[1].elements[0].elements[property].elements[0].elements[0].text}`)   
+            console.log(`${property}: ${astroInfoJson.elements[0].elements[1].elements[0].elements[property].elements[1].elements[0].text}`)  
+            console.log(`${property}: ${astroInfoJson.elements[0].elements[1].elements[0].elements[property].elements[3].elements[0].text}`)  
+        }
+        console.log("*********************")
+        console.log(astroInfoJson.elements[0].elements[1].elements[0].elements[0].elements[0]);
+        console.log(astroInfoJson.elements[0].elements[1].elements[0].elements[0].elements[1]);
+        console.log(astroInfoJson.elements[0].elements[1].elements[0].elements[0].elements[2]);
+        console.log(astroInfoJson.elements[0].elements[1].elements[0].elements[0].elements[3]);
+        console.log(astroInfoJson.elements[0].elements[1].elements[0].elements[0].elements[4]);
+        console.log("****")
+        console.log(astroInfoJson.elements[0].elements[1].elements[0].elements[1]);
+        console.log(astroInfoJson.elements[0].elements[1].elements[0].elements[1].elements[0]);
+        console.log(astroInfoJson.elements[0].elements[1].elements[0].elements[1].elements[1]);
+        console.log(astroInfoJson.elements[0].elements[1].elements[0].elements[1].elements[3]);
+        console.log(astroInfoJson.elements[0].elements[1].elements[0].elements[1].elements[4]);
+        console.log("****")
+        console.log(astroInfoJson.elements[0].elements[1].elements[1].elements[0].text);//이것이 총 몇개의 이벤트가 있나
+        console.log(astroInfoJson.elements[0].elements[1].elements[2]);
+        console.log(astroInfoJson.elements[0].elements[1].elements[3]);
+        console.log("=====================")
 
         function doRequest(url) {
             return new Promise(function (resolve, reject) {
@@ -32,6 +82,7 @@ exports.getAstroInfo = async function(req, res){
                 if (!error && res.statusCode == 200) {
                     var xmlTOjs = require('xml-js');
                     var getAstroInfo = xmlTOjs.xml2json(body);
+                    console.log(typeof(getAstroInfo));
                   resolve(getAstroInfo);
                 } else {
                   reject(error);
