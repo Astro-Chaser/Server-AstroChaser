@@ -52,6 +52,13 @@ exports.getAstroInfo = async function(req, res){
         const connection = await pool.getConnection(async (conn) => conn);
         const insertAstroEventResult = await externalAPIDao.insertAstroEvent(connection, astroInfoParams);
         console.log(insertAstroEventResult);
+        if(insertAstroEventResult==0)
+        {
+            return errResponse(baseResponse.EXTERNAL_API_CONNECTION_ERROR)
+        }
+        else{
+            return response(baseResponse.SUCCESS, `${req.year}년 ${req.month}월 천문현상 정보 추가됨.`);
+        }
 
 
         function doRequest(url) {
@@ -67,8 +74,6 @@ exports.getAstroInfo = async function(req, res){
               });
             });
         }
-          
-        return response(baseResponse.SUCCESS, astroInfoParams);
         
     }
     catch{

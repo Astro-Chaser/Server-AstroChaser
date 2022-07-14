@@ -1,11 +1,11 @@
 const e = require("express");
 
 //DB에 천문현상정보 저장
-async function insertAstroEvent(connection, astroInfoParams){
+async function insertAstroEvent(connection, astroInfoParams, err){
     for(const property in astroInfoParams){
-        console.log(`${property}: ${astroInfoParams[property].content}`) 
-        console.log(`${property}: ${astroInfoParams[property].date}`) 
-        console.log(`${property}: ${astroInfoParams[property].time}`)  
+        // console.log(`${property}: ${astroInfoParams[property].content}`) 
+        // console.log(`${property}: ${astroInfoParams[property].date}`) 
+        // console.log(`${property}: ${astroInfoParams[property].time}`)  
         if(property == 0)
         {
             const content = astroInfoParams[property].content;
@@ -18,10 +18,14 @@ async function insertAstroEvent(connection, astroInfoParams){
                 SELECT date FROM AstroEventCalender WHERE date = '${dateFormatter}' AND time = '${time}'
             ) LIMIT 1;`
 
-            console.log(insertAstroEventQuery)
+            //console.log(insertAstroEventQuery)
             
             const insertAstroEventRow = await connection.query(insertAstroEventQuery);
-            console.log(insertAstroEventRow);
+            if(err) {
+                console.log(err)
+                return 0;
+            }
+            //console.log(insertAstroEventRow);
         }
         else{
             const content = astroInfoParams[property].content;
@@ -35,9 +39,14 @@ async function insertAstroEvent(connection, astroInfoParams){
             ) LIMIT 1;`
             
             const insertAstroEventRow = await connection.query(insertAstroEventQuery);
-            console.log(insertAstroEventRow);
+            if(err) {
+                console.log(err)
+                return 0
+            }
+            //console.log(insertAstroEventRow);
         }
     }
+    return 1;
 
 }
 
