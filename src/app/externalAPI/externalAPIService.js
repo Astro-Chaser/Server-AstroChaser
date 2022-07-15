@@ -9,7 +9,7 @@ const externalAPIDao = require("./externalAPIDao");
 
 const {connect} = require("http2");
 
-exports.getAstroInfo = async function(req, res){
+exports.postAstroInfo = async function(req, res){
     try{
 
         const paramSolYear = req.year;
@@ -51,7 +51,7 @@ exports.getAstroInfo = async function(req, res){
         //정보 DAO에 저장하기
         const connection = await pool.getConnection(async (conn) => conn);
         const insertAstroEventResult = await externalAPIDao.insertAstroEvent(connection, astroInfoParams);
-        console.log(insertAstroEventResult);
+        //console.log(insertAstroEventResult);
         if(insertAstroEventResult==0)
         {
             return errResponse(baseResponse.EXTERNAL_API_CONNECTION_ERROR)
