@@ -50,9 +50,12 @@ async function insertAstroEvent(connection, astroInfoParams, err){
 }
 
 async function getAstroInfo(connection, req){
-    let getAstroEventInfoQuery = `select *
+    let getAstroEventInfoQuery = `
+        select *
         from AstroEventCalender
-        WHERE '${req.year}-01-00'<=date AND date < '${Number(req.year)+1}-01-00'`;
+        WHERE '${req.year}-01-00'<=date AND date < '${Number(req.year)+1}-01-00'
+        ORDER BY date ASC;
+        `;
 
     //console.log(getAstroEventInfoQuery)
     const [getAstroEventInfoRow] = await connection.query(getAstroEventInfoQuery);
