@@ -4,7 +4,7 @@ var year = today.getFullYear();
 astroEventParser();
 //astro event parser
 async function astroEventParser(){
-  let yearAstroEvent = await getAPI('localhost:8000',`app/astro-info/${year}`);
+  let yearAstroEvent = await getAPI(hostAddress,`app/astro-info/${year}`);
   let yearAstroEventRes = yearAstroEvent.result;
   let astroEventsParams = new Array();
 
