@@ -6,4 +6,5 @@ module.exports = function(app){
 
     //2. 천문정보 DB에서 뽑아오기
     app.get('/app/astro-info/:year/:month', externalApi.getAstroInfo)
+
 }
