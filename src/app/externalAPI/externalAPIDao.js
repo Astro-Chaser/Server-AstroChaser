@@ -47,9 +47,27 @@ async function insertAstroEvent(connection, astroInfoParams, err){
         }
     }
     return 1;
+}
 
+async function getAstroInfo(connection, req){
+    let getAstroEventInfoQuery;
+    if(req.month == 12){
+        getAstroEventInfoQuery = `select *
+        from AstroEventCalender
+        WHERE '${req.year}-${req.month}-00'<=date AND date < '${Number(req.year)+1}-${(req.month)%12+1}-00'`;
+    }
+    else{
+        getAstroEventInfoQuery = `select *
+        from AstroEventCalender
+        WHERE '${req.year}-${req.month}-00'<=date AND date < '${req.year}-${(req.month)%12+1}-00'`;
+    }
+
+    const [getAstroEventInfoRow] = await connection.query(getAstroEventInfoQuery);
+
+    return getAstroEventInfoRow;
 }
 
 module.exports ={
-    insertAstroEvent
+    insertAstroEvent,
+    getAstroInfo
 }
