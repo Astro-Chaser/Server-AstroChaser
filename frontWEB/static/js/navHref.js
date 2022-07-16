@@ -6,6 +6,7 @@ const navSignIn = document.getElementById("nav-sign-in");
 
 const navOwnedTelescopes = document.getElementById("nav-owned-telescopes");
 const navSettingTelescopes = document.getElementById("nav-setting-telescope");
+
 // const navContentsOwnedTelescopes = document.getElementById("nav-contents-owned-telescopes");
 // const navContentsSettingTelescopes = document.getElementById("nav-contents-setting-telescope");
 
@@ -18,7 +19,7 @@ navAboutUs.addEventListener('click', (event) => {
 })
 
 navChasingHistory.addEventListener('click', (event) => {
-    location.href = '/'
+    location.href = '/chasing-history'
 })
 
 navSignUp.addEventListener('click', (event) => {
