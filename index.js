@@ -29,6 +29,7 @@ app.get('/user/signin', function(req, res) {
     res.sendFile(__dirname+"/frontWEB/signin.html");
 })
 
+//2. 망원경 관련 페이지
 app.get('/telescopes/owned', function(req, res) {
     res.sendFile(__dirname+"/frontWEB/telescopes.html");
 })
@@ -37,6 +38,16 @@ app.get('/telescopes/manual', function(req, res) {
     res.sendFile(__dirname+"/frontWEB/telescope-setting.html");
 })
 
+//3. 사진 게시판 페이지
+app.get('/chasing-history', function(req, res){
+    res.sendFile(__dirname+"/frontWEB/pictureNoticeBoard.html")
+})
+app.get('/chasing-history/1', function(req, res){
+    res.sendFile(__dirname+"/frontWEB/pictureNoticeBoardSample1.html")
+})
+app.get('/chasing-history/2', function(req, res){
+    res.sendFile(__dirname+"/frontWEB/pictureNoticeBoardSample2.html")
+})
 
 
 // express 서버를 실행할 때 필요한 포트 정의 및 실행 시 callback 함수를 받습니다
