@@ -74,10 +74,23 @@ async function updateRefreshToken(connection, refreshTokenParams){
   return 1;
 }
 
+//user 조회 - email
+async function checkToken(connection, email){
+  const getUserByEmail = `
+  SELECT id, createdat, updatedat, name, email, generation, member, state
+  FROM User
+  WHERE email='${email}';
+  `
+  const checkUserByEmailRow = await connection.query(getUserByEmail);
+
+  return checkUserByEmailRow[0];
+}
+
 module.exports = {
     selectUserEmail,
     insertUserInfo,
     signinUser,
     saveRefreshToken,
-    updateRefreshToken
+    updateRefreshToken,
+    checkToken
 }

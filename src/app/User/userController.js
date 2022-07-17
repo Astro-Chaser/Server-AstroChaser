@@ -1,4 +1,5 @@
 const userService = require("./userService");
+const userProvider = require("./userProvider");
 
 const response = require("../../../config/response");
 const baseResponse = require("../../../config/baseResponseStatus");
@@ -51,4 +52,22 @@ exports.signinUser = async function (req, res){
     ) 
 
     return res.send(signinUserResponse);
+}
+
+exports.checkToken = async function (req, res){
+    const token = req.verifiedToken;
+    
+    console.log(token);
+
+    console.log(token.userEmail);
+
+    const email = token.userEmail;
+    const exp = token.exp;
+    const iat = token.iat;
+    
+    const checkTokenkResponse = await userProvider.checkToken(email);
+
+    return res.send(checkTokenkResponse)
+    
+    
 }

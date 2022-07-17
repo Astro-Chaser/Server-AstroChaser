@@ -31,7 +31,6 @@ async function astroEventParser(){
 
     astroEventsParams.push(eventObj);
   }
-  console.log(astroEventsParams)
   
   var calendarEl = document.getElementById('calendar');
   var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -80,7 +79,7 @@ async function astroEventParser(){
 //get API AS JSON
 async function getAPI(host, path, headers = {}) {
   const url = `http://${host}/${path}`;
-  console.log(url);
+  //console.log(url);
   const options = {
     method: "GET"
   };
