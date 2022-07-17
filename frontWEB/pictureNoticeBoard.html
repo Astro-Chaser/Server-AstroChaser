@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">     
+    <!-- jquery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="/css/pictureNoticeBoard.css">
     <link rel="stylesheet" type="text/css" href="/css/topnav.css">
+    <script type="text/javascript" src="/js/hostAddr.js"></script>
     <title>KAU Astro Chaser</title>
 </head>
 <body>
@@ -69,22 +73,23 @@
               <p>
                   <h3 class="title is-3" style="color: white; margin-top: 4vh;">Chasing History</h1>
                   <hr class="title-hr">
-                  <div class="tile is-ancestor">
-                    <div class="tile is-parent">
+                  <div class="tile is-ancestor" id="title-row1">
+                    <!-- <div class="tile is-parent">
                         <article class="tile is-child box" onclick="location.href='/chasing-history/1'">
-                          <p class="title" style="font-size: 18px;">2022년 6월 정기 관측회</p>
+                          <p class="title" style="font-size: 18px;">2022년 여름 MT</p>
                           <figure class="image is-4by3">
-                            <img src="https://astrochaser.s3.ap-northeast-2.amazonaws.com/2022June/pic4.JPG">
+                            <img src="https://astrochaser.s3.ap-northeast-2.amazonaws.com/2022SummerMt/pic1.jpeg">
                           </figure>
                         </article>
                       </a>
                     </div>
                     <div class="tile is-parent">
                       <article class="tile is-child box" onclick="location.href='/chasing-history/2'">
-                        <p class="title" style="font-size: 18px;">2022년 여름 MT</p>
+                        <p class="title" style="font-size: 18px;">2022년 6월 정기 관측회</p>
                         <figure class="image is-4by3">
-                          <img src="https://astrochaser.s3.ap-northeast-2.amazonaws.com/2022SummerMt/pic1.jpeg">
+                          <img src="https://astrochaser.s3.ap-northeast-2.amazonaws.com/2022June/pic4.JPG">
                         </figure>
+                        
                       </article>
                     </div>
                     <div class="tile is-parent">
@@ -94,10 +99,10 @@
                           <img src="https://astrochaser.s3.ap-northeast-2.amazonaws.com/2022SummerMt/pic1.jpeg">
                         </figure>
                       </article>
-                    </div>
+                    </div> -->
                   </div>
-                  <div class="tile is-ancestor">
-                    <div class="tile is-parent">
+                  <div class="tile is-ancestor" id="title-row2">
+                    <!-- <div class="tile is-parent">
                       <article class="tile is-child box">
                         <p class="title" style="font-size: 18px;">2022년 여름 MT</p>
                         <figure class="image is-4by3">
@@ -120,10 +125,10 @@
                           <img src="https://astrochaser.s3.ap-northeast-2.amazonaws.com/2022SummerMt/pic1.jpeg">
                         </figure>
                       </article>
-                    </div>
+                    </div> -->
                   </div>
-                  <div class="tile is-ancestor">
-                    <div class="tile is-parent">
+                  <div class="tile is-ancestor" id="title-row3">
+                    <!-- <div class="tile is-parent">
                       <article class="tile is-child box">
                         <p class="title" style="font-size: 18px;">2022년 여름 MT</p>
                         <figure class="image is-4by3">
@@ -146,7 +151,7 @@
                           <img src="https://astrochaser.s3.ap-northeast-2.amazonaws.com/2022SummerMt/pic1.jpeg">
                         </figure>
                       </article>
-                    </div>
+                    </div> -->
                   </div>
               </p> 
 
@@ -159,5 +164,6 @@
     
     
 </body>
-<script type="text/javascript" src="./js/navHref.js"></script>
+<script type="text/javascript" src="/js/navHref.js"></script>
+<script type="text/javascript" src="/js/pictureNoticeBoard.js"></script>
 </html>
