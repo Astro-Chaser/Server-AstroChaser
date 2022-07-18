@@ -56,14 +56,12 @@ exports.signinUser = async function (req, res){
 
 exports.checkToken = async function (req, res){
     const token = req.verifiedToken;
-    
-    console.log(token);
-
-    console.log(token.userEmail);
 
     const email = token.userEmail;
     const exp = token.exp;
     const iat = token.iat;
+
+    console.log(email)
     
     const checkTokenkResponse = await userProvider.checkToken(email);
 

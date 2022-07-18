@@ -16,11 +16,9 @@ async function signinBtnClicked(event){
     .then((data) => {
         if(data.isSuccess == true)
         {
-            console.log(data.result)
-            alert("로그인 성공")
             localStorage.setItem("email", data.result.email);
             localStorage.setItem("accessJWT", data.result.AccessJWT);
-            localStorage.setItem("accessJWT", data.result.RefreshJWT);
+            localStorage.setItem("refreshJWT", data.result.RefreshJWT);
             location.href="/"
         }
         else
