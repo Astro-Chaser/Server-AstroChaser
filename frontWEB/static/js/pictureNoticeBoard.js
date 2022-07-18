@@ -1,7 +1,20 @@
+const pictureWriteBtn = document.getElementById("picture-write-btn");
+
+pictureWriteBtn.onclick = pictureWriteBtnClicked;
 
 window.onload = async function(){
     showPictureNoticeBoard();
+}
 
+async function pictureWriteBtnClicked(event){
+    if(localStorage.getItem("member")=="운영진")
+    {
+        alert("운영진");
+    }
+    else
+    {
+        alert("운영진만 글을 작성할 수 있는 게시판입니다.")
+    }
 }
 
 async function showPictureNoticeBoard(){
@@ -77,4 +90,4 @@ async function getAPI(host, path, headers = {}) {
     } else {
       throw new Error(data);
     }
-  }
+}

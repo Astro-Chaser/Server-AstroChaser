@@ -64,3 +64,7 @@ html{
 .is-child.box{
     cursor: pointer;
 }
+
+.noticeBtn{
+    float: right;
+}
