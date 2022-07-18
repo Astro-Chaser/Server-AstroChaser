@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Roboto:wght@300;400;500&display=swap');
+
 /* Add a black background color to the top navigation */
 .topnav {
     background-color: #333;
@@ -103,4 +105,10 @@
   padding-top: 1em;
   padding-left: 1em;
   padding-right: 1em;
+}
+
+#userInfo-nav-top{
+  font-family: 'Do Hyeon', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
 }

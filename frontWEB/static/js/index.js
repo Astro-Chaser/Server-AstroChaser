@@ -38,7 +38,7 @@ window.onload = function(){
     y = (e.clientY - window.innerHeight / 2);
   }
   loop();
-
+  //getUserInfo();
   
 }
 
@@ -218,12 +218,16 @@ async function postAPI(host, path, body, headers = {}) {
   }
 }
 
+
+
+
 //get API AS JSON
-async function getAPI(host, path, headers = {}) {
+async function getAPI(host, path, headers ={}) {
   const url = `http://${host}/${path}`;
   console.log(url);
   const options = {
-    method: "GET"
+    method: "GET",
+    headers: headers,
   };
   const res = await fetch(url, options);
   const data = res.json();

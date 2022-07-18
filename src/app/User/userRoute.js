@@ -10,6 +10,9 @@ module.exports = function(app){
 
     // 2. 유저 로그인 API
     app.post('/app/users/signin', user.signinUser);
+
+    // 3. 유저 JWT 검중
+    app.get('/app/users/auto-login', jwtMiddleware, user.checkToken)
 };
 
 
