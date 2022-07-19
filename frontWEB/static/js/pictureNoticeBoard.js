@@ -1,9 +1,14 @@
 const pictureWriteBtn = document.getElementById("picture-write-btn");
+const picturePrevBtn = document.getElementById("picture-prev-btn");
+const pictureNextBtn = document.getElementById("picture-next-btn");
+
+let pictureBoardTitle;
+let pictureBoardPageCnt = 0;
 
 pictureWriteBtn.onclick = pictureWriteBtnClicked;
 
 window.onload = async function(){
-    showPictureNoticeBoard();
+    showPictureNoticeBoard(0);
 }
 
 async function pictureWriteBtnClicked(event){
@@ -11,7 +16,7 @@ async function pictureWriteBtnClicked(event){
     console.log(pictureBoardTitle.result)
     if(localStorage.getItem("member")=="운영진")
     {
-        location.href('http://localhost:8000/chasing-history/editor');
+        location.href = `http://${hostAddress}/chasing-history/editor`;
     }
     else
     {
@@ -19,9 +24,28 @@ async function pictureWriteBtnClicked(event){
     }
 }
 
-async function showPictureNoticeBoard(){
-    const pictureBoardTitle = await getAPI(hostAddress, 'app/picture-board/title');
-    let pictureBoardPageCnt = 0;
+//페이지 이전글, 다음글 불러오기
+picturePrevBtn.onclick = function(){
+    if((pictureBoardPageCnt-1)>=0)
+    {
+      $("#title-row1").empty();
+      $("#title-row2").empty();
+      $("#title-row3").empty();
+      showPictureNoticeBoard(pictureBoardPageCnt-=1);
+    }
+}
+pictureNextBtn.onclick = function(){
+    if((pictureBoardPageCnt+1)<=pictureBoardTitle.result.length%9)
+    {
+        $("#title-row1").empty();
+        $("#title-row2").empty();
+        $("#title-row3").empty();
+        showPictureNoticeBoard(pictureBoardPageCnt+=1);
+    }
+}
+
+async function showPictureNoticeBoard(pictureBoardPageCnt){
+    pictureBoardTitle = await getAPI(hostAddress, 'app/picture-board/title');
     console.log(pictureBoardTitle.result);
     console.log(pictureBoardTitle.result.length);
 
@@ -45,7 +69,7 @@ async function showPictureNoticeBoard(){
                 </div>`;
                 $("#title-row1").append(html);
             }
-            else if(i<=3 && i< 6)
+            else if(i==3 || i==4 || i==5)
             {
                 var html=` 
                 <div class="tile is-parent">
@@ -58,7 +82,7 @@ async function showPictureNoticeBoard(){
                 </div>`;
                 $("#title-row2").append(html);
             }
-            else if(i<=6 && i< 9)
+            else if(i==6 || i==7 || i==8)
             {
                 var html=` 
                 <div class="tile is-parent">
