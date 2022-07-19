@@ -15,9 +15,10 @@ async function getUserInfo(){
     const jwtCheckData = await getAPI(hostAddress,"app/users/auto-login", requestOptions)
     if(jwtCheckData.result[0].member=='운영진')
     {
+        localStorage.setItem("member", "운영진");
         $('.buttons').empty();
         html = `
-            <div id="userInfo-nav-top">
+            <div id="userInfo-nav-top" style="font-size: 18px;">
                 🌟 ${jwtCheckData.result[0].generation}기 ${jwtCheckData.result[0].name}
             </div>
         `

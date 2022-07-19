@@ -42,6 +42,9 @@ app.get('/telescopes/manual', function(req, res) {
 app.get('/chasing-history', function(req, res){
     res.sendFile(__dirname+"/frontWEB/pictureNoticeBoard.html")
 })
+app.get('/chasing-history/editor', function(req, res){
+    res.sendFile(__dirname+"/frontWEB/pictureNoticeBoardEditor.html")
+})
 app.get('/chasing-history/1', function(req, res){
     res.sendFile(__dirname+"/frontWEB/pictureNoticeBoardSample1.html")
 })

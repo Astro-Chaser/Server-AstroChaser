@@ -1,7 +1,22 @@
+const pictureWriteBtn = document.getElementById("picture-write-btn");
+
+pictureWriteBtn.onclick = pictureWriteBtnClicked;
 
 window.onload = async function(){
     showPictureNoticeBoard();
+}
 
+async function pictureWriteBtnClicked(event){
+    const pictureBoardTitle = await getAPI(hostAddress, 'app/picture-board/title');
+    console.log(pictureBoardTitle.result)
+    if(localStorage.getItem("member")=="운영진")
+    {
+        location.href('http://localhost:8000/chasing-history/editor');
+    }
+    else
+    {
+        alert("운영진만 글을 작성할 수 있는 게시판입니다.")
+    }
 }
 
 async function showPictureNoticeBoard(){
@@ -77,4 +92,4 @@ async function getAPI(host, path, headers = {}) {
     } else {
       throw new Error(data);
     }
-  }
+}
