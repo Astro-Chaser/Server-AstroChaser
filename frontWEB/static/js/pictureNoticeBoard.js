@@ -16,7 +16,7 @@ async function pictureWriteBtnClicked(event){
     console.log(pictureBoardTitle.result)
     if(localStorage.getItem("member")=="운영진")
     {
-        location.href = 'http://localhost:8000/chasing-history/editor';
+        location.href = `http://${hostAddress}/chasing-history/editor`;
     }
     else
     {
