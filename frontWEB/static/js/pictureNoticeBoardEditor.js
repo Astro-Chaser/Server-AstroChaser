@@ -1,6 +1,6 @@
 function previewImages() {
 
-    var preview = document.querySelector('preview');
+    var preview = document.querySelector('#preview');
 
     if (this.files) {
         [].forEach.call(this.files, readAndPreview);

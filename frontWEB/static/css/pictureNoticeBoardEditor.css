@@ -81,5 +81,9 @@ html{
 }
 
 #preview{
-    
+    margin-top: 10px;
+}
+
+#picture-commit{
+    float: right;
 }
