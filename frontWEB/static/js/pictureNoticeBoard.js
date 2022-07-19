@@ -7,9 +7,11 @@ window.onload = async function(){
 }
 
 async function pictureWriteBtnClicked(event){
+    const pictureBoardTitle = await getAPI(hostAddress, 'app/picture-board/title');
+    console.log(pictureBoardTitle.result)
     if(localStorage.getItem("member")=="운영진")
     {
-        alert("운영진");
+        location.href('http://localhost:8000/chasing-history/editor');
     }
     else
     {

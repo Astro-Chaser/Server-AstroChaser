@@ -17,11 +17,12 @@ html{
    float: left;
 
    /* border-left: 3px solid rgba(229, 229, 227, 0.6); */
-   
-   padding-left: 10px;
-   padding-right: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 
-    width: 80vw;
+    margin-left: 15vw;
+
+    width: 50vw;
     
     background-color: rgba(255, 255, 255, 0.15);
 }
@@ -58,14 +59,27 @@ html{
     margin-top: 10px;
 }
 
+.title-hr{
+    border: solid 1px rgba(235, 235, 235, 0.1)
+}
 
-.image-area{
-    margin-left: 10vw;
-    width: 60vw;
-    height: fit-content;
+.is-child.box{
+    cursor: pointer;
+}
 
-    margin-top: 10px;
-    margin-bottom: 5px;
+.noticeBtn{
+    float: right;
+}
 
-    /*background-color: antiquewhite;*/
+.control{
+    margin-top: 15px;
+    
+}
+
+.file-name{
+    background-color: rgb(190, 190, 190);
+}
+
+#preview{
+    
 }
