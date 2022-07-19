@@ -6,6 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/inko@1.1.0/inko.min.js"></script>
 	<!-- jquery CDN -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="/css/pictureNoticeBoardEditor.css">
@@ -57,9 +58,9 @@
 				<p>
 					<h3 class="title is-3" style="color: white; margin-top: 4vh;">사진게시판 글쓰기</h1>
                   <hr class="title-hr">
-                  <input class="input is-link" type="text" placeholder="제목">
+                  <input class="input is-link" id="title" type="text" placeholder="제목">
                   <div class="control">
-                    <textarea class="textarea has-fixed-size" style="height: 50vh;" placeholder="내용 입력하기"></textarea>
+                    <textarea class="textarea has-fixed-size" id="contentEditor" style="height: 50vh;" placeholder="내용 입력하기"></textarea>
                   </div>
                   <div id="preview"></div>
                   <div class="file is-normal" id="file-js-example">

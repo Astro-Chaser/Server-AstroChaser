@@ -21,9 +21,12 @@ exports.postChasingHistory = async function(req){
             s3Urls.push(req.files[i].location)
         }
         postChasingHistoryParams.title = req.query.title;
-        postChasingHistoryParams.writerEmail = req.body.writer
+        postChasingHistoryParams.folderName = req.body.folder;
+        postChasingHistoryParams.writerEmail = req.body.writer;
         postChasingHistoryParams.pictureUrls = s3Urls;
         postChasingHistoryParams.content = req.body.content;
+        console.log("=========================");
+        console.log(postChasingHistoryParams);
 
         const connect = await pool.getConnection(async (conn) => conn);
         const insertResult = await chasingHistoryDao.postChasingHistory(connect, postChasingHistoryParams);
