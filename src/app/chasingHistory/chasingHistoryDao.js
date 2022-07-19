@@ -10,7 +10,38 @@ async function getChasingHistory(connection){
     return getChasingHistoryRow;
 }
 
+//2. chasingHistory 게시글 저장하기
+async function postChasingHistory(connect, postChasingHistoryParams){
+    let result = new Object();
+    const insertChasingHistoryTitleQuery = `
+    INSERT INTO PictureNoticeBoard(writerId, title, content)
+    VALUES ((SELECT id FROM User WHERE email = '${postChasingHistoryParams.writerEmail}'), '${postChasingHistoryParams.title}', '${postChasingHistoryParams.content}');
+`   
+    const insertQueryRes = await connect.query(insertChasingHistoryTitleQuery);
+    if(insertQueryRes[0].affectedRows == 1)
+    {
+        result.titleInptRes = 'SUCCESS';
+        const insertMediaQuery = `INSERT INTO PictureNoticeBoardMedia(pictureBardId, mediaUrl) VALUES (${insertQueryRes[0].insertId}, ?)`
+        for(var i in postChasingHistoryParams.pictureUrls)
+        {
+            //console.log(postChasingHistoryParams.pictureUrls[i]);
+            const insertMediaQueryRes = await connect.query(insertMediaQuery, postChasingHistoryParams.pictureUrls[i])
+            if(insertMediaQueryRes[0].affectedRows != 1) 
+            {
+                result.mediaInptRes = 'FAIL';
+                break;
+            }
+        }
+        result.mediaInptRes = 'SUCESS';
+        
+    }
+    else  result.titleInptRes = 'FAIL';
+
+    return result
+}
+
 
 module.exports ={
     getChasingHistory,
+    postChasingHistory
 }
