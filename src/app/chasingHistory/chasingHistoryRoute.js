@@ -6,7 +6,7 @@ module.exports = function(app){
     app.get('/app/picture-board/title', chasingHistory.getChasingHistoryTitle);
 
     //2. 게시판 사진 업로드 API
-    app.post('/test/image', imageUploader.single('image'), (req, res) => {
+    app.post('/test/image', imageUploader.any('images'), (req, res) => {
         res.send('good!')
       })
 }
