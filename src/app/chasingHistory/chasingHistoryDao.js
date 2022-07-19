@@ -32,7 +32,7 @@ async function postChasingHistory(connect, postChasingHistoryParams){
                 break;
             }
         }
-        result.mediaInptRes = 'SUCESS';
+        result.mediaInptRes = 'SUCCESS';
         
     }
     else  result.titleInptRes = 'FAIL';
