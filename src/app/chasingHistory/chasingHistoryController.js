@@ -17,3 +17,9 @@ exports.postChasingHistory = async function(req, res){
 
     return res.send(postChasingHistory);
 }
+
+exports.getChasingHistoryContent = async function(req, res){
+    const getChasingHistoryContentRes = await chasingHistoryProvider.getChasingHistoryContent(req);
+
+    return res.send(getChasingHistoryContentRes);
+}

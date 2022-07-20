@@ -17,7 +17,6 @@ async function astroEventParser(){
     let description=null;
     if(yearAstroEventRes[property].time)
     {
-      
       description = `${start}시작. ${title}`
     }
     else

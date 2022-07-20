@@ -55,12 +55,13 @@ async function showPictureNoticeBoard(pictureBoardPageCnt){
         {
             var title = pictureBoardTitle.result[pictureBoardPageCnt*9+i].title;
             var media = pictureBoardTitle.result[pictureBoardPageCnt*9+i].mediaUrl;
+            var id = pictureBoardTitle.result[pictureBoardPageCnt*9+i].id;
 
             if(i<3)
             {
                 var html=` 
                 <div class="tile is-parent">
-                    <article class="tile is-child box" onclick="location.href='/chasing-history/${pictureBoardPageCnt*9+i+1}'">
+                    <article class="tile is-child box" onclick="location.href='/chasing-history/${id}'">
                     <p class="title" style="font-size: 18px;">${title}</p>
                     <figure class="image is-4by3">
                         <img src="${media}">
@@ -73,7 +74,7 @@ async function showPictureNoticeBoard(pictureBoardPageCnt){
             {
                 var html=` 
                 <div class="tile is-parent">
-                    <article class="tile is-child box" onclick="location.href='/chasing-history/1'">
+                    <article class="tile is-child box" onclick="location.href='/chasing-history/${id}'">
                     <p class="title" style="font-size: 18px;">${title}</p>
                     <figure class="image is-4by3">
                         <img src="${media}">
@@ -86,7 +87,7 @@ async function showPictureNoticeBoard(pictureBoardPageCnt){
             {
                 var html=` 
                 <div class="tile is-parent">
-                    <article class="tile is-child box" onclick="location.href='/chasing-history/1'">
+                    <article class="tile is-child box" onclick="location.href='/chasing-history/${id}'">
                     <p class="title" style="font-size: 18px;">${title}</p>
                     <figure class="image is-4by3">
                         <img src="${media}">

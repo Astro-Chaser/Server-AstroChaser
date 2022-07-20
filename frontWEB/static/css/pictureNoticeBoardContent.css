@@ -69,3 +69,8 @@ html{
 
     /*background-color: antiquewhite;*/
 }
+
+.picture-content{
+    margin-left: 10vw;
+    color: white;
+}
