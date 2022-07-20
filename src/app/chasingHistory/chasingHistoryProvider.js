@@ -26,3 +26,18 @@ exports.getChasingHistory = async function(){
         return errResponse(baseResponseStatus.DB_ERROR);
     }
 }
+
+exports.getChasingHistoryContent = async function(req){
+    try{
+        const connection = await pool.getConnection(async (conn) => conn);
+        const getChasingHistoryContent = await chasingHistoryDao.getChasingHistoryContent(connection, req.params.pageNum);
+
+        connection.release();
+
+        return response(baseResponse.SUCCESS, getChasingHistoryContent);
+    }
+    catch{
+        logger.error(`App - signIn Service error\n: ${err.message}`);
+        return errResponse(baseResponse.DB_ERROR);
+    }
+}

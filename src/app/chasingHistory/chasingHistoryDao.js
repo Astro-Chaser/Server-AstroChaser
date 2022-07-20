@@ -40,8 +40,22 @@ async function postChasingHistory(connect, postChasingHistoryParams){
     return result
 }
 
+//3. 게시글 가져오기
+async function getChasingHistoryContent(connection, pageNum){
+    const getChasingHistoryContentQuery = `
+    SELECT User.generation AS generation, User.name AS name, User.member AS member, PNB.id AS id, PNB.createdAt AS createdAt, PNB.title AS title, PNB.content AS content, PNB.state AS state, PNBM.mediaUrl AS mediaUrl
+    FROM User INNER JOIN PictureNoticeBoard AS PNB ON User.id = PNB.writerId INNER JOIN PictureNoticeBoardMedia AS PNBM  ON PNB.id = PNBM.pictureBardId
+    WHERE PNB.id = ${pageNum} AND PNB.state = 'A';
+    `
+
+    const [getChasingHistoryContentRow] = await connection.query(getChasingHistoryContentQuery);
+
+    return getChasingHistoryContentRow;
+}
+
 
 module.exports ={
     getChasingHistory,
-    postChasingHistory
+    postChasingHistory,
+    getChasingHistoryContent
 }
