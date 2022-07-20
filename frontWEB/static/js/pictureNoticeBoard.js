@@ -73,7 +73,7 @@ async function showPictureNoticeBoard(pictureBoardPageCnt){
             {
                 var html=` 
                 <div class="tile is-parent">
-                    <article class="tile is-child box" onclick="location.href='/chasing-history/1'">
+                    <article class="tile is-child box" onclick="location.href='/chasing-history/${pictureBoardPageCnt*9+i+1}'">
                     <p class="title" style="font-size: 18px;">${title}</p>
                     <figure class="image is-4by3">
                         <img src="${media}">
@@ -86,7 +86,7 @@ async function showPictureNoticeBoard(pictureBoardPageCnt){
             {
                 var html=` 
                 <div class="tile is-parent">
-                    <article class="tile is-child box" onclick="location.href='/chasing-history/1'">
+                    <article class="tile is-child box" onclick="location.href='/chasing-history/${pictureBoardPageCnt*9+i+1}'">
                     <p class="title" style="font-size: 18px;">${title}</p>
                     <figure class="image is-4by3">
                         <img src="${media}">

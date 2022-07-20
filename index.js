@@ -46,11 +46,8 @@ app.get('/chasing-history/editor', function(req, res){
     res.sendFile(__dirname+"/frontWEB/picturenoticeboardEditor.html")
     
 })
-app.get('/chasing-history/1', function(req, res){
-    res.sendFile(__dirname+"/frontWEB/pictureNoticeBoardSample1.html")
-})
-app.get('/chasing-history/2', function(req, res){
-    res.sendFile(__dirname+"/frontWEB/pictureNoticeBoardSample2.html")
+app.get('/chasing-history/:pageNum', function(req, res){
+    res.sendFile(__dirname+"/frontWEB/pictureNoticeBoardContent.html")
 })
 
 
