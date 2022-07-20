@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Roboto:wght@300;400;500&display=swap');
+
+html{
+    background-color: #060b33;
+    width: 100vw;
+    height: 100%;
+    
+}
+
+.leftNavBar{
+    float: left;
+
+    margin-left: 8vw;
+    width: 30px;
+    height: 80vh;
+}
+
+.rightContentBox{
+   float: left;
+
+   /* border-left: 3px solid rgba(229, 229, 227, 0.6); */
+    padding-left: 10px;
+    padding-right: 10px;
+
+    width: 80vw;
+    
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.leftNavContents{
+  position: relative;
+  width: 100%;
+  height: 70px;
+  margin-top: 10px;
+  
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+
+  border-radius: 10px;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.leftNavContents:hover{
+    background-color: rgb(217, 216, 216);
+    color: black;
+}
+
+.leftNavText{
+  margin-top: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.mainContents{
+    margin-top: 10px;
+}
+
+.title-hr{
+    border: solid 1px rgba(235, 235, 235, 0.1)
+}
+
+.is-child.box{
+    cursor: pointer;
+}
+
+.noticeBtn{
+    float: right;
+}
+
+.control{
+    margin-top: 15px;
+    
+}
+
+.column.is-full{
+    margin-left: 5%; 
+    width: 90%; 
+    background-color: rgba(230, 230, 230, 1);
+    margin-bottom: 1px;
+    height: 10vh;
+    /* border-bottom: line rgba(255, 255, 255, 0.15); */
+}
+
+#top-notice{
+    background-color: white;
+    height: 8vh;
+    margin-top: 15px;
+}
+
+.noticeCol{
+    float: left;
+    font-family: 'Do Hyeon', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+
+    text-align: center;
+}
+
+#iconCol-main{
+    height: 100%;
+    width: 10%;
+}
+
+#iconCol{
+    background-image: url('../image/icons/icon_notice.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+    width: 10%;
+}
+
+
+#titleCol{
+    height: 100%;
+    width: 60%;
+}
+
+#writerCol{
+    height: 100%;
+    width: 10%;
+}
+
+#timeCol{
+    height: 100%;
+    width: 10%;
+}
+
+#watchCol{
+    height: 100%;
+    width: 10%;
+}
