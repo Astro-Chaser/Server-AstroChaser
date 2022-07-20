@@ -54,7 +54,7 @@ function loop(){
 
   //3d 텍스트 모션
   //rotate3d 속성
-  text3d.style.transform = "translate3d("+ -(mx/5) +"px," + -(my/5) +"px,0) rotate3d(0,1,0,"+ -mx / 60 + "deg)";
+  //text3d.style.transform = "translate3d("+ -(mx/5) +"px," + -(my/5) +"px,0) rotate3d(0,1,0,"+ -mx / 60 + "deg)";
 
   window.requestAnimationFrame(loop);
 }
