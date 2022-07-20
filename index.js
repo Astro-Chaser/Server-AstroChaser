@@ -50,6 +50,10 @@ app.get('/chasing-history/:pageNum', function(req, res){
     res.sendFile(__dirname+"/frontWEB/pictureNoticeBoardContent.html")
 })
 
+//4. 공지 페이지
+app.get('/notice', function(req, res){
+    res.sendFile(__dirname + "/frontWEB/noticeBoard.html");
+})
 
 // express 서버를 실행할 때 필요한 포트 정의 및 실행 시 callback 함수를 받습니다
 app.listen(port, function() {
