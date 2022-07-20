@@ -39,6 +39,7 @@ window.onload = function(){
   }
   loop();
   //getUserInfo();
+  showPictureNoticeBoard();
   
 }
 
@@ -167,6 +168,23 @@ async function guestbookCommitBtnClicked(event){
     
   }
 }
+
+//게시글 전시하기
+async function showPictureNoticeBoard(){
+  const pictureBoardTitle = await getAPI(hostAddress, 'app/picture-board/title');
+
+  html='';
+  for(var i in pictureBoardTitle.result){
+    html +=`
+    <a href="/chasing-history/${pictureBoardTitle.result[i].id}'">
+      <li>${pictureBoardTitle.result[i].title}</li>
+    </a>
+    `
+  }
+
+  $("#picture-titles").append(html);
+}
+
   //방명록 전시하기
   async function showGuestbookData(guestbookPageCnt){
     const guestbookData = await getAPI(hostAddress, 'app/guestbook');
@@ -191,12 +209,6 @@ async function guestbookCommitBtnClicked(event){
       $(".guestbook-area").append(html);
     }
   }
-
-//방명록 이전, 다음 게시글 불러오기
-// guetbookPrevBtn.onclick = showGuestbookData(guestbookPageCnt-1);
-
-// guetbookNextBtn.onclick = showGuestbookData(guestbookPageCnt+1)
-
 
 //post API
 async function postAPI(host, path, body, headers = {}) {
