@@ -6,10 +6,10 @@ let guestbookPageCnt = 0;
 let guestbookData;
 
 
-    //랜덤 닉네임 생성하기
-  $("#guestbookCommit_nickname").attr("placeholder", "익명의 " + animalNames[getRandomArbitrary(0, animalNames.length)])
+  //랜덤 닉네임 생성하기
+$("#guestbookCommit_nickname").attr("placeholder", "익명의 " + animalNames[getRandomArbitrary(0, animalNames.length)])
 
-  showGuestbookData(guestbookPageCnt);
+showGuestbookData(guestbookPageCnt);
 
 
 //방명록 게시하기
