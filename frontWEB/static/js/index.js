@@ -49,7 +49,7 @@ function loop(){
   stars1.style.transform = "translate("+ (mx/10) +"px," + (my/10) +"px)";
   stars2.style.transform = "translate("+ -(mx/15) +"px," + -(my/15) +"px)";
   stars3.style.transform = "translate("+ (mx/8) +"px," + -(my/8) +"px)";
-  intoTheStars.style.transform = "translate("+ (mx/15) +"px," + -(my/15) +"px)";
+  //intoTheStars.style.transform = "translate("+ (mx/15) +"px," + -(my/15) +"px)";
   // sattellite.style.transform = "translate("+ (mx) +"px," + (my) +"px)";
 
   //3d 텍스트 모션

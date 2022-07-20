@@ -18,8 +18,8 @@
 
 body {
   overflow-x: hidden;
-  background: linear-gradient(110deg, rgb(9, 17, 11), #011244);
-  height: 30000px;
+  background: rgb(7, 23, 23);
+  height: 6000px;
 }
 
 main {
@@ -179,8 +179,9 @@ section.subPage.upperPage .innerWrap {
 
 #intoTheStars{
   position: fixed;
-  left: 0;
-  width: 100vw;
+  margin-left: 10vw;
+  margin-top: 0px;
+  width: 150vw;
   opacity: -1;
   z-index: 10;
 }
