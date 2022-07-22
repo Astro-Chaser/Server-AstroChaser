@@ -54,6 +54,12 @@ exports.signinUser = async function (req, res){
     return res.send(signinUserResponse);
 }
 
+/**
+ * 유저 JWT 검증
+ * @param {*} req 
+ * @param {*} res 
+ * @returns 
+ */
 exports.checkToken = async function (req, res){
     const token = req.verifiedToken;
 
@@ -61,11 +67,24 @@ exports.checkToken = async function (req, res){
     const exp = token.exp;
     const iat = token.iat;
 
-    console.log(email)
+    if(!token)
+        return res.send(response.response(baseResponse.TOKEN_EMPTY))
     
     const checkTokenkResponse = await userProvider.checkToken(email);
 
     return res.send(checkTokenkResponse)
-    
-    
+}
+
+exports.updateToken = async function (req, res){
+    const {refreshToken, email} = req.body;
+
+    if(!refreshToken)
+        return res.send(response.response(baseResponse.TOKEN_EMPTY))
+    if(!email)
+        return res.send(response.response(baseResponse.SIGNIN_EMAIL_EMPTY))
+
+
+    const checkRefreshTokenResponse = await userService.updateToken(refreshToken, email);
+
+    return res.send(checkRefreshTokenResponse);    
 }

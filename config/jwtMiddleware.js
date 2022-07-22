@@ -3,6 +3,7 @@ const secret_config = require('./secret');
 const { response } = require("./response");
 const { errResponse } = require("./response");
 const baseResponse = require("./baseResponseStatus");
+const userService = require("../src/app/User/userService");
 
 const jwtMiddleware = (req, res, next) => {
     // read the token from header or url
