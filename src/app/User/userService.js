@@ -143,3 +143,54 @@ exports.signinUser = async function (email, password)
         return errResponse(baseResponse.DB_ERROR);
     }
 }
+
+exports.updateToken = async function(refreshToken, email){
+    try{
+        const connection = await pool.getConnection(async (conn) => conn);
+        const refreshCheckRes = await userDao.refreshCheck(connection, refreshToken, email);
+
+        if(refreshCheckRes[0].IS_EXIST == 0)
+        {
+            connection.release();
+            return response(baseResponse.SUCCESS, "need to signin");
+        }
+
+        else{//Refresh token 일치시 새로운 Access, Refresh 토큰을 발급함.
+             //토큰 생성 Service
+             let AccessToken = await jwt.sign(
+                {
+                    userEmail: email,
+                }, // 토큰의 내용(payload)
+                secret_config.ACCESSjwtsecret, // 비밀키
+                {
+                    expiresIn: "3h",
+                    subject: "userInfo",
+                } // 유효 기간 3시간
+            );
+
+            let RefreshToken = await jwt.sign(
+                {
+                    userEmail: email,
+                }, // 토큰의 내용(payload)
+                secret_config.REFRESHjwtsecret, // 비밀키
+                {
+                    expiresIn: "6h",
+                    subject: "userInfo",
+                } // 유효 기간 6시간
+            );
+
+            const refreshTokenParams = [RefreshToken, email]
+            const refreshTokenSaveResult = await userDao.updateRefreshToken(connection, refreshTokenParams)
+
+            connection.release();
+            return response(baseResponse.SUCCESS, {'email': email, 
+                                                   'AccessJWT': AccessToken,
+                                                    'RefreshJWT': RefreshToken});
+            }
+    }
+    catch{
+        logger.error(`App - signIn Service error\n: ${err.message}`);
+        return errResponse(baseResponse.DB_ERROR);
+    }
+
+}
