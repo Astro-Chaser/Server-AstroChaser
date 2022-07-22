@@ -94,7 +94,6 @@ html{
 .noticeCol{
     float: left;
     font-family: 'Do Hyeon', sans-serif;
-    font-weight: 500;
     font-size: 18px;
 
     text-align: center;
@@ -110,26 +109,55 @@ html{
     background-repeat: no-repeat;
     background-position: center;
     height: 100%;
+    
     width: 10%;
 }
 
 
-#titleCol{
-    height: 100%;
+#titleCol-main{
+    font-weight: 500;
+    height: 10%;
     width: 60%;
+    
+}
+#titleCol{
+    font-weight: 300;
+    height: 100%;
+    margin-left: 10%;
+    width: 50%;
+    line-height: 7vh;
+    text-align: left;
+    
 }
 
 #writerCol{
+    font-weight: 500;
     height: 100%;
     width: 10%;
+    line-height: 7vh;
+    text-align: left;
 }
 
+#timeCol-main{
+    font-weight: 500;
+    height: 100%;
+    width: 10%;
+    line-height: 7vh;
+    text-align: left;
+}
 #timeCol{
     height: 100%;
     width: 10%;
+    line-height: 7vh;
+    text-align: left;
+
+    font-size: 12px;
 }
 
 #watchCol{
+    font-weight: 500;
     height: 100%;
     width: 10%;
+    line-height: 7vh;
+    text-align: left;
 }
