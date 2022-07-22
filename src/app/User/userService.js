@@ -48,7 +48,7 @@ exports.creteUser = async function (name, email, password, member, generation){
             }, // 토큰의 내용(payload)
             secret_config.ACCESSjwtsecret, // 비밀키
             {
-                expiresIn: "3h",
+                expiresIn: "1h",
                 subject: "userInfo",
             } // 유효 기간 365일
         );
@@ -59,7 +59,7 @@ exports.creteUser = async function (name, email, password, member, generation){
             }, // 토큰의 내용(payload)
             secret_config.REFRESHjwtsecret, // 비밀키
             {
-                expiresIn: "6h",
+                expiresIn: "2w",
                 subject: "userInfo",
             } // 유효 기간 365일
         );
@@ -110,7 +110,7 @@ exports.signinUser = async function (email, password)
                 }, // 토큰의 내용(payload)
                 secret_config.ACCESSjwtsecret, // 비밀키
                 {
-                    expiresIn: "3h",
+                    expiresIn: "1h",
                     subject: "userInfo",
                 } // 유효 기간 3시간
             );
@@ -121,7 +121,7 @@ exports.signinUser = async function (email, password)
                 }, // 토큰의 내용(payload)
                 secret_config.REFRESHjwtsecret, // 비밀키
                 {
-                    expiresIn: "6h",
+                    expiresIn: "2w",
                     subject: "userInfo",
                 } // 유효 기간 6시간
             );
@@ -163,7 +163,7 @@ exports.updateToken = async function(refreshToken, email){
                 }, // 토큰의 내용(payload)
                 secret_config.ACCESSjwtsecret, // 비밀키
                 {
-                    expiresIn: "3h",
+                    expiresIn: "1h",
                     subject: "userInfo",
                 } // 유효 기간 3시간
             );
@@ -174,7 +174,7 @@ exports.updateToken = async function(refreshToken, email){
                 }, // 토큰의 내용(payload)
                 secret_config.REFRESHjwtsecret, // 비밀키
                 {
-                    expiresIn: "6h",
+                    expiresIn: "2w",
                     subject: "userInfo",
                 } // 유효 기간 6시간
             );
