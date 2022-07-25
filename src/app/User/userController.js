@@ -70,7 +70,7 @@ exports.checkToken = async function (req, res){
     if(!token)
         return res.send(response.response(baseResponse.TOKEN_EMPTY))
     
-    const checkTokenkResponse = await userProvider.checkToken(email);
+    const checkTokenkResponse = await userProvider.checkToken(email, exp, iat);
 
     return res.send(checkTokenkResponse)
 }

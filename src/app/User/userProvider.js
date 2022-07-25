@@ -1,5 +1,6 @@
 const {logger} = require("../../../config/winston");
 const {pool} = require("../../../config/database");
+var jwtDecode = require('jwt-decode');
 const secret_config = require("../../../config/secret");
 const baseResponse = require("../../../config/baseResponseStatus");
 const {response} = require("../../../config/response");
@@ -26,6 +27,14 @@ exports.checkToken = async function(email){
     const connection = await pool.getConnection(async (conn) => conn);
     const checkTokenResult = await userDao.checkToken(connection, email);
     connection.release();
+
+    const token = jwtDecode(exp);
+    const d = new Date(0);
+    d.setUTCSeconds(token.data.exp);
+    console.log(d)
+    checkTokenResult.expiresIn = d;
+
+    console.log(checkTokenResult)
   
     return response(baseResponse.SUCCESS, checkTokenResult);
 

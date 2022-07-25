@@ -26,16 +26,15 @@ async function insertUserInfo(connection, insertUserInfoParams) {
 //유저 로그인
 async function signinUser(connection, signinUserParams){
   const signinUserQuery =`
-    select COUNT(email)
-    from User
-    WHERE email = ? AND password = ?;
+    SELECT id, createdAt, updatedAt, name, email, generation, member, state
+    FROM User
+    WHERE email = ? AND password = ? AND state = 'A';
   `
   const signinUserRow = await connection.query(
     signinUserQuery,
     signinUserParams
   )
-
-  return signinUserRow;
+  return signinUserRow[0][0];
 }
 
 //Refresh Token 저장
@@ -83,18 +82,21 @@ async function checkToken(connection, email){
   `
   const checkUserByEmailRow = await connection.query(getUserByEmail);
 
-  return checkUserByEmailRow[0];
+  return checkUserByEmailRow[0][0];
 }
 
 //refresh Token 조희
-async function refreshCheck(connection, refreshToken, email){
+async function refreshCheck(connection, refreshToken, email,  exp, iat){
   const refreshCheckQuery = `
     SELECT COUNT(id) AS IS_EXIST
     FROM RefreshToken
     WHERE email = '${email}' AND refreshToken = '${refreshToken}'
-  `
 
+    `
+  //console.log(refreshCheckQuery)
+  
   const refreshCheckRow = await connection.query(refreshCheckQuery);
+  //console.log(refreshCheckRow[0])
 
   return refreshCheckRow[0];
 }

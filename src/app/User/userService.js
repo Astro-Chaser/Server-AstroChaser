@@ -1,5 +1,6 @@
 const {logger} = require("../../../config/winston");
 const {pool} = require("../../../config/database");
+var jwtDecode = require('jwt-decode');
 const secret_config = require("../../../config/secret");
 const baseResponse = require("../../../config/baseResponseStatus");
 const {response} = require("../../../config/response");
@@ -101,29 +102,39 @@ exports.signinUser = async function (email, password)
          const connection = await pool.getConnection(async (conn) => conn);
          const userCreateResult = await userDao.signinUser(connection, signinUserParams);         
 
-         if(userCreateResult[0][0]['COUNT(email)'] == 1)
+         if(userCreateResult != null)
          {
              //토큰 생성 Service
             let AccessToken = await jwt.sign(
                 {
-                    userEmail: email,
+                    id: userCreateResult.id,
+                    email: userCreateResult.email,
+                    name: userCreateResult.name,
+                    createdAt: userCreateResult.createdAt,
+                    generation: userCreateResult.generation,
+                    member: userCreateResult.member,
                 }, // 토큰의 내용(payload)
                 secret_config.ACCESSjwtsecret, // 비밀키
                 {
-                    expiresIn: "1h",
+                    expiresIn: "3h",
                     subject: "userInfo",
                 } // 유효 기간 3시간
             );
 
             let RefreshToken = await jwt.sign(
                 {
-                    userEmail: email,
+                    id: userCreateResult.id,
+                    email: userCreateResult.email,
+                    name: userCreateResult.name,
+                    createdAt: userCreateResult.createdAt,
+                    generation: userCreateResult.generation,
+                    member: userCreateResult.member,
                 }, // 토큰의 내용(payload)
                 secret_config.REFRESHjwtsecret, // 비밀키
                 {
                     expiresIn: "2w",
                     subject: "userInfo",
-                } // 유효 기간 6시간
+                } // 유효 기간 2주
             );
 
             const refreshTokenParams = [RefreshToken, email]
@@ -135,8 +146,7 @@ exports.signinUser = async function (email, password)
                                                     'RefreshJWT': RefreshToken});
         }
            
-         if(userCreateResult[0][0]['COUNT(email)'] == 0)
-            return errResponse(baseResponse.SIGNIN_FAILED);
+         else return errResponse(baseResponse.SIGNIN_FAILED);
     }
     catch{
         logger.error(`App - signIn Service error\n: ${err.message}`);
@@ -144,6 +154,12 @@ exports.signinUser = async function (email, password)
     }
 }
 
+/**
+ * Refresh token확인 후 token 재발급
+ * @param {*} refreshToken 
+ * @param {*} email 
+ * @returns 
+ */
 exports.updateToken = async function(refreshToken, email){
     try{
         const connection = await pool.getConnection(async (conn) => conn);
