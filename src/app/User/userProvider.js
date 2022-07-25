@@ -22,20 +22,18 @@ exports.emailDuplicateCheck = async function (email) {
   return emailCheckResult;
 }
 
-exports.checkToken = async function(email){
+exports.checkToken = async function(email, exp, iat){
   try{
-    const connection = await pool.getConnection(async (conn) => conn);
-    const checkTokenResult = await userDao.checkToken(connection, email);
-    connection.release();
+    
+    // const connection = await pool.getConnection(async (conn) => conn);
+    // const checkTokenResult = await userDao.checkToken(connection, email);
+    // connection.release();
 
-    const token = jwtDecode(exp);
-    const d = new Date(0);
-    d.setUTCSeconds(token.data.exp);
-    console.log(d)
-    checkTokenResult.expiresIn = d;
+    let checkTokenResult = new Object;
 
-    console.log(checkTokenResult)
-  
+    checkTokenResult.result = "available";
+    checkTokenResult.exp = exp;
+
     return response(baseResponse.SUCCESS, checkTokenResult);
 
   }
