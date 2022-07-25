@@ -63,14 +63,10 @@ exports.signinUser = async function (req, res){
 exports.checkToken = async function (req, res){
     const token = req.verifiedToken;
 
-    const email = token.userEmail;
-    const exp = token.exp;
-    const iat = token.iat;
-
     if(!token)
         return res.send(response.response(baseResponse.TOKEN_EMPTY))
     
-    const checkTokenkResponse = await userProvider.checkToken(email);
+    const checkTokenkResponse = await userProvider.checkToken(token);
 
     return res.send(checkTokenkResponse)
 }
