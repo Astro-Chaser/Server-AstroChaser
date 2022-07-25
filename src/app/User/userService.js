@@ -100,19 +100,19 @@ exports.signinUser = async function (email, password)
          const signinUserParams = [email, hashedPassword];
 
          const connection = await pool.getConnection(async (conn) => conn);
-         const userCreateResult = await userDao.signinUser(connection, signinUserParams);         
+         const userSignInResult = await userDao.signinUser(connection, signinUserParams);         
 
-         if(userCreateResult != null)
+         if(userSignInResult != null)
          {
              //토큰 생성 Service
             let AccessToken = await jwt.sign(
                 {
-                    id: userCreateResult.id,
-                    email: userCreateResult.email,
-                    name: userCreateResult.name,
-                    createdAt: userCreateResult.createdAt,
-                    generation: userCreateResult.generation,
-                    member: userCreateResult.member,
+                    id: userSignInResult.id,
+                    email: userSignInResult.email,
+                    name: userSignInResult.name,
+                    createdAt: userSignInResult.createdAt,
+                    generation: userSignInResult.generation,
+                    member: userSignInResult.member,
                 }, // 토큰의 내용(payload)
                 secret_config.ACCESSjwtsecret, // 비밀키
                 {
@@ -123,12 +123,12 @@ exports.signinUser = async function (email, password)
 
             let RefreshToken = await jwt.sign(
                 {
-                    id: userCreateResult.id,
-                    email: userCreateResult.email,
-                    name: userCreateResult.name,
-                    createdAt: userCreateResult.createdAt,
-                    generation: userCreateResult.generation,
-                    member: userCreateResult.member,
+                    id: userSignInResult.id,
+                    email: userSignInResult.email,
+                    name: userSignInResult.name,
+                    createdAt: userSignInResult.createdAt,
+                    generation: userSignInResult.generation,
+                    member: userSignInResult.member,
                 }, // 토큰의 내용(payload)
                 secret_config.REFRESHjwtsecret, // 비밀키
                 {
@@ -165,28 +165,39 @@ exports.updateToken = async function(refreshToken, email){
         const connection = await pool.getConnection(async (conn) => conn);
         const refreshCheckRes = await userDao.refreshCheck(connection, refreshToken, email);
 
-        if(refreshCheckRes[0].IS_EXIST == 0)
+        if(refreshCheckRes == null)
         {
             connection.release();
-            return response(baseResponse.SUCCESS, "need to signin");
+            return response(baseResponse.SUCCESS, { 'checkResult' : 'failed',
+                                                    'message' : "need to signin"});
         }
 
         else{//Refresh token 일치시 새로운 Access, Refresh 토큰을 발급함.
              //토큰 생성 Service
              let AccessToken = await jwt.sign(
                 {
-                    userEmail: email,
+                    id: refreshCheckRes.id,
+                    email: refreshCheckRes.email,
+                    name: refreshCheckRes.name,
+                    createdAt: refreshCheckRes.createdAt,
+                    generation: refreshCheckRes.generation,
+                    member: refreshCheckRes.member,
                 }, // 토큰의 내용(payload)
                 secret_config.ACCESSjwtsecret, // 비밀키
                 {
-                    expiresIn: "1h",
+                    expiresIn: "3h",
                     subject: "userInfo",
                 } // 유효 기간 3시간
             );
 
             let RefreshToken = await jwt.sign(
                 {
-                    userEmail: email,
+                    id: refreshCheckRes.id,
+                    email: refreshCheckRes.email,
+                    name: refreshCheckRes.name,
+                    createdAt: refreshCheckRes.createdAt,
+                    generation: refreshCheckRes.generation,
+                    member: refreshCheckRes.member,
                 }, // 토큰의 내용(payload)
                 secret_config.REFRESHjwtsecret, // 비밀키
                 {

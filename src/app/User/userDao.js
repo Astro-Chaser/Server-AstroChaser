@@ -86,19 +86,16 @@ async function checkToken(connection, email){
 }
 
 //refresh Token 조희
-async function refreshCheck(connection, refreshToken, email,  exp, iat){
+async function refreshCheck(connection, refreshToken, email){
   const refreshCheckQuery = `
-    SELECT COUNT(id) AS IS_EXIST
-    FROM RefreshToken
-    WHERE email = '${email}' AND refreshToken = '${refreshToken}'
-
+    SELECT RT.refreshToken As refreshToken, User.id, User.createdAt, name, User.email, generation, member, state
+    FROM RefreshToken AS RT INNER JOIN User On RT.email = User.email
+    WHERE RT.email = '${email}' AND refreshToken = '${refreshToken}'
     `
-  //console.log(refreshCheckQuery)
   
   const refreshCheckRow = await connection.query(refreshCheckQuery);
-  //console.log(refreshCheckRow[0])
 
-  return refreshCheckRow[0];
+  return refreshCheckRow[0][0];
 }
 
 module.exports = {
