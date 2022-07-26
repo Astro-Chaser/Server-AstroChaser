@@ -112,3 +112,23 @@
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
 }
+
+.heroDiv{
+  width: 100vw;
+  height: 95vh;
+
+  overflow: hidden;
+  margin: 0px auto; 
+  position: relative;
+
+  background-color: beige;
+  color: #ddd;
+}
+
+video{
+  width: 100%;
+}
+
+.jb-text { position: absolute; top: 45%; width: 100%; }
+
+.jb-text p { margin-top: -24px; text-align: center; font-family: Gaegu; font-weight: 600; font-size: 48px; color: #ffffff; }

@@ -13,6 +13,12 @@ async function getUserInfo(){
     };
 
     const jwtCheckData = await getAPI(hostAddress,"app/users/auto-login", requestOptions)
+    console.log(jwtCheckData.result)
+
+    /**
+     * TODO
+     * JWT Token 완변하게 받아서 해치우기
+     */
     if(jwtCheckData.result[0].member=='운영진')
     {
         localStorage.setItem("member", "운영진");
