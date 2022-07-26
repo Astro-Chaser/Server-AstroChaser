@@ -4,7 +4,7 @@
 .topnav {
     background-color: rgb(7, 23, 23);
     overflow: hidden;
-  }
+}
   
 /* Style the links inside the navigation bar */
 .topnav a {
@@ -129,6 +129,24 @@ video{
   width: 100%;
 }
 
-.jb-text { position: absolute; top: 45%; width: 100%; }
+.jb-text { 
+  position: absolute; 
+  top: 45%; 
+  width: 100%; 
+}
 
-.jb-text p { margin-top: -24px; text-align: center; font-family: Gaegu; font-weight: 600; font-size: 48px; color: #ffffff; }
+.jb-text p { 
+  margin-top: -24px; 
+  text-align: center; 
+  font-family: Gaegu; 
+  font-weight: 600; 
+  font-size: 48px; 
+  color: #ffffff; 
+}
+
+.jb-btn{
+  position: absolute;
+  top: 67%;
+  width: 100%;
+  margin-left: 47%;
+}
