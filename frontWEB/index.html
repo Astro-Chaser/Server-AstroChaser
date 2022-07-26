@@ -5,66 +5,83 @@
     <title>KAU Astro Chaser</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <!-- 화면 해상도에 따라 글자 크기 대응(모바일 대응) -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bulma-extensions@6.2.7/dist/js/bulma-extensions.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Gaegu:300" rel="stylesheet">
+     
+    <!-- jquery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- fullcalendar CDN -->
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
+    <!-- fullcalendar 언어 CDN -->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="./css/index.css" />
     <link rel="stylesheet" type="text/css" href="./css/reset.css" />
-    <link rel="stylesheet" type="text/css" href="./css/interactive.css" />
-    <script type="text/javascript" src="./js/index.js"></script>
-    <script type="text/javascript" src="./js/hostAddr.js"></script>
-    
+    <!-- <link rel="stylesheet" type="text/css" href="./css/interactive.css" /> -->
+    <!-- <link href='./packages/core/main.css' rel='stylesheet' />
+    <script src='./packages/core/main.js'></script>
+    <script src='./packages/interaction/main.js'></script> -->
 
+    <script type="text/javascript" src="./js/APIsecretKey.js"></script>
+    <script type="text/javascript" src="./js/hostAddr.js"></script>
+    <script type="text/javascript" src="./js/jwtVerifier.js"></script>
+    <script type="text/javascript" src="./js/index.js"></script>
+    
 </head>
 <body>
     <main>
-        <nav class="navbar is-dark">
+        <nav class="navbar is-dark" style="background-color: rgba(0, 0, 0, 0.7); height: 5vh;">
             <div class="navbar-brand">
               <a class="navbar-item" id="nav-home">
                 <img src="./image/Astro logo intro.png" alt="AC logo" width="130" height="50">
               </a>
-              <div class="navbar-burger" data-target="navbarExampleTransparentExample">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
             </div>
-          
             <div id="navbarExampleTransparentExample" class="navbar-menu">
-              <div class="navbar-start">
+              <div class="navbar-start is-active">
                 <a class="navbar-item" id="nav-home">
-                  Home
+                  소개
                 </a>
                 <a class="navbar-item" id="nav-aboutus">
-                    About Us
+                    공지사항
                 </a>
-                <a class="navbar-item" id="nav-chasinghistory">
-                    Chasing History
-                </a>
+                
                 <div class="navbar-item has-dropdown is-hoverable">
                   <a class="navbar-link">
-                    Telescopes
+                    커뮤니티
                   </a>
                   <div class="navbar-dropdown is-boxed">
                     <a class="navbar-item" id="nav-owned-telescopes">
-                      보유 망원경
+                      자유게시판
                     </a>
                     <a class="navbar-item" id="nav-setting-telescope">
-                      설치법
+                      천문 갤러리
                     </a>
                   </div>
                 </div>
+
+                <a class="navbar-item" id="nav-chasinghistory">
+                  정보공개
+              </a>
               </div>
           
               <div class="navbar-end">
                 <div class="navbar-item">
                   <div class="buttons">
                     <a class="button is-primary" id="nav-sign-up">
-                      <strong>Sign up</strong>
+                      <strong>회원가입</strong>
                     </a>
-                    <a class="button is-light" hid="nav-sign-in">
-                      Log in
+                    <a class="button is-light" id="nav-sign-in">
+                      로그인
                     </a>
                   </div>
                 </div>
@@ -72,36 +89,106 @@
             </div>
         </nav>
 
-        <section class="mainPage">
-            <div class="imageWrap">
-                <div class="textWrap"><img src="./image/Astro logo intro.png" class="text3d" alt="Astro Chaser" width="8000bit 00px" style="z-index: 999;" ></div>
-                    <img src="./image/Stars.png" class="bg" id="stars1" alt="별배경 1">
-                    <img src="./image/Stars2.png" class="stars"  id="stars2" alt="별배경 2">  
-                    <img src="./image/Stars3.png" class="stars"  id="stars3" alt="별배경 3">  
-            </div>
-            <img src="./image/Space Travel/IntoTheStars0.jpg" id="intoTheStars" style="left:-50px">
-        </section>
+        <div class="heroDiv">
+          <video muted autoplay loop>
+            <source src="/videos/telescopeDomCut-1.mp4" type="video/mp4">
+            <strong>Your browser does not support the video tag.</strong>
+          </video>
+          <div class="jb-text">
+            <p>Kau Astro Chaser <br>
+            한국항공대학교 천체관측 동아리 </p>
+          </div>
+        </div>
          
         <section class="subPage upperPage">
             <div class="innerWrap">
-                <div class="contWrap" id = "firstIntroduce">
-                    <p>한국항공대<br>아스트로체이서</p>
+                <div class="contWrap" id = "firstIntroduce" style="height: auto;">
+                  
+                  <div class="tile is-ancestor">
+                    <div class="tile is-4 is-vertical is-parent">
+                      <div class="tile is-child box">
+                        <p class="title">공지사항</p>
+                        <p>
+                          <div class="content">
+                            <ul>
+                              <li>2022 6월 정기관측회 안내</li>
+                              <li>MT안내</li>
+                              <li>홈페이지가 개설되었습니다!</li>
+                            </ul>
+                          </div>
+                        </p>
+                      </div>
+                      <div class="tile is-child box">
+                        <p class="title">별지기 게시판</p>
+                        <p>
+                          <div class="content">
+                            <ul id="picture-titles">
+                              <!-- <li>이런</li>
+                              <li>저런</li>
+                              <li>게시글들</li> -->
+                            </ul>
+                          </div>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="tile is-parent">
+                      <div class="tile is-child box">
+                        <p class="title">천문력</p>
+                        <div id='calendar-container'>
+                          <div id='calendar'></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <div class="contWrap" id = "firstIntroduce" style="margin-top: 700px;">
-                    <image src="./image/Sattellite.png" id="sattelliteImg"></image>
-                    <p>2022년 소모임으로 시작된 Astro chaser는 현재<br>150명의 별지기와 함께 순항하고 있습니다.</p>
-                </div>
+                <div class="contWrap" id = "firstIntroduce" style="margin-top: 200px; height: 150vh;">
+                  <div class="tile is-ancestor">
+                    <div class="tile is-parent" style="height: 15vh;">
+                      <article class="tile is-child box">
+                        <p class="title" style="margin-top: 0px; margin-bottom: 5px;">방명록</p>
+                       
+                      </article>
+                    </div>
+                  </div>
+                  <div class="tile is-ancestor">
+                    <div class="tile is-parent" style="height: 130vh;">
+                      <article class="tile is-child box">
+                        <textarea class="textarea is-info has-fixed-size" 
+                                  placeholder="방명록을 작성해주세요(200자 이내)" 
+                                  style="height: 50px; width: 50px;"
+                                  id="guestbookContent"></textarea> 
+                        <div class="guestBookWriterInfoBox">
+                          <div id="guestbookContent_cnt">(0 / 200)</div>
+                          <div id="guestbookCommit">
+                            <input class="input is-link" id="guestbookCommit_nickname" type="text" placeholder="닉네임" style="width: 200px; height: 100%; max-height: 40px;">
+                            <button class="button is-primary" id="guestbookCommitBtn" style="height: 100%; max-height: 40px;">등록</button>
+                          </div>
+                        </div>
 
-                <div class="contWrap" id = "firstIntroduce" style="margin-top: 700px;">
-                    <p>6대의 망원경과 천문대와의 협약이 맺어진<br> Astro chaser!<br>우리의 활동을 확인해보세요.<br><br>
-                        <button class="button is-link" onclick="window.open('https://www.instagram.com/kau_astro_chaser/')">Astro Chaser 인스타그램</button></p>
-                    <script type="text/javascript">
-                    </script>
+                        <hr>
+                        <div class="guestbook-area">
+              
+                        </div>
+                        <div class="guestbook-page-navigator">
+                          <button class="button is-responsive" id="guetbook-prev-btn" style="float: left;">
+                            이전글
+                          </button>
+                          <button class="button is-responsive" id="guetbook-next-btn" style="float: right;">
+                            다음글
+                          </button>
+                        </div>
+                        
+                      </article>
+                    </div>
+                  </div>
                 </div>
             </div>
         </section> 
     </main>
 </body>
 <script type="text/javascript" src="./js/navHref.js"></script>
+<script type="text/javascript" src="./js/index_guestbook.js"></script>
+<script type="text/javascript" src="./js/spaceCalendar.js"></script>
+
 </html>

@@ -1,0 +1,117 @@
+body{
+    background-color: #060b33;
+}
+.topNav{
+    width: 100vw;
+    height: 5vh;
+
+    background-color: rgb(40, 40, 40);
+}
+
+.topLogoImg{
+    float: left;
+    height: 100%;
+    width: 30vw;
+
+    background-image: url(../image/Astro\ logo\ intro.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.sketchfab-embed-wrapper{
+    width: 100vw;
+    height: 60vw;
+}
+
+.mainScreen{
+    position: relative;
+    width: 100vw;
+    color: azure;
+
+    background-color: #060b33;
+}
+
+.indexHeadline{
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+.mainAstrochaserLogo{
+    width: 100vw;
+    height: 20vh;
+
+    background-image: url(../image/AC\ logo\ 1.jpeg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.bottomNav{
+    width: 100vw;
+    height: 8vh;
+
+    background-color: #313a81;
+}
+
+
+.nav-content-1{
+    float: left;
+    height: 100%;
+    width: 15vw;
+
+    cursor: pointer;
+
+    margin-left: 15vw;
+
+    background-image: url(../image/icons/icons8-home-150-colored.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.nav-content-2{
+    float: left;
+    height: 100%;
+    width: 15vw;
+
+    margin-left: 2.5vw;
+
+    cursor: pointer;
+
+    background-image: url(../image/icons/icons8-document-150.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.nav-content-3{
+    float: left;
+    height: 100%;
+    width: 15vw;
+
+    margin-left: 2.5vw;
+
+    cursor: pointer;
+
+    background-image: url(../image/icons/icons8-document-150.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.nav-content-4{
+    float: left;
+    height: 100%;
+    width: 15vw;
+
+    margin-left: 2.5vw;
+
+    cursor: pointer;
+
+    background-image: url(../image/icons/icons8-document-150.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+

@@ -10,26 +10,50 @@ var app = express()
 var port = app.listen(process.env.PORT || 8000);
 
 // 정적 파일 불러오기
-app.use(expressForStatic.static(__dirname + "/frontWeb/static"));
+app.use(expressForStatic.static(__dirname + "/frontWEB/static"));
 
 //html 정의 시작
+//1. index 페이지
 app.get('/', function(req, res) {
-    res.sendFile(__dirname+"/frontWeb/index.html");
+    res.sendFile(__dirname+"/frontWEB/index.html");
+})
+app.get('/m', function(req, res) {
+    res.sendFile(__dirname+"/frontWEB/mobile_index.html");
 })
 
 app.get('/user/signup', function(req, res) {
     res.sendFile(__dirname+"/frontWEB/signup.html");
 })
 
+app.get('/user/signin', function(req, res) {
+    res.sendFile(__dirname+"/frontWEB/signin.html");
+})
+
+//2. 망원경 관련 페이지
 app.get('/telescopes/owned', function(req, res) {
     res.sendFile(__dirname+"/frontWEB/telescopes.html");
 })
 
 app.get('/telescopes/manual', function(req, res) {
-    res.sendFile(__dirname+"/frontWeb/telescope-setting.html");
+    res.sendFile(__dirname+"/frontWEB/telescope-setting.html");
 })
 
+//3. 사진 게시판 페이지
+app.get('/chasing-history', function(req, res){
+    res.sendFile(__dirname+"/frontWEB/pictureNoticeBoard.html")
+})
+app.get('/chasing-history/editor', function(req, res){
+    res.sendFile(__dirname+"/frontWEB/picturenoticeboardEditor.html")
+    
+})
+app.get('/chasing-history/:pageNum', function(req, res){
+    res.sendFile(__dirname+"/frontWEB/pictureNoticeBoardContent.html")
+})
 
+//4. 공지 페이지
+app.get('/notice', function(req, res){
+    res.sendFile(__dirname + "/frontWEB/noticeBoard.html");
+})
 
 // express 서버를 실행할 때 필요한 포트 정의 및 실행 시 callback 함수를 받습니다
 app.listen(port, function() {

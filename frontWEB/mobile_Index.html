@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astro Chaser</title>
+
+    <link rel="stylesheet" type="text/css" href="./css/mobile_index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script type="text/javascript" src="./js/mobile_index.js"></script>
+</head>
+<body>
+    <div class="topNav">
+        <div class="topLogoImg"></div>
+    </div>
+
+    <!-- <canvas id="canvas" width="1200px" height="1200px"></canvas>
+        <script type="importmap">
+            {
+                "imports": {
+                  "three": "https://unpkg.com/three@0.141.0/build/three.module.js",
+                  "GLTFLoader" : "https://unpkg.com/three@0.141.0/examples/jsm/loaders/GLTFLoader.js"
+                }
+            }
+        </script>
+        
+        <script type="module">
+            import {GLTFLoader} from 'GLTFLoader';
+            import * as THREE from 'three';
+
+            let scene = new THREE.Scene();
+            
+            let renderer = new THREE.WebGLRenderer({
+                canvas : document.querySelector('#canvas')
+            });
+            
+            let camera = new THREE.PerspectiveCamera(30, 1);
+            camera.position.set(0, 0, 0)
+            camera.lookAt(new THREE.Vector3(0, 0, -800));
+            
+            const light = new THREE.DirectionalLight( 0xffffff, 1 );
+            light.position.set( 0, 0, 0 ); //default; light shining from top
+            scene.add(light);
+
+            let loader = new GLTFLoader();
+            loader.load('./3d_model/moon2/scene.gltf', function(gltf){
+                scene.add(gltf.scene);
+                document.addEventListener( 'mousewheel', (event) => {
+                    camera.position.z +=event.deltaY/500;
+                });
+                renderer.render(scene, camera);
+            });
+
+            
+
+        </script> -->
+    <div class="mainScreen">
+        <div class="mainAstrochaserLogo"> </div>
+        <div class="sketchfab-embed-wrapper"> 
+            <iframe title="Moon" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="100%" height="100%" 
+                 src="https://sketchfab.com/models/4db2273f6dd943b8ad7fa5e3b1b2431a/embed?autospin=1&autostart=1&ui_hint=0"> 
+            </iframe>
+        </div>
+        <div class="content is-normal" style="color: azure; text-align: center;" >
+            <p class="indexHeadline"><h1 style="color: azure; ">Explore the pure space, Make it your friend!</h1></p>
+            <p class="indexHeadline"><h3 style="color: azure; ">한국항공대 Astro Chaser</h3></p>
+            <p class="indexHeadline"><h5 style="color: azure; ">2022년 소모임으로 시작된 Astro chaser는 현재<br>160여명의 별지기와 함께 순항하고 있습니다.</h5></p>
+            <p class="indexHeadline"><h5 style="color: azure; "> <p>6대의 망원경과 천문대와의 협약이 맺어진<br> Astro chaser!<br>우리의 활동을 확인해보세요.<br><br><button class="button is-link" onclick="window.open('https://www.instagram.com/kau_astro_chaser/')">Astro Chaser 인스타그램</button></p></h5></p>
+        </div>
+    </div>
+
+    <div class="bottomNav">
+        <div class="nav-content-1"></div>
+        <div class="nav-content-2"></div>
+        <div class="nav-content-3"></div>
+        <div class="nav-content-4"></div>
+    </div>
+</body>
+<!-- <script type="text/javascript" src="./js/mobileIndexMoon3d.js"></script> -->
+</html>

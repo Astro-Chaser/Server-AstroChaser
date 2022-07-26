@@ -1,0 +1,89 @@
+html{
+    background-color: #060b33;
+    width: 100vw;
+    height: 100%;
+    
+}
+
+.leftNavBar{
+    float: left;
+
+    margin-left: 8vw;
+    width: 30px;
+    height: 80vh;
+}
+
+.rightContentBox{
+   float: left;
+
+   /* border-left: 3px solid rgba(229, 229, 227, 0.6); */
+    padding-left: 10px;
+    padding-right: 10px;
+
+    margin-left: 15vw;
+
+    width: 50vw;
+    
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.leftNavContents{
+  position: relative;
+  width: 100%;
+  height: 70px;
+  margin-top: 10px;
+  
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+
+  border-radius: 10px;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.leftNavContents:hover{
+    background-color: rgb(217, 216, 216);
+    color: black;
+}
+
+.leftNavText{
+  margin-top: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.mainContents{
+    margin-top: 10px;
+}
+
+.title-hr{
+    border: solid 1px rgba(235, 235, 235, 0.1)
+}
+
+.is-child.box{
+    cursor: pointer;
+}
+
+.noticeBtn{
+    float: right;
+}
+
+.control{
+    margin-top: 15px;
+    
+}
+
+.file-name{
+    background-color: rgb(190, 190, 190);
+}
+
+#preview{
+    margin-top: 10px;
+}
+
+#picture-commit{
+    float: right;
+}
