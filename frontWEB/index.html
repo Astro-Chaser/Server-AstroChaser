@@ -11,18 +11,6 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bulma-extensions@6.2.7/dist/js/bulma-extensions.min.js"></script>
-
-    <!-- FONTS -->
-    <link href="https://fonts.googleapis.com/css?family=Gaegu:300" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Gothic:wght@400;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-
-    <!-- OG Tags-->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="http://astrochaser.com">
-    <meta property="og:title" content="KAU Astro Chaser">
-    <meta property="og:image" content="./image/AC logo 1.jpeg">
-    <meta property="og:description" content="한국항공대 천체관측동아리 AC">
-    <meta property="og:site_name" content="Astro Chaser">
      
     <!-- jquery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -37,7 +25,10 @@
 
     <link rel="stylesheet" type="text/css" href="./css/index.css" />
     <link rel="stylesheet" type="text/css" href="./css/reset.css" />
-     <link rel="stylesheet" type="text/css" href="./css/interactive.css" />
+    <link rel="stylesheet" type="text/css" href="./css/interactive.css" />
+    <!-- <link href='./packages/core/main.css' rel='stylesheet' />
+    <script src='./packages/core/main.js'></script>
+    <script src='./packages/interaction/main.js'></script> -->
 
     <script type="text/javascript" src="./js/APIsecretKey.js"></script>
     <script type="text/javascript" src="./js/hostAddr.js"></script>
@@ -47,38 +38,42 @@
 </head>
 <body>
     <main>
-        <nav class="navbar is-dark" style="background-color: rgba(0, 0, 0, 0.7); height: 5vh;">
+        <nav class="navbar is-dark">
             <div class="navbar-brand">
               <a class="navbar-item" id="nav-home">
                 <img src="./image/Astro logo intro.png" alt="AC logo" width="130" height="50">
               </a>
+              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
             </div>
+          
             <div id="navbarExampleTransparentExample" class="navbar-menu">
               <div class="navbar-start is-active">
                 <a class="navbar-item" id="nav-home">
-                  소개
+                  Home
                 </a>
                 <a class="navbar-item" id="nav-aboutus">
-                    공지사항
+                    About Us
                 </a>
-                
+                <a class="navbar-item" id="nav-chasinghistory">
+                    Chasing History
+                </a>
                 <div class="navbar-item has-dropdown is-hoverable">
                   <a class="navbar-link">
-                    커뮤니티
+                    Telescopes
                   </a>
                   <div class="navbar-dropdown is-boxed">
                     <a class="navbar-item" id="nav-owned-telescopes">
-                      자유게시판
+                      보유 망원경
                     </a>
                     <a class="navbar-item" id="nav-setting-telescope">
-                      천문 갤러리
+                      설치법
                     </a>
                   </div>
                 </div>
-
-                <a class="navbar-item" id="nav-chasinghistory">
-                  정보공개
-              </a>
               </div>
           
               <div class="navbar-end">
@@ -96,141 +91,102 @@
             </div>
         </nav>
 
-        <div class="heroDiv">
-          <video muted autoplay loop>
-            <source src="/videos/telescopeDom-Sky-cut.mp4" type="video/mp4">
-            <strong>Your browser does not support the video tag.</strong>
-          </video>
-          <div class="jb-text">
-            <p style="font-size: 80px; margin-bottom: 15px">Kau Astro Chaser</p> <br>
-            <p>한국항공대학교 천체관측 동아리 </p>
-          </div>
-          <div class="jb-btn">
-            <div class="buttons are-medium">
-              <button class="button" id="club-introduce-btn">동아리 소개</button>
-            </div>
-          </div>
-        </div>
-
         <section class="mainPage">
-          <img src="./image/Space Travel/IntoTheStars0.jpg" id="intoTheStars" style="margin-left:0">
-
-          <div class="tile is-ancestor">
-            <div class="tile is-parent">
-              <article class="tile is-child box">
-                <p class="subtitle">
-                  <button class="button is-large is-fullwidth">Contact Us!</button>
-                </p>
-                <p class="title">Since 2021 Astro Chaser</p>
-              </article>
+            <div class="imageWrap">
+                <div class="textWrap"><img src="./image/Astro logo intro.png" class="text3d" alt="Astro Chaser" width="8000bit 00px" style="z-index: 999;" ></div>
+                    <img src="./image/Stars.png" class="bg" id="stars1" alt="별배경 1">
+                    <img src="./image/Stars2.png" class="stars"  id="stars2" alt="별배경 2">  
+                    <img src="./image/Stars3.png" class="stars"  id="stars3" alt="별배경 3">  
             </div>
-            <div class="tile is-parent">
-              <article class="tile is-child box">
-                <p class="title"><button class="button is-large is-fullwidth">가입문의</button></p>
-                <p class="subtitle"> <button class="button is-large is-fullwidth">Instagram</button></p>
-              </article>
-            </div>
-          </div>
-          
-          <div class="tile is-ancestor">
-            <div class="tile is-parent">
-              <article class="tile is-child box">
-                <p class="title">동아리 소개</p>
-                <p class="subtitle">Subtitle</p>
-              </article>
-            </div>
-            <div class="tile is-parent">
-              <article class="tile is-child box">
-                <p class="title">천문소식</p>
-                <p class="subtitle">Subtitle</p>
-              </article>
-            </div>
-            <div class="tile is-parent">
-              <article class="tile is-child box">
-                <p class="title">갤러리</p>
-                <p class="subtitle">Subtitle</p>
-              </article>
-            </div>
-            <div class="tile is-parent">
-              <article class="tile is-child box">
-                <p class="title" style="font-size: 25px;">천문교육봉사 신청</p>
-                <p class="subtitle">Subtitle</p>
-              </article>
-            </div>
-          </div>
-
-          <div class="tile is-ancestor">
-            <div class="tile is-parent">
-              <article class="tile is-child box">
-                <p class="title">공지사항</p>
-                <p class="subtitle">
-                  <p>
-                    <div class="content">
-                      <ul>
-                        <li>2022 6월 정기관측회 안내</li>
-                        <li>MT안내</li>
-                        <li>홈페이지가 개설되었습니다!</li>
-                      </ul>
-                    </div>
-                  </p>
-                </p>
-              </article>
-            </div>
-            <div class="tile is-parent">
-              <article class="tile is-child box">
-                <p class="title">천문력&활동일정</p>
-                <p class="subtitle"> 
-                  <div id='calendar-container'>
-                    <div id='calendar'></div>
-                  </div>
-                </p>
-              </article>
-            </div>
-          </div>
-
-          <div class="contWrap" id = "firstIntroduce" style="margin-top: 50px; height: 150vh;">
-            <div class="tile is-ancestor">
-              <div class="tile is-parent" style="height: 15vh;">
-                <article class="tile is-child box">
-                  <p class="title" style="margin-top: 0px; margin-bottom: 5px;">방명록</p>
-                
-                </article>
-              </div>
-            </div>
-
-            <div class="tile is-ancestor">
-              <div class="tile is-parent" style="height: 130vh;">
-                <article class="tile is-child box">
-                  <textarea class="textarea is-info has-fixed-size" 
-                            placeholder="방명록을 작성해주세요(200자 이내)" 
-                            style="height: 50px; width: 50px;"
-                            id="guestbookContent"></textarea> 
-                  <div class="guestBookWriterInfoBox">
-                    <div id="guestbookContent_cnt">(0 / 200)</div>
-                    <div id="guestbookCommit">
-                      <input class="input is-link" id="guestbookCommit_nickname" type="text" placeholder="닉네임" style="width: 200px; height: 100%; max-height: 40px;">
-                      <button class="button is-primary" id="guestbookCommitBtn" style="height: 100%; max-height: 40px;">등록</button>
-                    </div>
-                  </div>
-
-                  <hr>
-                  <div class="guestbook-area">
-        
-                  </div>
-                  <div class="guestbook-page-navigator">
-                    <button class="button is-responsive" id="guetbook-prev-btn" style="float: left;">
-                      이전글
-                    </button>
-                    <button class="button is-responsive" id="guetbook-next-btn" style="float: right;">
-                      다음글
-                    </button>
-                  </div>
-                  
-                </article>
-              </div>
-            </div>
+            <img src="./image/Space Travel/IntoTheStars0.jpg" id="intoTheStars" style="margin-left:0">
         </section>
-  </main>
+         
+        <section class="subPage upperPage">
+            <div class="innerWrap">
+                <div class="contWrap" id = "firstIntroduce" style="height: auto;">
+                  
+                  <div class="tile is-ancestor">
+                    <div class="tile is-4 is-vertical is-parent">
+                      <div class="tile is-child box">
+                        <p class="title">공지사항</p>
+                        <p>
+                          <div class="content">
+                            <ul>
+                              <li>2022 6월 정기관측회 안내</li>
+                              <li>MT안내</li>
+                              <li>홈페이지가 개설되었습니다!</li>
+                            </ul>
+                          </div>
+                        </p>
+                      </div>
+                      <div class="tile is-child box">
+                        <p class="title">별지기 게시판</p>
+                        <p>
+                          <div class="content">
+                            <ul id="picture-titles">
+                              <!-- <li>이런</li>
+                              <li>저런</li>
+                              <li>게시글들</li> -->
+                            </ul>
+                          </div>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="tile is-parent">
+                      <div class="tile is-child box">
+                        <p class="title">천문력</p>
+                        <div id='calendar-container'>
+                          <div id='calendar'></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="contWrap" id = "firstIntroduce" style="margin-top: 200px; height: 150vh;">
+                  <div class="tile is-ancestor">
+                    <div class="tile is-parent" style="height: 15vh;">
+                      <article class="tile is-child box">
+                        <p class="title" style="margin-top: 0px; margin-bottom: 5px;">방명록</p>
+                       
+                      </article>
+                    </div>
+                  </div>
+                  <div class="tile is-ancestor">
+                    <div class="tile is-parent" style="height: 130vh;">
+                      <article class="tile is-child box">
+                        <textarea class="textarea is-info has-fixed-size" 
+                                  placeholder="방명록을 작성해주세요(200자 이내)" 
+                                  style="height: 50px; width: 50px;"
+                                  id="guestbookContent"></textarea> 
+                        <div class="guestBookWriterInfoBox">
+                          <div id="guestbookContent_cnt">(0 / 200)</div>
+                          <div id="guestbookCommit">
+                            <input class="input is-link" id="guestbookCommit_nickname" type="text" placeholder="닉네임" style="width: 200px; height: 100%; max-height: 40px;">
+                            <button class="button is-primary" id="guestbookCommitBtn" style="height: 100%; max-height: 40px;">등록</button>
+                          </div>
+                        </div>
+
+                        <hr>
+                        <div class="guestbook-area">
+              
+                        </div>
+                        <div class="guestbook-page-navigator">
+                          <button class="button is-responsive" id="guetbook-prev-btn" style="float: left;">
+                            이전글
+                          </button>
+                          <button class="button is-responsive" id="guetbook-next-btn" style="float: right;">
+                            다음글
+                          </button>
+                        </div>
+                        
+                      </article>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </section> 
+    </main>
 </body>
 <script type="text/javascript" src="./js/navHref.js"></script>
 <script type="text/javascript" src="./js/index_guestbook.js"></script>

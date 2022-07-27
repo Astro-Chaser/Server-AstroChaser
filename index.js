@@ -17,6 +17,10 @@ app.use(expressForStatic.static(__dirname + "/frontWEB/static"));
 app.get('/', function(req, res) {
     res.sendFile(__dirname+"/frontWEB/index.html");
 })
+app.get('/sh', function(req, res) {
+    res.sendFile(__dirname+"/frontWEB/sh_index.html");
+})
+
 app.get('/m', function(req, res) {
     res.sendFile(__dirname+"/frontWEB/mobile_index.html");
 })

@@ -4,7 +4,7 @@
 .topnav {
     background-color: rgb(7, 23, 23);
     overflow: hidden;
-  }
+}
   
 /* Style the links inside the navigation bar */
 .topnav a {
@@ -111,4 +111,67 @@
   font-family: 'Do Hyeon', sans-serif;
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
+}
+
+.heroDiv{
+  width: 100vw;
+  height: 95vh;
+
+  overflow: hidden;
+  margin: 0px auto; 
+  position: relative;
+
+  background-color: beige;
+  color: #ddd;
+}
+
+video{
+  width: 100%;
+}
+
+.jb-text { 
+  position: absolute; 
+  top: 45%; 
+  width: 100%; 
+}
+
+.jb-text p { 
+  margin-top: -24px; 
+  text-align: center; 
+  font-family: Gaegu; 
+  font-weight: 600; 
+  font-size: 48px; 
+  color: #ffffff; 
+}
+
+.jb-btn{
+  position: absolute;
+  top: 67%;
+  width: 100%;
+  margin-left: 47%;
+}
+
+#club-introduce-btn{
+  background-color: rgba(255, 255, 255, 0.2); 
+  color: #f2f2f2;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-size: 25px; 
+  font-weight: 800;
+
+  transition: 0.2s;
+}
+
+#club-introduce-btn:hover{
+  background-color: rgba(255, 255, 255, 1);
+  color: black;
+}
+
+.tile.is-ancestor{
+  width: 80vw;
+  margin-left: 10vw;
+}
+
+p{
+  width: 100%;
+  text-align: center;
 }
