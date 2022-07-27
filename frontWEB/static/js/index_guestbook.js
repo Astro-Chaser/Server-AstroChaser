@@ -58,7 +58,7 @@ async function showGuestbookData(guestbookPageCnt){
       if((guestbookPageCnt*5+i)<guestbookData.result.length)
       {
         var writer = guestbookData.result[guestbookPageCnt*5+i].writer;
-        var time = guestbookData.result[guestbookPageCnt*5+i].createdAt.substring(0,10) + " " + guestbookData.result[guestbookPageCnt*5+i].createdAt.substring(12,16);
+        var time = guestbookData.result[guestbookPageCnt*5+i].createdAt.substring(0,10) + " " + guestbookData.result[guestbookPageCnt*5+i].createdAt.substring(11,16);
         var message = guestbookData.result[guestbookPageCnt*5+i].content;
 
         var html ='';
