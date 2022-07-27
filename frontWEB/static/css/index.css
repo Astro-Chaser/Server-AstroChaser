@@ -165,3 +165,13 @@ video{
   background-color: rgba(255, 255, 255, 1);
   color: black;
 }
+
+.tile.is-ancestor{
+  width: 80vw;
+  margin-left: 10vw;
+}
+
+p{
+  width: 100%;
+  text-align: center;
+}

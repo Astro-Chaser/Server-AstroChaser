@@ -21,9 +21,9 @@ const animalNames =[
 
 window.onload = function(){
 
-  stars1 = document.getElementById("stars1");
-  stars2 = document.getElementById("stars2");
-  stars3 = document.getElementById("stars3");
+  // stars1 = document.getElementById("stars1");
+  // stars2 = document.getElementById("stars2");
+  // stars3 = document.getElementById("stars3");
   text3d = document.getElementsByClassName("text3d")[0];
   intoTheStars = document.getElementById("intoTheStars");
   // sattellite = document.getElementById("sattelliteImg");
@@ -47,9 +47,9 @@ function loop(){
   mx += (x - mx) * speed;
   my += (y - my) * speed;
 
-  stars1.style.transform = "translate("+ (mx/10) +"px," + (my/10) +"px)";
-  stars2.style.transform = "translate("+ -(mx/15) +"px," + -(my/15) +"px)";
-  stars3.style.transform = "translate("+ (mx/8) +"px," + -(my/8) +"px)";
+  // stars1.style.transform = "translate("+ (mx/10) +"px," + (my/10) +"px)";
+  // stars2.style.transform = "translate("+ -(mx/15) +"px," + -(my/15) +"px)";
+  // stars3.style.transform = "translate("+ (mx/8) +"px," + -(my/8) +"px)";
   //intoTheStars.style.transform = "translate("+ (mx/15) +"px," + -(my/15) +"px)";
   // sattellite.style.transform = "translate("+ (mx) +"px," + (my) +"px)";
 
@@ -85,20 +85,20 @@ function scrollFunc(e) {
       //console.log(scrollCnt%40);
       drawIntoTheStars(scrollCnt%40);
     }
-    if(scrollCnt<100)
-    {
-      stars1.style.opacity = 1;
-      stars2.style.opacity = 1;
-      stars3.style.opacity = 1;
-      intoTheStars.opacity = 1;
-      text3d.style.opacity = 1;
-    }
+    // if(scrollCnt<100)
+    // {
+    //   stars1.style.opacity = 1;
+    //   stars2.style.opacity = 1;
+    //   stars3.style.opacity = 1;
+    //   intoTheStars.opacity = 1;
+    //   text3d.style.opacity = 1;
+    // }
     else if(scrollCnt==100) intoTheStars.style.opacity=1;
     else if(scrollCnt>100)
     {
-      stars1.style.opacity = 0;
-      stars2.style.opacity = 0;
-      stars3.style.opacity = 0;
+      // stars1.style.opacity = 0;
+      // stars2.style.opacity = 0;
+      // stars3.style.opacity = 0;
       intoTheStars.opacity = 0;
       text3d.style.opacity = 0;
       intoTheStars.style.opacity = 1 - ((scrollCnt-100)*0.02);
