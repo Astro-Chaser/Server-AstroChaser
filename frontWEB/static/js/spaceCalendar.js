@@ -35,6 +35,7 @@ async function astroEventParser(){
   var calendar = new FullCalendar.Calendar(calendarEl, {
     expandRows: true, // 화면에 맞게 높이 재설정
     height: '700px',
+    width:'30vw',
 
     // 해더에 표시할 툴바
     headerToolbar: {
