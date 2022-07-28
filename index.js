@@ -19,7 +19,7 @@ app.get('/', function(req, res) {
     const md = new MobileDetect(req.headers['user-agent']);
          if (md.is("iPhone")) {     // 아이폰일 경우에 
              console.log("IPHONE"|"AndroidOS")
-             res.sendFile(__dirname+"/frontWEB/index.html");
+             res.sendFile(__dirname+"/frontWEB/m_yj_index.html");
          }
          else {  // 다른 여러 모바일 기기가 많지만 내 조건엔 필요없어서 싸잡아서
             res.sendFile(__dirname+"/frontWEB/yj_index.html");
