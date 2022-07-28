@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Roboto:wght@300;400;500&display=swap');
+
+body {
+  overflow-x: hidden;
+  background-color: #060B33;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: rgb(7, 23, 23);
+    overflow: hidden;
+}
+  
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav .signInUp{
+  float: right;
+  width: 380px;
+  height: 45px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  color: white;
+}
+
+.guestBookWriterInfoBox{
+  margin-top: 5px;
+  width: 100%;
+  height: 5%;
+
+  vertical-align: auto;
+  text-align: center;
+
+}
+
+#guestbookContent_cnt{
+  float: left;
+  margin-top: 1%;
+
+  vertical-align: auto;
+}
+
+#guestbookCommit{
+  float: right;
+
+  width: 30%;
+  height: 100%;
+}
+
+.guestbook-area{
+  width: 100%;
+  height: 70%;
+
+  
+}
+
+.guestbook-area-contents{
+  width: 100%;
+  height: 18%;
+
+  margin-top: 15px;
+
+  border-bottom: 1px solid rgb(75, 75, 75);
+}
+.guestbook-writer-info-area{
+
+  width: 40%;
+  height: 25%;
+}
+
+.guestbook-writer-name-info{
+  float: left;
+
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.guestbook-writer-time-info{
+  float: left;
+
+  margin-left: 15px;
+}
+
+.guestbook-user-content{
+  width: 100%;
+
+  margin-top: 15px;
+}
+
+.hover-end{padding:0;margin:0;font-size:75%;text-align:center;position:absolute;bottom:0;width:100%;opacity:.8}
+
+/* 캘린더 위의 해더 스타일(날짜가 있는 부분) */
+.fc-header-toolbar {
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+#userInfo-nav-top{
+  font-family: 'Do Hyeon', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+}
+
+.heroDiv{
+  width: 100vw;
+  height: 95vh;
+
+  overflow: hidden;
+  margin: 0px auto; 
+  position: relative;
+
+  color: #ddd;
+}
+
+video{
+  width: 100%;
+}
+
+.jb-text { 
+  position: absolute; 
+  top: 40%; 
+  width: 30%; 
+}
+
+.jb-text p { 
+  margin-top: -24px; 
+  margin-left: 3vw;
+  text-align: left; 
+  font-size: 2vw; 
+  color: #ffffff; 
+}
+
+.jb-btn{
+  position: absolute;
+  top: 67%;
+  width: 100%;
+  margin-left: 47%;
+}
+
+#club-introduce-btn{
+  background-color: rgba(255, 255, 255, 0.2); 
+  color: #f2f2f2;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-size: 25px; 
+  font-weight: 800;
+
+  transition: 0.2s;
+}
+
+#club-introduce-btn:hover{
+  background-color: rgba(255, 255, 255, 1);
+  color: black;
+}
+
+.tile.is-ancestor{
+  width: 80vw;
+  margin-left: 10vw;
+}
+
+p{
+  width: 100%;
+  text-align: center;
+}
+
+.footer{
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ddd;
+}
