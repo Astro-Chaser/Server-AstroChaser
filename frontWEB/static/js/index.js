@@ -13,14 +13,15 @@ var context, canvas;
 var sattelliteStartScroll, sattellite;
 var isIntoTheStarsEnd = false; 
 
-
+var md = new MobileDetect(navigator.userAgent);
+console.log( md.os() ); 
 const animalNames =[
   "강아지", "고양이", "고릴라", "침팬지", "갈매기", "비둘기", "호랑이", "야옹이", "폼폼이", "재경이", "이시형", "전준휘", "별지기", "송골매",
   "강호동", "케로로", "호돌이", "코뿔소", "구렁이", "사다리", "북극곰", "탄지로", "뽀로로", "스컹크", "김동헌", "원숭이", "알파카"
 ]
 
 window.onload = function(){
-
+  
   stars1 = document.getElementById("stars1");
   stars2 = document.getElementById("stars2");
   stars3 = document.getElementById("stars3");
