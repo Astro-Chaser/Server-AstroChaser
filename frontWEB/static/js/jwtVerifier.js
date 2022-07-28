@@ -2,18 +2,34 @@
 getUserInfo();
 //사용자 로그인 정보 가져오기
 async function getUserInfo(){
-    const userJWT = localStorage.getItem("accessJWT");
+
+  const userJWT = localStorage.getItem("accessJWT");
+  const decodedJwt = jwt_decode(userJWT);
+  if(((new Date(decodedJwt.exp * 1000))-Date.now())/6000 > 30 )
+  {
     var myHeaders = new Headers();
     myHeaders.append("x-access-token", userJWT);
-
+  
     var requestOptions = {
         method: 'GET',
         headers: myHeaders,
         redirect: 'follow'
     };
+  
+      const jwtCheckData = await getAPI(hostAddress,"app/users/auto-login", requestOptions)
+      localStorage.setItem("email", jwtCheckData.result.createdAt);
+      localStorage.setItem("exp", jwtCheckData.result.exp);
+      localStorage.setItem("generation", jwtCheckData.generation);
+      localStorage.setItem("id", jwtCheckData.id);
+      localStorage.setItem("member", jwtCheckData.member);
+      localStorage.setItem("name", jwtCheckData.name);
+  }
+  else if(((new Date(decodedJwt.exp * 1000))-Date.now())/6000 <= 30)
+  {
+    //ACCESS TOKEN의 기한이 지날 경우!!
+  }
 
-    const jwtCheckData = await getAPI(hostAddress,"app/users/auto-login", requestOptions)
-    console.log(jwtCheckData.result)
+
 
     /**
      * TODO

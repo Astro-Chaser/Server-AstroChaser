@@ -15,10 +15,13 @@ app.use(expressForStatic.static(__dirname + "/frontWEB/static"));
 //html 정의 시작
 //1. index 페이지
 app.get('/', function(req, res) {
-    res.sendFile(__dirname+"/frontWEB/index.html");
+    res.sendFile(__dirname+"/frontWEB/yj_index.html");
 })
 app.get('/sh', function(req, res) {
     res.sendFile(__dirname+"/frontWEB/sh_index.html");
+})
+app.get('/old', function(req, res) {
+    res.sendFile(__dirname+"/frontWEB/index.html");
 })
 
 app.get('/m', function(req, res) {
