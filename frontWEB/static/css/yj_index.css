@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Roboto:wght@300;400;500&display=swap');
 
+body {
+  overflow-x: hidden;
+  background-color: #060B33;
+}
+
 /* Add a black background color to the top navigation */
 .topnav {
     background-color: rgb(7, 23, 23);
@@ -130,16 +135,15 @@ video{
 
 .jb-text { 
   position: absolute; 
-  top: 45%; 
-  width: 100%; 
+  top: 40%; 
+  width: 30%; 
 }
 
 .jb-text p { 
   margin-top: -24px; 
-  text-align: center; 
-  font-family: Gaegu; 
-  font-weight: 600; 
-  font-size: 48px; 
+  margin-left: 3vw;
+  text-align: left; 
+  font-size: 2vw; 
   color: #ffffff; 
 }
 
