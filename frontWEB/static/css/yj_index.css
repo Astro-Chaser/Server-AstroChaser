@@ -351,3 +351,45 @@ p{
   list-style: '►';
   margin-bottom: 10px;
 }
+
+.galleryArea{
+  width: 80%;
+  height: 16vw;
+  margin-top: 10%;
+  margin-left: 10%;
+}
+
+.gallertyCol-leftTop{
+  float: left;
+  width: 7vw;
+  height: 7vw;
+
+  border-radius: 5px;
+}
+
+.gallertyCol-rightTop{
+  float: right;
+  width: 7vw;
+  height: 7vw;
+
+  border-radius: 5px;
+}
+
+.gallertyCol-leftBot{
+  float: left;
+  margin-top: 1vw;
+  width: 7vw;
+  height: 7vw;
+
+  border-radius: 5px;
+}
+
+.gallertyCol-rightBot{
+  float: right;
+  margin-top: 1vw;
+  width: 7vw;
+  height: 7vw;
+
+  border-radius: 5px;
+}
+
