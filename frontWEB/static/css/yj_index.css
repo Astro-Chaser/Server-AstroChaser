@@ -282,9 +282,49 @@ p{
   margin-left: 5vw;
   margin-top: 3vw;
   
-
   background-image: url("../image/AC\ logo\ 1.jpeg");
   background: cover;
+}
+
+#card-left-content-area{
+  width: 80%;
+  height: 50%;
+  margin-top: 5%;
+  margin-left: 10%;
+
+  /* background-color: beige; */
+}
+.left-card-row{
+  width: 90%;
+  height: 20%;
+  margin-left: 3%;
+  margin-right: 3%;
+
+}
+#card-insta-pic{
+  float: left;
+  width: 30%;
+  height: 100%;
+}
+.left-card-icon-title{
+  float: left;
+  margin-top: 5%;
+  width: 70%;
+  height: 100%;
+}
+#icon-title{
+  text-align: left;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-size: 1.5em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: white;
+}
+#icon-content{
+  color: white;
+  text-align: left;
+  margin-top: 2%;
+  font-size: 0.8em;
 }
 
 .footer{
