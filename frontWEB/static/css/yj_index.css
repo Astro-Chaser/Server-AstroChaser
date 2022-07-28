@@ -179,6 +179,25 @@ p{
   text-align: center;
 }
 
+.main.body{
+  width: 80vw;
+  margin-left: 10vw;
+
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.activity-title{
+  width: 100%;
+  height: 7vw;
+}
+.activity-title p{
+  font-family: 'Sniglet', cursive;
+  font-size: 7vh;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: white;
+}
+
 .footer{
   background-color: rgba(255, 255, 255, 0.1);
   color: #ddd;
