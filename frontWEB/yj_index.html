@@ -34,6 +34,8 @@
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
     <!-- fullcalendar 언어 CDN -->
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
+    <!-- Mobile, PC환경 구분-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.5/mobile-detect.min.js"></script>
 
     <!-- 기타 CDN-->
     <script src="https://unpkg.com/jwt-decode@3.1.2/build/jwt-decode.js"></script>
@@ -44,7 +46,6 @@
 
     <script type="text/javascript" src="./js/APIsecretKey.js"></script>
     <script type="text/javascript" src="./js/hostAddr.js"></script>
-    <script type="text/javascript" src="./js/jwtVerifier.js"></script>
     <script type="text/javascript" src="./js/sh_index.js"></script>
     
 </head>
@@ -100,9 +101,13 @@
         </nav>
 
         <div class="heroDiv">
+          <video muted autoplay loop>
+            <source src="/videos/telescopeDom-Sky-cut.mp4" type="video/mp4">
+            <strong>Your browser does not support the video tag.</strong>
+          </video>
           <div class="jb-text">
             <p style="font-family: 'Nanum Gothic', sans-serif; margin-bottom: 3vh; font-weight: 300;">KOREA AEROSPACE UNI.</p>
-            <p style="font-size: 4vw; width: 60vw; margin-bottom: 2vh; font-family: 'Audiowide', cursive; text-align: left; font-weight: 400;">ASTRO CHASER</p> <br>
+            <p style="font-size:calc(15px + 4vw); width: 60vw; margin-bottom: 2vh; font-family: 'Audiowide', cursive; text-align: left; font-weight: 400;">ASTRO CHASER</p> <br>
             <p style="font-family: 'Nanum Gothic', sans-serif; margin-bottom: 3vh; font-weight: 300; font-size: 1vw;">한국항공대학교 천체관측 동아리<br>Explore the pure space, Make it your friend!</p>
           </div>
         </div>
