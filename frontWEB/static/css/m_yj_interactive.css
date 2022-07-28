@@ -1,0 +1,264 @@
+@font-face {
+  font-family: 'EliceDigitalBaeum_Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/EliceDigitalBaeum_Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF_HambakSnow';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/SF_HambakSnow.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+main {
+  position: relative;
+}
+
+.textWrap {
+  position : absolute;
+  left: 43vw;
+  top: 45vh;
+  transform: translate(-50%, -50%);
+  z-index : 3;
+  transform-style: preserve-3d; 
+  perspective: 300px;
+}
+
+main .progress {
+  position: fixed;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  z-index: 10000;
+}
+
+main .progress .progressBar {
+  position: fixed;
+  width: 0%;
+  background: #ffa600;
+  height: 2px;
+  z-index: 10001;
+  transition: width .1s ease;
+}
+
+section {
+  position: relative;
+  width: 100%;
+}
+
+section.mainPage {
+  padding-bottom: 50px;
+}
+
+section.mainPage h1.title {
+  position: fixed;
+  text-align: center;
+  color: #fff;
+  font-size: 2.7rem;
+  padding-top: 20vh;
+  width: 400px;
+  left: calc(50% - 200px);
+}
+
+section.mainPage .imageWrap {
+  left: 7vw;
+  width: 90vw;
+  position: fixed;
+  display: flex;
+}
+
+section.mainPage .imageWrap .parallax_image {
+  position: fixed;
+  /* width: 100%; */
+  height: inherit;
+  background-position: top center;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  perspective: 300px;
+}
+
+section.subPage {
+  margin-top: 400px;
+  min-height: 60vh;
+}
+
+section.subPage .innerWrap {
+  position: relative;
+}
+
+section.subPage .innerWrap .contWrap {
+  margin: 0 auto;
+  /* background-color: rgba(0, 0, 0, 0.6); */
+  padding: 20px 40px;
+  width: 70vw;
+  height: 60vw;;
+  border-radius: 10px;
+}
+
+section.subPage.upperPage .innerWrap .contWrap {
+  background-color: rgba(106, 106, 106, 0.62);
+}
+
+section.subPage .innerWrap .contWrap p {
+  font-family: 'EliceDigitalBaeum_Bold';
+  text-align: center;
+  font-size: 30px;
+  line-height: 40px;
+  /* color: #fff; */
+  margin: 50px 0;
+}
+
+@media only screen and (max-width: 768px) {
+  section.subPage .innerWrap .contWrap {
+    width: 100%;
+  }
+}
+
+
+
+
+section.subPage.upperPage {
+  margin-top: 2000px;
+  width: 100vw;
+  z-index: 20;
+}
+
+section.subPage.upperPage .innerWrap {
+  width: 100%;
+  padding: 50px 0;
+  /* background-color: rgba(0, 0, 0, 0.2); */
+}
+
+
+
+#stars1 {
+  width: 90%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+#stars2 {
+  position: absolute;
+  display: block;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+
+  z-index: 1;
+}
+
+#stars3 {
+  position: absolute;
+  display: block;
+  width: 90%;
+  margin: 0auto;  
+  /* margin-left: auto;
+  margin-right: auto; */
+  z-index: 2;
+}
+
+#moveMouse{
+  width: 5%;
+  margin-left: 50%;
+  z-index: -1;
+}
+
+#intoTheStars{
+  position: fixed;
+  margin-left: 10vw;
+  margin-top: 0px;
+  width: 150vw;
+  opacity: -1;
+  z-index: 10;
+}
+
+.scroll-section {
+  position: relative;
+  /* border: 3px solid red; */
+  padding-top: 50vh;
+}
+
+#scroll-section-0 h1 {
+  position: relative;
+  top: -10vh;
+  font-size: 4rem;
+  text-align: center;
+  z-index: 5;
+}
+
+#sattelliteImg{
+  position: relative;
+  width: 30%
+}
+
+section.subPage.hexagons {
+  margin-top: 2000px;
+  width: 100vw;
+  height: 100vh;
+  z-index: 20;
+  animation: animate 4s linear infinite;
+}
+
+@keyframes animate
+{
+	0%
+	{
+		filter: hue-rotate(0deg);
+	}
+	100%
+	{
+		filter: hue-rotate(360deg);
+	}
+}
+.row
+{
+	display: inline-flex;
+	margin-top: -32px;
+	margin-left: -50px;
+}
+.row:nth-child(even)
+{
+	margin-left: 1px;
+}
+.hexagon
+{
+	position: relative;
+	width: 100px;
+	height: 110px;
+  font-family: 'SF_HambakSnow';
+	background: #111;
+  color: white;
+	/* margin: 1px 1px; */
+	clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+	transition: 2s;
+}
+
+.hexagon:hover
+{
+	transition: 0s;
+	background: #0f0;
+}
+.hexagon:before
+{
+	content: '';
+	position: absolute;
+  color: white;
+	top: 0;
+	left: 0;
+	width: 50%;
+	height: 100%;
+	pointer-events: none;
+	background: rgba(255,255,255,0.02);
+}
+
+.guestbook-page-navigator{
+  margin-top: 5px;
+}

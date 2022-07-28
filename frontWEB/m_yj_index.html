@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>KAU Astro Chaser</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <!-- 화면 해상도에 따라 글자 크기 대응(모바일 대응) -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bulma-extensions@6.2.7/dist/js/bulma-extensions.min.js"></script>
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Do+Hyeon&family=Nanum+Gothic:wght@400;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- OG Tags-->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://astrochaser.com">
+    <meta property="og:title" content="KAU Astro Chaser">
+    <meta property="og:image" content="./image/AC logo 1.jpeg">
+    <meta property="og:description" content="한국항공대 천체관측동아리 Astro Chaser">
+    <meta property="og:site_name" content="Astro Chaser">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+     
+    <!-- jquery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- fullcalendar CDN -->
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
+    <!-- fullcalendar 언어 CDN -->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
+    <!-- Mobile, PC환경 구분-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.5/mobile-detect.min.js"></script>
+
+    <!-- 기타 CDN-->
+    <script src="https://unpkg.com/jwt-decode@3.1.2/build/jwt-decode.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="./css/m_yj_index.css" />
+    <link rel="stylesheet" type="text/css" href="./css/reset.css" />
+     <link rel="stylesheet" type="text/css" href="./css/m_yj_interactive.css" />
+
+    <script type="text/javascript" src="./js/APIsecretKey.js"></script>
+    <script type="text/javascript" src="./js/hostAddr.js"></script>
+    <script type="text/javascript" src="./js/sh_index.js"></script>
+    
+</head>
+<body style="background-color: rgb(7, 9, 38);">
+    <main>
+        <nav class="navbar is-dark" style="background-color: rgba(0, 0, 0, 0.7); height: 5vh;">
+            <div class="navbar-brand">
+              <a class="navbar-item" id="nav-home">
+                <img src="./image/Astro logo intro.png" alt="AC logo" width="130" height="50">
+              </a>
+            </div>
+            <div id="navbarExampleTransparentExample" class="navbar-menu">
+              <div class="navbar-start is-active">
+                <a class="navbar-item" id="nav-home">
+                  소개
+                </a>
+                <a class="navbar-item" id="nav-aboutus">
+                    공지사항
+                </a>
+                
+                <div class="navbar-item has-dropdown is-hoverable">
+                  <a class="navbar-link">
+                    커뮤니티
+                  </a>
+                  <div class="navbar-dropdown is-boxed">
+                    <a class="navbar-item" id="nav-owned-telescopes">
+                      자유게시판
+                    </a>
+                    <a class="navbar-item" id="nav-setting-telescope">
+                      천문 갤러리
+                    </a>
+                  </div>
+                </div>
+
+                <a class="navbar-item" id="nav-chasinghistory">
+                  정보공개
+              </a>
+              </div>
+          
+              <div class="navbar-end">
+                <div class="navbar-item">
+                  <div class="buttons">
+                    <a class="button is-primary" id="nav-sign-up">
+                      <strong>회원가입</strong>
+                    </a>
+                    <a class="button is-light" id="nav-sign-in">
+                      로그인
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </nav>
+
+        <div class="heroDiv">
+          <div class="jb-text">
+            <p style="font-family: 'Nanum Gothic', sans-serif; margin-bottom: 3vh; font-weight: 300;">KOREA AEROSPACE UNI.</p>
+            <p style="font-size:40px; width: 60vw; margin-bottom: 25px; font-family: 'Audiowide', cursive; text-align: left; font-weight: 400;">ASTRO CHASER</p>
+            <p style="font-family: 'Nanum Gothic', sans-serif; margin-bottom: 3vh; font-weight: 300; font-size: 13px;">한국항공대학교 천체관측 동아리<br>Explore the pure space, Make it your friend!</p>
+          </div>
+        </div>
+
+        <section class="mainPage">
+          <img src="./image/Space Travel/IntoTheStars0.jpg" id="intoTheStars" style="margin-left:0">
+
+          <div class="tile is-ancestor">
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="subtitle">
+                  <button class="button is-large is-fullwidth">Contact Us!</button>
+                </p>
+                <p class="title">Since 2021 Astro Chaser</p>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title"><button class="button is-large is-fullwidth">가입문의</button></p>
+                <p class="subtitle"> <button class="button is-large is-fullwidth">Instagram</button></p>
+              </article>
+            </div>
+          </div>
+          
+          <div class="tile is-ancestor">
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">동아리 소개</p>
+                <p class="subtitle">Subtitle</p>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">천문소식</p>
+                <p class="subtitle">Subtitle</p>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">갤러리</p>
+                <p class="subtitle">Subtitle</p>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title" style="font-size: 25px;">천문교육봉사 신청</p>
+                <p class="subtitle">Subtitle</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="tile is-ancestor">
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">공지사항</p>
+                <p class="subtitle">
+                  <p>
+                    <div class="content">
+                      <ul>
+                        <li>2022 6월 정기관측회 안내</li>
+                        <li>MT안내</li>
+                        <li>홈페이지가 개설되었습니다!</li>
+                      </ul>
+                    </div>
+                  </p>
+                </p>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">천문력&활동일정</p>
+                <p class="subtitle"> 
+                  <div id='calendar-container'>
+                    <div id='calendar'></div>
+                  </div>
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <div class="contWrap" id = "firstIntroduce" style="margin-top: 50px; height: 150vh;">
+            <div class="tile is-ancestor">
+              <div class="tile is-parent" style="height: 15vh;">
+                <article class="tile is-child box">
+                  <p class="title" style="margin-top: 0px; margin-bottom: 5px;">방명록</p>
+                
+                </article>
+              </div>
+            </div>
+
+            <div class="tile is-ancestor">
+              <div class="tile is-parent" style="height: 130vh;">
+                <article class="tile is-child box">
+                  <textarea class="textarea is-info has-fixed-size" 
+                            placeholder="방명록을 작성해주세요(200자 이내)" 
+                            style="height: 50px; width: 50px;"
+                            id="guestbookContent"></textarea> 
+                  <div class="guestBookWriterInfoBox">
+                    <div id="guestbookContent_cnt">(0 / 200)</div>
+                    <div id="guestbookCommit">
+                      <input class="input is-link" id="guestbookCommit_nickname" type="text" placeholder="닉네임" style="width: 200px; height: 100%; max-height: 40px;">
+                      <button class="button is-primary" id="guestbookCommitBtn" style="height: 100%; max-height: 40px;">등록</button>
+                    </div>
+                  </div>
+
+                  <hr>
+                  <div class="guestbook-area">
+        
+                  </div>
+                  <div class="guestbook-page-navigator">
+                    <button class="button is-responsive" id="guetbook-prev-btn" style="float: left;">
+                      이전글
+                    </button>
+                    <button class="button is-responsive" id="guetbook-next-btn" style="float: right;">
+                      다음글
+                    </button>
+                  </div>
+                  
+                </article>
+              </div>
+            </div>
+        </section>
+  </main>
+</body>
+
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong style="color: white;">Astro Chaser Web</strong> by 전준휘&하윤지.<br>  <a href="https://github.com/BUZZINGPolarBear/Server-AstroChaser" style="color: rgb(129, 150, 255);">이곳</a>에서 소스코드를 보실 수 있습니다.
+      <br>개발자 Contact: jjh63360@gmail.com
+    </p>
+  </div>
+</footer>
+
+<script type="text/javascript" src="./js/navHref.js"></script>
+<script type="text/javascript" src="./js/index_guestbook.js"></script>
+<script type="text/javascript" src="./js/spaceCalendar.js"></script>
+
+</html>
