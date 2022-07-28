@@ -340,3 +340,14 @@ p{
   background-color: rgba(255, 255, 255, 0.1);
   color: #ddd;
 }
+
+.ol{
+
+  margin-top: 50px;
+  color: white;
+}
+
+.notice-list li{
+  list-style: '►';
+  margin-bottom: 10px;
+}
