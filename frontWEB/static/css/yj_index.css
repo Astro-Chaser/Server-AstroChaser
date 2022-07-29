@@ -111,6 +111,13 @@ body {
   padding-left: 1em;
   padding-right: 1em;
 }
+.fc .fc-toolbar-title{
+  font-size: 1.5em;
+  
+}
+#calendar{
+  font-family: 'Sniglet', cursive;
+}
 
 #userInfo-nav-top{
   font-family: 'Do Hyeon', sans-serif;
@@ -397,11 +404,13 @@ p{
   width: 70vw;
   margin-left: 15vw;
   height: 80vh;
+  margin-bottom: 15vh;
 }
 
 .calendar-container{
   float: left;
   width: 40vw;
+  height: 100%;
   background-color: white;
 }
 

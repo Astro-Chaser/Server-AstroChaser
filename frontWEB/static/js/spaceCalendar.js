@@ -34,14 +34,14 @@ async function astroEventParser(){
   var calendarEl = document.getElementById('calendar');
   var calendar = new FullCalendar.Calendar(calendarEl, {
     expandRows: true, // 화면에 맞게 높이 재설정
-    height: '700px',
-    width:'30vw',
+    height: '100%',
+    width:'100%',
 
     // 해더에 표시할 툴바
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+      right: 'dayGridMonth,listMonth'
     },
     initialView: 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
     navLinks: true, // 날짜를 선택하면 Day 캘린더나 Week 캘린더로 링크
