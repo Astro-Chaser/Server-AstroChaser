@@ -271,6 +271,7 @@ p{
   height: 100%;
 
   border-radius: 10px;
+  padding-top: 1vh;
   /* margin-top: 5vh; */
   background-color: rgba(255, 255, 255, 0.03);
 }
@@ -336,7 +337,6 @@ p{
   width:100%;
   font-size: 2em;
   text-decoration: underline;
-  margin-top: 15%;
 
   color: rgba(255, 255, 255, 0.8);
 }
@@ -360,41 +360,40 @@ p{
 
 .galleryArea{
   width: 80%;
-  height: 16vw;
+  height: 80%;
   margin-top: 10%;
   margin-left: 10%;
 }
 
 .gallertyCol-leftTop{
   float: left;
-  width: 7vw;
-  height: 7vw;
+  width: 25vw;
+  height: 25vw;
 
   border-radius: 5px;
 }
 
 .gallertyCol-rightTop{
   float: right;
-  width: 7vw;
-  height: 7vw;
+  width: 25vw;
+  height: 25vw;
 
   border-radius: 5px;
 }
 
 .gallertyCol-leftBot{
-  float: left;
-  margin-top: 1vw;
-  width: 7vw;
-  height: 7vw;
+  width: 25vw;
+  height: 25vw;
+  margin-top: 2vh;
 
   border-radius: 5px;
 }
 
 .gallertyCol-rightBot{
   float: right;
-  margin-top: 1vw;
-  width: 7vw;
-  height: 7vw;
+  width: 25vw;
+  height: 25vw;
+  margin-top: 2vh;
 
   border-radius: 5px;
 }
