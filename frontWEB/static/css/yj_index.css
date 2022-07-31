@@ -247,9 +247,9 @@ p{
 
 .article.title{
   font-family: 'Do Hyeon', sans-serif;
-  margin-top: 5%;
   color: rgb(37, 93, 252);
   text-align: left;
+  margin-bottom: 0;
 }
 
 .article.content{
@@ -257,6 +257,15 @@ p{
   font-family: 'Nanum Gothic', sans-serif;
 
   color: rgb(230, 230, 230);
+}
+.quote{
+  color: white;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+.innerExplain{
+  color: white;
+  text-align: left;
 }
 
 .card.area{
