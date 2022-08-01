@@ -16,7 +16,7 @@ async function postNoticeBoard(connect, postNoticeBoardParams){
         {
             const insertMediaQuery = `INSERT INTO NormalNoticeBoardMedia(NormalNoticeBoardId, mediaUrl) VALUES (${insertQueryRes[0].insertId}, ?)`
             for(var i in postNoticeBoardParams.pictureUrls)
-            {
+            {   
                 const insertMediaQueryRes = await connect.query(insertMediaQuery, postNoticeBoardParams.pictureUrls[i])
                 if(insertMediaQueryRes[0].affectedRows != 1) 
                 {
@@ -36,6 +36,20 @@ async function postNoticeBoard(connect, postNoticeBoardParams){
     return result
 }
 
+//2. 일반 공지 게시글 타이틀 가져오기
+async function getNoticeTitle(connection){
+    const getNoticeTitleQuery = `
+        SELECT id, createdat, updatedat, writerid, title, content
+        FROM NormalNoticeBoard
+        WHERE state='A'
+        ORDER BY updatedAt DESC;
+    `
+    console.log("hi")
+    const [getNoticeTitleRow] = await connection.query(getNoticeTitleQuery);
+
+    return getNoticeTitleRow;
+}
 module.exports ={
-    postNoticeBoard   
+    postNoticeBoard,
+    getNoticeTitle
 }
