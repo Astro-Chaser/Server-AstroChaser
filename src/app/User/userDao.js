@@ -11,10 +11,19 @@ async function selectUserEmail(connection, email) {
 
 // 유저 생성
 async function insertUserInfo(connection, insertUserInfoParams) {
-    const insertUserInfoQuery = `
-        insert into User(name, email, password, member, generation) 
-        VALUES(?, ?, ?, ?, ?);
-      `;
+  let insertUserInfoQuery;
+    if(insertUserInfoParams[3]=='운영진'){
+      insertUserInfoQuery = `
+          insert into User(name, email, password, member, generation, state) 
+          VALUES(?, ?, ?, ?, ?, 'B');
+        `;
+    }
+    else{
+      insertUserInfoQuery = `
+          insert into User(name, email, password, member, generation) 
+          VALUES(?, ?, ?, ?, ?);
+        `;
+    }
     const insertUserInfoRow = await connection.query(
       insertUserInfoQuery,
       insertUserInfoParams

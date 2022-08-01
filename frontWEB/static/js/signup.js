@@ -28,22 +28,26 @@ sigupBtn.onclick = signupBtnClicked;
         member: memberOptionVal,
         generation: generationOptionVal
       };
+      console.log(signUpData.member)
+      if(signUpData.member=='운영진') alert("운영진은 계정 활성을 위해 가입 승인이 필요합니다.\n 전준휘에게 연락주세요.");
 
-      const responseRes = post(hostAddress, "app/users", signUpData)  
-        .then((data) => {
-          // console.log(data)
-          // console.log(data.isSuccess);
-          // console.log(data.message);
-          if(data.isSuccess == false){
-            alert(data.message);
-          }
+      responseRes = await post(hostAddress, "app/users", signUpData)  
+      .then((data) => {
+        // console.log(data)
+        // console.log(data.isSuccess);
+        // console.log(data.message);
+        if(data.isSuccess == false){
+          alert(data.message);
+        }
 
-          if(data.isSuccess == true){
-            alert("회원가입되었습니다.");
-            location.href = '/';
-          }
-        })
-        .catch((error) => console.log(error));
+        if(data.isSuccess == true){
+          alert("회원가입되었습니다.");
+          location.href = '/';
+        }
+      })
+      .catch((error) => console.log(error));
+
+      
       // ***********************************
     } 
   }
