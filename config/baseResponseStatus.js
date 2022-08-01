@@ -25,6 +25,11 @@ module.exports = {
     GUESTBOOK_WRITER_EMPTY : {"isSuccess": false, "code": 3001, "message":"닉네임을 입력해주세요."},
     GUESTBOOK_CONTENT_EMPTY : {"isSuccess": false, "code": 3001, "message":"방명록 내용을 입력해주세요."},
 
+    // NoticeBoard -> 게시글 관련 Error 코드
+    NOTICEBOARD_WRITER_EMPTY :  { "isSuccess": false, "code": 5201, "message":"작성자를 입력해주세요"},
+    NOTICEBOARD_TITLE_EMPTY :  { "isSuccess": false, "code": 5202, "message":"제목을 입력해주세요"},
+    NOTICEBOARD_CONTENT_EMPTY :  { "isSuccess": false, "code": 5203, "message":"내용을 입력해주세요"},
+
     //TOEKN 관련 Error
     TOKEN_EMPTY : { "isSuccess": false, "code": 5101, "message":"토큰이 없습니다."},
     TOKEN_EMAIL_EMPTY: { "isSuccess": false, "code": 5102, "message":"이메일이 없습니다."},

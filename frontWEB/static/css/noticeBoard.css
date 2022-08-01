@@ -102,9 +102,10 @@ html{
 #iconCol-main{
     height: 100%;
     width: 10%;
+    line-height: 7vh;
 }
 
-#iconCol{
+.noticeCol.iconCol{
     background-image: url('../image/icons/icon_notice.png');
     background-repeat: no-repeat;
     background-position: center;
@@ -116,11 +117,13 @@ html{
 
 #titleCol-main{
     font-weight: 500;
-    height: 10%;
+    height: 100%;
     width: 60%;
+    line-height: 7vh;
     
 }
-#titleCol{
+.noticeCol.titleCol{
+    font-family: 'Nanum Gothic', sans-serif;
     font-weight: 300;
     height: 100%;
     margin-left: 10%;
@@ -130,8 +133,17 @@ html{
     
 }
 
-#writerCol{
-    font-weight: 500;
+#writerCol-main{
+    font-weight: 300;
+    height: 100%;
+    width: 10%;
+    line-height: 7vh;
+    text-align: left;
+}
+
+.noticeCol.writerCol{
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 300;
     height: 100%;
     width: 10%;
     line-height: 7vh;
@@ -141,23 +153,31 @@ html{
 #timeCol-main{
     font-weight: 500;
     height: 100%;
-    width: 10%;
+    width: 15%;
     line-height: 7vh;
     text-align: left;
 }
-#timeCol{
+.noticeCol.timeCol{
+    font-family: 'Nanum Gothic', sans-serif;
     height: 100%;
-    width: 10%;
+    width: 15%;
     line-height: 7vh;
     text-align: left;
-
-    font-size: 12px;
 }
 
-#watchCol{
-    font-weight: 500;
+#watchCol-main{
+    font-weight: 300;
     height: 100%;
-    width: 10%;
+    width: 5%;
+    line-height: 7vh;
+    text-align: left;
+}
+
+.noticeCol.watchCol{
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 300;
+    height: 100%;
+    width: 5%;
     line-height: 7vh;
     text-align: left;
 }
