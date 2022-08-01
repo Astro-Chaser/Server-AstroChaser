@@ -8,6 +8,7 @@ let pictureBoardPageCnt = 0;
 pictureWriteBtn.onclick = pictureWriteBtnClicked;
 
 window.onload = async function(){
+    showUserInfo();
     showPictureNoticeBoard(0);
 }
 
