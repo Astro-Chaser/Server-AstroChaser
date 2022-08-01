@@ -8,7 +8,6 @@ let pictureBoardPageCnt = 0;
 pictureWriteBtn.onclick = pictureWriteBtnClicked;
 
 window.onload = async function(){
-    showUserInfo();
     showPictureNoticeBoard(0);
 }
 
@@ -17,7 +16,7 @@ async function pictureWriteBtnClicked(event){
     console.log(pictureBoardTitle.result)
     if(localStorage.getItem("member")=="운영진")
     {
-        location.href = `http://${hostAddress}/chasing-history/editor`;
+        location.href = `/chasing-history/editor`;
     }
     else
     {

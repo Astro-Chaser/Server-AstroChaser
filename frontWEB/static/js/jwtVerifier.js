@@ -17,7 +17,6 @@ async function getUserInfo(){
     };
   
       jwtCheckData = await getAPI(hostAddress,"app/users/auto-login", requestOptions)
-      console.log(jwtCheckData.result.member)
       localStorage.setItem("createdAt", jwtCheckData.result.createdAt);
       localStorage.setItem("email", jwtCheckData.result.email);
       localStorage.setItem("exp", jwtCheckData.result.exp);
@@ -69,7 +68,6 @@ async function getUserInfo(){
       }
   }
 
-    console.log(localStorage.getItem("member"))
     if(localStorage.getItem("member")=='운영진')
     {
         $('.buttons').empty();
