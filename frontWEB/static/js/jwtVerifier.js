@@ -1,42 +1,33 @@
-const userJWT = localStorage.getItem("accessJWT");
-const decodedJwt = jwt_decode(userJWT);
 
-showUserInfo();
-async function showUserInfo(){
-  if(((new Date(decodedJwt.exp * 1000))-Date.now())/6000 > 30){
-    if(localStorage.getItem("member")=='운영진')
-      {
-          $('.buttons').empty();
-          html = `
-              <div id="userInfo-nav-top" style="font-size: 18px;">
-                  🌟 ${localStorage.getItem('generation')}기 ${localStorage.getItem("name")}
-              </div>
-          `;
-          $('.buttons').append(html);
-      }
-      else
-          {
-            $('.buttons').empty();
-            html = `
-                <div id="userInfo-nav-top" style="font-size: 18px;">
-                   ${localStorage.getItem("generation")}기 ${localStorage.getItem("name")}
-                </div>
-            `
-            
-            ;
-            $('.buttons').append(html);
-          }
-  }
-  else getUserInfo();
-}
-
-
-
+getUserInfo();
 //사용자 로그인 정보 가져오기
 async function getUserInfo(){
   let jwtCheckData;
+  const userJWT = localStorage.getItem("accessJWT");
+  const decodedJwt = jwt_decode(userJWT);
+  if(((new Date(decodedJwt.exp * 1000))-Date.now())/6000 > 30 )
+  {
+    var myHeaders = new Headers();
+    myHeaders.append("x-access-token", userJWT);
   
-
+    var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
+  
+      jwtCheckData = await getAPI(hostAddress,"app/users/auto-login", requestOptions)
+      console.log(jwtCheckData.result.member)
+      localStorage.setItem("createdAt", jwtCheckData.result.createdAt);
+      localStorage.setItem("email", jwtCheckData.result.email);
+      localStorage.setItem("exp", jwtCheckData.result.exp);
+      localStorage.setItem("generation", jwtCheckData.result.generation);
+      localStorage.setItem("id", jwtCheckData.result.id);
+      localStorage.setItem("member", jwtCheckData.result.member);
+      localStorage.setItem("name", jwtCheckData.result.name);
+  }
+  else if(((new Date(decodedJwt.exp * 1000))-Date.now())/6000 <= 30)
+  {
     //ACCESS TOKEN의 기한이 지날 경우!!
     const local_email = localStorage.getItem("email");
     const local_refreshToken = localStorage.getItem("refreshJWT");
@@ -73,9 +64,37 @@ async function getUserInfo(){
         localStorage.setItem("exp", jwtCheckData.result.exp);
         localStorage.setItem("generation", jwtCheckData.result.generation);
         localStorage.setItem("id", jwtCheckData.result.id);
-        localStorage.setItem("membe", jwtCheckData.result.member);
+        localStorage.setItem("member", jwtCheckData.result.member);
         localStorage.setItem("name", jwtCheckData.result.name);
+      }
+  }
+
+    console.log(localStorage.getItem("member"))
+    if(localStorage.getItem("member")=='운영진')
+    {
+        $('.buttons').empty();
+        html = `
+            <div id="userInfo-nav-top" style="font-size: 18px;">
+                🌟 ${localStorage.getItem('generation')}기 ${localStorage.getItem("name")}
+            </div>
+        `
+        
+        ;
+        $('.buttons').append(html);
     }
+    else
+        {
+          $('.buttons').empty();
+          html = `
+              <div id="userInfo-nav-top" style="font-size: 18px;">
+                 ${localStorage.getItem("generation")}기 ${localStorage.getItem("name")}
+              </div>
+          `
+          
+          ;
+          $('.buttons').append(html);
+        }
+
 }
 
   //post API AS JSON
