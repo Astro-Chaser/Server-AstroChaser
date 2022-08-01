@@ -13,7 +13,6 @@ async function showUserInfo(){
               </div>
           `;
           $('.buttons').append(html);
-          console.log("appended")
       }
       else
           {
