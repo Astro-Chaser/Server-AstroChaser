@@ -2,10 +2,12 @@
 async function postNoticeBoard(connect, postNoticeBoardParams){
     let result = new Object();
 
-    const insertNoticeBoardTitleQuery = `
-    INSERT INTO NormalNoticeBoard(writerId, title, content)
-    VALUES ((SELECT id FROM User WHERE email = '${postNoticeBoardParams.writerEmail}'), '${postNoticeBoardParams.title}', '${postNoticeBoardParams.content}');
-`   
+    const insertNoticeBoardTitleQuery = 
+    `
+        INSERT INTO NormalNoticeBoard(writerId, title, content)
+        VALUES (${postNoticeBoardParams.writerid}, '${postNoticeBoardParams.title}', '${postNoticeBoardParams.content}');
+    `   
+
     const insertQueryRes = await connect.query(insertNoticeBoardTitleQuery);
     if(insertQueryRes[0].affectedRows == 1)
     {

@@ -6,13 +6,16 @@ const errResponse = require("../../../config/response");
 const baseResponse = require("../../../config/baseResponseStatus");
 
 exports.postNoticeBoard = async function(req, res){
-    const {title, content, writer} = req.body;
+    const token = req.verifiedToken;
+    if(!token)
+        return res.send(response.response(baseResponse.TOKEN_EMPTY))
 
-    if(!writer) return res.send(errResponse(baseResponse.NOTICEBOARD_WRITER_EMPTY));
+    const {title, content} = req.body;
+
     if(!title) return res.send(errResponse(baseResponse.NOTICEBOARD_TITLE_EMPTY));
     if(!content) return res.send(errResponse(baseResponse.NOTICEBOARD_CONTENT_EMPTY));
 
-    const postNoticeBoardRes = await noticeBoardService.postNoticeBoard(req);
+    const postNoticeBoardRes = await noticeBoardService.postNoticeBoard(req, token);
     
     return res.send(postNoticeBoardRes);
 }
