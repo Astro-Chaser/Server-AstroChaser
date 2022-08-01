@@ -35,7 +35,8 @@ async function getUserInfo(){
       refreshToken: local_refreshToken
     }
 
-    const refreshResult = getAPI(hostAddress, 'app/users/auto-login/failed', refreshTokenData)
+    const refreshResult = await postAPI(hostAddress, 'app/users/auto-login/failed', body = refreshTokenData)
+    console.log(refreshResult)
     if(refreshResult.result.checkResult == 'failed')
     {
       alert("기한이 만료되어 재로그인이 필요합니다.")
@@ -71,10 +72,16 @@ async function getUserInfo(){
 }
 
   //get API AS JSON
-async function getAPI(host, path, options) {
+async function postAPI(host, path, body) {
     const url = `http://${host}/${path}`;
     console.log(url);
-    console.log(options)
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    };
     const res = await fetch(url, options);
     const data = res.json();
     // console.log(res)
