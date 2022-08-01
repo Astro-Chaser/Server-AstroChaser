@@ -37,6 +37,7 @@ function previewImages() {
 }
 
 async function pictureCommit(event){
+    document.body.style.cursor='wait';
     formdata.append("writer",  localStorage.getItem("email"));
     formdata.append("content", content.value);
     var requestOptions = {
