@@ -27,6 +27,23 @@ async function getUserInfo(){
   else if(((new Date(decodedJwt.exp * 1000))-Date.now())/6000 <= 30)
   {
     //ACCESS TOKEN의 기한이 지날 경우!!
+    const local_email = localStorage.getItem("email");
+    const local_refreshToken = localStorage.getItem("refreshJWT");
+
+    const refreshTokenData = {
+      email: local_email,
+      refreshToken: local_refreshToken
+    }
+
+    const refreshResult = getAPI(hostAddress, 'app/users/auto-login/failed', refreshTokenData)
+    if(refreshResult.result.checkResult == 'failed')
+    {
+      alert("기한이 만료되어 재로그인이 필요합니다.")
+      location.href="/user/signin"
+    }
+    else{
+      
+    }
   }
 
 
