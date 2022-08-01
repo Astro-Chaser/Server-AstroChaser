@@ -17,5 +17,5 @@ module.exports = function(app){
     // 4. 유저 JWT 검증 실패시 Refresh Token검증.
     // 성공시 -> Access Token & Refresh Token 재발급
     // 실패시 -> 재 로그인 요청하여 Access Token & Refresh Token 재발급
-    app.get('/app/users/auto-login/failed', user.updateToken);
+    app.post('/app/users/auto-login/failed', user.updateToken);
 };

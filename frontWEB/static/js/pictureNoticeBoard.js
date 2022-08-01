@@ -46,8 +46,6 @@ pictureNextBtn.onclick = function(){
 
 async function showPictureNoticeBoard(pictureBoardPageCnt){
     pictureBoardTitle = await getAPI(hostAddress, 'app/picture-board/title');
-    console.log(pictureBoardTitle.result);
-    console.log(pictureBoardTitle.result.length);
 
     for(var i=0; i<9; i++)
     {
