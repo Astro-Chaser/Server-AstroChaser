@@ -36,9 +36,6 @@ const imageUploader = multer({
       const uploadDirectory = randomStr // 업로드할 디렉토리를 설정하기 위해 넣어둔 코드로, 없어도 무관합니다.
       const extension = path.extname(file.originalname)
 
-      // if (!allowedExtensions.includes(extension)) { // extension 확인을 위한 코드로, 없어도 무관합니다.
-      //   return callback(new Error('wrong extension'))
-      // }
       callback(null, `${uploadDirectory}/${Date.now()}_${file.originalname}`)
     },
     contentType: multerS3.AUTO_CONTENT_TYPE,
