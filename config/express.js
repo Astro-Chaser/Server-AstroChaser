@@ -21,6 +21,7 @@ module.exports = function () {
     require('../src/app/guestbook/guestbookRoute')(app);
     require('../src/app/externalAPI/externalAPIRoute')(app);
     require('../src/app/chasingHistory/chasingHistoryRoute')(app);
+    require('../src/app/noticeBoard/noticeBoardRoute')(app);
 
     return app;
 };
