@@ -2,7 +2,7 @@
 async function postNoticeBoard(connect, postNoticeBoardParams){
     let result = new Object();
     let insertQueryRes;
-    if(postNoticeBoardParams.type == 'CHASING')
+    if(postNoticeBoardParams.type == 'CHASING' || postNoticeBoardParams.type == 'chasing')
     {
         const insertNoticeBoardTitleQuery = 
         `
@@ -79,36 +79,73 @@ async function getNoticeTitle(connection, type){
 }
 
 //3. 일반 공지 게시글 내용물 가져오기
-async function getNoticeContent(connection, pageNum){
-    const getNoticeMediaCountQuery = `
-    SELECT COUNT(*) AS IS_EXIST
-    FROM NormalNoticeBoardMedia AS NNBM
-    WHERE NNBM.NormalNoticeBoardId = ${pageNum};
-    ` 
-    const getNoticeMediaCountRow = await connection.query(getNoticeMediaCountQuery);
-    if(getNoticeMediaCountRow[0][0].IS_EXIST == 0)
+async function getNoticeContent(connection, pageNum, type){
+    if(type == 'normal')
     {
-        const getNoticeQuery = `
-            SELECT NNB.id, NNB.createdat, NNB.updatedat, User.name, title, content, viewCount
-            FROM NormalNoticeBoard AS NNB INNER JOIN User ON User.id = NNB.writerId
-            WHERE User.state='A' AND NNB.state='A' AND NNB.id= ${pageNum}
+        const getNoticeMediaCountQuery = `
+        SELECT COUNT(*) AS IS_EXIST
+        FROM NormalNoticeBoardMedia AS NNBM, NormalNoticeBoard AS NNB
+        WHERE NNBM.NormalNoticeBoardId = NNB.id AND NNBM.NormalNoticeBoardId = ${pageNum} AND NNB.type='NORMAL';
+        ` 
+        const getNoticeMediaCountRow = await connection.query(getNoticeMediaCountQuery);
+        if(getNoticeMediaCountRow[0][0].IS_EXIST == 0)
+        {
+            const getNoticeQuery = `
+                SELECT NNB.id, NNB.createdat, NNB.updatedat, User.name, title, content, viewCount
+                FROM NormalNoticeBoard AS NNB INNER JOIN User ON User.id = NNB.writerId
+                WHERE User.state='A' AND NNB.state='A' AND NNB.id= ${pageNum} AND NNB.type='NORMAL'
+                ORDER BY updatedAt DESC;
+            `
+            const [getNoticeContentRes] = await connection.query(getNoticeQuery);
+            return getNoticeContentRes;
+        }
+        
+        else if(getNoticeMediaCountRow[0][0].IS_EXIST != 0)
+        {
+            const getNoticeMediaQuery = `
+            SELECT NNB.id, NNB.createdat, NNB.updatedat, User.name, NNB.title, NNB.content, NNB.viewCount, NNBM.mediaUrl
+            FROM NormalNoticeBoard AS NNB INNER JOIN (User, NormalNoticeBoardMedia AS NNBM ) ON User.id = NNB.writerId AND  NNBM.NormalNoticeBoardId = NNB.id
+            WHERE User.state='A' AND NNB.state='A' AND NNBM.NormalNoticeBoardId = ${pageNum} AND NNB.type='NORMAL'
             ORDER BY updatedAt DESC;
-        `
-        const [getNoticeContentRes] = await connection.query(getNoticeQuery);
-        return getNoticeContentRes;
+            `
+            const [getNoticeMediaRow] = await connection.query(getNoticeMediaQuery);
+            return getNoticeMediaRow;
+        }
+    }
+    else if(type == 'chasing')
+    {
+        const getNoticeMediaCountQuery = `
+        SELECT COUNT(*) AS IS_EXIST
+        FROM NormalNoticeBoardMedia AS NNBM, NormalNoticeBoard AS NNB
+        WHERE NNBM.NormalNoticeBoardId = NNB.id AND NNBM.NormalNoticeBoardId = ${pageNum} AND NNB.type='CHASING';
+        ` 
+        const getNoticeMediaCountRow = await connection.query(getNoticeMediaCountQuery);
+        if(getNoticeMediaCountRow[0][0].IS_EXIST == 0)
+        {
+            const getNoticeQuery = `
+                SELECT NNB.id, NNB.createdat, NNB.updatedat, User.name, title, content, viewCount
+                FROM NormalNoticeBoard AS NNB INNER JOIN User ON User.id = NNB.writerId
+                WHERE User.state='A' AND NNB.state='A' AND NNB.id= ${pageNum} AND NNB.type='CHASING'
+                ORDER BY updatedAt DESC;
+            `
+            const [getNoticeContentRes] = await connection.query(getNoticeQuery);
+            return getNoticeContentRes;
+        }
+        
+        else if(getNoticeMediaCountRow[0][0].IS_EXIST != 0)
+        {
+            const getNoticeMediaQuery = `
+            SELECT NNB.id, NNB.createdat, NNB.updatedat, User.name, NNB.title, NNB.content, NNB.viewCount, NNBM.mediaUrl
+            FROM NormalNoticeBoard AS NNB INNER JOIN (User, NormalNoticeBoardMedia AS NNBM ) ON User.id = NNB.writerId AND  NNBM.NormalNoticeBoardId = NNB.id
+            WHERE User.state='A' AND NNB.state='A' AND NNBM.NormalNoticeBoardId = ${pageNum} AND NNB.type='CHASING'
+            ORDER BY updatedAt DESC;
+            `
+            const [getNoticeMediaRow] = await connection.query(getNoticeMediaQuery);
+            return getNoticeMediaRow;
+        }
     }
     
-    else if(getNoticeMediaCountRow[0][0].IS_EXIST != 0)
-    {
-        const getNoticeMediaQuery = `
-        SELECT NNB.id, NNB.createdat, NNB.updatedat, User.name, NNB.title, NNB.content, NNB.viewCount, NNBM.mediaUrl
-        FROM NormalNoticeBoard AS NNB INNER JOIN (User, NormalNoticeBoardMedia AS NNBM ) ON User.id = NNB.writerId AND NNBM.id = NNB.id
-        WHERE User.state='A' AND NNB.state='A' AND NNBM.NormalNoticeBoardId = ${pageNum}
-        ORDER BY updatedAt DESC;
-        `
-        const [getNoticeMediaRow] = await connection.query(getNoticeMediaQuery);
-        return getNoticeMediaRow;
-    }
+    
 }
 
 

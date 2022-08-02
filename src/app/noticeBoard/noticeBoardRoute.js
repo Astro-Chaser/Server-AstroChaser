@@ -10,6 +10,6 @@ module.exports = function(app){
     app.get('/app/notice/title/:type', noticeController.getNoticeTitle);
 
     //3. 일반 게시글 내용 가져오기 API
-    app.get('/app/notice/:num', noticeController.getNoticeContent);
+    app.get('/app/notice/:type/:num', noticeController.getNoticeContent);
 
 }

@@ -29,10 +29,12 @@ exports.getNoticeTitle = async function(req){
     }
 }
 
-exports.getNoticeContent = async function(noticeNum){
+exports.getNoticeContent = async function(noticeNum, type){
     try{
         const connect = await pool.getConnection(async (conn) => conn);
-        const getNoticeContentRes = await noticeBoardDao.getNoticeContent(connect, noticeNum)
+        const getNoticeContentRes = await noticeBoardDao.getNoticeContent(connect, noticeNum, type)
+
+        if(getNoticeContentRes.length==0) return errResponse(baseResponseStatus.NOTICEBOARD_TYPE_ERROR);
         
         return response(baseResponseStatus.SUCCESS, getNoticeContentRes);
     }
