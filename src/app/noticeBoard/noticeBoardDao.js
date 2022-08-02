@@ -39,9 +39,9 @@ async function postNoticeBoard(connect, postNoticeBoardParams){
 //2. 일반 공지 게시글 타이틀 가져오기
 async function getNoticeTitle(connection){
     const getNoticeTitleQuery = `
-        SELECT id, createdat, updatedat, writerid, title, content, viewCount
-        FROM NormalNoticeBoard
-        WHERE state='A'
+        SELECT NNB.id, NNB.createdat, NNB.updatedat, User.name, title, content, viewCount
+        FROM NormalNoticeBoard AS NNB INNER JOIN User ON User.id = NNB.writerId
+        WHERE User.state='A' AND NNB.state='A'
         ORDER BY updatedAt DESC;
     `
     const [getNoticeTitleRow] = await connection.query(getNoticeTitleQuery);
