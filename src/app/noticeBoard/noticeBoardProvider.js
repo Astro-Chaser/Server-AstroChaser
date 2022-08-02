@@ -12,16 +12,33 @@ const res = require("express/lib/response");
 const baseResponseStatus = require("../../../config/baseResponseStatus");
 const { post } = require("request");
 
-exports.getNoticeTitle = async function(){
+/**
+ * 일반 게시글 타이틀 가져오기
+ * @returns 
+ */
+exports.getNoticeTitle = async function(req){
     try{
-       
+        const type = req.params.type;
         const connect = await pool.getConnection(async (conn) => conn);
-        const getNoticeTitleRes = await noticeBoardDao.getNoticeTitle(connect);
+        const getNoticeTitleRes = await noticeBoardDao.getNoticeTitle(connect, type);
 
         return response(baseResponseStatus.SUCCESS, getNoticeTitleRes)
     }
     catch{
         return errResponse(baseResponseStatus.DB_ERROR);
     }
+}
 
+exports.getNoticeContent = async function(noticeNum, type){
+    try{
+        const connect = await pool.getConnection(async (conn) => conn);
+        const getNoticeContentRes = await noticeBoardDao.getNoticeContent(connect, noticeNum, type)
+
+        if(getNoticeContentRes.length==0) return errResponse(baseResponseStatus.NOTICEBOARD_TYPE_ERROR);
+        
+        return response(baseResponseStatus.SUCCESS, getNoticeContentRes);
+    }
+    catch{
+        return errResponse(baseResponseStatus.DB_ERROR);
+    }
 }

@@ -25,6 +25,9 @@ exports.postNoticeBoard = async function(req, token){
         postNoticeBoardParams.folderName = req.body.folder;
         postNoticeBoardParams.writerid = token.id;
         postNoticeBoardParams.pictureUrls = s3Urls;
+        postNoticeBoardParams.type = req.body.type;
+
+        console.log(postNoticeBoardParams)
 
         const connect = await pool.getConnection(async (conn) => conn);
         const insertResult = await noticeBoardDao.postNoticeBoard(connect, postNoticeBoardParams);
