@@ -7,7 +7,7 @@ module.exports = function(app){
     app.post('/app/notice/upload', jwtMiddleware, imageUploader.any('images'), noticeController.postNoticeBoard);
 
     //2. 일반 게시글 타이틀 가져오기 API
-    app.get('/app/notice/title', noticeController.getNoticeTitle);
+    app.get('/app/notice/title/:type', noticeController.getNoticeTitle);
 
     //3. 일반 게시글 내용 가져오기 API
     app.get('/app/notice/:num', noticeController.getNoticeContent);

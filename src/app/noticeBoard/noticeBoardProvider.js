@@ -16,11 +16,11 @@ const { post } = require("request");
  * 일반 게시글 타이틀 가져오기
  * @returns 
  */
-exports.getNoticeTitle = async function(){
+exports.getNoticeTitle = async function(req){
     try{
-       
+        const type = req.params.type;
         const connect = await pool.getConnection(async (conn) => conn);
-        const getNoticeTitleRes = await noticeBoardDao.getNoticeTitle(connect);
+        const getNoticeTitleRes = await noticeBoardDao.getNoticeTitle(connect, type);
 
         return response(baseResponseStatus.SUCCESS, getNoticeTitleRes)
     }

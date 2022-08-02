@@ -31,7 +31,7 @@ exports.postNoticeBoard = async function(req, res){
  * @returns 
  */
 exports.getNoticeTitle = async function(req, res){
-    const getNoticeTitleRes = await noticeBoardProvider.getNoticeTitle();
+    const getNoticeTitleRes = await noticeBoardProvider.getNoticeTitle(req);
 
     return res.send(getNoticeTitleRes)
 }
