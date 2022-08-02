@@ -1,13 +1,28 @@
 //1. 일반 공지 게시글 작성하기
 async function postNoticeBoard(connect, postNoticeBoardParams){
     let result = new Object();
-    const insertNoticeBoardTitleQuery = 
-    `
-        INSERT INTO NormalNoticeBoard(writerId, title, content)
-        VALUES (${postNoticeBoardParams.writerid}, '${postNoticeBoardParams.title}', '${postNoticeBoardParams.content}');
-    `   
+    let insertQueryRes;
+    if(postNoticeBoardParams.type == 'CHASING')
+    {
+        const insertNoticeBoardTitleQuery = 
+        `
+            INSERT INTO NormalNoticeBoard(writerId, title, content, type)
+            VALUES (${postNoticeBoardParams.writerid}, '${postNoticeBoardParams.title}', '${postNoticeBoardParams.content}', 'CHASING');
+        `   
+        insertQueryRes = await connect.query(insertNoticeBoardTitleQuery);
+    }
+    else
+    {
+        const insertNoticeBoardTitleQuery = 
+        `
+            INSERT INTO NormalNoticeBoard(writerId, title, content)
+            VALUES (${postNoticeBoardParams.writerid}, '${postNoticeBoardParams.title}', '${postNoticeBoardParams.content}');
+        `   
+        insertQueryRes = await connect.query(insertNoticeBoardTitleQuery);
+
+    }
     
-    const insertQueryRes = await connect.query(insertNoticeBoardTitleQuery);
+   
     
     if(insertQueryRes[0].affectedRows == 1)
     {
