@@ -8,7 +8,7 @@ async function showNormalNoticeBoard(){
     html = ''
     for(var i in getTitleRes.result){
         html += `<li> ${getTitleRes.result[i].title} </li>`
-        if(i>10) break;
+        if(i>5) break;
     }
     $('.notice-list').append(html)
 }
