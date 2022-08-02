@@ -12,6 +12,10 @@ const res = require("express/lib/response");
 const baseResponseStatus = require("../../../config/baseResponseStatus");
 const { post } = require("request");
 
+/**
+ * 일반 게시글 타이틀 가져오기
+ * @returns 
+ */
 exports.getNoticeTitle = async function(){
     try{
        
@@ -23,5 +27,16 @@ exports.getNoticeTitle = async function(){
     catch{
         return errResponse(baseResponseStatus.DB_ERROR);
     }
+}
 
+exports.getNoticeContent = async function(noticeNum){
+    try{
+        const connect = await pool.getConnection(async (conn) => conn);
+        const getNoticeContentRes = await noticeBoardDao.getNoticeContent(connect, noticeNum)
+        
+        return response(baseResponseStatus.SUCCESS, getNoticeContentRes);
+    }
+    catch{
+        return errResponse(baseResponseStatus.DB_ERROR);
+    }
 }

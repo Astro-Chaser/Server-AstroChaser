@@ -24,8 +24,24 @@ exports.postNoticeBoard = async function(req, res){
     return res.send(postNoticeBoardRes);
 }
 
+/**
+ * 일반공지 게시글 타이블 가져오기
+ * @param {*} req 
+ * @param {*} res 
+ * @returns 
+ */
 exports.getNoticeTitle = async function(req, res){
     const getNoticeTitleRes = await noticeBoardProvider.getNoticeTitle();
 
     return res.send(getNoticeTitleRes)
+}
+
+exports.getNoticeContent = async function(req, res){
+    const noticeNum = req.params.num;
+
+    if(!noticeNum) return res.send(baseResponse.NOTICEBOARD_PAGE_EMPTY);
+
+    const getNoticeContentRes = await noticeBoardProvider.getNoticeContent(noticeNum);
+
+    return res.send(getNoticeContentRes);
 }
