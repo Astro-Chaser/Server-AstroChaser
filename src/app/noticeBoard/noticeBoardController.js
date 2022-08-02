@@ -5,6 +5,10 @@ const response = require("../../../config/response");
 const errResponse = require("../../../config/response");
 const baseResponse = require("../../../config/baseResponseStatus");
 
+
+/**
+ * 일반공지 게시글 작성 Controller
+ */
 exports.postNoticeBoard = async function(req, res){
     const token = req.verifiedToken;
     if(!token)
@@ -18,4 +22,10 @@ exports.postNoticeBoard = async function(req, res){
     const postNoticeBoardRes = await noticeBoardService.postNoticeBoard(req, token);
     
     return res.send(postNoticeBoardRes);
+}
+
+exports.getNoticeTitle = async function(req, res){
+    const getNoticeTitleRes = await noticeBoardProvider.getNoticeTitle();
+
+    return res.send(getNoticeTitleRes)
 }
