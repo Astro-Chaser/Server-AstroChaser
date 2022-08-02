@@ -77,13 +77,34 @@ html{
     
 }
 
+.column.is-full-main{
+    margin-left: 5%; 
+    margin-right: 5%;
+    width: 90%; 
+    background-color: rgba(230, 230, 230, 1);
+    margin-bottom: 1px;
+    height: 10vh;
+    border-bottom: line rgba(255, 255, 255, 0.15);
+}
+
+
 .column.is-full{
     margin-left: 5%; 
     width: 90%; 
     background-color: rgba(230, 230, 230, 1);
     margin-bottom: 1px;
     height: 10vh;
-    /* border-bottom: line rgba(255, 255, 255, 0.15); */
+    border-bottom: line rgba(255, 255, 255, 0.15);
+    transition: 0.2s;
+    cursor: pointer;
+}
+.column.is-full:hover{
+    background-color: rgba(230, 230, 230, 0.5);
+    color: white;
+  
+}
+.removeColumns{
+    margin-bottom: 5px;
 }
 
 #top-notice{
