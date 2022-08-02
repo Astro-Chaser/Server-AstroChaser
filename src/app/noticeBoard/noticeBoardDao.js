@@ -44,7 +44,6 @@ async function getNoticeTitle(connection){
         WHERE state='A'
         ORDER BY updatedAt DESC;
     `
-    console.log("hi")
     const [getNoticeTitleRow] = await connection.query(getNoticeTitleQuery);
 
     return getNoticeTitleRow;
