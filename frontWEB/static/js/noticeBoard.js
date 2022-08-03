@@ -13,9 +13,10 @@ async function showNormalNoticeBoardTitles(page){
 
     for(var i = 0; i<10; i++){
         if(i==9 || Number((page*10)+i) == titleArr.length-1 ) {
+            console.log(titleArr[Number((page*10)+i)])
             html += `
                 <div class="removeColumns">
-                    <div class="columns">
+                    <div class="columns" onclick="location.href='/notice/${titleArr[Number((page*10)+i)].id}'">
                         <div class="column is-full" id="final-column">
                             <div class="noticeCol iconCol"></div>
                             <div class="noticeCol titleCol">${titleArr[Number((page*10)+i)].title}</div>
@@ -31,7 +32,7 @@ async function showNormalNoticeBoardTitles(page){
         }
         html += `
         <div class="removeColumns">
-            <div class="columns">
+            <div class="columns" onclick="location.href='/notice/${titleArr[Number((page*10)+i)].id}'">
                 <div class="column is-full">
                     <div class="noticeCol iconCol"></div>
                     <div class="noticeCol titleCol">${titleArr[Number(page*10 + i)].title}</div>
@@ -68,6 +69,7 @@ async function getNormalNoticeBoardTitles(){
     let titleArr = new Array();
     for(var i in getTitleRes.result){
         let titleRes = new Object();
+        titleRes.id = getTitleRes.result[i].id;
         titleRes.title = getTitleRes.result[i].title;
         titleRes.name = getTitleRes.result[i].name;
         titleRes.createdat = getTitleRes.result[i].createdat;

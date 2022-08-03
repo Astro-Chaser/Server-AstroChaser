@@ -8,7 +8,6 @@ const pictureNextBtn = document.getElementById("picture-next-btn");
 let pictureBoardTitle;
 
 window.onload = function(){
-    console.log(typeof(pageNum))
     parseInt(pageNum)
     showContent(pageNum); 
 }
