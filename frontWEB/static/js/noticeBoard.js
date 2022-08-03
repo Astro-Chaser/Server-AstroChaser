@@ -1,11 +1,23 @@
 let noticeBoardPage = 0;
 const noticePrevBtn = document.getElementById("notice-prev-btn");
 const noticeNextBtn = document.getElementById("notice-next-btn");
+const noticeWriteBtn = document.getElementById("notice-write-btn");
 let titleArr;
 
 window.onload = async function(){
     titleArr = await getNormalNoticeBoardTitles();
     showNormalNoticeBoardTitles(noticeBoardPage);
+}
+
+noticeWriteBtn.onclick = function noticeWriteBtnClicked(event){
+    if(localStorage.getItem("member")=="운영진")
+    {
+        location.href = `/notice/editor`;
+    }
+    else
+    {
+        alert("운영진만 글을 작성할 수 있는 게시판입니다.")
+    }
 }
 
 async function showNormalNoticeBoardTitles(page){

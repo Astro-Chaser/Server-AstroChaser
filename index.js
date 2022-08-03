@@ -69,6 +69,9 @@ app.get('/chasing-history/:pageNum', function(req, res){
 app.get('/notice', function(req, res){
     res.sendFile(__dirname + "/frontWEB/noticeBoard.html");
 })
+app.get('/notice/editor', function(req, res){
+    res.sendFile(__dirname + "/frontWEB/noticeboardEditor.html");
+})
 app.get('/notice/:pageNum', function(req, res){
     res.sendFile(__dirname + "/frontWEB/noticeBoardContent.html");
 })
