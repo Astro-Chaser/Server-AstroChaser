@@ -12,8 +12,6 @@ window.onload = async function(){
 }
 
 async function pictureWriteBtnClicked(event){
-    const pictureBoardTitle = await getAPI(hostAddress, 'app/picture-board/title');
-    console.log(pictureBoardTitle.result)
     if(localStorage.getItem("member")=="운영진")
     {
         location.href = `/chasing-history/editor`;
