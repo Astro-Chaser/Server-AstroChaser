@@ -64,7 +64,7 @@ noticeNextBtn.onclick = function(){
 }
 
 async function getNormalNoticeBoardTitles(){
-    const getTitleRes = await getAPI(hostAddress, 'app/notice/title');
+    const getTitleRes = await getAPI(hostAddress, 'app/notice/title/normal');
     let titleArr = new Array();
     for(var i in getTitleRes.result){
         let titleRes = new Object();
