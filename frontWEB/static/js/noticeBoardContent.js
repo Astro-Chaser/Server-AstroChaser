@@ -21,18 +21,19 @@ async function showContent(pageNum){
 
     for (var i in contentRes.result)
     {
+      if(contentRes.result[i].mediaUrl == null) break;
         html += `
         <div class="image-area">
-            <img src="${contentRes.result[i].mediaUrl}" >
+            <img src="${contentRes.result[i].mediaUrl}" width="500" >
         </div>
         `
     }
-    html +=
-    `
+      html +=
+      `
         <div class="picture-content">
             ${contentRes.result[0].content}
         </div>
-    `
+      `
     $(".mainContents").append(html);
 }
 
@@ -41,14 +42,14 @@ picturePrevBtn.onclick = function(){
   if((pageNum-1)>0)
   {
     pageNum -= 1;
-    location.href=`/chasing-history/${pageNum}`
+    location.href=`/notice/${pageNum}`
   }
 }
 pictureNextBtn.onclick = function(){
   if(pageNum+1<= pictureBoardTitle.result.length)
   {
     pageNum += 1;
-    location.href=`/chasing-history/${pageNum}`
+    location.href=`/notice/${pageNum}`
   }
 }
 

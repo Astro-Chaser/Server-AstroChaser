@@ -159,7 +159,7 @@ html{
     width: 50%;
     line-height: 7vh;
     text-align: left;
-    
+    text-overflow: ellipsis;
 }
 
 #writerCol-main{

@@ -69,6 +69,7 @@ html{
 
 .picture-content{
     margin-left: 10vw;
+    margin-right: 10vw;
     white-space: pre-line;
     color: white;
 }
