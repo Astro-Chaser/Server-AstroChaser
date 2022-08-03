@@ -65,7 +65,7 @@ async function getNoticeTitle(connection, type){
     
         return getNoticeTitleRow;
     }
-    else if(type = 'CHASING'){
+    else if(type == 'CHASING'|| type=='chasing'){
         const getNoticeTitleQuery = `
             SELECT NNB.id, NNB.createdat, NNB.updatedat, User.name, title, content, viewCount
             FROM NormalNoticeBoard AS NNB INNER JOIN User ON User.id = NNB.writerId
@@ -97,6 +97,14 @@ async function getNoticeContent(connection, pageNum, type){
                 ORDER BY updatedAt DESC;
             `
             const [getNoticeContentRes] = await connection.query(getNoticeQuery);
+            
+            const viewUpdateQuery = `
+            UPDATE NormalNoticeBoard
+            SET viewCount = viewCount+1
+            WHERE NormalNoticeBoard.id=${pageNum};
+            `
+            await connection.query(viewUpdateQuery);
+            
             return getNoticeContentRes;
         }
         
@@ -108,11 +116,19 @@ async function getNoticeContent(connection, pageNum, type){
             WHERE User.state='A' AND NNB.state='A' AND NNBM.NormalNoticeBoardId = ${pageNum} AND NNB.type='NORMAL'
             ORDER BY updatedAt DESC;
             `
+
+            const viewUpdateQuery = `
+            UPDATE NormalNoticeBoard
+            SET viewCount = viewCount+1
+            WHERE NormalNoticeBoard.id=${pageNum};
+            `
+            await connection.query(viewUpdateQuery);
+            
             const [getNoticeMediaRow] = await connection.query(getNoticeMediaQuery);
             return getNoticeMediaRow;
         }
     }
-    else if(type == 'chasing')
+    else if(type == 'chasing' || type == 'CHASING')
     {
         const getNoticeMediaCountQuery = `
         SELECT COUNT(*) AS IS_EXIST
@@ -129,6 +145,14 @@ async function getNoticeContent(connection, pageNum, type){
                 ORDER BY updatedAt DESC;
             `
             const [getNoticeContentRes] = await connection.query(getNoticeQuery);
+
+            const viewUpdateQuery = `
+            UPDATE NormalNoticeBoard
+            SET viewCount = viewCount+1
+            WHERE NormalNoticeBoard.id=${pageNum};
+            `
+            await connection.query(viewUpdateQuery);
+
             return getNoticeContentRes;
         }
         
@@ -141,6 +165,13 @@ async function getNoticeContent(connection, pageNum, type){
             ORDER BY updatedAt DESC;
             `
             const [getNoticeMediaRow] = await connection.query(getNoticeMediaQuery);
+            const viewUpdateQuery = `
+            UPDATE NormalNoticeBoard
+            SET viewCount = viewCount+1
+            WHERE NormalNoticeBoard.id=${pageNum};
+            `
+            await connection.query(viewUpdateQuery);
+            
             return getNoticeMediaRow;
         }
     }
