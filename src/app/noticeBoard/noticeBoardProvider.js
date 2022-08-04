@@ -11,6 +11,7 @@ const {connect} = require("http2");
 const res = require("express/lib/response");
 const baseResponseStatus = require("../../../config/baseResponseStatus");
 const { post } = require("request");
+const Connection = require("mysql2/typings/mysql/lib/Connection");
 
 /**
  * 일반 게시글 타이틀 가져오기
@@ -23,15 +24,18 @@ exports.getNoticeTitle = async function(req){
         if(type=='normal' || type=='NORMAL')
         {
             const getNoticeTitleRes = await noticeBoardDao.getNormalNoticeTitle(connect);
-    
+            
+            connect.release();
             return response(baseResponseStatus.SUCCESS, getNoticeTitleRes)
         }
         else if(type=='chasing' || type=='CHASING')
         {
             const getNoticeTitleRes = await noticeBoardDao.getChasingNormalTitle(connect);
-    
+            
+            connect.release();
             return response(baseResponseStatus.SUCCESS, getNoticeTitleRes)
         }
+
     }
     catch{
         return errResponse(baseResponseStatus.DB_ERROR);
@@ -44,7 +48,8 @@ exports.getNoticeContent = async function(noticeNum, type){
         const getNoticeContentRes = await noticeBoardDao.getNoticeContent(connect, noticeNum, type)
 
         if(getNoticeContentRes.length==0) return errResponse(baseResponseStatus.NOTICEBOARD_TYPE_ERROR);
-        
+
+        connect.release();
         return response(baseResponseStatus.SUCCESS, getNoticeContentRes);
     }
     catch{

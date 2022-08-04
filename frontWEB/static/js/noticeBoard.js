@@ -27,7 +27,6 @@ async function showNormalNoticeBoardTitles(page){
 
     for(var i = 0; i<10; i++){
         let title = titleArr[Number((page*10)+i)].title;
-        console.log(title.length)
         if(title.length>23) title = title.substring(0,20)+'...'
 
         if(i==9 || Number((page*10)+i) == titleArr.length-1 ) {

@@ -1,5 +1,5 @@
 module.exports = function(app){
-    const noticeController = require('./noticeBoardController.js');
+    const noticeController = require('./noticeBoardController');
     const {imageUploader} = require('./s3ImgUploader');
     const jwtMiddleware = require('../../../config/jwtMiddleware');
 

@@ -12,9 +12,10 @@ window.onload = function(){
     showContent(pageNum); 
 }
 
-async function showContent(pageNum){
-    pictureBoardTitle = await getAPI(hostAddress, 'app/notice/title/normal');  
+async function showContent(pageNum){ 
     const contentRes = await getAPI(hostAddress, `app/notice/normal/${pageNum}`);
+    if(contentRes.isSuccess==false) location.href = '/notice'
+    
     let html = `
     <h3 class="title is-3" style="color: white; margin-top: 5vh;">${contentRes.result[0].title}</h1>
     <hr class="title-hr">`
