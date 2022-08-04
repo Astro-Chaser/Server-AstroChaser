@@ -20,9 +20,18 @@ exports.getNoticeTitle = async function(req){
     try{
         const type = req.params.type;
         const connect = await pool.getConnection(async (conn) => conn);
-        const getNoticeTitleRes = await noticeBoardDao.getNoticeTitle(connect, type);
-
-        return response(baseResponseStatus.SUCCESS, getNoticeTitleRes)
+        if(type=='normal' || type=='NORMAL')
+        {
+            const getNoticeTitleRes = await noticeBoardDao.getNormalNoticeTitle(connect);
+    
+            return response(baseResponseStatus.SUCCESS, getNoticeTitleRes)
+        }
+        else if(type=='chasing' || type=='CHASING')
+        {
+            const getNoticeTitleRes = await noticeBoardDao.getChasingNormalTitle(connect);
+    
+            return response(baseResponseStatus.SUCCESS, getNoticeTitleRes)
+        }
     }
     catch{
         return errResponse(baseResponseStatus.DB_ERROR);

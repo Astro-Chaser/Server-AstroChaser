@@ -52,30 +52,26 @@ async function postNoticeBoard(connect, postNoticeBoardParams){
 }
 
 //2. 일반 공지 게시글 타이틀 가져오기
-async function getNoticeTitle(connection, type){
-    if(type == 'normal')
-    {
-        const getNoticeTitleQuery = `
+async function getNormalNoticeTitle(connection){
+        const getNormalNoticeTitleQuery = `
             SELECT NNB.id, NNB.createdat, NNB.updatedat, User.name, title, content, viewCount
-            FROM NormalNoticeBoard AS NNB INNER JOIN User ON User.id = NNB.writerId
-            WHERE User.state='A' AND NNB.state='A' AND NNB.type='NORMAL'
-            ORDER BY updatedAt DESC;
+            FROM NormalNoticeBoard AS NNB, User
+            WHERE User.id = NNB.writerId AND User.state='A' AND NNB.state='A' AND NNB.type='NORMAL'
         `
-        const [getNoticeTitleRow] = await connection.query(getNoticeTitleQuery);
+        const [getNoticeTitleRow] = await connection.query(getNormalNoticeTitleQuery);
     
         return getNoticeTitleRow;
-    }
-    else if(type == 'CHASING'|| type=='chasing'){
-        const getNoticeTitleQuery = `
+}
+
+async function getChasingNormalTitle(connection){
+    const getChasingNoticeTitleQuery = `
             SELECT NNB.id, NNB.createdat, NNB.updatedat, User.name, title, content, viewCount
             FROM NormalNoticeBoard AS NNB INNER JOIN User ON User.id = NNB.writerId
             WHERE User.state='A' AND NNB.state='A' AND NNB.type='CHASING'
-            ORDER BY updatedAt DESC;
         `
-        const [getNoticeTitleRow] = await connection.query(getNoticeTitleQuery);
+        const [getNoticeTitleRow] = await connection.query(getChasingNoticeTitleQuery);
     
         return getNoticeTitleRow;
-    }
 }
 
 //3. 일반 공지 게시글 내용물 가져오기
@@ -94,7 +90,7 @@ async function getNoticeContent(connection, pageNum, type){
                 SELECT NNB.id, NNB.createdat, NNB.updatedat, User.name, title, content, viewCount
                 FROM NormalNoticeBoard AS NNB INNER JOIN User ON User.id = NNB.writerId
                 WHERE User.state='A' AND NNB.state='A' AND NNB.id= ${pageNum} AND NNB.type='NORMAL'
-                ORDER BY updatedAt DESC;
+                ORDER BY createdAt DESC;
             `
             const [getNoticeContentRes] = await connection.query(getNoticeQuery);
             
@@ -114,7 +110,7 @@ async function getNoticeContent(connection, pageNum, type){
             SELECT NNB.id, NNB.createdat, NNB.updatedat, User.name, NNB.title, NNB.content, NNB.viewCount, NNBM.mediaUrl
             FROM NormalNoticeBoard AS NNB INNER JOIN (User, NormalNoticeBoardMedia AS NNBM ) ON User.id = NNB.writerId AND  NNBM.NormalNoticeBoardId = NNB.id
             WHERE User.state='A' AND NNB.state='A' AND NNBM.NormalNoticeBoardId = ${pageNum} AND NNB.type='NORMAL'
-            ORDER BY updatedAt DESC;
+            ORDER BY createdAt DESC;
             `
 
             const viewUpdateQuery = `
@@ -142,7 +138,7 @@ async function getNoticeContent(connection, pageNum, type){
                 SELECT NNB.id, NNB.createdat, NNB.updatedat, User.name, title, content, viewCount
                 FROM NormalNoticeBoard AS NNB INNER JOIN User ON User.id = NNB.writerId
                 WHERE User.state='A' AND NNB.state='A' AND NNB.id= ${pageNum} AND NNB.type='CHASING'
-                ORDER BY updatedAt DESC;
+                ORDER BY createdAt DESC;
             `
             const [getNoticeContentRes] = await connection.query(getNoticeQuery);
 
@@ -162,7 +158,7 @@ async function getNoticeContent(connection, pageNum, type){
             SELECT NNB.id, NNB.createdat, NNB.updatedat, User.name, NNB.title, NNB.content, NNB.viewCount, NNBM.mediaUrl
             FROM NormalNoticeBoard AS NNB INNER JOIN (User, NormalNoticeBoardMedia AS NNBM ) ON User.id = NNB.writerId AND  NNBM.NormalNoticeBoardId = NNB.id
             WHERE User.state='A' AND NNB.state='A' AND NNBM.NormalNoticeBoardId = ${pageNum} AND NNB.type='CHASING'
-            ORDER BY updatedAt DESC;
+            ORDER BY createdAt DESC;
             `
             const [getNoticeMediaRow] = await connection.query(getNoticeMediaQuery);
             const viewUpdateQuery = `
@@ -182,6 +178,7 @@ async function getNoticeContent(connection, pageNum, type){
 
 module.exports ={
     postNoticeBoard,
-    getNoticeTitle,
-    getNoticeContent
+    getNormalNoticeTitle,
+    getChasingNormalTitle,
+    getNoticeContent,
 }
