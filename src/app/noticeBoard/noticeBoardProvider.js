@@ -11,7 +11,6 @@ const {connect} = require("http2");
 const res = require("express/lib/response");
 const baseResponseStatus = require("../../../config/baseResponseStatus");
 const { post } = require("request");
-const Connection = require("mysql2/typings/mysql/lib/Connection");
 
 /**
  * 일반 게시글 타이틀 가져오기
