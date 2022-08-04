@@ -4,8 +4,10 @@ const noticeNextBtn = document.getElementById("notice-next-btn");
 const noticeWriteBtn = document.getElementById("notice-write-btn");
 let titleArr;
 
+
 window.onload = async function(){
     titleArr = await getNormalNoticeBoardTitles();
+    console.log(titleArr)
     showNormalNoticeBoardTitles(noticeBoardPage);
 }
 
