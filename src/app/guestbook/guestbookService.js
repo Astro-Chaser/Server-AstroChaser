@@ -25,7 +25,6 @@ exports.createGuestBook = async function (writer, content){
         const createGuestBookResult = await guestbookDao.createGuestBook(connection, createGuestBookParams)
 
         connection.release();
-        console.log(createGuestBookResult);
         return response(baseResponse.SUCCESS, {'writer' : writer,
                                                 'content' : content});
     }
