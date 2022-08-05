@@ -65,10 +65,24 @@ body{
     color:white;
 }
 
-.content h1,.content h2,.content h3{
+.content h1,.content h2,.content h3, .content h4{
     color: white;
 }
 
+a{
+    color:white; 
+    transition: 0.15;  
+}
+a:hover{
+    color: white;
+    font-weight: 600;
+}
+.list{
+    width: fit-content;
+    height: fit-content;
+    padding: 20px;
+    border: solid 1px;
+}
 .image-area{
     margin-left: 10vw;
     width: 60vw;
