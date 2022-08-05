@@ -15,9 +15,10 @@ window.onload = function(){
 async function showContent(pageNum){ 
     const contentRes = await getAPI(hostAddress, `app/notice/normal/${pageNum}`);
     if(contentRes.isSuccess==false) location.href = '/notice'
-    
+    console.log(contentRes.result[0])
     let html = `
-    <h3 class="title is-3" style="color: white; margin-top: 5vh;">${contentRes.result[0].title}</h1>
+    <h4 class="title is-4" style="color: white; margin-top: 8vh;">${contentRes.result[0].title}</h4>
+    <p>🌟${contentRes.result[0].name} ${contentRes.result[0].createdat.substring(0,10)}</p>
     <hr class="title-hr">`
 
     for (var i in contentRes.result)

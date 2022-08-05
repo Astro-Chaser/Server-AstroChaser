@@ -59,7 +59,6 @@ async function showNormalNoticeBoardTitles(page){
             </div>
         </div>
         `
-       
     }      
 }
 
