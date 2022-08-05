@@ -76,6 +76,10 @@ app.get('/notice/:pageNum', function(req, res){
     res.sendFile(__dirname + "/frontWEB/noticeBoardContent.html");
 })
 
+//5. 회칙 페이지
+app.get('/rules', function(req, res){
+    res.sendFile(__dirname + "/frontWEB/acRules.html");
+})
 // express 서버를 실행할 때 필요한 포트 정의 및 실행 시 callback 함수를 받습니다
 app.listen(port, function() {
     console.log('start! express server');
