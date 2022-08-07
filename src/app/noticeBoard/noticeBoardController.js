@@ -4,6 +4,7 @@ const noticeBoardService = require("./noticeBoardService");
 const {response} = require("../../../config/response");
 const {errResponse} = require("../../../config/response");
 const baseResponse = require("../../../config/baseResponseStatus");
+const baseResponseStatus = require("../../../config/baseResponseStatus");
 
 
 /**
@@ -46,4 +47,20 @@ exports.getNoticeContent = async function(req, res){
     const getNoticeContentRes = await noticeBoardProvider.getNoticeContent(noticeNum, type);
 
     return res.send(getNoticeContentRes);
+}
+
+exports.postComment = async function(req, res){
+    const token = req.verifiedToken;
+    if(!token)
+        return res.send(response.response(baseResponse.TOKEN_EMPTY));
+
+    let {content, upperId, postId} = req.body;
+
+    if(!upperId) upperId=0;
+    if(!content) return res.send(errResponse(baseResponse.COMMENT_CONTENT_EMPTY));
+    if(!postId) return res.send(errResponse(baseResponseStatus.COMMENT_POST_ID_EMPTY));
+
+    const postCommentRes = await noticeBoardService.postComment(token, content, upperId, postId);
+
+    return res.send(postCommentRes);
 }

@@ -31,6 +31,8 @@ module.exports = {
     NOTICEBOARD_CONTENT_EMPTY :  { "isSuccess": false, "code": 5203, "message":"내용을 입력해주세요"},
     NOTICEBOARD_PAGE_EMPTY :  { "isSuccess": false, "code": 5204, "message":"게시글 페이지를 입력해주세요"},
     NOTICEBOARD_TYPE_ERROR :  { "isSuccess": false, "code": 5205, "message":"게시글 타입을 확인해주세요"},
+    COMMENT_CONTENT_EMPTY : { "isSuccess": false, "code": 5206, "message":"댓글 내용이 없습니다"},
+    COMMENT_POST_ID_EMPTY : { "isSuccess": false, "code": 5207, "message":"게시물 아이디가 없습니다"},
 
     //TOEKN 관련 Error
     TOKEN_EMPTY : { "isSuccess": false, "code": 5101, "message":"토큰이 없습니다."},
