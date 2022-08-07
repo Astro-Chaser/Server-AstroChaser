@@ -171,9 +171,17 @@ async function getNoticeContent(connection, pageNum, type){
             return getNoticeMediaRow;
         }
     }
-    
-    
-}
+};
+
+async function postComment(connect, postCommentParams){
+    const postCommentQuery = `
+    INSERT INTO NormalNoticeBoardComments(NormalNoticeBoardId, writerId, upperCommentId, content) VALUES(${postCommentParams.postId}, ${postCommentParams.writerId}, ${postCommentParams.upperId}, '${postCommentParams.content}')
+    `
+
+    const postCommentRow = await connect.query(postCommentQuery);
+
+    return postCommentRow;
+} 
 
 
 module.exports ={
@@ -181,4 +189,5 @@ module.exports ={
     getNormalNoticeTitle,
     getChasingNormalTitle,
     getNoticeContent,
+    postComment,
 }

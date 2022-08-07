@@ -12,4 +12,7 @@ module.exports = function(app){
     //3. 일반 게시글 내용 가져오기 API
     app.get('/app/notice/:type/:num', noticeController.getNoticeContent);
 
+    //4. 게시글 댓글달기 API
+    app.post('/app/notice/content', jwtMiddleware, noticeController.postComment);
+
 }
