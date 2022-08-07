@@ -15,16 +15,27 @@ html{
 
 .rightContentBox{
    float: left;
+   height: auto;
+   min-height: 100%;
+   padding-bottom: 10vh;
 
    /* border-left: 3px solid rgba(229, 229, 227, 0.6); */
    
    padding-left: 10px;
    padding-right: 10px;
+   height: fit-content;
 
     width: 80vw;
     
     background-color: rgba(255, 255, 255, 0.15);
+
+    margin-bottom: 15vh;
 }
+footer{
+    height: 10vh;
+    position : relative;
+    transform : translateY(-100%);
+  }
 
 .leftNavContents{
   position: relative;
@@ -83,4 +94,66 @@ p{
 }
 hr{
     height: 0.5px;
+}
+
+.contentHr{
+    margin-top: 10vh;
+}
+.commentCount{
+    color: white;
+}
+.wring-comment-area{
+    width: 100%;
+    height: 25vh;
+}
+#comment-writing-textbox{
+    height: 16vh;
+}
+#comment-register-btn{
+    height: 5vh;
+    width: 5vw;
+    margin-top: 1vh;
+    
+    float: right;
+}
+
+.view-comment-area{
+    width: 100%;
+    height: fit-content;
+    border-radius: 5px;
+    font-family: 'Nanum Gothic', sans-serif;
+
+    
+}
+
+.original-comment{
+    width: 100%;
+    height: fit-content;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.reply-comment{
+    margin-left: 5%;
+    width: 95%;
+    height: fit-content;
+
+}
+
+.comment-writer-info{
+    margin-left: 0;
+    width: fit-content;
+    font-weight: 550;
+
+    color: white;
+}
+
+.writing-time{margin-left: 20px;}
+
+.comment-index{
+    color: white;
+    margin-left: 20px;
+    width: 100%; 
+    height: fit-content; 
+    margin-top: 20px;
+    padding-bottom: 20px;
 }
