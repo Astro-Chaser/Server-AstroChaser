@@ -17,7 +17,6 @@ html{
    float: left;
    height: auto;
    min-height: 100%;
-   padding-bottom: 10vh;
 
    /* border-left: 3px solid rgba(229, 229, 227, 0.6); */
    
@@ -111,7 +110,8 @@ hr{
 }
 #comment-register-btn{
     height: 5vh;
-    width: 5vw;
+    width: fit-content;
+    font-size: 1.2em;   
     margin-top: 1vh;
     
     float: right;
