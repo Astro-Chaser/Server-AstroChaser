@@ -111,7 +111,8 @@ hr{
 }
 #comment-register-btn{
     height: 5vh;
-    width: 5vw;
+    width: fit-content;
+    font-size: 1.2em;   
     margin-top: 1vh;
     
     float: right;
