@@ -41,6 +41,12 @@ exports.getNoticeTitle = async function(req){
     }
 }
 
+/**
+ * 게시글 내용 불러오기
+ * @param {*} noticeNum 
+ * @param {*} type 
+ * @returns 
+ */
 exports.getNoticeContent = async function(noticeNum, type){
     try{
         const connect = await pool.getConnection(async (conn) => conn);
@@ -50,6 +56,25 @@ exports.getNoticeContent = async function(noticeNum, type){
 
         connect.release();
         return response(baseResponseStatus.SUCCESS, getNoticeContentRes);
+    }
+    catch{
+        return errResponse(baseResponseStatus.DB_ERROR);
+    }
+}
+
+/**
+ * 게시글 댓글 불러오기
+ * @param {*} noticePage 
+ * @returns 
+ */
+exports.getComment = async function(noticePage){
+    try{
+        const connect = await pool.getConnection(async (conn) => conn);
+        const getCommentRes = await noticeBoardDao.getComment(connect, noticePage);
+
+        connect.release();
+
+        return response(baseResponseStatus.SUCCESS, getCommentRes)
     }
     catch{
         return errResponse(baseResponseStatus.DB_ERROR);

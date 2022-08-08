@@ -38,6 +38,12 @@ exports.getNoticeTitle = async function(req, res){
     return res.send(getNoticeTitleRes)
 }
 
+/**
+ * 게시판 내용 가져오기
+ * @param {*} req 
+ * @param {*} res 
+ * @returns 
+ */
 exports.getNoticeContent = async function(req, res){
     const noticeNum = req.params.num;
     const type = req.params.type;
@@ -49,6 +55,12 @@ exports.getNoticeContent = async function(req, res){
     return res.send(getNoticeContentRes);
 }
 
+/**
+ * 댓글 달기
+ * @param {*} req 
+ * @param {*} res 
+ * @returns 
+ */
 exports.postComment = async function(req, res){
     const token = req.verifiedToken;
     if(!token)
@@ -63,4 +75,20 @@ exports.postComment = async function(req, res){
     const postCommentRes = await noticeBoardService.postComment(token, content, upperId, postId);
 
     return res.send(postCommentRes);
+}
+
+/**
+ * 댓글 가져오기
+ * @param {*} req 
+ * @param {*} res 
+ * @returns 
+ */
+exports.getComment = async function(req, res){
+    const noticeNum = req.query.pageNum;
+    
+    if(!noticeNum) return res.send(baseResponse.NOTICEBOARD_PAGE_EMPTY);
+
+    const getCommentRes = await noticeBoardProvider.getComment(noticeNum);
+
+    return res.send(getCommentRes);
 }
