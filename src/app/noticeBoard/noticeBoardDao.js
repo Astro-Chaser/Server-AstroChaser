@@ -187,7 +187,8 @@ async function getComment(connect, noticePage){
     const getCommentQuery = `
     SELECT NNBC.id AS commentId, NNBC.createdAt, NNBC.upperCommentId, User.generation, User.name, NNBC.content
     FROM NormalNoticeBoardComments AS NNBC INNER JOIN User ON NNBC.writerId = User.id
-    WHERE NNBC.NormalNoticeBoardId = ${noticePage};
+    WHERE NNBC.NormalNoticeBoardId = ${noticePage}
+    ORDER BY createdAt ASC;
     `
     const [getCommentRes] = await connect.query(getCommentQuery);
 
