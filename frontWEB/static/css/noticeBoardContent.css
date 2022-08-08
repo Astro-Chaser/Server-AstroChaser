@@ -141,7 +141,7 @@ hr{
 
 .comment-writer-info{
     margin-left: 0;
-    width: fit-content;
+    width: 100%;
     font-weight: 550;
 
     color: white;
@@ -157,3 +157,9 @@ hr{
     margin-top: 20px;
     padding-bottom: 20px;
 }
+
+.reply-comment-area{
+    margin-left: 20px;
+    cursor: pointer;
+}
+
