@@ -13,6 +13,9 @@ module.exports = function(app){
     app.get('/app/notice/:type/:num', noticeController.getNoticeContent);
 
     //4. 게시글 댓글달기 API
-    app.post('/app/notice/content', jwtMiddleware, noticeController.postComment);
+    app.post('/app/notice/comment', jwtMiddleware, noticeController.postComment);
+
+    //5. 게시글 댓글 불러오기 API
+    app.get('/app/notice/comment', noticeController.getComment);
 
 }

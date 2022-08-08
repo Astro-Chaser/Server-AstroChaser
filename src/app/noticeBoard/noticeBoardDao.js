@@ -183,6 +183,17 @@ async function postComment(connect, postCommentParams){
     return postCommentRow;
 } 
 
+async function getComment(connect, noticePage){
+    const getCommentQuery = `
+    SELECT NNBC.id AS commentId, NNBC.createdAt, NNBC.upperCommentId, User.generation, User.name, NNBC.content
+    FROM NormalNoticeBoardComments AS NNBC INNER JOIN User ON NNBC.writerId = User.id
+    WHERE NNBC.NormalNoticeBoardId = ${noticePage};
+    `
+    const [getCommentRes] = await connect.query(getCommentQuery);
+
+    return getCommentRes;
+}
+
 
 module.exports ={
     postNoticeBoard,
@@ -190,4 +201,5 @@ module.exports ={
     getChasingNormalTitle,
     getNoticeContent,
     postComment,
+    getComment,
 }
