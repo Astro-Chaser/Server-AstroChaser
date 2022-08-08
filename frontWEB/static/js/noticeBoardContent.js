@@ -11,6 +11,7 @@ window.onload = function(){
     parseInt(pageNum)
     showContent(pageNum); 
     showComment(pageNum);
+    showReplyTab();
 }
 
 async function showContent(pageNum){ 
@@ -52,9 +53,16 @@ async function showComment(pageNum){
         <div class="original-comment" id="reply-${commentRes.result[i].commentId}">
           <div class="comment-writer-info">⭐${commentRes.result[i].generation}기 ${commentRes.result[i].name} 
             <span class="writing-time">${commentRes.result[i].createdAt.substring(0,10)} ${commentRes.result[i].createdAt.substring(11,19)}</span> 
-            <span class="reply-comment-area">답글쓰기</span>
+            <span class="reply-comment-area" onclick="showReplyTab(${commentRes.result[i].commentId})">답글쓰기</span>
           </div>
           <div class="comment-index">${commentRes.result[i].content}</div>
+        </div>
+        <div class="wring-comment-area reply" id="reply-text-area-${commentRes.result[i].commentId}" style="display: none;">
+              <div class="commentCount">${commentRes.result[i].name}님에게 답글</div>
+              <div class="control">
+                <textarea class="textarea has-fixed-size" id="reply-comment-writing-textbox" placeholder="댓글을 작성해주세요."></textarea>
+              </div>
+              <button class="button is-light" id="comment-register-btn">등록</button>
         </div>
         `
         $('.view-comment-area').append(html)
@@ -65,7 +73,6 @@ async function showComment(pageNum){
   for(var i in commentRes.result){
     if(commentRes.result[i].upperCommentId != 0){
       replyHtml ='';
-      console.log(commentRes.result[i])
       replyHtml = `
         <div class="reply-comment">
           <div class="comment-writer-info">➡️ ${commentRes.result[i].generation}기 ${commentRes.result[i].name} ${commentRes.result[i].createdAt.substring(0,10)} ${commentRes.result[i].createdAt.substring(11,19)}</div>
@@ -76,9 +83,19 @@ async function showComment(pageNum){
       $(`#reply-${commentRes.result[i].upperCommentId}`).append(replyHtml);
     }
   }
-  
-  
 }
+
+async function showReplyTab(hideDivId){
+  
+  var replyCommentArea = document.getElementById(`reply-text-area-${hideDivId}`);
+  if (replyCommentArea.style.display == "none") {
+    console.log("clicked")
+    replyCommentArea.style.display = "block";
+  } else {
+    replyCommentArea.style.display = "none";
+  }
+}
+
 
 //페이지 이전글, 다음글 불러오기
 picturePrevBtn.onclick = function(){
