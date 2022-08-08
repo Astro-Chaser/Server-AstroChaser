@@ -10,12 +10,12 @@ let pictureBoardTitle;
 window.onload = function(){
     parseInt(pageNum)
     showContent(pageNum); 
+    showComment(pageNum);
 }
 
 async function showContent(pageNum){ 
     const contentRes = await getAPI(hostAddress, `app/notice/normal/${pageNum}`);
     if(contentRes.isSuccess==false) location.href = '/notice'
-    console.log(contentRes.result[0])
     let html = `
     <h4 class="title is-4" style="color: white; margin-top: 8vh;">${contentRes.result[0].title}</h4>
     <p>🌟${contentRes.result[0].name} ${contentRes.result[0].createdat.substring(0,10)}</p>
@@ -37,6 +37,47 @@ async function showContent(pageNum){
         </div>
       `
     $(".mainContents").append(html);
+}
+
+//댓글 보여주기
+async function showComment(pageNum){
+  const commentRes = await getAPI(hostAddress, `app/notice/comment?pageNum=${pageNum}`);
+  
+  $('.commentCount').append(`댓글 ${commentRes.result.length}개`)
+  html = '';
+  replyHtml = '';
+  for(var i in commentRes.result){
+    if(commentRes.result[i].upperCommentId == 0){
+      html = `
+        <div class="original-comment" id="reply-${commentRes.result[i].commentId}">
+          <div class="comment-writer-info">⭐${commentRes.result[i].generation}기 ${commentRes.result[i].name} 
+            <span class="writing-time">${commentRes.result[i].createdAt.substring(0,10)} ${commentRes.result[i].createdAt.substring(11,19)}</span> 
+            <span class="reply-comment-area">답글쓰기</span>
+          </div>
+          <div class="comment-index">${commentRes.result[i].content}</div>
+        </div>
+        `
+        $('.view-comment-area').append(html)
+    }
+    
+  }
+
+  for(var i in commentRes.result){
+    if(commentRes.result[i].upperCommentId != 0){
+      replyHtml ='';
+      console.log(commentRes.result[i])
+      replyHtml = `
+        <div class="reply-comment">
+          <div class="comment-writer-info">➡️ ${commentRes.result[i].generation}기 ${commentRes.result[i].name} ${commentRes.result[i].createdAt.substring(0,10)} ${commentRes.result[i].createdAt.substring(11,19)}</div>
+          <div class="comment-index">${commentRes.result[i].content}
+        </div>
+      
+      `
+      $(`#reply-${commentRes.result[i].upperCommentId}`).append(replyHtml);
+    }
+  }
+  
+  
 }
 
 //페이지 이전글, 다음글 불러오기
