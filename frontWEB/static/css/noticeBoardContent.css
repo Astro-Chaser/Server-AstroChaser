@@ -102,14 +102,15 @@ hr{
     color: white;
 }
 .wring-comment-area{
+    min-height: 200px;
     width: 100%;
-    height: 25vh;
+    height: 28vh;
 }
 #comment-writing-textbox{
-    height: 16vh;
+    height: 15vh;
 }
 #comment-register-btn{
-    height: 5vh;
+    height: 4vh;
     width: fit-content;
     font-size: 1.2em;   
     margin-top: 1vh;
@@ -122,8 +123,6 @@ hr{
     height: fit-content;
     border-radius: 5px;
     font-family: 'Nanum Gothic', sans-serif;
-
-    
 }
 
 .original-comment{
@@ -163,3 +162,17 @@ hr{
     cursor: pointer;
 }
 
+.wring-comment-area.reply{
+    width: 95%;
+    height: 28vh;
+    margin-left: 5%;
+    min-height: 200px;
+}
+
+#reply-comment-writing-textbox{
+    height: 18vh;
+}
+
+textarea{
+    height: 13vh;
+}

@@ -66,7 +66,7 @@ async function noticeCommit(event){
 document.querySelector('.file-input').addEventListener("change", previewImages);
 
 
-//get API AS JSON
+//post API AS JSON
 async function postAPI(host, path, options) {
     const url = `http://${host}/${path}`;
     console.log(url);
