@@ -55,6 +55,7 @@ exports.getNoticeContent = async function(noticeNum, type){
         if(getNoticeContentRes.length==0) return errResponse(baseResponseStatus.NOTICEBOARD_TYPE_ERROR);
 
         connect.release();
+
         return response(baseResponseStatus.SUCCESS, getNoticeContentRes);
     }
     catch{
@@ -72,7 +73,7 @@ exports.getComment = async function(noticePage){
         const connect = await pool.getConnection(async (conn) => conn);
         const getCommentRes = await noticeBoardDao.getComment(connect, noticePage);
 
-        connect.release();
+        connect.release();  
 
         return response(baseResponseStatus.SUCCESS, getCommentRes)
     }

@@ -48,6 +48,7 @@ async function showComment(pageNum){
   html = '';
   replyHtml = '';
   for(var i in commentRes.result){
+    console.log(commentRes.result[i].createdAt)
     if(commentRes.result[i].upperCommentId == 0){
       html = `
         <div class="original-comment" id="reply-${commentRes.result[i].commentId}">
@@ -60,9 +61,9 @@ async function showComment(pageNum){
         <div class="wring-comment-area reply" id="reply-text-area-${commentRes.result[i].commentId}" style="display: none;">
               <div class="commentCount">${commentRes.result[i].name}님에게 답글</div>
               <div class="control">
-                <textarea class="textarea has-fixed-size" id="reply-comment-writing-textbox" placeholder="댓글을 작성해주세요."></textarea>
+                <textarea class="textarea has-fixed-size" id="reply-comment-writing-textbox-${commentRes.result[i].commentId}" placeholder="댓글을 작성해주세요."></textarea>
               </div>
-              <button class="button is-light" id="comment-register-btn">등록</button>
+              <button class="button is-light" id="reply-comment-register-btn" onclick="postReplyComment(${commentRes.result[i].commentId}, 'reply-comment-writing-textbox-${commentRes.result[i].commentId}')">등록</button>
         </div>
         `
         $('.view-comment-area').append(html)
@@ -94,7 +95,7 @@ function showReplyTab(hideDivId){
   }
 }
 
-async function postComment(upperId){
+async function postComment(){
   var myHeaders = new Headers();
   myHeaders.append("x-access-token", localStorage.getItem("accessJWT"));
   myHeaders.append("Content-Type", "application/json");
@@ -120,7 +121,34 @@ async function postComment(upperId){
     alert(postCommentRes.message)
     location.reload();
   }
+}
 
+async function postReplyComment(upperId, textareaId){
+  var myHeaders = new Headers();
+  myHeaders.append("x-access-token", localStorage.getItem("accessJWT"));
+  myHeaders.append("Content-Type", "application/json");
+
+
+  var raw = JSON.stringify({
+    "content": document.getElementById(textareaId).value,
+    "postId": pageNum,
+    "upperId": upperId
+  });
+  
+  var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
+  };
+
+  const postCommentRes = await postAPI(hostAddress, 'app/notice/comment', requestOptions)
+  if(postCommentRes.isSuccess == true) location.reload();
+  else {
+    console.log(postCommentRes)
+    alert(postCommentRes.message)
+    location.reload();
+  }
 }
 
 //페이지 이전글, 다음글 불러오기
@@ -142,15 +170,12 @@ pictureNextBtn.onclick = function(){
 //get API AS JSON
 async function getAPI(host, path, headers ={}) {
     const url = `http://${host}/${path}`;
-    console.log(url);
     const options = {
       method: "GET",
       headers: headers,
     };
     const res = await fetch(url, options);
     const data = res.json();
-    // console.log(res)
-    // console.log(data)
     if (res.ok) {
       return data;
     } else {
