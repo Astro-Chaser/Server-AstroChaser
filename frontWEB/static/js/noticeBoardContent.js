@@ -2,16 +2,16 @@
 const queryString = window.location.href;
 const getPageNum = queryString.lastIndexOf("/")
 let pageNum = parseInt(queryString.substring(getPageNum+1));
-
 const picturePrevBtn = document.getElementById("picture-prev-btn");
 const pictureNextBtn = document.getElementById("picture-next-btn");
+const commentRegisterBtn = document.getElementById("comment-register-btn");
 let pictureBoardTitle;
 
+
 window.onload = function(){
-    parseInt(pageNum)
-    showContent(pageNum); 
-    showComment(pageNum);
-    showReplyTab();
+  parseInt(pageNum)
+  showContent(pageNum); 
+  showComment(pageNum);
 }
 
 async function showContent(pageNum){ 
@@ -85,17 +85,43 @@ async function showComment(pageNum){
   }
 }
 
-async function showReplyTab(hideDivId){
-  
+function showReplyTab(hideDivId){
   var replyCommentArea = document.getElementById(`reply-text-area-${hideDivId}`);
   if (replyCommentArea.style.display == "none") {
-    console.log("clicked")
     replyCommentArea.style.display = "block";
   } else {
     replyCommentArea.style.display = "none";
   }
 }
 
+async function postComment(upperId){
+  var myHeaders = new Headers();
+  myHeaders.append("x-access-token", localStorage.getItem("accessJWT"));
+  myHeaders.append("Content-Type", "application/json");
+
+
+  var raw = JSON.stringify({
+    "content": document.getElementById('comment-writing-textbox').value,
+    "postId": pageNum,
+    "upperId": 0
+  });
+  
+  var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
+  };
+
+  const postCommentRes = await postAPI(hostAddress, 'app/notice/comment', requestOptions)
+  if(postCommentRes.isSuccess == true) location.reload();
+  else {
+    console.log(postCommentRes)
+    alert(postCommentRes.message)
+    location.reload();
+  }
+
+}
 
 //페이지 이전글, 다음글 불러오기
 picturePrevBtn.onclick = function(){
@@ -130,4 +156,19 @@ async function getAPI(host, path, headers ={}) {
     } else {
       throw new Error(data);
     }
+}
+
+//post API AS JSON
+async function postAPI(host, path, options) {
+  const url = `http://${host}/${path}`;
+  console.log(url);
+  const res = await fetch(url, options);
+  const data = res.json();
+  // console.log(res)
+  // console.log(data)
+  if (res.ok) {
+      return data;
+  } else {
+      throw new Error(data);
   }
+}
