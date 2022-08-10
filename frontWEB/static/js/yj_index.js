@@ -3,12 +3,12 @@ window.onload= function(){
 }
 
 async function showNormalNoticeBoard(){
-    const getTitleRes = await getAPI(hostAddress, 'app/notice/title');
+    const getTitleRes = await getAPI(hostAddress, 'app/notice/title/normal');
 
     html = ''
     for(var i in getTitleRes.result){
-        html += `<li> ${getTitleRes.result[i].title} </li>`
-        if(i>5) break;
+        html += `<li onclick="location.href = '/notice/${getTitleRes.result[i].id}'"> ${getTitleRes.result[i].title} </li>`
+        if(i>8) break;
     }
     $('.notice-list').append(html)
 }

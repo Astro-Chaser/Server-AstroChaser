@@ -35,7 +35,26 @@ exports.getChasingHistoryContent = async function(req){
         return response(baseResponse.SUCCESS, getChasingHistoryContent);
     }
     catch{
-        logger.error(`App - signIn Service error\n: ${err.message}`);
+        // logger.error(`App - signIn Service error\n: ${err.message}`);
         return errResponse(baseResponse.DB_ERROR);
+    }
+}
+
+/**
+ * 게시글 댓글 불러오기
+ * @param {*} noticePage 
+ * @returns 
+ */
+ exports.getComment = async function(noticePage){
+    try{
+        const connect = await pool.getConnection(async (conn) => conn);
+        const getCommentRes = await chasingHistoryDao.getComment(connect, noticePage);
+
+        connect.release();  
+
+        return response(baseResponseStatus.SUCCESS, getCommentRes)
+    }
+    catch{
+        return errResponse(baseResponseStatus.DB_ERROR);
     }
 }

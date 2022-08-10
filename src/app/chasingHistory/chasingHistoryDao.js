@@ -54,9 +54,33 @@ async function getChasingHistoryContent(connection, pageNum){
     return getChasingHistoryContentRow;
 }
 
+//4. 게시글 댓글 달기
+async function postComment(connect, postCommentParams){
+    const postCommentQuery = `
+    INSERT INTO  PictureNoticeBoardComments(pictureNoticeBoardId, writerId, upperCommentId, content) VALUES(${postCommentParams.postId}, ${postCommentParams.writerId}, ${postCommentParams.upperId}, '${postCommentParams.content}')
+    `
 
+    const postCommentRow = await connect.query(postCommentQuery);
+
+    return postCommentRow;
+} 
+
+//5. 댓글 가져오기
+async function getComment(connect, noticePage){
+    const getCommentQuery = `
+    SELECT PNBC.id AS commentId, PNBC.createdAt, PNBC.upperCommentId, User.generation, User.name, PNBC.content
+    FROM PictureNoticeBoardComments AS PNBC INNER JOIN User ON PNBC.writerId = User.id
+    WHERE PNBC.pictureNoticeBoardId = ${noticePage}
+    ORDER BY createdAt ASC;
+    `
+    const [getCommentRes] = await connect.query(getCommentQuery);
+
+    return getCommentRes;
+}
 module.exports ={
     getChasingHistory,
     postChasingHistory,
-    getChasingHistoryContent
+    getChasingHistoryContent,
+    postComment,
+    getComment,
 }

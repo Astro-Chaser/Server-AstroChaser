@@ -31,22 +31,22 @@
             소개
           </a>
           <div class="navbar-dropdown is-boxed">
-            <a class="navbar-item" id="nav-owned-telescopes">
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-owned-telescopes">
               동아리소개
             </a>
-            <a class="navbar-item" id="nav-setting-telescope">
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
               연혁
             </a>
-            <a class="navbar-item" id="nav-setting-telescope">
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
               활동소개
             </a>
-            <a class="navbar-item" id="nav-setting-telescope">
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
               조직도
             </a>
-            <a class="navbar-item" id="nav-setting-telescope">
+            <a href="/rules" class="navbar-item" id="nav-setting-telescope">
               회칙
             </a>
-            <a class="navbar-item" id="nav-setting-telescope">
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
               별지기소개
             </a>
           </div>
@@ -56,33 +56,33 @@
             공지사항
           </a>
           <div class="navbar-dropdown is-boxed">
-            <a class="navbar-item" id="nav-owned-telescopes">
+            <a href="/notice" class="navbar-item" id="nav-owned-telescopes">
               일반공지
             </a>
-            <a class="navbar-item" id="nav-setting-telescope">
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
               관측공지
             </a>
           </div>
         </div>
-        
+
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">
             커뮤니티
           </a>
           <div class="navbar-dropdown is-boxed">
-            <a class="navbar-item" id="nav-owned-telescopes">
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-owned-telescopes">
               자유게시판
             </a>
-            <a class="navbar-item" id="nav-setting-telescope">
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
               천문학&천문소식
             </a>
-            <a class="navbar-item" id="nav-setting-telescope">
+            <a onclick = "alert('준비중입니다.')"class="navbar-item" id="nav-setting-telescope">
               별지기소식
             </a>
-            <a href="/chasing-history" class="navbar-item" id="nav-setting-telescope">
+            <a href="/gallery" class="navbar-item" id="nav-setting-telescope">
               갤러리
             </a>
-            <a class="navbar-item" id="nav-setting-telescope">
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
               자료실
             </a>
           </div>
@@ -93,17 +93,17 @@
             정보공개
           </a>
           <div class="navbar-dropdown is-boxed">
-            <a class="navbar-item" id="nav-owned-telescopes">
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-owned-telescopes">
               연간 예산회계
             </a>
           </div>
         </div>
       </div>
-  
+
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a href="user/signup" class="button is-primary" id="nav-sign-up" >
+            <a href="user/signup" class="button is-primary" id="nav-sign-up">
               <strong>회원가입</strong>
             </a>
             <a href="/user/signin" class="button is-light" id="nav-sign-in">
@@ -113,7 +113,7 @@
         </div>
       </div>
     </div>
-</nav>
+  </nav>
 
 
     <div class="contents">
@@ -127,14 +127,7 @@
             </div>
             <div class="mainContents">
             </div>
-            <div class="pictureNoticeBoard-page-navigator">
-              <button class="button is-responsive" id="picture-prev-btn" style="float: left;">
-                이전글
-              </button>
-              <button class="button is-responsive" id="picture-next-btn" style="float: right;">
-                다음글
-              </button>
-            </div>
+            
 
 
             <hr class="contentHr">
@@ -146,8 +139,18 @@
               <button class="button is-light" id="comment-register-btn" onclick="postComment(0)">등록</button>
             </div>
 
-
             <div class="view-comment-area"></div>
+
+            <div class="noticeBoard-page-navigator">
+              <!-- <div class="notice-tab" id="notice-next-tab">
+                <span class="tab-title">다음글</span>
+                <span class="tab-content-title">어쩌구저쩌구 다음글</span>
+              </div>
+              <div class="notice-tab" id="notice-prev-tab">
+                <span class="tab-title">이전글</span>
+                <span class="tab-content-title">어쩌구저쩌구 이전글</span>
+              </div> -->
+            </div>
     </div>
   </div>
 </body>

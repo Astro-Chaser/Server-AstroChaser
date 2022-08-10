@@ -43,12 +43,11 @@ async function showContent(pageNum){
 //댓글 보여주기
 async function showComment(pageNum){
   const commentRes = await getAPI(hostAddress, `app/notice/comment?pageNum=${pageNum}`);
-  
+  const titleRes = await getAPI(hostAddress, 'app/notice/title/normal');
   $('.commentCount').append(`댓글 ${commentRes.result.length}개`)
   html = '';
   replyHtml = '';
   for(var i in commentRes.result){
-    console.log(commentRes.result[i].createdAt)
     if(commentRes.result[i].upperCommentId == 0){
       html = `
         <div class="original-comment" id="reply-${commentRes.result[i].commentId}">
@@ -84,6 +83,30 @@ async function showComment(pageNum){
       $(`#reply-${commentRes.result[i].upperCommentId}`).append(replyHtml);
     }
   }
+  console.log(titleRes)
+  let titleHtml = '';
+  for(var i in titleRes.result){
+    if(titleRes.result[i].id == pageNum){
+      if(i>0){
+        titleHtml += `
+        <div class="notice-tab" id="notice-next-tab" onclick="location.href = '/notice/${titleRes.result[i-1].id}'">
+          <span class="tab-title">다음글</span>
+          <span class="tab-content-title">${titleRes.result[i-1].title}</span>
+        </div>
+        `
+      }
+      if(Number(i)+1<titleRes.result.length){
+        titleHtml += `
+        <div class="notice-tab" id="notice-prev-tab" onclick="location.href = '/notice/${titleRes.result[Number(i)+1].id}'">
+          <span class="tab-title">이전글</span>
+          <span class="tab-content-title">${titleRes.result[Number(i)+1].title}</span>
+        </div>
+        `
+      }
+      break;
+    }
+  }
+  $('.noticeBoard-page-navigator').append(titleHtml);
 }
 
 function showReplyTab(hideDivId){
@@ -151,21 +174,6 @@ async function postReplyComment(upperId, textareaId){
   }
 }
 
-//페이지 이전글, 다음글 불러오기
-picturePrevBtn.onclick = function(){
-  if((pageNum-1)>0)
-  {
-    pageNum -= 1;
-    location.href=`/notice/${pageNum}`
-  }
-}
-pictureNextBtn.onclick = function(){
-  if(pageNum+1<= pictureBoardTitle.result.length)
-  {
-    pageNum += 1;
-    location.href=`/notice/${pageNum}`
-  }
-}
 
 //get API AS JSON
 async function getAPI(host, path, headers ={}) {

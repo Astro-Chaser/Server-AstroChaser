@@ -37,3 +37,26 @@ exports.postChasingHistory = async function(req){
         return errResponse(baseResponseStatus.DB_ERROR);
     }
 }
+
+
+exports.postComment = async function(token, content, upperId, postId){
+    try{
+        let postCommentParams = new Object();
+
+        postCommentParams.postId = postId
+        postCommentParams.writerId = token.id;
+        postCommentParams.content = content;
+        postCommentParams.upperId = upperId;
+
+        const connect = await pool.getConnection(async (conn) => conn);
+        const postCommentResult = await chasingHistoryDao.postComment(connect, postCommentParams);
+
+        connect.release();
+
+        if(postCommentResult[0].affectedRows == 1) return response(baseResponseStatus.SUCCESS);
+        else return errResponse(baseResponseStatus.DB_ERROR);
+    }
+    catch{
+        return errResponse(baseResponseStatus.DB_ERROR);
+    }
+}

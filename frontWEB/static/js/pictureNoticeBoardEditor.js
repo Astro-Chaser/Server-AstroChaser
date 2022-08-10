@@ -48,7 +48,7 @@ async function pictureCommit(event){
     const insertPostRes = await postAPI(hostAddress, 'app/picture-board/upload', title.value, requestOptions)
     console.log(insertPostRes);
     if(insertPostRes.result.mediaInptRes == "SUCCESS" && insertPostRes.result.titleInptRes == "SUCCESS"){
-        location.href = "/chasing-history";
+        location.href = "/gallery";
     }
     else{
         alert("게시글을 다시 입력해주세요.");

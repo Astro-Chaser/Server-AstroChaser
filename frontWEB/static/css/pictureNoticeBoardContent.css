@@ -72,3 +72,41 @@ html{
     white-space: pre-line;
     color: white;
 }
+
+
+.noticeBoard-page-navigator{
+    margin-top: 20px;
+    height: auto;
+    width: 100%;
+}
+
+.notice-tab{
+    height: 5vh;
+    width: 100%;
+    color: white;
+    cursor: pointer;
+
+    background-color:rgba(255, 255, 255, 0.1);
+    transition: 0.2s;
+}
+.notice-tab:hover{
+    font-size: 1.1em;
+}
+
+#notice-next-tab{
+    border-bottom: 1px white; 
+}
+#notice-prev-tab{
+    margin-top: 1px;
+}
+
+.tab-title{
+    margin-left: 3%;
+    width: 10%;
+    line-height: 5vh;
+    font-weight: bolder;
+}
+
+.tab-content-title{
+    margin-left: 5%;
+}
