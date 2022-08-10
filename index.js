@@ -54,14 +54,14 @@ app.get('/telescopes/manual', function(req, res) {
 })
 
 //3. 사진 게시판 페이지
-app.get('/chasing-history', function(req, res){
+app.get('/gallery', function(req, res){
     res.sendFile(__dirname+"/frontWEB/pictureNoticeBoard.html")
 })
-app.get('/chasing-history/editor', function(req, res){
+app.get('/gallery/editor', function(req, res){
     res.sendFile(__dirname+"/frontWEB/picturenoticeboardEditor.html")
     
 })
-app.get('/chasing-history/:pageNum', function(req, res){
+app.get('/gallery/:pageNum', function(req, res){
     res.sendFile(__dirname+"/frontWEB/pictureNoticeBoardContent.html")
 })
 
