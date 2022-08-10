@@ -23,3 +23,19 @@ exports.getChasingHistoryContent = async function(req, res){
 
     return res.send(getChasingHistoryContentRes);
 }
+
+exports.postComment = async function(req, res){
+    const token = req.verifiedToken;
+    if(!token)
+        return res.send(response.response(baseResponse.TOKEN_EMPTY));
+
+    let {content, upperId, postId} = req.body;
+
+    if(!upperId) upperId=0;
+    if(!content) return res.send(errResponse(baseResponse.COMMENT_CONTENT_EMPTY));
+    if(!postId) return res.send(errResponse(baseResponseStatus.COMMENT_POST_ID_EMPTY));
+
+    const postCommentRes = await chasingHistoryService.postComment(token, content, upperId, postId);
+
+    return res.send(postCommentRes);
+}
