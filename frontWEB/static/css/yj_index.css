@@ -445,3 +445,7 @@ p{
   color: white;
 }
 
+li{
+  cursor: pointer;
+}
+
