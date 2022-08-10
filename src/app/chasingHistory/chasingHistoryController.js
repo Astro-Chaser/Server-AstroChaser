@@ -39,3 +39,20 @@ exports.postComment = async function(req, res){
 
     return res.send(postCommentRes);
 }
+
+/**
+ * 댓글 가져오기
+ * @param {*} req 
+ * @param {*} res 
+ * @returns 
+ */
+ exports.getComment = async function(req, res){
+    const noticeNum = req.query.pageNum;
+    
+    
+    if(!noticeNum) return res.send(baseResponse.NOTICEBOARD_PAGE_EMPTY);
+
+    const getCommentRes = await chasingHistoryProvider.getComment(noticeNum);
+
+    return res.send(getCommentRes);
+}

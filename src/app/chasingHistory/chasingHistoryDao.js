@@ -65,9 +65,22 @@ async function postComment(connect, postCommentParams){
     return postCommentRow;
 } 
 
+//5. 댓글 가져오기
+async function getComment(connect, noticePage){
+    const getCommentQuery = `
+    SELECT PNBC.id AS commentId, PNBC.createdAt, PNBC.upperCommentId, User.generation, User.name, PNBC.content
+    FROM PictureNoticeBoardComments AS PNBC INNER JOIN User ON PNBC.writerId = User.id
+    WHERE PNBC.pictureNoticeBoardId = ${noticePage}
+    ORDER BY createdAt ASC;
+    `
+    const [getCommentRes] = await connect.query(getCommentQuery);
+
+    return getCommentRes;
+}
 module.exports ={
     getChasingHistory,
     postChasingHistory,
     getChasingHistoryContent,
     postComment,
+    getComment,
 }

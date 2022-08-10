@@ -14,4 +14,7 @@ module.exports = function(app){
 
     //4. 게시판 댓글 달기 API
     app.post('/app/picture-board/comment', jwtMiddleware, chasingHistory.postComment);
+
+    //5. 게시판 댓글 불러오기 API
+    app.get('/app/picture-board/comment/get', chasingHistory.getComment)
 }
