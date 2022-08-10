@@ -72,8 +72,13 @@ html{
     white-space: pre-line;
     color: white;
 }
-
-
+p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 10px;
+}
+.title.is-4 {
+    margin-bottom: 0;
+}
 .noticeBoard-page-navigator{
     margin-top: 20px;
     height: auto;
