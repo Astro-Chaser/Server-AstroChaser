@@ -34,22 +34,30 @@ async function showContent(pageNum){
         </div>
     `
     $(".mainContents").append(html);
-}
 
-//페이지 이전글, 다음글 불러오기
-picturePrevBtn.onclick = function(){
-  if((pageNum-1)>0)
-  {
-    pageNum -= 1;
-    location.href=`/chasing-history/${pageNum}`
-  }
-}
-pictureNextBtn.onclick = function(){
-  if(pageNum+1<= pictureBoardTitle.result.length)
-  {
-    pageNum += 1;
-    location.href=`/chasing-history/${pageNum}`
-  }
+    let titleHtml = '';
+    for(var i in pictureBoardTitle.result){
+      if(pictureBoardTitle.result[i].id == pageNum){
+        if(i>0){
+          titleHtml += `
+          <div class="notice-tab" id="notice-next-tab" onclick="location.href = '/gallery/${pictureBoardTitle.result[i-1].id}'">
+            <span class="tab-title">다음글</span>
+            <span class="tab-content-title">${pictureBoardTitle.result[i-1].title}</span>
+          </div>
+          `
+        }
+        if(Number(i)+1<pictureBoardTitle.result.length){
+          titleHtml += `
+          <div class="notice-tab" id="notice-prev-tab" onclick="location.href = '/gallery/${pictureBoardTitle.result[Number(i)+1].id}'">
+            <span class="tab-title">이전글</span>
+            <span class="tab-content-title">${pictureBoardTitle.result[Number(i)+1].title}</span>
+          </div>
+          `
+        }
+        break;
+      }
+    }
+    $('.noticeBoard-page-navigator').append(titleHtml);
 }
 
 //get API AS JSON

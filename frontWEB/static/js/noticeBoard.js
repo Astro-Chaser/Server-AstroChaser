@@ -62,22 +62,6 @@ async function showNormalNoticeBoardTitles(page){
     }      
 }
 
-noticePrevBtn.onclick = function(){
-    if(noticeBoardPage>=1){
-        $('.removeColumns').empty();
-        Number(noticeBoardPage--);
-        showNormalNoticeBoardTitles(noticeBoardPage);
-    }
-}
-noticeNextBtn.onclick = function(){
-    if(titleArr.length/10 > noticeBoardPage+1)
-    {
-        $('.removeColumns').empty();
-        Number(noticeBoardPage++);
-        console.log(noticeBoardPage)
-        showNormalNoticeBoardTitles(noticeBoardPage);
-    }
-}
 
 async function getNormalNoticeBoardTitles(){
     const getTitleRes = await getAPI(hostAddress, 'app/notice/title/normal');
