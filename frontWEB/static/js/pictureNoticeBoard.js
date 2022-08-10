@@ -14,7 +14,7 @@ window.onload = async function(){
 async function pictureWriteBtnClicked(event){
     if(localStorage.getItem("member")=="운영진")
     {
-        location.href = `/chasing-history/editor`;
+        location.href = `/gallery/editor`;
     }
     else
     {
@@ -57,7 +57,7 @@ async function showPictureNoticeBoard(pictureBoardPageCnt){
             {
                 var html=` 
                 <div class="tile is-parent">
-                    <article class="tile is-child box" onclick="location.href='/chasing-history/${id}'">
+                    <article class="tile is-child box" onclick="location.href='/gallery/${id}'">
                     <p class="title" style="font-size: 18px;">${title}</p>
                     <figure class="image is-4by3">
                         <img src="${media}">
@@ -70,7 +70,7 @@ async function showPictureNoticeBoard(pictureBoardPageCnt){
             {
                 var html=` 
                 <div class="tile is-parent">
-                    <article class="tile is-child box" onclick="location.href='/chasing-history/${id}'">
+                    <article class="tile is-child box" onclick="location.href='/gallery/${id}'">
                     <p class="title" style="font-size: 18px;">${title}</p>
                     <figure class="image is-4by3">
                         <img src="${media}">
@@ -83,7 +83,7 @@ async function showPictureNoticeBoard(pictureBoardPageCnt){
             {
                 var html=` 
                 <div class="tile is-parent">
-                    <article class="tile is-child box" onclick="location.href='/chasing-history/${id}'">
+                    <article class="tile is-child box" onclick="location.href='/gallery/${id}'">
                     <p class="title" style="font-size: 18px;">${title}</p>
                     <figure class="image is-4by3">
                         <img src="${media}">
