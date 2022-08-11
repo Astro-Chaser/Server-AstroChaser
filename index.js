@@ -79,10 +79,10 @@ app.get('/chasing/notice', function(req, res){
     res.sendFile(__dirname + "/frontWEB/chasingNoticeBoard.html");
 })
 app.get('/chasing/notice/editor', function(req, res){
-    res.sendFile(__dirname + "/frontWEB/chasingNoticeBoardEditor.html");
+    res.sendFile(__dirname + "/frontWEB/chasingNoticeboardEditor.html");
 })
 app.get('/chasing/notice/:pageNum', function(req, res){
-    res.sendFile(__dirname + "/frontWEB/chasingNoticeboardContent.html");
+    res.sendFile(__dirname + "/frontWEB/chasingNoticeBoardContent.html");
 })
 
 
