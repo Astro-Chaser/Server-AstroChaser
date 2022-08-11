@@ -78,6 +78,9 @@ app.get('/notice/:pageNum', function(req, res){
 app.get('/chasing/notice', function(req, res){
     res.sendFile(__dirname + "/frontWEB/chasingNoticeBoard.html");
 })
+app.get('/chasing/notice/editor', function(req, res){
+    res.sendFile(__dirname + "/frontWEB/chasingNoticeBoardEditor.html");
+})
 
 
 //5. 회칙 페이지
