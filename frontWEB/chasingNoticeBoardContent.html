@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <!-- jquery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- 기타 CDN-->
+    <script src="https://unpkg.com/jwt-decode@3.1.2/build/jwt-decode.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/noticeBoardContent.css">
+    <link rel="stylesheet" type="text/css" href="/css/topnav.css">
+    <title>KAU Astro Chaser</title>
+</head>
+<body>
+  <nav class="navbar is-dark" style="background-color: rgba(0, 0, 0, 0.7); height: 5vh;">
+    <div class="navbar-brand">
+      <a href="/" class="navbar-item" id="nav-home">
+        <img src="/image/Astro logo intro.png" alt="AC logo" width="130" height="50">
+      </a>
+    </div>
+    <div id="navbarExampleTransparentExample" class="navbar-menu">
+      <div class="navbar-start is-active">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            소개
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-owned-telescopes">
+              동아리소개
+            </a>
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
+              연혁
+            </a>
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
+              활동소개
+            </a>
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
+              조직도
+            </a>
+            <a href="/rules" class="navbar-item" id="nav-setting-telescope">
+              회칙
+            </a>
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
+              별지기소개
+            </a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            공지사항
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <a href="/notice" class="navbar-item" id="nav-owned-telescopes">
+              일반공지
+            </a>
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
+              관측공지
+            </a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            커뮤니티
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-owned-telescopes">
+              자유게시판
+            </a>
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
+              천문학&천문소식
+            </a>
+            <a onclick = "alert('준비중입니다.')"class="navbar-item" id="nav-setting-telescope">
+              별지기소식
+            </a>
+            <a href="/gallery" class="navbar-item" id="nav-setting-telescope">
+              갤러리
+            </a>
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
+              자료실
+            </a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            정보공개
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-owned-telescopes">
+              연간 예산회계
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a href="user/signup" class="button is-primary" id="nav-sign-up">
+              <strong>회원가입</strong>
+            </a>
+            <a href="/user/signin" class="button is-light" id="nav-sign-in">
+              로그인
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+    <div class="contents">
+        <div class="leftNavBar"></div>
+        <div class="rightContentBox">
+            <div class="noticeTitle">
+              <a href="/chasing/notice" style="color: white;">
+                <h3 class="title is-3" style="color: white; margin-top: 4vh;">관측공지</h3>
+              </a>
+                
+            </div>
+            <div class="mainContents">
+            </div>
+            
+
+
+            <hr class="contentHr">
+            <div class="wring-comment-area">
+              <div class="commentCount"></div>
+              <div class="control">
+                <textarea class="textarea has-fixed-size" id="comment-writing-textbox" placeholder="댓글을 작성해주세요."></textarea>
+              </div>
+              <button class="button is-light" id="comment-register-btn" onclick="postComment(0)">등록</button>
+            </div>
+
+            <div class="view-comment-area"></div>
+
+            <div class="noticeBoard-page-navigator">
+            </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="/js/hostAddr.js"></script>
+<script type="text/javascript" src="/js/jwtVerifier.js"></script>
+<script type="text/javascript" src="/js/chasingNoticeBoardContent.js"></script>
+</html>

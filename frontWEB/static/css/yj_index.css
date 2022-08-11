@@ -447,5 +447,10 @@ p{
 
 li{
   cursor: pointer;
+  transition: 0.7s;
+}
+
+li:hover{
+  text-decoration:underline;
 }
 

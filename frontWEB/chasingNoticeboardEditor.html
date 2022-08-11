@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/inko@1.1.0/inko.min.js"></script>
+
+  <!-- OG Tags-->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://astrochaser.com">
+  <meta property="og:title" content="KAU Astro Chaser">
+  <meta property="og:image" content="./image/AC logo 1.jpeg">
+  <meta property="og:description" content="한국항공대 천체관측동아리 Astro Chaser">
+  <meta property="og:site_name" content="Astro Chaser">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+	<!-- jquery CDN -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- 기타 CDN-->
+  <script src="https://unpkg.com/jwt-decode@3.1.2/build/jwt-decode.js"></script>
+
+  <!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="/css/pictureNoticeBoardEditor.css">
+	<link rel="stylesheet" type="text/css" href="/css/topnav.css">
+
+
+   <!-- JS -->
+   <script type="text/javascript" src="/js/APIsecretKey.js"></script>
+   <script type="text/javascript" src="/js/hostAddr.js"></script>
+	
+	<title>KAU Astro Chaser</title>
+</head>
+
+<body>
+	<nav class="navbar is-dark" style="background-color: rgba(0, 0, 0, 0.7); height: 5vh;">
+    <div class="navbar-brand">
+      <a href="/" class="navbar-item" id="nav-home">
+        <img src="/image/Astro logo intro.png" alt="AC logo" width="130" height="50">
+      </a>
+    </div>
+    <div id="navbarExampleTransparentExample" class="navbar-menu">
+      <div class="navbar-start is-active">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            소개
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-owned-telescopes">
+              동아리소개
+            </a>
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
+              연혁
+            </a>
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
+              활동소개
+            </a>
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
+              조직도
+            </a>
+            <a href="/rules" class="navbar-item" id="nav-setting-telescope">
+              회칙
+            </a>
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
+              별지기소개
+            </a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            공지사항
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <a href="/notice" class="navbar-item" id="nav-owned-telescopes">
+              일반공지
+            </a>
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
+              관측공지
+            </a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            커뮤니티
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-owned-telescopes">
+              자유게시판
+            </a>
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
+              천문학&천문소식
+            </a>
+            <a onclick = "alert('준비중입니다.')"class="navbar-item" id="nav-setting-telescope">
+              별지기소식
+            </a>
+            <a href="/gallery" class="navbar-item" id="nav-setting-telescope">
+              갤러리
+            </a>
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
+              자료실
+            </a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            정보공개
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <a onclick = "alert('준비중입니다.')" class="navbar-item" id="nav-owned-telescopes">
+              연간 예산회계
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a href="user/signup" class="button is-primary" id="nav-sign-up">
+              <strong>회원가입</strong>
+            </a>
+            <a href="/user/signin" class="button is-light" id="nav-sign-in">
+              로그인
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+	<div class="contents">
+		<div class="leftNavBar"></div>
+		<div class="rightContentBox">
+			<div class="mainContents">
+				<p>
+					<h3 class="title is-3" style="color: white; margin-top: 4vh;">관측 공지 게시판 글쓰기</h1>
+                  <hr class="title-hr">
+                  <input class="input is-link" id="title" type="text" placeholder="제목">
+                  <div class="control">
+                    <textarea class="textarea has-fixed-size" id="contentEditor" style="height: 50vh;" placeholder="내용 입력하기"></textarea>
+                  </div>
+                  <div id="preview"></div>
+                  <div class="file is-normal" id="file-js-example">
+                    <label class="file-label">
+                      <input class="file-input" type="file" name="resume" multiple="multiple">
+                      <span class="file-cta">
+                        <span class="file-icon">
+                          <img src="/image/uploadIcon.png">
+                        </span>
+                        <span class="file-label">
+                          사진 파일 업로드하기
+                        </span>
+                    </span>
+                    <button class="button is-success" style="margin-left: 20px" id="picture-commit">게시하기</button>
+                    </div>
+                    </label>
+              </p> 
+              
+          </div>
+      </div>
+  </div>
+
+
+    
+    
+</body> 
+<script type="text/javascript" src="/js/jwtVerifier.js"></script>
+<script type="text/javascript" src="/js/chasingNoticeBoardEditor.js"></script>
+</html>

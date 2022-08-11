@@ -57,6 +57,7 @@ async function getNormalNoticeTitle(connection){
             SELECT NNB.id, NNB.createdat, NNB.updatedat, User.name, title, viewCount
             FROM NormalNoticeBoard AS NNB, User
             WHERE User.id = NNB.writerId AND User.state='A' AND NNB.state='A' AND NNB.type='NORMAL'
+            ORDER BY NNB.createdat DESC;
         `
         const [getNoticeTitleRow] = await connection.query(getNormalNoticeTitleQuery);
     
@@ -68,6 +69,7 @@ async function getChasingNormalTitle(connection){
             SELECT NNB.id, NNB.createdat, NNB.updatedat, User.name, title, content, viewCount
             FROM NormalNoticeBoard AS NNB INNER JOIN User ON User.id = NNB.writerId
             WHERE User.state='A' AND NNB.state='A' AND NNB.type='CHASING'
+            ORDER BY NNB.createdat DESC;
         `
         const [getNoticeTitleRow] = await connection.query(getChasingNoticeTitleQuery);
     

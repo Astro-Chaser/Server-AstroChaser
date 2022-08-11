@@ -75,6 +75,16 @@ app.get('/notice/editor', function(req, res){
 app.get('/notice/:pageNum', function(req, res){
     res.sendFile(__dirname + "/frontWEB/noticeBoardContent.html");
 })
+app.get('/chasing/notice', function(req, res){
+    res.sendFile(__dirname + "/frontWEB/chasingNoticeBoard.html");
+})
+app.get('/chasing/notice/editor', function(req, res){
+    res.sendFile(__dirname + "/frontWEB/chasingNoticeBoardEditor.html");
+})
+app.get('/chasing/notice/:pageNum', function(req, res){
+    res.sendFile(__dirname + "/frontWEB/chasingNoticeBoardContent.html");
+})
+
 
 //5. 회칙 페이지
 app.get('/rules', function(req, res){
