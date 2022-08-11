@@ -6,14 +6,14 @@ let titleArr;
 
 
 window.onload = async function(){
-    titleArr = await getNormalNoticeBoardTitles();
+    titleArr = await getChasingNoticeBoardTitles();
     showNormalNoticeBoardTitles(noticeBoardPage);
 }
 
 noticeWriteBtn.onclick = function noticeWriteBtnClicked(event){
     if(localStorage.getItem("member")=="운영진")
     {
-        location.href = `/notice/editor`;
+        location.href = `/chasing/notice/editor`;
     }
     else
     {
@@ -31,7 +31,7 @@ async function showNormalNoticeBoardTitles(page){
         if(i==9 || Number((page*10)+i) == titleArr.length-1 ) {
             html += `
                 <div class="removeColumns">
-                    <div class="columns" onclick="location.href='/notice/${titleArr[Number((page*10)+i)].id}'">
+                    <div class="columns" onclick="location.href='/chasing/notice/${titleArr[Number((page*10)+i)].id}'">
                         <div class="column is-full" id="final-column">
                             <div class="noticeCol iconCol"></div>
                             <div class="noticeCol titleCol">${title}</div>
@@ -47,7 +47,7 @@ async function showNormalNoticeBoardTitles(page){
         }
         html += `
         <div class="removeColumns">
-            <div class="columns" onclick="location.href='/notice/${titleArr[Number((page*10)+i)].id}'">
+            <div class="columns" onclick="location.href='/chasing/notice/${titleArr[Number((page*10)+i)].id}'">
                 <div class="column is-full">
                     <div class="noticeCol iconCol"></div>
                     <div class="noticeCol titleCol">${title}</div>
@@ -62,8 +62,8 @@ async function showNormalNoticeBoardTitles(page){
 }
 
 
-async function getNormalNoticeBoardTitles(){
-    const getTitleRes = await getAPI(hostAddress, 'app/notice/title/normal');
+async function getChasingNoticeBoardTitles(){
+    const getTitleRes = await getAPI(hostAddress, 'app/notice/title/chasing');
     let titleArr = new Array();
     for(var i in getTitleRes.result){
         let titleRes = new Object();

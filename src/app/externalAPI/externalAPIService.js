@@ -51,6 +51,7 @@ exports.postAstroInfo = async function(req, res){
         //정보 DAO에 저장하기
         const connection = await pool.getConnection(async (conn) => conn);
         const insertAstroEventResult = await externalAPIDao.insertAstroEvent(connection, astroInfoParams);
+        connection.release();
         //console.log(insertAstroEventResult);
         if(insertAstroEventResult==0)
         {
