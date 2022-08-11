@@ -1,21 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">     
-    <!-- jquery CDN -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 
-    <!-- 기타 CDN -->
-    <script src="https://unpkg.com/jwt-decode@3.1.2/build/jwt-decode.js"></script>
+  <!-- OG Tags-->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://astrochaser.com">
+  <meta property="og:title" content="KAU Astro Chaser">
+  <meta property="og:image" content="./image/AC logo 1.jpeg">
+  <meta property="og:description" content="한국항공대 천체관측동아리 Astro Chaser">
+  <meta property="og:site_name" content="Astro Chaser">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
-    <link rel="stylesheet" type="text/css" href="/css/pictureNoticeBoard.css">
-    <link rel="stylesheet" type="text/css" href="/css/topnav.css">
-    <script type="text/javascript" src="/js/hostAddr.js"></script>
-    <title>KAU Astro Chaser</title>
+  <!-- jquery CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- 기타 CDN-->
+  <script src="https://unpkg.com/jwt-decode@3.1.2/build/jwt-decode.js"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="/css/noticeBoard.css">
+  <link rel="stylesheet" type="text/css" href="/css/topnav.css">
+  <script type="text/javascript" src="/js/hostAddr.js"></script>
+
+  <title>KAU Astro Chaser</title>
 </head>
+
 <body>
   <nav class="navbar is-dark" style="background-color: rgba(0, 0, 0, 0.7); height: 5vh;">
     <div class="navbar-brand">
@@ -114,37 +129,52 @@
     </div>
   </nav>
 
-    <div class="contents">
-      <div class="leftNavBar"></div>
-      <div class="rightContentBox">
-          <div class="mainContents">
-              <p>
-                  <h3 class="title is-3" style="color: white; margin-top: 4vh;">갤러리
-                    <div class="noticeBtn"><button class="button is-light" id="picture-write-btn">글쓰기</button></div></h1>
-                  <hr class="title-hr">
-                  <div class="tile is-ancestor" id="title-row1"></div>
-                  <div class="tile is-ancestor" id="title-row2"></div>
-                  <div class="tile is-ancestor" id="title-row3"></div>
-                  
-                  <div class="pictureNoticeBoard-page-navigator">
-                    <button class="button is-responsive" id="picture-prev-btn" style="float: left;">
-                      이전글
-                    </button>
-                    <button class="button is-responsive" id="picture-next-btn" style="float: right;">
-                      다음글
-                    </button>
-                  </div>
-              </p> 
-
-          
+  <div class="contents">
+    <div class="rightContentBox">
+      <div class="mainContents">
+        <p>
+        <h3 class="title is-3" style="color: white; margin-top: 4vh;">자유게시판
+          <div class="noticeBtn"><button class="button is-light" id="notice-write-btn">글쓰기</button></div>
+          </h1>
+          <hr class="title-hr">
+          <div class="columns">
+            <div class="column is-full-main" id="top-notice">
+              <div class="noticeCol" id="iconCol-main">번호</div>
+              <div class="noticeCol" id="titleCol-main">제목</div>
+              <div class="noticeCol" id="writerCol-main">작성자</div>
+              <div class="noticeCol" id="timeCol-main">등록일</div>
+              <div class="noticeCol" id="watchCol-main">조회</div>
+            </div>
           </div>
+          <div class="notice-list"></div>
+
+          <div class="noticeBoard-page-navigator">
+            <button class="button is-responsive" id="notice-prev-btn" style="float: left;">
+              이전글
+            </button>
+            <button class="button is-responsive" id="notice-next-btn" style="float: right;">
+              다음글
+            </button>
+          </div>
+          </p>
       </div>
+    </div>
   </div>
 
-
-    
-    
 </body>
+<footer class="footer" style="background-color: transparent;width: 100%; z-index: 1; bottom:0; position: fixed; height: 10vh; color: #ddd;">
+  <div class="content has-text-centered" style="background-color: transparent;">
+    <p style="background-color: transparent;">
+      <strong style="color: white;">Astro Chaser Web</strong> by 전준휘&하윤지.<br>
+      <a href="https://github.com/BUZZINGPolarBear/Server-AstroChaser" style="color: rgb(129, 150, 255);">이곳</a>에서 소스코드를
+      보실 수 있습니다.
+      <br>사용된 사진들은 무단으로 복제 및 도용이 불가능합니다.
+      <br>개발자 Contact: jjh63360@gmail.com
+    </p>
+  </div>
+</footer>
+
 <script type="text/javascript" src="/js/jwtVerifier.js"></script>
-<script type="text/javascript" src="/js/pictureNoticeBoard.js"></script>
+<script type="text/javascript" src="/js/userFreeBoard.js"></script>
+
 </html>

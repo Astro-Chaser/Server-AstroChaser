@@ -34,6 +34,13 @@ exports.getNoticeTitle = async function(req){
             connect.release();
             return response(baseResponseStatus.SUCCESS, getNoticeTitleRes)
         }
+        else if(type=='user' || type=='USER')
+        {
+            const getNoticeTitleRes = await noticeBoardDao.getUserNormalTitle(connect);
+            
+            connect.release();
+            return response(baseResponseStatus.SUCCESS, getNoticeTitleRes)
+        }
 
     }
     catch{

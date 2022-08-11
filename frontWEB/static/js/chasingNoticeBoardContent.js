@@ -75,7 +75,7 @@ async function showComment(pageNum){
       replyHtml ='';
       replyHtml = `
         <div class="reply-comment">
-          <div class="comment-writer-info">➡️ ${commentRes.result[i].generation}기 ${commentRes.result[i].name} ${commentRes.result[i].createdAt.substring(0,10)} ${commentRes.result[i].createdAt.substring(11,19)}</div>
+        <div class="comment-writer-info"> ${commentRes.result[i].generation}기 ${commentRes.result[i].name} ${commentRes.result[i].createdAt.substring(0,10)} ${commentRes.result[i].createdAt.substring(11,19)}</div>
           <div class="comment-index">${commentRes.result[i].content}
         </div>
       
@@ -83,7 +83,7 @@ async function showComment(pageNum){
       $(`#reply-${commentRes.result[i].upperCommentId}`).append(replyHtml);
     }
   }
-  console.log(titleRes)
+
   let titleHtml = '';
   for(var i in titleRes.result){
     if(titleRes.result[i].id == pageNum){

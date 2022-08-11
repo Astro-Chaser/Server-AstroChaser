@@ -2,70 +2,48 @@
 const queryString = window.location.href;
 const getPageNum = queryString.lastIndexOf("/")
 let pageNum = parseInt(queryString.substring(getPageNum+1));
-
 const picturePrevBtn = document.getElementById("picture-prev-btn");
 const pictureNextBtn = document.getElementById("picture-next-btn");
+const commentRegisterBtn = document.getElementById("comment-register-btn");
 let pictureBoardTitle;
 
+
 window.onload = function(){
-    parseInt(pageNum)
-    showContent(pageNum); 
-    showComment(pageNum);
+  parseInt(pageNum)
+  showContent(pageNum); 
+  showComment(pageNum);
 }
 
-async function showContent(pageNum){
-    pictureBoardTitle = await getAPI(hostAddress, 'app/picture-board/title');  
-    const contentRes = await getAPI(hostAddress, `app/picture-board/${pageNum}`);
+async function showContent(pageNum){ 
+    const contentRes = await getAPI(hostAddress, `app/notice/user/${pageNum}`);
+    if(contentRes.isSuccess==false) location.href = '/free-board'
     let html = `
     <h4 class="title is-4" style="color: white; margin-top: 8vh;">${contentRes.result[0].title}</h4>
-    <p>🌟${contentRes.result[0].name} ${contentRes.result[0].createdAt.substring(0,10)}</p>
+    <p>🌟${contentRes.result[0].name} ${contentRes.result[0].createdat.substring(0,10)}</p>
     <hr class="title-hr">`
 
     for (var i in contentRes.result)
     {
+      if(contentRes.result[i].mediaUrl == null) break;
         html += `
         <div class="image-area">
-            <img src="${contentRes.result[i].mediaUrl}" >
+            <img src="${contentRes.result[i].mediaUrl}" width="500" >
         </div>
         `
     }
-    html +=
-    `
+      html +=
+      `
         <div class="picture-content">
             ${contentRes.result[0].content}
         </div>
-    `
+      `
     $(".mainContents").append(html);
-
-
-    let titleHtml = '';
-  for(var i in pictureBoardTitle.result){
-    if(pictureBoardTitle.result[i].id == pageNum){
-      if(i>0){
-        titleHtml += `
-        <div class="notice-tab" id="notice-next-tab" onclick="location.href = '/gallery/${pictureBoardTitle.result[i-1].id}'">
-          <span class="tab-title">다음글</span>
-          <span class="tab-content-title">${pictureBoardTitle.result[i-1].title}</span>
-        </div>
-        `
-      }
-      if(Number(i)+1<pictureBoardTitle.result.length){
-        titleHtml += `
-        <div class="notice-tab" id="notice-prev-tab" onclick="location.href = '/gallery/${pictureBoardTitle.result[Number(i)+1].id}'">
-          <span class="tab-title">이전글</span>
-          <span class="tab-content-title">${pictureBoardTitle.result[Number(i)+1].title}</span>
-        </div>
-        `
-      }
-      break;
-    }
-  }
-  $('.noticeBoard-page-navigator').append(titleHtml);
 }
 
 //댓글 보여주기
 async function showComment(pageNum){
-  const commentRes = await getAPI(hostAddress, `app/picture-board/comment/get?pageNum=${pageNum}`);
+  const commentRes = await getAPI(hostAddress, `app/notice/comment?pageNum=${pageNum}`);
+  const titleRes = await getAPI(hostAddress, 'app/notice/title/user');
   $('.commentCount').append(`댓글 ${commentRes.result.length}개`)
   html = '';
   replyHtml = '';
@@ -97,7 +75,7 @@ async function showComment(pageNum){
       replyHtml ='';
       replyHtml = `
         <div class="reply-comment">
-          <div class="comment-writer-info"> > ${commentRes.result[i].generation}기 ${commentRes.result[i].name} ${commentRes.result[i].createdAt.substring(0,10)} ${commentRes.result[i].createdAt.substring(11,19)}</div>
+        <div class="comment-writer-info"> ${commentRes.result[i].generation}기 ${commentRes.result[i].name} ${commentRes.result[i].createdAt.substring(0,10)} ${commentRes.result[i].createdAt.substring(11,19)}</div>
           <div class="comment-index">${commentRes.result[i].content}
         </div>
       
@@ -105,7 +83,30 @@ async function showComment(pageNum){
       $(`#reply-${commentRes.result[i].upperCommentId}`).append(replyHtml);
     }
   }
-  
+
+  let titleHtml = '';
+  for(var i in titleRes.result){
+    if(titleRes.result[i].id == pageNum){
+      if(i>0){
+        titleHtml += `
+        <div class="notice-tab" id="notice-next-tab" onclick="location.href = '/free-board/${titleRes.result[i-1].id}'">
+          <span class="tab-title">다음글</span>
+          <span class="tab-content-title">${titleRes.result[i-1].title}</span>
+        </div>
+        `
+      }
+      if(Number(i)+1<titleRes.result.length){
+        titleHtml += `
+        <div class="notice-tab" id="notice-prev-tab" onclick="location.href = '/free-board/${titleRes.result[Number(i)+1].id}'">
+          <span class="tab-title">이전글</span>
+          <span class="tab-content-title">${titleRes.result[Number(i)+1].title}</span>
+        </div>
+        `
+      }
+      break;
+    }
+  }
+  $('.noticeBoard-page-navigator').append(titleHtml);
 }
 
 function showReplyTab(hideDivId){
@@ -136,7 +137,7 @@ async function postComment(){
     redirect: 'follow'
   };
 
-  const postCommentRes = await postAPI(hostAddress, 'app/picture-board/comment', requestOptions)
+  const postCommentRes = await postAPI(hostAddress, 'app/notice/comment', requestOptions)
   if(postCommentRes.isSuccess == true) location.reload();
   else {
     console.log(postCommentRes)
@@ -164,7 +165,7 @@ async function postReplyComment(upperId, textareaId){
     redirect: 'follow'
   };
 
-  const postCommentRes = await postAPI(hostAddress, 'app/picture-board/comment', requestOptions)
+  const postCommentRes = await postAPI(hostAddress, 'app/notice/comment', requestOptions)
   if(postCommentRes.isSuccess == true) location.reload();
   else {
     console.log(postCommentRes)
@@ -183,8 +184,6 @@ async function getAPI(host, path, headers ={}) {
     };
     const res = await fetch(url, options);
     const data = res.json();
-    // console.log(res)
-    // console.log(data)
     if (res.ok) {
       return data;
     } else {
@@ -195,6 +194,7 @@ async function getAPI(host, path, headers ={}) {
 //post API AS JSON
 async function postAPI(host, path, options) {
   const url = `http://${host}/${path}`;
+  console.log(url);
   const res = await fetch(url, options);
   const data = res.json();
   // console.log(res)

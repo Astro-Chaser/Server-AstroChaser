@@ -1,23 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">     
-    <!-- jquery CDN -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/inko@1.1.0/inko.min.js"></script>
 
-    <!-- 기타 CDN -->
-    <script src="https://unpkg.com/jwt-decode@3.1.2/build/jwt-decode.js"></script>
+  <!-- OG Tags-->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://astrochaser.com">
+  <meta property="og:title" content="KAU Astro Chaser">
+  <meta property="og:image" content="./image/AC logo 1.jpeg">
+  <meta property="og:description" content="한국항공대 천체관측동아리 Astro Chaser">
+  <meta property="og:site_name" content="Astro Chaser">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
-    <link rel="stylesheet" type="text/css" href="/css/pictureNoticeBoard.css">
-    <link rel="stylesheet" type="text/css" href="/css/topnav.css">
-    <script type="text/javascript" src="/js/hostAddr.js"></script>
-    <title>KAU Astro Chaser</title>
+	<!-- jquery CDN -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- 기타 CDN-->
+  <script src="https://unpkg.com/jwt-decode@3.1.2/build/jwt-decode.js"></script>
+
+  <!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="/css/pictureNoticeBoardEditor.css">
+	<link rel="stylesheet" type="text/css" href="/css/topnav.css">
+
+
+   <!-- JS -->
+   <script type="text/javascript" src="/js/APIsecretKey.js"></script>
+   <script type="text/javascript" src="/js/hostAddr.js"></script>
+	
+	<title>KAU Astro Chaser</title>
 </head>
+
 <body>
-  <nav class="navbar is-dark" style="background-color: rgba(0, 0, 0, 0.7); height: 5vh;">
+	<nav class="navbar is-dark" style="background-color: rgba(0, 0, 0, 0.7); height: 5vh;">
     <div class="navbar-brand">
       <a href="/" class="navbar-item" id="nav-home">
         <img src="/image/Astro logo intro.png" alt="AC logo" width="130" height="50">
@@ -114,29 +134,34 @@
     </div>
   </nav>
 
-    <div class="contents">
-      <div class="leftNavBar"></div>
-      <div class="rightContentBox">
-          <div class="mainContents">
-              <p>
-                  <h3 class="title is-3" style="color: white; margin-top: 4vh;">갤러리
-                    <div class="noticeBtn"><button class="button is-light" id="picture-write-btn">글쓰기</button></div></h1>
+	<div class="contents">
+		<div class="leftNavBar"></div>
+		<div class="rightContentBox">
+			<div class="mainContents">
+				<p>
+					<h3 class="title is-3" style="color: white; margin-top: 4vh;">자유 게시판 글쓰기</h1>
                   <hr class="title-hr">
-                  <div class="tile is-ancestor" id="title-row1"></div>
-                  <div class="tile is-ancestor" id="title-row2"></div>
-                  <div class="tile is-ancestor" id="title-row3"></div>
-                  
-                  <div class="pictureNoticeBoard-page-navigator">
-                    <button class="button is-responsive" id="picture-prev-btn" style="float: left;">
-                      이전글
-                    </button>
-                    <button class="button is-responsive" id="picture-next-btn" style="float: right;">
-                      다음글
-                    </button>
+                  <input class="input is-link" id="title" type="text" placeholder="제목">
+                  <div class="control">
+                    <textarea class="textarea has-fixed-size" id="contentEditor" style="height: 50vh;" placeholder="내용 입력하기"></textarea>
                   </div>
+                  <div id="preview"></div>
+                  <div class="file is-normal" id="file-js-example">
+                    <label class="file-label">
+                      <input class="file-input" type="file" name="resume" multiple="multiple">
+                      <span class="file-cta">
+                        <span class="file-icon">
+                          <img src="/image/uploadIcon.png">
+                        </span>
+                        <span class="file-label">
+                          사진 파일 업로드하기
+                        </span>
+                    </span>
+                    <button class="button is-success" style="margin-left: 20px" id="picture-commit">게시하기</button>
+                    </div>
+                    </label>
               </p> 
-
-          
+              
           </div>
       </div>
   </div>
@@ -144,7 +169,7 @@
 
     
     
-</body>
+</body> 
 <script type="text/javascript" src="/js/jwtVerifier.js"></script>
-<script type="text/javascript" src="/js/pictureNoticeBoard.js"></script>
+<script type="text/javascript" src="/js/userFreeBoardEditor.js"></script>
 </html>

@@ -217,3 +217,10 @@ textarea{
 .tab-content-title{
     margin-left: 5%;
 }
+
+.original-comment-name{
+    background-color: rgb(202, 213, 225);
+    color: rgb(38, 111, 218);
+    border-radius: 8px;
+    margin-right: 10px;
+}

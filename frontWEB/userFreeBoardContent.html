@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">     
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <!-- jquery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- 기타 CDN -->
+    <!-- 기타 CDN-->
     <script src="https://unpkg.com/jwt-decode@3.1.2/build/jwt-decode.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="/css/pictureNoticeBoard.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/noticeBoardContent.css">
     <link rel="stylesheet" type="text/css" href="/css/topnav.css">
-    <script type="text/javascript" src="/js/hostAddr.js"></script>
     <title>KAU Astro Chaser</title>
 </head>
 <body>
@@ -114,37 +115,38 @@
     </div>
   </nav>
 
+
     <div class="contents">
-      <div class="leftNavBar"></div>
-      <div class="rightContentBox">
-          <div class="mainContents">
-              <p>
-                  <h3 class="title is-3" style="color: white; margin-top: 4vh;">갤러리
-                    <div class="noticeBtn"><button class="button is-light" id="picture-write-btn">글쓰기</button></div></h1>
-                  <hr class="title-hr">
-                  <div class="tile is-ancestor" id="title-row1"></div>
-                  <div class="tile is-ancestor" id="title-row2"></div>
-                  <div class="tile is-ancestor" id="title-row3"></div>
-                  
-                  <div class="pictureNoticeBoard-page-navigator">
-                    <button class="button is-responsive" id="picture-prev-btn" style="float: left;">
-                      이전글
-                    </button>
-                    <button class="button is-responsive" id="picture-next-btn" style="float: right;">
-                      다음글
-                    </button>
-                  </div>
-              </p> 
+        <div class="leftNavBar"></div>
+        <div class="rightContentBox">
+            <div class="noticeTitle">
+              <a href="/chasing/notice" style="color: white;">
+                <h3 class="title is-3" style="color: white; margin-top: 4vh;">관측공지</h3>
+              </a>
+                
+            </div>
+            <div class="mainContents">
+            </div>
+            
 
-          
-          </div>
-      </div>
+
+            <hr class="contentHr">
+            <div class="wring-comment-area">
+              <div class="commentCount"></div>
+              <div class="control">
+                <textarea class="textarea has-fixed-size" id="comment-writing-textbox" placeholder="댓글을 작성해주세요."></textarea>
+              </div>
+              <button class="button is-light" id="comment-register-btn" onclick="postComment(0)">등록</button>
+            </div>
+
+            <div class="view-comment-area"></div>
+
+            <div class="noticeBoard-page-navigator">
+            </div>
+    </div>
   </div>
-
-
-    
-    
 </body>
+<script type="text/javascript" src="/js/hostAddr.js"></script>
 <script type="text/javascript" src="/js/jwtVerifier.js"></script>
-<script type="text/javascript" src="/js/pictureNoticeBoard.js"></script>
+<script type="text/javascript" src="/js/userFreeBoardContent.js"></script>
 </html>
