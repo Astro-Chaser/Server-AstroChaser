@@ -51,6 +51,7 @@ exports.getNoticeContent = async function(req, res){
     const type = req.params.type;
 
     if(!noticeNum) return res.send(baseResponse.NOTICEBOARD_PAGE_EMPTY);
+    if(!type) return res.send(errResponse(baseResponse.NOTICEBOARD_TYPE_ERROR));
 
     const getNoticeContentRes = await noticeBoardProvider.getNoticeContent(noticeNum, type);
 
