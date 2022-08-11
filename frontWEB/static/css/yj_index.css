@@ -3,6 +3,7 @@
 body {
   overflow-x: hidden;
   background-color: #060B33;
+  font-family: 'NanumGothic';
 }
 
 /* Add a black background color to the top navigation */
@@ -116,7 +117,7 @@ body {
   
 }
 #calendar{
-  font-family: 'Sniglet', cursive;
+  font-family: 'NanumBarunPenBold';
 }
 
 #userInfo-nav-top{
@@ -419,6 +420,7 @@ p{
 }
 
 .calendar-container{
+  font-family: 'Nanum Gothic', sans-serif;
   float: left;
   width: 40vw;
   height: 100%;
