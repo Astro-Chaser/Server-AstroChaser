@@ -11,7 +11,7 @@ async function postNoticeBoard(connect, postNoticeBoardParams){
         `   
         insertQueryRes = await connect.query(insertNoticeBoardTitleQuery);
     }
-    else
+    else if(postNoticeBoardParams.type == 'NORMAL' || postNoticeBoardParams.type == 'normal')
     {
         const insertNoticeBoardTitleQuery = 
         `
@@ -19,7 +19,15 @@ async function postNoticeBoard(connect, postNoticeBoardParams){
             VALUES (${postNoticeBoardParams.writerid}, '${postNoticeBoardParams.title}', '${postNoticeBoardParams.content}');
         `   
         insertQueryRes = await connect.query(insertNoticeBoardTitleQuery);
-
+    }
+    else if(postNoticeBoardParams.type == 'USER' || postNoticeBoardParams.type == 'user')
+    {
+        const insertNoticeBoardTitleQuery = 
+        `
+            INSERT INTO NormalNoticeBoard(writerId, title, content, type)
+            VALUES (${postNoticeBoardParams.writerid}, '${postNoticeBoardParams.title}', '${postNoticeBoardParams.content}', 'USER');
+        `   
+        insertQueryRes = await connect.query(insertNoticeBoardTitleQuery);
     }
     
    
