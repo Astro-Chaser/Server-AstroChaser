@@ -82,7 +82,7 @@ app.get('/chasing/notice/editor', function(req, res){
     res.sendFile(__dirname + "/frontWEB/chasingNoticeBoardEditor.html");
 })
 app.get('/chasing/notice/:pageNum', function(req, res){
-    res.sendFile(__dirname + "/frontWEB/chasingNoticeBoardContent.html");
+    res.sendFile(__dirname + "/frontWEB/chasingNoticeboardContent.html");
 })
 
 
