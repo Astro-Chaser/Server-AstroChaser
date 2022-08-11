@@ -84,6 +84,18 @@ async function getChasingNormalTitle(connection){
         return getNoticeTitleRow;
 }
 
+async function getUserNormalTitle(connection){
+    const getChasingNoticeTitleQuery = `
+            SELECT NNB.id, NNB.createdat, NNB.updatedat, User.name, title, content, viewCount
+            FROM NormalNoticeBoard AS NNB INNER JOIN User ON User.id = NNB.writerId
+            WHERE User.state='A' AND NNB.state='A' AND NNB.type='USER'
+            ORDER BY NNB.createdat DESC;
+        `
+        const [getNoticeTitleRow] = await connection.query(getChasingNoticeTitleQuery);
+    
+        return getNoticeTitleRow;
+}
+
 //3. 일반 공지 게시글 내용물 가져오기
 async function getNoticeContent(connection, pageNum, type){
     if(type == 'normal')
@@ -213,4 +225,5 @@ module.exports ={
     getNoticeContent,
     postComment,
     getComment,
+    getUserNormalTitle,
 }

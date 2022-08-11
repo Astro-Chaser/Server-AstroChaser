@@ -33,6 +33,8 @@ exports.postNoticeBoard = async function(req, res){
  * @returns 
  */
 exports.getNoticeTitle = async function(req, res){
+    const type = req.params.type;
+    if(!type) return res.send(errResponse(baseResponse.NOTICEBOARD_TYPE_ERROR));
     const getNoticeTitleRes = await noticeBoardProvider.getNoticeTitle(req);
 
     return res.send(getNoticeTitleRes)
