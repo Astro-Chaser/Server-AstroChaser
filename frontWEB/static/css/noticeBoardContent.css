@@ -17,6 +17,9 @@ html{
    float: left;
    height: auto;
    min-height: 100%;
+   margin-left: 10vw;
+   margin-right: 10vw;
+   border-radius: 10px;
 
    /* border-left: 3px solid rgba(229, 229, 227, 0.6); */
    
@@ -26,7 +29,7 @@ html{
 
     width: 80vw;
     
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.1);
 
     margin-bottom: 15vh;
 }
@@ -100,19 +103,21 @@ hr{
 }
 .commentCount{
     color: white;
+    margin-bottom: 10px;
 }
 .wring-comment-area{
     min-height: 200px;
-    width: 100%;
+    width: 90%;
     height: 28vh;
+    margin-left: 5%;
 }
 #comment-writing-textbox{
     height: 15vh;
 }
 #comment-register-btn{
     height: 4vh;
-    width: fit-content;
-    font-size: 1.2em;   
+    width: 5%;
+    font-size: 1em;   
     margin-top: 1vh;
     
     float: right;
@@ -128,7 +133,6 @@ hr{
 .original-comment{
     width: 100%;
     height: fit-content;
-    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .reply-comment{
@@ -159,7 +163,7 @@ hr{
 
 .reply-comment-area{
     margin-left: 20px;
-    color: cornflowerblue;
+    color: rgb(255, 238, 169);
     cursor: pointer;
 }
 #reply-comment-register-btn{
@@ -167,10 +171,11 @@ hr{
     margin-top: 5px;
 }
 .wring-comment-area.reply{
-    width: 95%;
+    width: 90%;
     height: 28vh;
     margin-left: 5%;
     min-height: 200px;
+    /* background-color: rgba(255, 255, 255, 0.2); */
 }
 
 #reply-comment-writing-textbox{
