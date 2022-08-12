@@ -60,7 +60,15 @@ html{
     margin-left: 15vw;
     padding-left: 50px;
     padding-right: 50px;
+    padding-bottom: 50px;
+
+    border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.15);
+    
+}
+
+.all-about{
+    margin-left: 20px;
 }
 
 body{
