@@ -1,7 +1,7 @@
 let noticeBoardPage = 0;
 const noticePrevBtn = document.getElementById("notice-prev-btn");
 const noticeNextBtn = document.getElementById("notice-next-btn");
-const noticeWriteBtn = document.getElementById("notice-write-btn");
+const noticeWriteBtn = document.getElementById("picture-write-btn");
 let titleArr;
 
 
@@ -11,6 +11,8 @@ window.onload = async function(){
 }
 
 noticeWriteBtn.onclick = function noticeWriteBtnClicked(event){
+    event.preventDefault();
+    console.log("ho")
     if(localStorage.getItem("member")=="운영진")
     {
         location.href = `/notice/editor`;

@@ -4,8 +4,8 @@ html{
     background-color: #060b33;
     width: 100vw;
     height: 100%;
-    
 }
+body{ flex-direction: column;}
 
 .leftNavBar{
     float: left;
@@ -249,3 +249,16 @@ html{
     margin-left: 20%;
     text-align: center;
 }
+
+.pagination-link{
+    background-color: white;
+}
+
+.pagination-previous{
+    background-color: white;
+}
+
+.pagination-next{
+    background-color: white;
+}
+
