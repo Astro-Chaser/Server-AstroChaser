@@ -1,7 +1,7 @@
 let noticeBoardPage = 0;
 const noticePrevBtn = document.getElementById("notice-prev-btn");
 const noticeNextBtn = document.getElementById("notice-next-btn");
-const noticeWriteBtn = document.getElementById("notice-write-btn");
+const noticeWriteBtn = document.getElementById("picture-write-btn");
 let titleArr;
 
 
@@ -11,6 +11,8 @@ window.onload = async function(){
 }
 
 noticeWriteBtn.onclick = function noticeWriteBtnClicked(event){
+    event.preventDefault();
+    console.log("ho")
     if(localStorage.getItem("member")=="운영진")
     {
         location.href = `/notice/editor`;
@@ -35,7 +37,7 @@ async function showNormalNoticeBoardTitles(page){
                         <div class="column is-full" id="final-column">
                             <div class="noticeCol iconCol"></div>
                             <div class="noticeCol titleCol">${title}</div>
-                            <div class="noticeCol writerCol">${titleArr[Number((page*10)+i)].name}</div>
+                            <div class="noticeCol writerCol">&nbsp;${titleArr[Number((page*10)+i)].name}</div>
                             <div class="noticeCol timeCol">${titleArr[Number((page*10)+i)].createdat.substring(0, 10)}</div>
                             <div class="noticeCol watchCol">${titleArr[Number((page*10)+i)].viewCount}</div>
                         </div>
@@ -51,7 +53,7 @@ async function showNormalNoticeBoardTitles(page){
                 <div class="column is-full">
                     <div class="noticeCol iconCol"></div>
                     <div class="noticeCol titleCol">${title}</div>
-                    <div class="noticeCol writerCol">${titleArr[Number(page*10 + i)].name}</div>
+                    <div class="noticeCol writerCol">&nbsp;${titleArr[Number(page*10 + i)].name}</div>
                     <div class="noticeCol timeCol">${titleArr[Number(page*10 + i)].createdat.substring(0, 10)}</div>
                     <div class="noticeCol watchCol">${titleArr[Number(page*10 + i)].viewCount}</div>
                 </div>

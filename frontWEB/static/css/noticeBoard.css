@@ -4,8 +4,8 @@ html{
     background-color: #060b33;
     width: 100vw;
     height: 100%;
-    
 }
+body{ flex-direction: column;}
 
 .leftNavBar{
     float: left;
@@ -91,7 +91,8 @@ html{
 .column.is-full{
     margin-left: 5%; 
     width: 90%; 
-    background-color: rgba(230, 230, 230, 1);
+    background-color: transparent;
+    color: white;
     margin-bottom: 1px;
     height: 10vh;
     border-bottom: line rgba(255, 255, 255, 0.15);
@@ -108,8 +109,10 @@ html{
 }
 
 #top-notice{
-    background-color: white;
+    background-color: transparent;
+    color: white;
     height: 8vh;
+    
     margin-top: 15px;
     border-top-left-radius:5px;
     border-top-right-radius:5px;
@@ -117,6 +120,7 @@ html{
 
 .noticeCol{
     float: left;
+
     font-family: 'Do Hyeon', sans-serif;
     font-size: 18px;
 
@@ -135,7 +139,7 @@ html{
 }
 
 .noticeCol.iconCol{
-    background-image: url('../image/icons/icon_notice.png');
+    background-image: url('../image/icons/icon_notice_origin.png');
     background-repeat: no-repeat;
     background-position: center;
     height: 100%;
@@ -213,7 +217,7 @@ html{
 }
 
 .noticeBoard-page-navigator{
-    margin-top: 3vh;
+    margin-top: 5vh;
 }
 
 #notice-prev-btn{
@@ -223,3 +227,38 @@ html{
 #notice-next-btn{
     margin-right: 2vw;
 }
+
+.title.is-1{
+    text-align: center;
+}
+
+.pagenation-area{
+    margin-top: 2vh;
+    width: 90%;
+   
+
+    margin-left: 5%;
+}
+
+.writerBtnArea{
+    float: right;
+}
+
+.pagenation{
+    width: 50%;
+    margin-left: 20%;
+    text-align: center;
+}
+
+.pagination-link{
+    background-color: white;
+}
+
+.pagination-previous{
+    background-color: white;
+}
+
+.pagination-next{
+    background-color: white;
+}
+
