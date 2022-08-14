@@ -11,7 +11,7 @@ const {connect} = require("http2");
 
 exports.postAstroInfo = async function(req, res){
     try{
-
+        let rowCnt = 0;
         const paramSolYear = req.year;
         const paramSolMonth = req.month;
 
@@ -28,25 +28,23 @@ exports.postAstroInfo = async function(req, res){
 
         let astroInfoParams = new Array();
 
+
         for(const property in astroInfoJson.elements[0].elements[1].elements[0].elements){
             var astroEventData = new Object();
-            if(property==0){
-                // console.log(`${property}: ${astroInfoJson.elements[0].elements[1].elements[0].elements[property].elements[0].elements[0].text}`)   
-                // console.log(`${property}: ${astroInfoJson.elements[0].elements[1].elements[0].elements[0].elements[3].elements[0].text}`) 
+            if(astroInfoJson.elements[0].elements[1].elements[0].elements[property].elements[1].elements == undefined){
                 astroEventData.content = astroInfoJson.elements[0].elements[1].elements[0].elements[property].elements[0].elements[0].text;
-                astroEventData.date = astroInfoJson.elements[0].elements[1].elements[0].elements[0].elements[3].elements[0].text;
+                astroEventData.date = astroInfoJson.elements[0].elements[1].elements[0].elements[property].elements[3].elements[0].text;
+                astroEventData.isMonthTitle = true;
                 astroInfoParams.push(astroEventData);
                 continue;
             }
-            // console.log(`${property}: ${astroInfoJson.elements[0].elements[1].elements[0].elements[property].elements[0].elements[0].text}`)   
-            // console.log(`${property}: ${astroInfoJson.elements[0].elements[1].elements[0].elements[property].elements[1].elements[0].text}`)  
-            // console.log(`${property}: ${astroInfoJson.elements[0].elements[1].elements[0].elements[property].elements[3].elements[0].text}`)
             astroEventData.content = astroInfoJson.elements[0].elements[1].elements[0].elements[property].elements[0].elements[0].text;
+        
             astroEventData.time = astroInfoJson.elements[0].elements[1].elements[0].elements[property].elements[1].elements[0].text;
             astroEventData.date = astroInfoJson.elements[0].elements[1].elements[0].elements[property].elements[3].elements[0].text;
+            astroEventData.isMonthTitle = false;
             astroInfoParams.push(astroEventData);
         }
-        //console.log(astroInfoParams);
         
         //정보 DAO에 저장하기
         const connection = await pool.getConnection(async (conn) => conn);
