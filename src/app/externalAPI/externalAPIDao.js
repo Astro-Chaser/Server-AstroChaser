@@ -2,23 +2,19 @@ const e = require("express");
 
 //DB에 천문현상정보 저장
 async function insertAstroEvent(connection, astroInfoParams, err){
+    console.log("hi")
     for(const property in astroInfoParams){
-        // console.log(`${property}: ${astroInfoParams[property].content}`) 
-        // console.log(`${property}: ${astroInfoParams[property].date}`) 
-        // console.log(`${property}: ${astroInfoParams[property].time}`)  
-        if(property == 0)
+        if(astroInfoParams[property].isMonthTitle == true)
         {
             const content = astroInfoParams[property].content;
             const dateFormatter = astroInfoParams[property].date.substring(0,4)+'-'+astroInfoParams[property].date.substring(4,6)+'-00';
             const time = 'null';
 
-            const insertAstroEventQuery=`insert into AstroEventCalender(content, date, time)
-            SELECT * FROM (SELECT '${content}', '${dateFormatter}', '${time}') AS tmp
+            const insertAstroEventQuery=`insert into AstroEventCalender(content, date, time, isMonthTitle)
+            SELECT * FROM (SELECT '${content}', '${dateFormatter}', '${time}', true) AS tmp
             WHERE NOT EXISTS (
                 SELECT date FROM AstroEventCalender WHERE date = '${dateFormatter}' AND time = '${time}'
             ) LIMIT 1;`
-
-            //console.log(insertAstroEventQuery)
             
             const insertAstroEventRow = await connection.query(insertAstroEventQuery);
             if(err) {
@@ -37,8 +33,8 @@ async function insertAstroEvent(connection, astroInfoParams, err){
             WHERE NOT EXISTS (
                 SELECT date FROM AstroEventCalender WHERE date = '${dateFormatter}' AND time = '${time}'
             ) LIMIT 1;`
-            
             const insertAstroEventRow = await connection.query(insertAstroEventQuery);
+            
             if(err) {
                 console.log(err)
                 return 0
@@ -56,8 +52,6 @@ async function getAstroInfo(connection, req){
         WHERE '${req.year}-01-00'<=date AND date < '${Number(req.year)+1}-01-00'
         ORDER BY date ASC;
         `;
-
-    //console.log(getAstroEventInfoQuery)
     const [getAstroEventInfoRow] = await connection.query(getAstroEventInfoQuery);
 
     return getAstroEventInfoRow;
