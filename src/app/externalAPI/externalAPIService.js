@@ -11,7 +11,6 @@ const {connect} = require("http2");
 
 exports.postAstroInfo = async function(req, res){
     try{
-        let rowCnt = 0;
         const paramSolYear = req.year;
         const paramSolMonth = req.month;
 
@@ -28,7 +27,6 @@ exports.postAstroInfo = async function(req, res){
 
         let astroInfoParams = new Array();
 
-
         for(const property in astroInfoJson.elements[0].elements[1].elements[0].elements){
             var astroEventData = new Object();
             if(astroInfoJson.elements[0].elements[1].elements[0].elements[property].elements[1].elements == undefined){
@@ -39,13 +37,12 @@ exports.postAstroInfo = async function(req, res){
                 continue;
             }
             astroEventData.content = astroInfoJson.elements[0].elements[1].elements[0].elements[property].elements[0].elements[0].text;
-        
             astroEventData.time = astroInfoJson.elements[0].elements[1].elements[0].elements[property].elements[1].elements[0].text;
             astroEventData.date = astroInfoJson.elements[0].elements[1].elements[0].elements[property].elements[3].elements[0].text;
             astroEventData.isMonthTitle = false;
             astroInfoParams.push(astroEventData);
         }
-        
+
         //정보 DAO에 저장하기
         const connection = await pool.getConnection(async (conn) => conn);
         const insertAstroEventResult = await externalAPIDao.insertAstroEvent(connection, astroInfoParams);
