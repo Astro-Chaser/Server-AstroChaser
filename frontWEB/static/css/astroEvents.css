@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Roboto:wght@300;400;500&display=swap');
+
+html{
+    background-color: #060b33;
+    width: 100vw;
+    height: 100%;
+}
+body{ flex-direction: column;}
+
+.leftNavBar{
+    float: left;
+
+    margin-left: 8vw;
+    width: 30px;
+    height: 80vh;
+}
+
+.rightContentBox{
+   float: left;
+
+   /* border-left: 3px solid rgba(229, 229, 227, 0.6); */
+    padding-left: 10px;
+    padding-right: 10px;
+
+    width: 70vw;
+    margin-left: 15vw;
+    height: fit-content;
+    
+    background-color: rgba(255, 255, 255, 0.15);
+}
+.leftNavContents{
+  position: relative;
+  width: 100%;
+  height: 70px;
+  margin-top: 10px;
+  
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+
+  border-radius: 10px;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.leftNavContents:hover{
+    background-color: rgb(217, 216, 216);
+    color: black;
+}
+
+.leftNavText{
+  margin-top: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.mainContents{
+    margin-top: 10px;
+}
+
+.title-hr{
+    border: solid 1px rgba(235, 235, 235, 0.1)
+}
+
+.is-child.box{
+    cursor: pointer;
+}
+
+.noticeBtn{
+    float: right;
+}
+
+.control{
+    margin-top: 15px;
+    
+}
+
+.column.is-full-main{
+    margin-left: 5%; 
+    margin-right: 5%;
+    width: 90%; 
+    background-color: rgba(230, 230, 230, 1);
+    margin-bottom: 1px;
+    height: 10vh;
+    border-bottom: line rgba(255, 255, 255, 0.15);
+}
+
+
+.column.is-full{
+    margin-left: 5%; 
+    width: 90%; 
+    background-color: transparent;
+    color: white;
+    margin-bottom: 1px;
+    height: 10vh;
+    border-bottom: line rgba(255, 255, 255, 0.15);
+    transition: 0.2s;
+    cursor: pointer;
+}
+.column.is-full:hover{
+    background-color: rgba(230, 230, 230, 0.5);
+    color: white;
+  
+}
+.removeColumns{
+    margin-bottom: 5px;
+}
+
+#top-notice{
+    background-color: transparent;
+    color: white;
+    height: 8vh;
+    
+    margin-top: 15px;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+}
+
+.noticeCol{
+    float: left;
+
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 18px;
+
+    text-align: center;
+}
+
+#final-column{
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
+}
+
+#iconCol-main{
+    height: 100%;
+    width: 10%;
+    line-height: 7vh;
+}
+
+.noticeCol.iconCol{
+    background-image: url('../image/icons/icon_notice_origin.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+    
+    width: 10%;
+}
+
+
+#titleCol-main{
+    font-weight: 500;
+    height: 100%;
+    width: 60%;
+    line-height: 7vh;
+    
+}
+.noticeCol.titleCol{
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 300;
+    height: 100%;
+    margin-left: 10%;
+    width: 50%;
+    line-height: 7vh;
+    text-align: left;
+    text-overflow: ellipsis;
+}
+
+#writerCol-main{
+    font-weight: 300;
+    height: 100%;
+    width: 10%;
+    line-height: 7vh;
+    text-align: left;
+}
+
+.noticeCol.writerCol{
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 300;
+    height: 100%;
+    width: 10%;
+    line-height: 7vh;
+    text-align: left;
+}
+
+#timeCol-main{
+    font-weight: 500;
+    height: 100%;
+    width: 15%;
+    line-height: 7vh;
+    text-align: left;
+}
+.noticeCol.timeCol{
+    font-family: 'Nanum Gothic', sans-serif;
+    height: 100%;
+    width: 15%;
+    line-height: 7vh;
+    font-size: 0.8em;
+    text-align: left;
+}
+
+#watchCol-main{
+    font-weight: 300;
+    height: 100%;
+    width: 5%;
+    line-height: 7vh;
+    text-align: left;
+}
+
+.noticeCol.watchCol{
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 300;
+    height: 100%;
+    width: 5%;
+    line-height: 7vh;
+    text-align: left;
+}
+
+.noticeBoard-page-navigator{
+    margin-top: 5vh;
+}
+
+#notice-prev-btn{
+    margin-left: 2vw;
+}
+
+#notice-next-btn{
+    margin-right: 2vw;
+}
+
+.title.is-1{
+    text-align: center;
+}
+
+.pagenation-area{
+    margin-top: 2vh;
+    width: 90%;
+   
+
+    margin-left: 5%;
+}
+
+.writerBtnArea{
+    float: right;
+}
+
+.pagenation{
+    width: 50%;
+    margin-left: 20%;
+    text-align: center;
+}
+
+.pagination-link{
+    background-color: white;
+}
+
+.pagination-previous{
+    background-color: white;
+}
+
+.pagination-next{
+    background-color: white;
+}
+

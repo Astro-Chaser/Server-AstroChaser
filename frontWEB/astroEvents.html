@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+  <!-- OG Tags-->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://astrochaser.com">
+  <meta property="og:title" content="KAU Astro Chaser">
+  <meta property="og:image" content="./image/AC logo 1.jpeg">
+  <meta property="og:description" content="한국항공대 천체관측동아리 Astro Chaser">
+  <meta property="og:site_name" content="Astro Chaser">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- jquery CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- 기타 CDN-->
+  <script src="https://unpkg.com/jwt-decode@3.1.2/build/jwt-decode.js"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="/css/astroEvents.css">
+  <link rel="stylesheet" type="text/css" href="/css/topnav.css">
+  <script type="text/javascript" src="/js/hostAddr.js"></script>
+
+  <title>KAU Astro Chaser</title>
+</head>
+
+<body>
+  <nav class="navbar is-dark" style="background-color: rgba(0, 0, 0, 0.7); height: 5vh;"> </nav>
+
+  <div class="contents">
+    <div class="rightContentBox">
+      <div class="mainContents">
+        <p>
+        <h1 class="title is-1" style="color: white; margin-top: 4vh;">천문소식
+          </h1>
+          <hr class="title-hr">
+          <div class="columns">
+            <div class="column is-full-main" id="top-notice">
+              <div class="noticeCol" id="iconCol-main" style="font-size: 1.7em;">번호</div>
+              <div class="noticeCol" id="titleCol-main" style="font-size: 1.7em;">제목</div>
+              <div class="noticeCol" id="writerCol-main" style="font-size: 1.7em;">작성자</div>
+              <div class="noticeCol" id="timeCol-main" style="font-size: 1.7em;">등록일</div>
+              <div class="noticeCol" id="watchCol-main" style="font-size: 1.7em;">조회</div>
+            </div>
+          </div>
+          <div class="notice-list"></div>
+
+          <div class="pagenation-area">
+              <span class="writerBtnArea"><button class="button is-light" id="picture-write-btn">글쓰기</button></span>
+              <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+                <a class="pagination-previous">Previous</a>
+                <a class="pagination-next">Next page</a>
+                <ul class="pagination-list">
+                  <li><a class="pagination-link is-current" aria-label="Page 1" aria-current="page">1</a></li>
+                  <li><a class="pagination-link" aria-label="Goto page 2">2</a></li>
+                  <li><a class="pagination-link" aria-label="Goto page 3">3</a></li>
+                  <li><a class="pagination-link" aria-label="Goto page 4">4</a></li>
+                  <li><a class="pagination-link" aria-label="Goto page 86">5</a></li>
+                </ul>
+              </nav>
+          </div>
+
+          <div class="noticeBoard-page-navigator">
+            
+          </div>
+          </p>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+<script type="text/javascript" src="/js/jwtVerifier.js"></script>
+<script type="text/javascript" src="/js/astroEvents.js"></script>
+<script type="text/javascript" src="/js/topNavDrawer.js"></script>
+
+</html>
