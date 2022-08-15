@@ -24,8 +24,10 @@ body{ flex-direction: column;}
 
     width: 70vw;
     margin-left: 15vw;
+    margin-right: 15vw;
     height: fit-content;
     
+    border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.15);
 }
 .leftNavContents{
@@ -147,6 +149,15 @@ body{ flex-direction: column;}
     width: 10%;
 }
 
+.table{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+
+    background-color: transparent;
+    color: white;
+}
+
 
 #titleCol-main{
     font-weight: 500;
@@ -262,3 +273,66 @@ body{ flex-direction: column;}
     background-color: white;
 }
 
+
+/* Calendar */
+.calendar-container {
+    font-family: 'NanumBarunPenBold';
+    float: left;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+
+    border-radius: 10px;
+    background-color: white;
+}
+
+.ephemeris-area {
+    margin-top: 5vh;
+    margin-left: 10%;
+    margin-right: 10%;
+  
+    width: 80%;
+    height: 80vh;
+  
+    margin-bottom: 5vh;
+
+    background-color: aliceblue;
+}
+
+.table thead td, .table thead th{
+    color:white;
+}
+
+.month-main{
+    background-color: rgba(169, 162, 116, 0.7);
+}
+
+.tg-1lax{
+    width: 10%;
+}
+.tg-2lax{
+    width: 15%;
+}
+.tg-3lax{
+    width: 15%;
+}
+.tg-4lax{
+    width: 60%;
+}
+
+.search-area{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 1vh;
+    height: 5vh;
+
+    line-height: 5vh;
+    font-weight: 600;
+    color: white;
+    font-family: 'NanumBarunPenBold';
+}
+
+.option-text-area{
+    font-size: 1.4em;
+}

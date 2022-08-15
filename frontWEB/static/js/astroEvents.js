@@ -1,95 +1,90 @@
-let noticeBoardPage = 0;
-const noticePrevBtn = document.getElementById("notice-prev-btn");
-const noticeNextBtn = document.getElementById("notice-next-btn");
-const noticeWriteBtn = document.getElementById("picture-write-btn");
-let titleArr;
 
-
-window.onload = async function(){
-    titleArr = await getNormalNoticeBoardTitles();
-    showNormalNoticeBoardTitles(noticeBoardPage);
-}
-
-noticeWriteBtn.onclick = function noticeWriteBtnClicked(event){
-    event.preventDefault();
-    console.log("ho")
-    if(localStorage.getItem("member")=="운영진")
-    {
-        location.href = `/notice/editor`;
+astroEventParser();
+setSearchAstroEvent();
+async function astroEventParser(){
+    yearAstroEvent = await getAPI(hostAddress,`app/astro-info/${year}`);
+    let yearAstroEventRes = yearAstroEvent.result;
+    astroEventsParams = new Array();
+    
+    console.log(yearAstroEventRes)
+    for(const property in yearAstroEventRes){
+      if(property >0 && yearAstroEventRes[property].content == yearAstroEventRes[property-1].content) continue;
+      let eventObj = new Object();
+  
+      let title = yearAstroEventRes[property].content;
+      let start = yearAstroEventRes[property].date.substr(0,10);
+      let description=null;
+      if(yearAstroEventRes[property].time)
+      {
+        description = `${start}시작. ${title}`
+      }
+      else
+      {
+        description = `${title}`
+      }
+      
+      eventObj.title = title;
+      eventObj.start = start;
+      eventObj.description = description;
+  
+      astroEventsParams.push(eventObj);
     }
-    else
-    {
-        alert("운영진만 글을 작성할 수 있는 게시판입니다.")
-    }
 }
 
-async function showNormalNoticeBoardTitles(page){
-    html = ''
+function setSearchAstroEvent(){
+    var date = new Date();
+    console.log(date.getFullYear());
+    console.log(date.getMonth()+1);
 
-    for(var i = 0; i<10; i++){
-        let title = titleArr[Number((page*10)+i)].title;
-        if(title.length>23) title = title.substring(0,20)+'...'
+    setOptionHtml = `
+    <span style="float: right;">
+                <span>
+                  <div class="select is-info">
+                    <select id = "optionYear">
+                    `;
+                    for(var i = 2021; i<date.getFullYear(); i++){
+                        setOptionHtml += `<option>${i}</option>;`
+                    }
+                    setOptionHtml += `<option>${date.getFullYear()}</option>;
+                    </select>
+                  </div>
+                </span>
+                <span class="option-text-area">
+                  년
+                </span>
+                
+                <span class="option-area">
+                  <div class="select is-info">
+                    <select id = "optionMonth">`;
+                      for(var i=1; i<=12; i++){
+                        if(i == date.getMonth()){
+                            setOptionHtml += `<option selected> ${i+1} </option>`;
+                            continue;
+                        }
 
-        if(i==9 || Number((page*10)+i) == titleArr.length-1 ) {
-            html += `
-                <div class="removeColumns">
-                    <div class="columns" onclick="location.href='/notice/${titleArr[Number((page*10)+i)].id}'">
-                        <div class="column is-full" id="final-column">
-                            <div class="noticeCol iconCol"></div>
-                            <div class="noticeCol titleCol">${title}</div>
-                            <div class="noticeCol writerCol">&nbsp;${titleArr[Number((page*10)+i)].name}</div>
-                            <div class="noticeCol timeCol">${titleArr[Number((page*10)+i)].createdat.substring(0, 10)}</div>
-                            <div class="noticeCol watchCol">${titleArr[Number((page*10)+i)].viewCount}</div>
-                        </div>
-                    </div>
-                </div>
-                `
-            $('.notice-list').append(html)
-            break;
-        }
-        html += `
-        <div class="removeColumns">
-            <div class="columns" onclick="location.href='/notice/${titleArr[Number((page*10)+i)].id}'">
-                <div class="column is-full">
-                    <div class="noticeCol iconCol"></div>
-                    <div class="noticeCol titleCol">${title}</div>
-                    <div class="noticeCol writerCol">&nbsp;${titleArr[Number(page*10 + i)].name}</div>
-                    <div class="noticeCol timeCol">${titleArr[Number(page*10 + i)].createdat.substring(0, 10)}</div>
-                    <div class="noticeCol watchCol">${titleArr[Number(page*10 + i)].viewCount}</div>
-                </div>
-            </div>
-        </div>
-        `
-    }      
+                        setOptionHtml += `<option> ${i+1} </option>`
+                      }
+                      setOptionHtml +=`
+                    </select>
+                  </div>
+                </span>
+                <span class="option-text-area">
+                  월 천문현상 검색하기
+                </span>
+              </span>
+    `
+
+    $('.search-area').append(setOptionHtml)
 }
 
-
-async function getNormalNoticeBoardTitles(){
-    const getTitleRes = await getAPI(hostAddress, 'app/notice/title/normal');
-    let titleArr = new Array();
-    for(var i in getTitleRes.result){
-        let titleRes = new Object();
-        titleRes.id = getTitleRes.result[i].id;
-        titleRes.title = getTitleRes.result[i].title;
-        titleRes.name = getTitleRes.result[i].name;
-        titleRes.createdat = getTitleRes.result[i].createdat;
-        titleRes.viewCount = getTitleRes.result[i].viewCount;
-
-        titleArr.push(titleRes);
-    }
-
-    return titleArr;
-
-}
 
 
 //get API AS JSON
-async function getAPI(host, path, headers ={}) {
+async function getAPI(host, path, headers = {}) {
     const url = `http://${host}/${path}`;
-    console.log(url);
+    //console.log(url);
     const options = {
-      method: "GET",
-      headers: headers,
+      method: "GET"
     };
     const res = await fetch(url, options);
     const data = res.json();
