@@ -31,11 +31,6 @@ window.onload = async function(){
     setAstroEventTable(selectedYear, selectedMonth);    
 }
 
-
-
-
-
-
 async function astroEventParser(){
         for(var i = 2021; i<=date.getFullYear(); i++){
             yearAstroEvent = await getAPI(hostAddress,`app/astro-info/${i}`);
@@ -112,7 +107,7 @@ async function setAstroEventTable(year, month){
                     </thead>
                 <tbody>'`;
                 
-                if(DBmonth == Number(month) && DByear == Number(year) ){
+                if(DBmonth == Number(month)-1 && DByear == Number(year) ){
                     
                    if(yearAstroEventResArr[i][j].isMonthTitle == 1){
                     tableHeadLineHtml +=`
