@@ -3,6 +3,28 @@ let yearAstroEventResArr = new Array();
 
 window.onload = async function(){
     setSearchAstroEvent();
+    $("#optionYear").on("change", function(){
+        //selected value
+        $(this).val();
+        //selected option element
+        $("option:selected", this);
+        $("option:selected", this).text();
+        selectedYear = $(this).find("option:selected").text();
+    
+        setAstroEventTable(selectedYear, selectedMonth);
+    });
+    $("#optionMonth").on("change", function(){
+        //selected value
+        $(this).val();
+        //selected option element
+        $("option:selected", this);
+        $("option:selected", this).text();
+        selectedMonth = $(this).find("option:selected").text();
+    
+        setAstroEventTable(selectedYear, selectedMonth);
+    });
+    
+   
     let selectedYear = $("#optionYear option:selected").val();
     let selectedMonth = $("#optionMonth option:selected").val();
     await astroEventParser();
@@ -11,27 +33,8 @@ window.onload = async function(){
 
 
 
-$("#optionYear").on("change", function(){
-    //selected value
-    $(this).val();
-    //selected option element
-    $("option:selected", this);
-    $("option:selected", this).text();
-    selectedYear = $(this).find("option:selected").text();
 
-    setAstroEventTable(selectedYear, selectedMonth);
-});
 
-$("#optionMonth").on("change", function(){
-    //selected value
-    $(this).val();
-    //selected option element
-    $("option:selected", this);
-    $("option:selected", this).text();
-    selectedMonth = $(this).find("option:selected").text();
-
-    setAstroEventTable(selectedYear, selectedMonth);
-});
 
 async function astroEventParser(){
         for(var i = 2021; i<=date.getFullYear(); i++){
