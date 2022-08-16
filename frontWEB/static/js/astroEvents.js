@@ -107,9 +107,8 @@ async function setAstroEventTable(year, month){
                     </thead>
                 <tbody>'`;
                 
-                if(DBmonth == Number(month)-1 && DByear == Number(year) ){
-                    
-                   if(yearAstroEventResArr[i][j].isMonthTitle == 1){
+                if(DBmonth == Number(month)-1 && DByear == Number(year) && yearAstroEventResArr[i][j].isMonthTitle == 1 ){
+                
                     tableHeadLineHtml +=`
                     <tr class="month-main">
                         <td class="tg-1lax"></td>
@@ -117,8 +116,10 @@ async function setAstroEventTable(year, month){
                         <td class="tg-4lax">${yearAstroEventResArr[i][j].content}</td>
                      </tr>
                     `
-                   }
-                   else{
+                   
+                  }
+                  if(DBmonth == Number(month) && DByear == Number(year) && yearAstroEventResArr[i][j].isMonthTitle == 0)
+                  {
                     tableContentHtml += `
                     <tr>
                         <td class="tg-1lax">${rowCount++}</td>
@@ -127,11 +128,11 @@ async function setAstroEventTable(year, month){
                         <td class="tg-4lax">${yearAstroEventResArr[i][j].content}</td>
                     </tr>
                     `
+                  }
+                    
                    }   
                 }
             }
-        }
-    }
     let htmlResult = '';
     htmlResult = tableHtml + tableHeadLineHtml + tableContentHtml + '</tbody> </table>';
     $('.table-container').empty();
