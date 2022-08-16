@@ -58,7 +58,7 @@ function drawTopNav()
                 <a href="/free-board" class="navbar-item" id="nav-owned-telescopes">
                 자유게시판
                 </a>
-                <a onclick="alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
+                <a href="/astro-event" class="navbar-item" id="nav-setting-telescope">
                 천문학&천문소식
                 </a>
                 <a onclick="alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">

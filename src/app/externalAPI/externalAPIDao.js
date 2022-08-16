@@ -2,7 +2,6 @@ const e = require("express");
 
 //DB에 천문현상정보 저장
 async function insertAstroEvent(connection, astroInfoParams, err){
-    console.log("hi")
     for(const property in astroInfoParams){
         if(astroInfoParams[property].isMonthTitle == true)
         {

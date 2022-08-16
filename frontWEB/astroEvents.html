@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+  <!-- OG Tags-->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://astrochaser.com">
+  <meta property="og:title" content="KAU Astro Chaser">
+  <meta property="og:image" content="./image/AC logo 1.jpeg">
+  <meta property="og:description" content="한국항공대 천체관측동아리 Astro Chaser">
+  <meta property="og:site_name" content="Astro Chaser">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+   <!-- FONTS -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+   <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Do+Hyeon&family=Nanum+Gothic:wght@400;700;800&family=Roboto:wght@300;400;500&family=Sniglet&display=swap" rel="stylesheet">
+   <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css" rel="stylesheet">
+   <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-pen.css" rel="stylesheet">
+
+  <!-- jquery CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- fullcalendar CDN -->
+  <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css' rel='stylesheet' />
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
+  <!-- fullcalendar 언어 CDN -->
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
+  <!-- Mobile, PC환경 구분-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.5/mobile-detect.min.js"></script>
+
+  <!-- 기타 CDN-->
+  <script src="https://unpkg.com/jwt-decode@3.1.2/build/jwt-decode.js"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="/css/astroEvents.css">
+  <link rel="stylesheet" type="text/css" href="/css/topnav.css">
+  <script type="text/javascript" src="/js/hostAddr.js"></script>
+
+  <title>KAU Astro Chaser</title>
+</head>
+
+<body>
+  <nav class="navbar is-dark" style="background-color: rgba(0, 0, 0, 0.7); height: 5vh;"> </nav>
+
+  <div class="contents">
+    <div class="rightContentBox">
+      <div class="mainContents">
+        <p>
+          <h1 class="title is-1" style="color: white; margin-top: 4vh;">달력 천문소식</h1>
+            <hr class="title-hr">
+
+            <section class="ephemeris-area">
+              <div class='calendar-container'>
+                <div id='calendar'></div>
+              </div>
+            </section>
+
+            <h1 class="title is-1" style="color: white; margin-top: 4vh;">월별 천문소식 검색하기</h1>
+            <div class="search-area"> </div> 
+
+            <div class="table-container" > 
+             <!--  <table class="table is-narrow">
+                  <thead>
+                    <tr style="width: 20px;">
+                      <th class="tg-1lax">순서</th>
+                      <th class="tg-2lax">날짜</th>
+                      <th class="tg-3lax">시간</th>
+                      <th class="tg-4lax">내용</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="month-main">
+                      <td class="tg-1lax">1</td>
+                      <td class="tg-2lax" colspan="2">8월의 주요 이벤트</td>
+                      <td class="tg-4lax">Ignoring invalid timezone passed to Connection: KST. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration option to a Connection
+                        start! express server</td>
+                    </tr>
+                    <tr class="month-main">
+                      <td class="tg-1lax">2</td>
+                      <td class="tg-2lax" colspan="2">8월의 주요 이벤트</td>
+                      <td class="tg-3lax">Ignoring invalid timezone passed to Connection: KST. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration option to a Connection
+                        start! express server</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-1lax">3</td>
+                      <td class="tg-2lax">8월 15일</td>
+                      <td class="tg-3lax">15:32</td>
+                      <td class="tg-4lax">쓸데없지만 신기한 사실 월드컵</td>
+                    </tr>
+                  </tbody> -->
+              </table>
+            </div>
+            
+        
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script type="text/javascript" src="/js/jwtVerifier.js"></script>
+<script type="text/javascript" src="/js/topNavDrawer.js"></script>
+<script type="text/javascript" src="./js/spaceCalendar.js"></script>
+<script type="text/javascript" src="/js/astroEvents.js"></script>
+
+</html>

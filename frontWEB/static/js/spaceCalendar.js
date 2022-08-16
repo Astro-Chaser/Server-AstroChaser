@@ -1,12 +1,14 @@
 var today = new Date();
 var year = today.getFullYear();
+let yearAstroEvent;
 
 astroEventParser();
 //astro event parser
 async function astroEventParser(){
-  let yearAstroEvent = await getAPI(hostAddress,`app/astro-info/${year}`);
+  yearAstroEvent = await getAPI(hostAddress,`app/astro-info/${year}`);
+
   let yearAstroEventRes = yearAstroEvent.result;
-  let astroEventsParams = new Array();
+  astroEventsParams = new Array();
 
   for(const property in yearAstroEventRes){
     if(property >0 && yearAstroEventRes[property].content == yearAstroEventRes[property-1].content) continue;
@@ -93,4 +95,3 @@ async function getAPI(host, path, headers = {}) {
     throw new Error(data);
   }
 }
-
