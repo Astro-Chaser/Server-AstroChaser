@@ -81,7 +81,7 @@ async function showComment(pageNum){
       
       `
       $(`#reply-${commentRes.result[i].upperCommentId}`).append(replyHtml);
-    }
+    } 
   }
 
   let titleHtml = '';
@@ -173,8 +173,6 @@ async function postReplyComment(upperId, textareaId){
     location.reload();
   }
 }
-
-
 //get API AS JSON
 async function getAPI(host, path, headers ={}) {
     const url = `http://${host}/${path}`;

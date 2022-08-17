@@ -98,8 +98,10 @@ hr{
     height: 0.5px;
 }
 
-.contentHr{
-    margin-top: 10vh;
+.cotroll-modify{
+    margin-left: 10px;
+    cursor: pointer;
+
 }
 .commentCount{
     color: white;
@@ -228,4 +230,9 @@ textarea{
     color: rgb(38, 111, 218);
     border-radius: 8px;
     margin-right: 10px;
+}
+
+.controllArea{
+    color: rgb(202, 213, 225);
+    float: right;
 }
