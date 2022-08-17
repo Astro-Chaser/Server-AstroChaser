@@ -53,7 +53,7 @@ async function noticeCommit(event){
         redirect: 'follow'
     };
     const insertPostRes = await postAPI(hostAddress, 'app/notice/upload', requestOptions)
-    if(insertPostRes.result.mediaInptRes == "NULL BUT SUCCESS" && insertPostRes.result.titleInptRes == "SUCCESS"){
+    if(insertPostRes.result.mediaInptRes == "NULL BUT SUCCESS" || insertPostRes.result.titleInptRes == "SUCCESS"){
         location.href = "/notice";
     }
     else{

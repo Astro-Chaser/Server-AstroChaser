@@ -344,11 +344,11 @@ p{
   text-align: left;
   margin-top: 2%;
   font-size: 0.8em;
+  line-height: 1.2em;
 }
 
 #middle-card-title{
   font-size: 3em;
-  text-decoration: underline;
   margin-top: 15%;
 
   color: rgba(255, 255, 255, 0.8);

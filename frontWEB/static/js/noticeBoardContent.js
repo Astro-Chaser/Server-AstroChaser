@@ -5,6 +5,8 @@ let pageNum = parseInt(queryString.substring(getPageNum+1));
 const picturePrevBtn = document.getElementById("picture-prev-btn");
 const pictureNextBtn = document.getElementById("picture-next-btn");
 const commentRegisterBtn = document.getElementById("comment-register-btn");
+const deleteBtn = document.getElementById("delete");
+const modifyBtn = document.getElementById("modify");
 let pictureBoardTitle;
 
 
@@ -174,6 +176,14 @@ async function postReplyComment(upperId, textareaId){
   }
 }
 
+//삭제 버튼 클릭시
+deleteBtn.onclick = function(){
+  alert("기능 준비중입니다. \n관리자 전준휘에게 문의하여 삭제하실 수 있습니다.");
+}
+//수정 버튼 클릭시
+modifyBtn.onclick = function(){
+  alert("기능 준비중입니다.\n관리자 전준휘에게 문의하여 수정하실 수 있습니다.")
+}
 
 //get API AS JSON
 async function getAPI(host, path, headers ={}) {

@@ -101,5 +101,7 @@ function drawTopNav()
 
     `
 
+    const favicon = `<link href="./image/icons/AClogoCroped.ico" rel="shortcut icon" type="image/x-icon">`
+    $('head').append(favicon);
     $('.navbar.is-dark').append(topNavHtml);
 }
