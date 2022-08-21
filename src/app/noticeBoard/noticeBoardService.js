@@ -6,12 +6,21 @@ const {response} = require("../../../config/response");
 const {errResponse} = require("../../../config/response");
 
 const noticeBoardDao = require("./noticeBoardDao");
-const {imgDeleter} = require('./s3ImgUploader');
 
 const {connect} = require("http2");
 const res = require("express/lib/response");
 const baseResponseStatus = require("../../../config/baseResponseStatus");
 const { post } = require("request");
+
+const AWS = require('aws-sdk');
+
+AWS.config.update({
+    region: 'ap-northeast-2',
+    accessKeyId: secret_config.accessKeyId,
+    secretAccessKey: secret_config.secretAccessKey,
+  });
+  
+const s3 = new AWS.S3()
 
 /**
  * 게시글 작성하기
@@ -90,9 +99,17 @@ exports.deleteNoticeBoard = async function(req, token){
 
             for(let i in preNoticeInfoRes)
             {
-                console.log(preNoticeInfoRes[i].mediaUrl.substring(52));
-            // imgDeleter(preNoticeInfoRes[0].mediaUrl.substring(52));
+                console.log(preNoticeInfoRes[i].mediaUrl.substring(52).replace(/%20/g, ' '));
+                s3.deleteObject({
+                    Bucket: 'astrochaser', // 삭제하고 싶은 이미지가 있는 버킷 이름
+                    Key: preNoticeInfoRes[i].mediaUrl.substring(52), // 삭제하고 싶은 이미지의 key 
+                  }, (err, data) => {
+                      if (err)  return errResponse(baseResponse.NOTICEBOARD_DELETION_FAIL) // 성공 시 데이터 출력
+                      else console.log("complete")
+                  });
+                
             }
+            return response(baseResponseStatus.SUCCESS, "Img Deletion Complete");
             
             connect.release();
         }
@@ -101,8 +118,7 @@ exports.deleteNoticeBoard = async function(req, token){
         //게시자가 아니면 삭제 불가
         if(preNoticeInfoRes.id != token.id){
             connect.release();
-
-
+            return errResponse(baseResponse.NOTICEBOARD_DELETION_AUTHORITY_ERROR);
         }
 
         connect.release();
