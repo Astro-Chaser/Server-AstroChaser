@@ -95,3 +95,21 @@ exports.getComment = async function(req, res){
 
     return res.send(getCommentRes);
 }
+
+/**
+ * 게시글 삭제하기
+ * @param {*} req 
+ * @param {*} res 
+ */
+exports.deleteNoticeBoard = async function(req, res){
+    const {noticeNum} = req.body;
+    const token = req.verifiedToken;
+
+    if(!token)
+        return res.send(response.response(baseResponse.TOKEN_EMPTY))
+    if(!noticeNum) return res.send(baseResponse.NOTICEBOARD_PAGE_EMPTY);
+
+    const deleteNoticeBoardRes = noticeBoardService.deleteNoticeBoard(req, token);
+
+    return res.send(deleteNoticeBoardRes);
+}

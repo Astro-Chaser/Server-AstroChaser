@@ -265,6 +265,17 @@ async function getComment(connect, noticePage){
     return getCommentRes;
 }
 
+async function getNoticeBoardPictures(connect, noticeNum){
+    const getPicturesQuery = `
+    SELECT NNB.id, User.name, User.id, NNBM.mediaUrl
+    FROM NormalNoticeBoard AS NNB INNER JOIN (User, NormalNoticeBoardMedia AS NNBM ) ON User.id = NNB.writerId AND  NNBM.NormalNoticeBoardId = NNB.id
+    WHERE User.state='A' AND NNB.state='A' AND NNBM.NormalNoticeBoardId = ${noticeNum};
+    `
+
+    const [getPreInfoDeleteNoticeRow] = await connect.query(getPicturesQuery);
+
+    return getPreInfoDeleteNoticeRow;
+}
 
 module.exports ={
     postNoticeBoard,
@@ -274,4 +285,5 @@ module.exports ={
     postComment,
     getComment,
     getUserNormalTitle,
+    getNoticeBoardPictures,
 }

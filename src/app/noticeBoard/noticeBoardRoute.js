@@ -18,4 +18,7 @@ module.exports = function(app){
     //5. 게시글 댓글 불러오기 API
     app.get('/app/notice/comment', noticeController.getComment);
 
+    //6. 게시글 삭제 API
+    app.delete('/app/notice/delete', jwtMiddleware, noticeController.deleteNoticeBoard);
+
 }

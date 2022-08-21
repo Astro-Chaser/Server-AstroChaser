@@ -6,6 +6,7 @@ const {response} = require("../../../config/response");
 const {errResponse} = require("../../../config/response");
 
 const noticeBoardDao = require("./noticeBoardDao");
+const {imgDeleter} = require('./s3ImgUploader');
 
 const {connect} = require("http2");
 const res = require("express/lib/response");
@@ -45,6 +46,14 @@ exports.postNoticeBoard = async function(req, token){
     }
 }
 
+/**
+ * 댓글 달기
+ * @param {*} token 
+ * @param {*} content 
+ * @param {*} upperId 
+ * @param {*} postId 
+ * @returns 
+ */
 exports.postComment = async function(token, content, upperId, postId){
     try{
         let postCommentParams = new Object();
@@ -61,6 +70,43 @@ exports.postComment = async function(token, content, upperId, postId){
 
         if(postCommentResult[0].affectedRows == 1) return response(baseResponseStatus.SUCCESS);
         else return errResponse(baseResponseStatus.DB_ERROR);
+    }
+    catch{
+        return errResponse(baseResponseStatus.DB_ERROR);
+    }
+}
+
+exports.deleteNoticeBoard = async function(req, token){
+    try{
+        let deleteNoticeBoardParams = new Object();
+
+        const connect = await pool.getConnection(async (conn) => conn);
+        let preNoticeInfoRes = await noticeBoardDao.getNoticeBoardPictures(connect, req.body.noticeNum); 
+
+        console.log(preNoticeInfoRes);
+
+        //작성자 주인이거나 관리자면 삭제 가능
+        if(preNoticeInfoRes.id == token.id || token.id == 1){  
+
+            for(let i in preNoticeInfoRes)
+            {
+                console.log(preNoticeInfoRes[i].mediaUrl.substring(52));
+            // imgDeleter(preNoticeInfoRes[0].mediaUrl.substring(52));
+            }
+            
+            connect.release();
+        }
+
+
+        //게시자가 아니면 삭제 불가
+        if(preNoticeInfoRes.id != token.id){
+            connect.release();
+
+
+        }
+
+        connect.release();
+
     }
     catch{
         return errResponse(baseResponseStatus.DB_ERROR);

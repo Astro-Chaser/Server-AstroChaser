@@ -43,6 +43,17 @@ const imageUploader = multer({
   }),
 })
 
+function imgDeleter(key){
+    s3.deleteObject({
+    Bucket: 'astrochaser', // 삭제하고 싶은 이미지가 있는 버킷 이름
+    Key: key, // 삭제하고 싶은 이미지의 key 
+  }, (err, data) => {
+      if (err) console.log(err); // 실패 시 에러 메시지
+      else console.log(data); // 성공 시 데이터 출력
+  });
+}
+
 module.exports ={
-    imageUploader
+    imageUploader,
+    imgDeleter,
 } 
