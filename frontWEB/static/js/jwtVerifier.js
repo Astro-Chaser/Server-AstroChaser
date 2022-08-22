@@ -1,4 +1,3 @@
-
 getUserInfo();
 //사용자 로그인 정보 가져오기
 async function getUserInfo(){
@@ -85,7 +84,7 @@ async function getUserInfo(){
           $('.buttons').empty();
           html = `
               <div id="userInfo-nav-top" style="font-size: 18px;">
-                 ${localStorage.getItem("generation")}기 ${localStorage.getItem("name")}
+              ⭐${localStorage.getItem("generation")}기 ${localStorage.getItem("name")}
               </div>
           `
           
