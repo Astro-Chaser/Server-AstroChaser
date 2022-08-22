@@ -92,26 +92,21 @@ exports.deleteNoticeBoard = async function(req, token){
         const connect = await pool.getConnection(async (conn) => conn);
         let preNoticeInfoRes = await noticeBoardDao.getNoticeBoardPictures(connect, req.body.noticeNum); 
 
-        console.log(preNoticeInfoRes);
-
         //작성자 주인이거나 관리자면 삭제 가능
         if(preNoticeInfoRes.id == token.id || token.id == 1){  
 
             for(let i in preNoticeInfoRes)
             {
-                console.log(preNoticeInfoRes[i].mediaUrl.substring(52).replace(/%20/g, ' '));
-                s3.deleteObject({
+                await s3.deleteObject({
                     Bucket: 'astrochaser', // 삭제하고 싶은 이미지가 있는 버킷 이름
-                    Key: preNoticeInfoRes[i].mediaUrl.substring(52), // 삭제하고 싶은 이미지의 key 
+                    Key: preNoticeInfoRes[i].mediaUrl.substring(52).replace(/%20/g, ' '), // 삭제하고 싶은 이미지의 key 
                   }, (err, data) => {
-                      if (err)  return errResponse(baseResponse.NOTICEBOARD_DELETION_FAIL) // 성공 시 데이터 출력
-                      else console.log("complete")
+                      if (err)  return errResponse(baseResponse.NOTICEBOARD_DELETION_FAIL) // 실패시 에러 로그
                   });
-                
             }
-            return response(baseResponseStatus.SUCCESS, "Img Deletion Complete");
-            
+            let deleteNoticeBoardRes = await noticeBoardDao.deleteNoticeBoard(connect, req.body.noticeNum);
             connect.release();
+            return response(baseResponseStatus.SUCCESS);
         }
 
 
