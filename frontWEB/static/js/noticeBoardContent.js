@@ -10,6 +10,7 @@ const modifyBtn = document.getElementById("modify");
 let pictureBoardTitle;
 
 
+
 window.onload = function(){
   parseInt(pageNum)
   showContent(pageNum); 
@@ -177,9 +178,33 @@ async function postReplyComment(upperId, textareaId){
 }
 
 //삭제 버튼 클릭시
-deleteBtn.onclick = function(){
-  alert("기능 준비중입니다. \n관리자 전준휘에게 문의하여 삭제하실 수 있습니다.");
+deleteBtn.onclick = async function(){
+  if (confirm('게시글을 삭제하시겠습니까?')) {
+    var myHeaders = new Headers();
+    var raw = JSON.stringify({
+      "noticeNum": pageNum
+    });
+  
+    myHeaders.append("x-access-token", localStorage.getItem("accessJWT"));
+    myHeaders.append("Content-Type", "application/json");
+  
+    var requestOptions = {
+      method: 'DELETE',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+  
+    const deleteRes = await deleteAPI(hostAddress, 'app/notice/delete', requestOptions);
+    if(deleteRes.isSuccess == true) location.href = '/notice';
+    else{
+      alert(deleteRes.message);
+      location.href = '/notice';
+    }
+  } 
 }
+
+
 //수정 버튼 클릭시
 modifyBtn.onclick = function(){
   alert("기능 준비중입니다.\n관리자 전준휘에게 문의하여 수정하실 수 있습니다.")
@@ -205,6 +230,20 @@ async function getAPI(host, path, headers ={}) {
 async function postAPI(host, path, options) {
   const url = `http://${host}/${path}`;
   console.log(url);
+  const res = await fetch(url, options);
+  const data = res.json();
+  // console.log(res)
+  // console.log(data)
+  if (res.ok) {
+      return data;
+  } else {
+      throw new Error(data);
+  }
+}
+
+//delete API AS JSON
+async function deleteAPI(host, path, options) {
+  const url = `http://${host}/${path}`;
   const res = await fetch(url, options);
   const data = res.json();
   // console.log(res)

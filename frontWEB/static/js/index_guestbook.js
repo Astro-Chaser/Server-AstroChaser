@@ -5,6 +5,11 @@ const guetbookNextBtn = document.getElementById("guetbook-next-btn");
 let guestbookPageCnt = 0;
 let guestbookData;
 
+async function getGuestbookData(){
+  guestbookData = await getAPI(hostAddress, 'app/guestbook');
+  showGuestbookData(guestbookPageCnt);
+}
+
 const animalNames =[
   "강아지", "고양이", "고릴라", "침팬지", "갈매기", "비둘기", "호랑이", "야옹이", "폼폼이", "재경이", "이시형", "전준휘", "별지기", "송골매",
   "강호동", "케로로", "호돌이", "코뿔소", "구렁이", "사다리", "북극곰", "탄지로", "뽀로로", "스컹크", "김동헌", "원숭이", "알파카"
@@ -13,7 +18,8 @@ const animalNames =[
   //랜덤 닉네임 생성하기
 $("#guestbookCommit_nickname").attr("placeholder", "익명의 " + animalNames[getRandomArbitrary(0, animalNames.length)])
 
-showGuestbookData(guestbookPageCnt);
+getGuestbookData();
+
 
 
 //방명록 게시하기
@@ -55,7 +61,7 @@ async function guestbookCommitBtnClicked(event){
   }
 //방명록 전시하기
 async function showGuestbookData(guestbookPageCnt){
-    guestbookData = await getAPI(hostAddress, 'app/guestbook');
+
 
     for(var i=0; i<5; i++)
     {
