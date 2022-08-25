@@ -39,64 +39,24 @@
 
     <!-- 기타 CDN-->
     <script src="https://unpkg.com/jwt-decode@3.1.2/build/jwt-decode.js"></script>
+    <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" type="text/css" href="./css/m_yj_index.css" />
-    <link rel="stylesheet" type="text/css" href="./css/reset.css" />
-     <link rel="stylesheet" type="text/css" href="./css/m_yj_interactive.css" />
 
+    <link rel="stylesheet" type="text/css" href="./mobile/css/m_yj_index.css" />
     <script type="text/javascript" src="./js/APIsecretKey.js"></script>
     <script type="text/javascript" src="./js/hostAddr.js"></script>    
 </head>
 <body style="background-color: rgb(7, 9, 38);">
     <main>
-        <nav class="navbar is-dark" style="background-color: rgba(0, 0, 0, 0.7); height: 5vh;">
-            <div class="navbar-brand">
-              <a class="navbar-item" id="nav-home">
-                <img src="./image/Astro logo intro.png" alt="AC logo" width="130" height="50">
-              </a>
-            </div>
-            <div id="navbarExampleTransparentExample" class="navbar-menu">
-              <div class="navbar-start is-active">
-                <a class="navbar-item" id="nav-home">
-                  소개
-                </a>
-                <a class="navbar-item" id="nav-aboutus">
-                    공지사항
-                </a>
-                
-                <div class="navbar-item has-dropdown is-hoverable">
-                  <a class="navbar-link">
-                    커뮤니티
-                  </a>
-                  <div class="navbar-dropdown is-boxed">
-                    <a class="navbar-item" id="nav-owned-telescopes">
-                      자유게시판
-                    </a>
-                    <a class="navbar-item" id="nav-setting-telescope">
-                      천문 갤러리
-                    </a>
-                  </div>
-                </div>
-
-                <a class="navbar-item" id="nav-chasinghistory">
-                  정보공개
-              </a>
-              </div>
-          
-              <div class="navbar-end">
-                <div class="navbar-item">
-                  <div class="buttons">
-                    <a class="button is-primary" id="nav-sign-up">
-                      <strong>회원가입</strong>
-                    </a>
-                    <a class="button is-light" id="nav-sign-in">
-                      로그인
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </nav>
+        <div class="mobile-nav-bar-area">
+          <a href="/">
+            <img src="/image/AC_logo_long_yj.png" alt="AC logo" width="170" height="70">
+          </a>
+          <div class="mobile-nav-bar-hamburger">
+            <img src="image/icons/noun-hamburger-menu-1164007.png" alt="더보기" width="200">
+          </div>
+        </div>
 
         <div class="heroDiv">
           <div class="jb-text">
@@ -119,7 +79,6 @@
               <div class="media">
                 <div class="media-content">
                   <p class="title is-4">천체관측</p>
-                  <p class="subtitle is-6">#안시관측 #정기관측회 #비정기관측회 #은하수여행 #번개관측 #일상관측 #차박관측 #맨눈관측 #쌍안경 관측 #망원경관측 #공개관측회</p>
                 </div>
               </div>
           
@@ -140,7 +99,6 @@
               <div class="media">
                 <div class="media-content">
                   <p class="title is-4">교육봉사</p>
-                  <p class="subtitle is-6">#항공우주 #천문우주 #교육봉사활동 #청소년문화의집 #불우이웃돕기 #관측교육행사</p>
                 </div>
               </div>
           
@@ -160,7 +118,6 @@
               <div class="media">
                 <div class="media-content">
                   <p class="title is-4">천체사진 촬영</p>
-                  <p class="subtitle is-6"> #태양계 #성운 #성단 #은하 #일주운동 #사진활영 #장노출사진촬영 #사진보정 #엽서제작 #타임랩스 #천체스케치</p>
                 </div>
               </div>
           
@@ -180,7 +137,6 @@
               <div class="media">
                 <div class="media-content">
                   <p class="title is-4">관측이론 & 천문학</p>
-                  <p class="subtitle is-6">#천체관측지식 #천문학공부 #천문학 실습 #아마추어천문연구 #지구과학 #항공우주학</p>
                 </div>
               </div>
           
@@ -282,9 +238,5 @@
     </p>
   </div>
 </footer>
-
-<script type="text/javascript" src="./js/navHref.js"></script>
-<script type="text/javascript" src="./js/index_guestbook.js"></script>
-<script type="text/javascript" src="./js/spaceCalendar.js"></script>
-
+<script type="text/javascript" src="./mobile/js/mobile_index.js"></script>    
 </html>

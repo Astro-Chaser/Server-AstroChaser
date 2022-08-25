@@ -117,7 +117,18 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
 }
+.mobile-nav-bar-area{
+  width: 100vw;
+  height: 5vh;;
+}
+.mobile-nav-bar-hamburger{
+  float: right;
+  width: 10%;
+  height: 100%;
 
+  line-height: 5vh;
+  margin-right: 10px;
+}
 .heroDiv{
   width: 100vw;
   height: 95vh;
@@ -127,6 +138,13 @@ body {
   position: relative;
 
   color: #ddd;
+
+  background-image: url('../../image/jwst-phone-wallpaper-thypix-star-forming-region-carina-nircam-final-5mb-8-768x1326.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+.heroDiv.p{
+  color:white;
 }
 
 video{
@@ -398,3 +416,7 @@ p{
   border-radius: 5px;
 }
 
+.quote{
+  font-style: italic;
+  font-weight: bolder;
+}
