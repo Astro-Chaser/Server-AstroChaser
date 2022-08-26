@@ -44,6 +44,7 @@
 
 
     <link rel="stylesheet" type="text/css" href="./mobile/css/m_yj_index.css" />
+    <link rel="stylesheet" type="text/css" href="/css/astroEvents.css">
     <script type="text/javascript" src="./js/APIsecretKey.js"></script>
     <script type="text/javascript" src="./js/hostAddr.js"></script>    
 </head>
@@ -142,54 +143,28 @@
               </div>
           
               <div class="content">
-                <p class="quote">별밭에서 오래전, 저는 저의 학문을 찾았습니다. 새빨갛게 들뜬 마음으로 매일 밤 신비로운 별들과 빛나는 세계가 펼쳐지는 것을 보았습니다. 그들이 말했습니다. <br>"우리를 베우고 더더욱 현명해져라."<br>스터링 번치 <별밭에서> </p><br>
+                <p class="quote">별밭에서 오래전, 저는 저의 학문을 찾았습니다. 새빨갛게 들뜬 마음으로 매일 밤 신비로운 별들과 빛나는 세계가 펼쳐지는 것을 보았습니다. 그들이 말했습니다. <br>"우리를 배우고 더더욱 현명해져라."<br>스터링 번치 <별밭에서> </p><br>
                 <p class="innerExplain">천체관측 이론과 천문학, 그리고 지구과학과 항공우주학에 대해서 공부하고, 아마추어 천문연구를 수행합니다.</p>
               
               </div>
             </div>
           </div>
-
-        </section>  
-        <!-- 1번 카드 -->
-        <section class="card area">
-          <div class="cardContent">
-            <div id="logoArea">
-              <img src="/image/AC logo 1.jpeg">
-            </div>
-            <div id="card-content-area">
-              <div class="card-row">
-                <div id="card-insta-pic">
-                  <img src="/image/icons/instaLogo.png">
-                </div>
-                <div class="card-icon-title">
-                  <p id="icon-title">
-                    INSTAGRAM
-                  </p>
-                  <p id="icon-content">
-                    @KAU_ASTRO_CHASER
-                  </p>
-                </div>
-              </div>
-              <div class="card-row" style="margin-top: 30px;">
-                <div id="card-insta-pic">
-                  <img src="/image/icons/phone.png">
-                </div>
-                <div class="card-icon-title">
-                  <p id="icon-title">
-                    CONTACT
-                  </p>
-                  <p id="icon-content">
-                    aerospacelover0824@gmail.com
-                    <br>OR 인스타DM
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
         </section>
 
+        <!-- 1번 카드 -->
+        <div class="contents">
+          <h4 class="title is-4" style="color: white; margin-top: 4vh;">천문소식</h4>
+            <hr class="title-hr">
+
+            <section class="ephemeris-area">
+              <div class='calendar-container'>
+                <div id='calendar'></div>
+              </div>
+            </section>
+        </div>
+
         <!--2번 카드-->
-        <section class="card area">
+        <!-- <section class="card area">
           <div class="cardContent">
             <p id="card-title">
               NOTICE
@@ -203,10 +178,10 @@
               </ul>
             </div>
           </div>
-        </section>
+        </section> -->
 
         <!--3번 카드-->
-        <section class="card area">
+        <!-- <section class="card area">
           <div class="cardContent">
             <p id="card-title">
               GALLERY
@@ -227,7 +202,7 @@
               </div>
             </div>
           </div>
-        </section>
+        </section> -->
        
   </main>
 </body>
@@ -241,4 +216,5 @@
   </div>
 </footer>
 <script type="text/javascript" src="./mobile/js/mobile_index.js"></script>    
+<script type="text/javascript" src="./js/spaceCalendar.js"></script>
 </html>
