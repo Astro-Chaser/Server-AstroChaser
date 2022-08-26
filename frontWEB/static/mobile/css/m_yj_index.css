@@ -27,46 +27,14 @@ body {
   height: 45px;
 }
 
-/* Change the color of links on hover */
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
+#club-intro-btn{
+  color: #fff;
+  font-weight: bolder;
+  border-width: 2px;
+  border-color: #fff;
+  margin-left: 3vw;
 
-/* Add a color to the active/current link */
-.topnav a.active {
-  color: white;
-}
-
-.guestBookWriterInfoBox{
-  margin-top: 5px;
-  width: 100%;
-  height: 5%;
-
-  vertical-align: auto;
-  text-align: center;
-
-}
-
-#guestbookContent_cnt{
-  float: left;
-  margin-top: 1%;
-
-  vertical-align: auto;
-}
-
-#guestbookCommit{
-  float: right;
-
-  width: 30%;
-  height: 100%;
-}
-
-.guestbook-area{
-  width: 100%;
-  height: 70%;
-
-  
+  background-color: transparent;
 }
 
 .guestbook-area-contents{
@@ -117,7 +85,26 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
 }
+.mobile-nav-bar-area{
+  position: fixed;
+  top: 0;
+  /* width: 100% */
+  left: 0;
+  right: 0;
 
+  width: 100vw;
+  height: 5vh;
+
+  z-index: 999;
+}
+#mobile-nav-bar-hamburger{
+  float: right;
+  width: 10%;
+  height: 100%;
+
+  line-height: 5vh;
+  margin-right: 10px;
+}
 .heroDiv{
   width: 100vw;
   height: 95vh;
@@ -127,6 +114,13 @@ body {
   position: relative;
 
   color: #ddd;
+
+  background-image: url('../../image/jwst-phone-wallpaper-thypix-star-forming-region-carina-nircam-final-5mb-8-768x1326.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+.heroDiv.p{
+  color:white;
 }
 
 video{
@@ -182,6 +176,7 @@ p{
 .main.body{
   width: 70vw;
   margin-left: 15vw;
+  display: none;
 }
 
 .activity-title{
@@ -398,3 +393,7 @@ p{
   border-radius: 5px;
 }
 
+.quote{
+  font-style: italic;
+  font-weight: bolder;
+}
