@@ -107,7 +107,7 @@ body {
 }
 .heroDiv{
   width: 100vw;
-  height: 95vh;
+  height: 100vh;
 
   overflow: hidden;
   margin: 0px auto; 
@@ -256,19 +256,20 @@ p{
   width: 70vw;
   margin-left: 15vw;
   margin-top: 10vh;
-  height: 45vh;
+  height: 80vh;
 
   background-color: rgba(255, 255, 255, 0.2);
 }
 
 .cardContent{
-  width: 100%;
-  height: 100%;
+  width: 80vw;
+  height: fit-content;
+  margin-left: 10vw;
+  margin-right: 10vw;
 
   border-radius: 10px;
   padding-top: 1vh;
-  /* margin-top: 5vh; */
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 .cardContent#thirdCard{
   float: right;
@@ -396,4 +397,8 @@ p{
 .quote{
   font-style: italic;
   font-weight: bolder;
+}
+
+.card .bottom{
+  background-color: rgba(255, 255, 255, 0.1);
 }
