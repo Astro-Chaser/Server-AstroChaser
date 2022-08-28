@@ -41,7 +41,7 @@ async function astroEventParser(){
 
     // 해더에 표시할 툴바
     headerToolbar: {
-      left: 'prev, next',
+      left: false,
       center: 'title',
       right: 'dayGridMonth,listMonth'
     },
@@ -49,7 +49,7 @@ async function astroEventParser(){
     navLinks: true, // 날짜를 선택하면 Day 캘린더나 Week 캘린더로 링크
     nowIndicator: true, // 현재 시간 마크
     dayMaxEvents: true, // 이벤트가 오버되면 높이 제한 (+ 몇 개식으로 표현)
-    locale: 'ko', // 한국어 설정
+    locale: 'en', // 영어 설정
     eventAdd: function(obj) { // 이벤트가 추가되면 발생하는 이벤트
       console.log(obj);
     },
