@@ -35,7 +35,7 @@ async function astroEventParser(){
   
   var calendarEl = document.getElementById('calendar');
   var calendar = new FullCalendar.Calendar(calendarEl, {
-    //expandRows: true, // 화면에 맞게 높이 재설정
+    expandRows: true, // 화면에 맞게 높이 재설정
     height: '100%',
     width:'100%',
 
