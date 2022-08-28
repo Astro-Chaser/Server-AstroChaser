@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Roboto:wght@300;400;500&display=swap');
 
 html{
-    background-color: #060b33;
+    background-color: white;
     width: 100vw;
     height: 100%;
 }
@@ -283,7 +283,11 @@ body{ flex-direction: column;}
     padding: 10px;
 
     border-radius: 10px;
-    background-color: white;
+    background-color: #060B33;
+}
+#calendar{
+    background-color: transparent;
+    color: white;
 }
 
 .ephemeris-area {
@@ -294,15 +298,25 @@ body{ flex-direction: column;}
   
     margin-bottom: 5vh;
 
-    background-color: aliceblue;
+    background-color: transparent;
 }
 
 .table thead td, .table thead th{
-    color:white;
+    color:rgb(226, 0, 0);
 }
 
 .month-main{
     background-color: rgba(169, 162, 116, 0.7);
+}
+a{
+    color: white;
+}
+/* .fc a[data-navlink]{
+    color: black;
+} */
+
+.fc-theme-standard .fc-list-day-cushion{
+    background-color: #132190;
 }
 
 .tg-1lax{
