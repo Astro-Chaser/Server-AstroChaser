@@ -421,25 +421,31 @@ p{
 
 
 .show-notice-area{
-  width: 100%;
-  height: 10vh;
+  width: 98vw;
+  margin-left: 1vw;
+  margin-bottom: 3vh;
+
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.1);
+  height: fit-content;
 }
 
-.show-notice-left{
-  float: left;
-  width: 20%;
+.show-notice-top{
+  width: 100%;
   height: 10vh;
   font-family: 'Do Hyeon', sans-serif;
   color: white;
   font-size: 1.5em;
-
+  text-align: center;
   line-height: 10vh;
 }
 
-.show-notice-right{
-  float: left;
-  width: 80%;
-  height: 10vh;
+.show-notice-bottom{
+  width: 95vw;
+  margin-left: 2.5vw;
+  margin-right: 2.5vw;
+  padding-left: 3px;
+  padding-right: 3px;
   overflow:hidden;
 }
 .main-notice-list{

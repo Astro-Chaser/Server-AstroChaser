@@ -67,7 +67,13 @@ app.get('/gallery/:pageNum', function(req, res){
 
 //4. 공지 페이지
 app.get('/notice', function(req, res){
-    res.sendFile(__dirname + "/frontWEB/noticeBoard.html");
+    const md = new MobileDetect(req.headers['user-agent']);
+         if (md.mobile()) { 
+             res.sendFile(__dirname+"/frontWEB/m_noticeBoard.html");
+         }
+         else { 
+            res.sendFile(__dirname + "/frontWEB/noticeBoard.html");
+        }
 })
 app.get('/notice/editor', function(req, res){
     res.sendFile(__dirname + "/frontWEB/noticeboardEditor.html");
