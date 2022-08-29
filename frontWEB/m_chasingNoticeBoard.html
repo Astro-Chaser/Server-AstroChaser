@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+  <!-- OG Tags-->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://astrochaser.com">
+  <meta property="og:title" content="KAU Astro Chaser">
+  <meta property="og:image" content="./image/AC logo 1.jpeg">
+  <meta property="og:description" content="한국항공대 천체관측동아리 Astro Chaser">
+  <meta property="og:site_name" content="Astro Chaser">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- jquery CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- 기타 CDN-->
+  <script src="https://unpkg.com/jwt-decode@3.1.2/build/jwt-decode.js"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="/mobile/css/m_noticeBoard.css">
+  <link rel="stylesheet" type="text/css" href="/css/topnav.css">
+  <script type="text/javascript" src="/js/hostAddr.js"></script>
+
+  <title>KAU Astro Chaser</title>
+</head>
+
+<body>
+  <nav class="navbar is-dark" style="background-color: rgba(0, 0, 0, 0.7); height: 5vh;"> </nav>
+
+  <div class="contents">
+    <div class="rightContentBox">
+      <div class="mainContents">
+        <p>
+        <h1 class="title is-1" style="color: white; margin-top: 4vh;">관측 공지
+          </h1>
+          
+          <div class="columns">
+            <div class="column is-full-main" id="top-notice">
+              <div class="noticeCol" id="iconCol-main">#</div>
+              <div class="noticeCol" id="titleCol-main">제목</div>
+              <div class="noticeCol" id="writerCol-main">작성자</div>
+            </div>
+          </div>
+          <hr class="title-hr">
+          <div class="notice-list"></div>
+          </p>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+<script type="text/javascript" src="/js/jwtVerifier.js"></script>
+<script type="text/javascript" src="/js/topNavDrawer.js"></script>
+<script type="text/javascript" src="/mobile/js/chasingNoticeBoard.js"></script>
+
+</html>
