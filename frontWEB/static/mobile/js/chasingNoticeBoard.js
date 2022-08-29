@@ -6,22 +6,22 @@ let titleArr;
 
 
 window.onload = async function(){
-    titleArr = await getFreeNoticeBoardTitles();
-    showUserNoticeBoardTitles(0);
+    titleArr = await getChasingNoticeBoardTitles();
+    showNormalNoticeBoardTitles(noticeBoardPage);
 }
 
 noticeWriteBtn.onclick = function noticeWriteBtnClicked(event){
-    if(localStorage.getItem("member")=="방문자")
+    if(localStorage.getItem("member")=="운영진")
     {
-        alert("회원만 글을 작성할 수 있는 게시판입니다.");
+        location.href = `/chasing/notice/editor`;
     }
     else
     {
-        location.href = `/free-board/editor`;
+        alert("운영진만 글을 작성할 수 있는 게시판입니다.")
     }
 }
 
-async function showUserNoticeBoardTitles(page){
+async function showNormalNoticeBoardTitles(page){
     html = ''
 
     for(var i = 0; i<10; i++){
@@ -31,13 +31,11 @@ async function showUserNoticeBoardTitles(page){
         if(i==9 || Number((page*10)+i) == titleArr.length-1 ) {
             html += `
                 <div class="removeColumns">
-                    <div class="columns" onclick="location.href='/free-board/${titleArr[Number((page*10)+i)].id}'">
-                        <div class="column is-full" id="final-column">
-                            <div class="noticeCol iconCol"> ${titleArr[Number((page*10)+i)].id}</div>
+                    <div class="columns" onclick="location.href='/chasing/notice/${titleArr[Number((page*10)+i)].id}'">
+                        <div class="column is-full">
+                            <div class="noticeCol iconCol">${titleArr[Number((page*10)+i)].id}</div>
                             <div class="noticeCol titleCol">${title}</div>
                             <div class="noticeCol writerCol">${titleArr[Number((page*10)+i)].name}</div>
-                            <div class="noticeCol timeCol">${titleArr[Number((page*10)+i)].createdat.substring(0, 10)}</div>
-                            <div class="noticeCol watchCol">${titleArr[Number((page*10)+i)].viewCount}</div>
                         </div>
                     </div>
                 </div>
@@ -47,13 +45,11 @@ async function showUserNoticeBoardTitles(page){
         }
         html += `
         <div class="removeColumns">
-            <div class="columns" onclick="location.href='/free-board/${titleArr[Number((page*10)+i)].id}'">
+            <div class="columns" onclick="location.href='/chasing/notice/${titleArr[Number((page*10)+i)].id}'">
                 <div class="column is-full">
                     <div class="noticeCol iconCol">${titleArr[Number((page*10)+i)].id}</div>
                     <div class="noticeCol titleCol">${title}</div>
                     <div class="noticeCol writerCol">${titleArr[Number(page*10 + i)].name}</div>
-                    <div class="noticeCol timeCol">${titleArr[Number(page*10 + i)].createdat.substring(0, 10)}</div>
-                    <div class="noticeCol watchCol">${titleArr[Number(page*10 + i)].viewCount}</div>
                 </div>
             </div>
         </div>
@@ -62,8 +58,8 @@ async function showUserNoticeBoardTitles(page){
 }
 
 
-async function getFreeNoticeBoardTitles(){
-    const getTitleRes = await getAPI(hostAddress, 'app/notice/title/user');
+async function getChasingNoticeBoardTitles(){
+    const getTitleRes = await getAPI(hostAddress, 'app/notice/title/chasing');
     let titleArr = new Array();
     for(var i in getTitleRes.result){
         let titleRes = new Object();
@@ -84,6 +80,7 @@ async function getFreeNoticeBoardTitles(){
 //get API AS JSON
 async function getAPI(host, path, headers ={}) {
     const url = `http://${host}/${path}`;
+    console.log(url);
     const options = {
       method: "GET",
       headers: headers,

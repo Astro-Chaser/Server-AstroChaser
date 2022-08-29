@@ -90,13 +90,27 @@ app.get('/notice/:pageNum', function(req, res){
 })
 
 app.get('/chasing/notice', function(req, res){
-    res.sendFile(__dirname + "/frontWEB/chasingNoticeBoard.html");
+    const md = new MobileDetect(req.headers['user-agent']);
+    if (md.mobile()) { 
+        res.sendFile(__dirname + "/frontWEB/m_chasingNoticeBoard.html");
+    }
+    else { 
+        res.sendFile(__dirname + "/frontWEB/chasingNoticeBoard.html");
+   }
+    
 })
 app.get('/chasing/notice/editor', function(req, res){
     res.sendFile(__dirname + "/frontWEB/chasingNoticeboardEditor.html");
 })
 app.get('/chasing/notice/:pageNum', function(req, res){
-    res.sendFile(__dirname + "/frontWEB/chasingNoticeBoardContent.html");
+    const md = new MobileDetect(req.headers['user-agent']);
+    if (md.mobile()) { 
+        res.sendFile(__dirname + "/frontWEB/m_chasingNoticeBoardContent.html");
+    }
+    else { 
+        res.sendFile(__dirname + "/frontWEB/chasingNoticeBoardContent.html");
+   }
+    
 })
 
 app.get('/free-board', function(req, res){

@@ -5,6 +5,8 @@ let pageNum = parseInt(queryString.substring(getPageNum+1));
 const picturePrevBtn = document.getElementById("picture-prev-btn");
 const pictureNextBtn = document.getElementById("picture-next-btn");
 const commentRegisterBtn = document.getElementById("comment-register-btn");
+const deleteBtn = document.getElementById("delete");
+const modifyBtn = document.getElementById("modify");
 let pictureBoardTitle;
 
 
@@ -174,6 +176,33 @@ async function postReplyComment(upperId, textareaId){
   }
 }
 
+//삭제 버튼 클릭시
+deleteBtn.onclick = async function(){
+  if (confirm('게시글을 삭제하시겠습니까?')) {
+    var myHeaders = new Headers();
+    var raw = JSON.stringify({
+      "noticeNum": pageNum
+    });
+  
+    myHeaders.append("x-access-token", localStorage.getItem("accessJWT"));
+    myHeaders.append("Content-Type", "application/json");
+  
+    var requestOptions = {
+      method: 'DELETE',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+  
+    const deleteRes = await deleteAPI(hostAddress, 'app/notice/delete', requestOptions);
+    if(deleteRes.isSuccess == true) location.href = '/chasing/notice';
+    else{
+      alert("권한이 없거나 재로그인이 필요합니다.");
+      location.href = '/chasing/notice';
+    }
+  } 
+}
+
 
 //get API AS JSON
 async function getAPI(host, path, headers ={}) {
@@ -195,6 +224,20 @@ async function getAPI(host, path, headers ={}) {
 async function postAPI(host, path, options) {
   const url = `http://${host}/${path}`;
   console.log(url);
+  const res = await fetch(url, options);
+  const data = res.json();
+  // console.log(res)
+  // console.log(data)
+  if (res.ok) {
+      return data;
+  } else {
+      throw new Error(data);
+  }
+}
+
+//delete API AS JSON
+async function deleteAPI(host, path, options) {
+  const url = `http://${host}/${path}`;
   const res = await fetch(url, options);
   const data = res.json();
   // console.log(res)
