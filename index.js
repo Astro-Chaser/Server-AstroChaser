@@ -78,8 +78,15 @@ app.get('/notice', function(req, res){
 app.get('/notice/editor', function(req, res){
     res.sendFile(__dirname + "/frontWEB/noticeboardEditor.html");
 })
+
 app.get('/notice/:pageNum', function(req, res){
-    res.sendFile(__dirname + "/frontWEB/noticeBoardContent.html");
+    const md = new MobileDetect(req.headers['user-agent']);
+         if (md.mobile()) { 
+             res.sendFile(__dirname+"/frontWEB/m_noticeBoardContent.html");
+         }
+         else { 
+            res.sendFile(__dirname + "/frontWEB/noticeBoardContent.html");
+        }
 })
 
 app.get('/chasing/notice', function(req, res){

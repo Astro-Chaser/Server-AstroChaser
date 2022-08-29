@@ -1,0 +1,200 @@
+html{
+    background-color: #060b33;
+    width: 100vw;
+    height: 100%;
+    
+}
+
+.rightContentBox{
+   float: left;
+   height: auto;
+   min-height: 100%;
+   border-radius: 10px;
+
+   /* border-left: 3px solid rgba(229, 229, 227, 0.6); */
+   
+   padding-left: 10px;
+   padding-right: 10px;
+   height: fit-content;
+
+    width: 100vw;
+    
+    background-color: rgba(255, 255, 255, 0.1);
+
+    margin-bottom: 15vh;
+}
+footer{
+    height: 10vh;
+    position : relative;
+    transform : translateY(-100%);
+  }
+
+
+
+.image-area{
+    margin-left: 10vw;
+    width: 60vw;
+    height: fit-content;
+
+    margin-top: 10px;
+    margin-bottom: 5px;
+
+    /*background-color: antiquewhite;*/
+}
+
+.picture-content{
+    margin-left: 10vw;
+    margin-right: 10vw;
+    padding-bottom: 10vh;
+    white-space: pre-line;
+    color: white;
+}
+.title.is-4{
+    margin-bottom: 0;
+}
+p{
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 10px;
+}
+hr{
+    height: 0.5px;
+}
+
+.cotroll-modify{
+    margin-left: 10px;
+    cursor: pointer;
+
+}
+.commentCount{
+    color: white;
+    margin-bottom: 20px;
+}
+.wring-comment-area{
+    min-height: 200px;
+    width: 90%;
+    height: 28vh;
+    margin-left: 5%;
+}
+#comment-writing-textbox{
+    height: 5vh;
+}
+#comment-register-btn{
+    height: 4vh;
+    width: 5%;
+    font-size: 1em;   
+    margin-top: 1vh;
+    
+    float: right;
+}
+
+.view-comment-area{
+    width: 100%;
+    height: fit-content;
+    border-radius: 5px;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.original-comment{
+    width: 100%;
+    height: fit-content;
+}
+
+.reply-comment{
+    margin-left: 5%;
+    width: 95%;
+    height: fit-content;
+
+}
+
+.comment-writer-info{
+    margin-left: 0;
+    width: 100%;
+    font-weight: 550;
+
+    color: white;
+}
+
+.writing-time{margin-left: 20px;}
+
+.comment-index{
+    color: white;
+    margin-left: 20px;
+    width: 100%; 
+    height: fit-content; 
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.reply-comment-area{
+    margin-left: 20px;
+    color: rgb(255, 238, 169);
+    cursor: pointer;
+}
+#reply-comment-register-btn{
+    float: right;
+    margin-top: 5px;
+}
+.wring-comment-area.reply{
+    width: 90%;
+    height: 28vh;
+    margin-left: 5%;
+    min-height: 200px;
+    /* background-color: rgba(255, 255, 255, 0.2); */
+}
+
+#reply-comment-writing-textbox{
+    height: 18vh;
+}
+
+textarea{
+    height: 13vh;
+}
+
+.noticeBoard-page-navigator{
+    margin-top: 20px;
+    height: auto;
+    width: 100%;
+}
+
+.notice-tab{
+    height: 5vh;
+    width: 100%;
+    color: white;
+    cursor: pointer;
+
+    background-color:rgba(255, 255, 255, 0.1);
+    transition: 0.2s;
+}
+.notice-tab:hover{
+    font-size: 1.1em;
+}
+
+#notice-next-tab{
+    border-bottom: 1px white; 
+}
+#notice-prev-tab{
+    margin-top: 1px;
+}
+
+.tab-title{
+    margin-left: 3%;
+    width: 10%;
+    line-height: 5vh;
+    font-weight: bolder;
+}
+
+.tab-content-title{
+    margin-left: 5%;
+}
+
+.original-comment-name{
+    background-color: rgb(202, 213, 225);
+    color: rgb(38, 111, 218);
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+.controllArea{
+    color: rgb(202, 213, 225);
+    float: right;
+}
