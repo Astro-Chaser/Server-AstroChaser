@@ -469,6 +469,9 @@ p{
   font-size: 2em;
   font-weight: 600;
   line-height: 8vh;
+
+  text-align: left;
+  margin-left: 3vw;
 }
 
 .show-gallery-left{
