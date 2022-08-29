@@ -1,6 +1,7 @@
 html{
     background-color: #060b33;
     width: 100vw;
+    overflow-x: hidden;
     height: 100%;
     
 }
