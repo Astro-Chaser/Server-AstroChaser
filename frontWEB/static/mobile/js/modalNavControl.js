@@ -31,7 +31,6 @@ css = `
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background: rgba(255, 255, 255, 0.25);
         box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
         backdrop-filter: blur(1.5px);
         -webkit-backdrop-filter: blur(1.5px);
@@ -39,7 +38,7 @@ css = `
         border: 1px solid rgba(255, 255, 255, 0.18);
     }
     #modal .modal-window {
-        background: rgba( 69, 139, 197, 0.70 );
+        background: rgba( 255, 255, 255, 0.90 );
         box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
         backdrop-filter: blur( 13.5px );
         -webkit-backdrop-filter: blur( 13.5px );
@@ -48,14 +47,14 @@ css = `
         width: 400px;
         height: 500px;
         position: relative;
-        top: -100px;
+        margin-top: 5vh;
         padding: 10px;
     }
     #modal .title {
         padding-left: 10px;
         display: inline;
         text-shadow: 1px 1px 2px gray;
-        color: white;
+        color: black;
         
     }
     #modal .title h2 {
@@ -67,14 +66,14 @@ css = `
         padding-right: 10px;
         cursor: pointer;
         text-shadow: 1px 1px 2px gray;
-        color: white;
+        color: black;
     }
 
     #modal .content {
         margin-top: 20px;
         padding: 0px 10px;
         text-shadow: 1px 1px 2px gray;
-        color: white;
+        color: black;
     }
 </style>
 `
@@ -94,7 +93,8 @@ function modalOff() {
 }
 const btnModal = document.getElementById("mobile-nav-bar-hamburger")
 btnModal.addEventListener("click", e => {
-    modalOn()
+    modalOn();
+    location.href = "#modal";
 })
 const closeBtn = modal.querySelector(".close-area")
 closeBtn.addEventListener("click", e => {
