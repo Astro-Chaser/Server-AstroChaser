@@ -141,11 +141,8 @@ body{ flex-direction: column;}
 }
 
 .noticeCol.iconCol{
-    background-image: url('../image/icons/icon_notice_origin.png');
-    background-repeat: no-repeat;
-    background-position: center;
     height: 100%;
-    
+    line-height: 7vh;
     width: 10%;
 }
 

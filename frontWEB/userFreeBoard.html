@@ -38,28 +38,37 @@
     <div class="rightContentBox">
       <div class="mainContents">
         <p>
-        <h3 class="title is-3" style="color: white; margin-top: 4vh;">자유게시판
-          <div class="noticeBtn"><button class="button is-light" id="notice-write-btn">글쓰기</button></div>
+        <h1 class="title is-1" style="color: white; margin-top: 4vh;">자유 게시판
           </h1>
           <hr class="title-hr">
           <div class="columns">
             <div class="column is-full-main" id="top-notice">
-              <div class="noticeCol" id="iconCol-main">번호</div>
-              <div class="noticeCol" id="titleCol-main">제목</div>
-              <div class="noticeCol" id="writerCol-main">작성자</div>
-              <div class="noticeCol" id="timeCol-main">등록일</div>
-              <div class="noticeCol" id="watchCol-main">조회</div>
+              <div class="noticeCol" id="iconCol-main" style="font-size: 1.7em;">번호</div>
+              <div class="noticeCol" id="titleCol-main" style="font-size: 1.7em;">제목</div>
+              <div class="noticeCol" id="writerCol-main" style="font-size: 1.7em;">작성자</div>
+              <div class="noticeCol" id="timeCol-main" style="font-size: 1.7em;">등록일</div>
+              <div class="noticeCol" id="watchCol-main" style="font-size: 1.7em;">조회</div>
             </div>
           </div>
           <div class="notice-list"></div>
 
+          <div class="pagenation-area">
+              <span class="writerBtnArea"><button class="button is-light" id="notice-write-btn">글쓰기</button></span>
+              <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+                <ul class="pagination-list">
+                  <a class="pagination-link">Previous</a>
+                  <li><a class="pagination-link is-current" aria-label="Page 1" aria-current="page">1</a></li>
+                  <li><a class="pagination-link" aria-label="Goto page 2">2</a></li>
+                  <li><a class="pagination-link" aria-label="Goto page 3">3</a></li>
+                  <li><a class="pagination-link" aria-label="Goto page 4">4</a></li>
+                  <li><a class="pagination-link" aria-label="Goto page 86">5</a></li>
+                  <a class="pagination-link">Next page</a>
+                </ul>
+              </nav>
+          </div>
+
           <div class="noticeBoard-page-navigator">
-            <button class="button is-responsive" id="notice-prev-btn" style="float: left;">
-              이전글
-            </button>
-            <button class="button is-responsive" id="notice-next-btn" style="float: right;">
-              다음글
-            </button>
+            
           </div>
           </p>
       </div>

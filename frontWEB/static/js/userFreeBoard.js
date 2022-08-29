@@ -33,7 +33,7 @@ async function showUserNoticeBoardTitles(page){
                 <div class="removeColumns">
                     <div class="columns" onclick="location.href='/free-board/${titleArr[Number((page*10)+i)].id}'">
                         <div class="column is-full" id="final-column">
-                            <div class="noticeCol iconCol"></div>
+                            <div class="noticeCol iconCol"> ${titleArr[Number((page*10)+i)].id}</div>
                             <div class="noticeCol titleCol">${title}</div>
                             <div class="noticeCol writerCol">${titleArr[Number((page*10)+i)].name}</div>
                             <div class="noticeCol timeCol">${titleArr[Number((page*10)+i)].createdat.substring(0, 10)}</div>
@@ -49,7 +49,7 @@ async function showUserNoticeBoardTitles(page){
         <div class="removeColumns">
             <div class="columns" onclick="location.href='/free-board/${titleArr[Number((page*10)+i)].id}'">
                 <div class="column is-full">
-                    <div class="noticeCol iconCol"></div>
+                    <div class="noticeCol iconCol">${titleArr[Number((page*10)+i)].id}</div>
                     <div class="noticeCol titleCol">${title}</div>
                     <div class="noticeCol writerCol">${titleArr[Number(page*10 + i)].name}</div>
                     <div class="noticeCol timeCol">${titleArr[Number(page*10 + i)].createdat.substring(0, 10)}</div>
