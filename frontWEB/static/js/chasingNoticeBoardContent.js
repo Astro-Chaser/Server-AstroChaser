@@ -197,7 +197,7 @@ deleteBtn.onclick = async function(){
     const deleteRes = await deleteAPI(hostAddress, 'app/notice/delete', requestOptions);
     if(deleteRes.isSuccess == true) location.href = '/chasing/notice';
     else{
-      alert(deleteRes.message);
+      alert("권한이 없거나 재로그인이 필요합니다.");
       location.href = '/chasing/notice';
     }
   } 
