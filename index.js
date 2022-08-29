@@ -103,8 +103,15 @@ app.get('/free-board/:pageNum', function(req, res){
 })
 
 //5. 회칙 페이지
+
 app.get('/rules', function(req, res){
-    res.sendFile(__dirname + "/frontWEB/acRules.html");
+    const md = new MobileDetect(req.headers['user-agent']);
+         if (md.mobile()) { 
+             res.sendFile(__dirname+"/frontWEB/m_acRules.html");
+         }
+         else { 
+            res.sendFile(__dirname + "/frontWEB/acRules.html");
+        }
 })
 
 //6. 천문학 & 천문소식 페이지
