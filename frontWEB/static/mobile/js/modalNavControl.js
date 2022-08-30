@@ -11,6 +11,7 @@ html = `
 
                 <h3>공지사항</h3>
                 <a href="/notice"><p style="margin-left:3vw">일반공지</p></a>
+                <a href="/chasing/notice"><p style="margin-left:3vw">관측공지</p></a>
 
 
                 
