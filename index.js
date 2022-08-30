@@ -140,6 +140,17 @@ app.get('/astro-event', function(req, res){
     res.sendFile(__dirname + "/frontWEB/astroEvents.html");
 })
 
+//7. 연혁 페이지
+app.get('/history', function(req, res){
+    const md = new MobileDetect(req.headers['user-agent']);
+         if (md.mobile()) { 
+            res.sendFile(__dirname + "/frontWEB/m_history.html");
+         }
+         else { 
+            res.sendFile(__dirname + "/frontWEB/history.html");
+        }
+    
+})
 // express 서버를 실행할 때 필요한 포트 정의 및 실행 시 callback 함수를 받습니다
 app.listen(port, function() {
     console.log('start! express server');

@@ -8,9 +8,11 @@ html = `
             <div class="content">
                 <h3>소개</h3>
                 <a href="/rules"><p style="margin-left:3vw">회칙</p></a>
+                <a href="/history"><p style="margin-left:3vw">연혁</p></a>
 
                 <h3>공지사항</h3>
                 <a href="/notice"><p style="margin-left:3vw">일반공지</p></a>
+                <a href="/chasing/notice"><p style="margin-left:3vw">관측공지</p></a>
 
 
                 

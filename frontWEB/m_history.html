@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <!-- jquery CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- 기타 CDN-->
+  <script src="https://unpkg.com/jwt-decode@3.1.2/build/jwt-decode.js"></script>
+
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Do+Hyeon&family=Nanum+Gothic:wght@400;700;800&family=Roboto:wght@300;400;500&family=Russo+One&family=Sniglet&display=swap" rel="stylesheet">
+  <!-- OG Tags-->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://astrochaser.com">
+  <meta property="og:title" content="KAU Astro Chaser">
+  <meta property="og:image" content="./image/AC logo 1.jpeg">
+  <meta property="og:description" content="한국항공대 천체관측동아리 Astro Chaser">
+  <meta property="og:site_name" content="Astro Chaser">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!--CSS-->
+  <link rel="stylesheet" type="text/css" href="/mobile/css/history.css">
+  <link rel="stylesheet" type="text/css" href="/mobile/css/topNav.css">
+
+  <title>KAU Astro Chaser</title>
+</head>
+
+<body>
+  <div class="mobile-nav-bar-area">
+    <a href="#topOfPage">
+      <img src="/image/AC_logo_long_yj.png" alt="AC logo" width="170" height="70">
+    </a>
+    <div id="mobile-nav-bar-hamburger">
+      <img src="image/icons/noun-hamburger-menu-1164007.png" alt="더보기" width="200">
+    </div>
+  </div>
+
+
+  <div class="history-content">
+    <p id="main-title">
+      HISTORY OF ASTRO CHASER
+    </p>
+    
+    <div class="tg-wrap"><table class="tg">
+      <tbody>
+        <tr>
+          <td class="tg-0lax" id="year" rowspan="4">2021</td>
+          <td class="tg-0lax" id="line">10/20</td>
+          <td class="tg-0lax">Milky-Way Traveler 천문&항공우주 교육봉사 소모임 창설<br><span class="lowerText">(6명, 초대회장 이시형)</span></td>
+        </tr>
+        <tr>
+          <td class="tg-0lax" id="line">11/14</td>
+          <td class="tg-0lax">탄현청소년문화의집 대학생 천문우주 교욱 프로젝트 우주기획단 공모전 최종 선발</td>
+        </tr>
+        <tr>
+          <td class="tg-0lax" id="line">11/30</td>
+          <td class="tg-0lax">천문&항공우주 교육봉사활동 진행<span class="lowerText">(with 탄현청소년문화의집)</span></td>
+        </tr>
+        <tr>
+          <td class="tg-0lax" id="line">12/05</td>
+          <td class="tg-0lax">천문&항공우주 교육봉사활동 진행<span class="lowerText">(with 탄현청소년문화의집, 일산어린이 천문대)</span></td>
+        </tr>
+      </tbody>
+      </table></div>
+
+      <div class="tg-wrap"><table class="tg">
+        <tbody>
+          <tr>
+            <td class="tg-0lax" id="year" rowspan="13">2022</td>
+            <td class="tg-0lax" id="line">02/10</td>
+            <td class="tg-0lax">Milky-Way Traveler > "Astro Chaser" 소모임 이름 변경</td>
+          </tr>
+          <tr>
+            <td class="tg-0lax" id="line">02/10</td>
+            <td class="tg-0lax">한국항공대학교 천체관측 소모임 Astro Chaser창설 <br><span class="lowerText">(6명, 초대 회장 이시형, 초대 부회장 김성희, 초대 총무 김민아)</span></td>
+          </tr>
+          <tr>
+            <td class="tg-0lax" id="line">02/14<br>~ 03/16</td>
+            <td class="tg-0lax">1기 신입부원 모집<span class="lowerText">(총 회원 수 110명)</span></td>
+          </tr>
+          <tr>
+            <td class="tg-0lax" id="line">03/09</td>
+            <td class="tg-0lax">첫 외부 번개관측<span class="lowerText">(잠실 올림픽공원)</span></td>
+          </tr>
+          <tr>
+            <td class="tg-0lax" id="line">03/11</td>
+            <td class="tg-0lax">기획재정부, 기록홍보부, 관리부 창설<br><span class="lowerText">(초대 기획재정부장 이세호, 초대 기록홍보부장 김상현, 초대 관리부장 장석현)</span></td>
+          </tr>
+          <tr>
+            <td class="tg-0lax" id="line">04/29</td>
+            <td class="tg-0lax">제 1회 운영진 워크숍 MT개최</td>
+          </tr>
+          <tr>
+            <td class="tg-0lax" id="line">05/06<br>~ 05/13</td>
+            <td class="tg-0lax">1기 신입부원 추가 모집<span class="lowerText">(총 회원 수 166명)</span></td>
+          </tr>
+          <tr>
+            <td class="tg-0lax" id="line">05/09</td>
+            <td class="tg-0lax">제 1회 연합관측회 개최<span class="lowerText">(with 한국항공대 사진동아리 FICTURE)</span></td>
+          </tr>
+          <tr>
+            <td class="tg-0lax" id="line">05/21</td>
+            <td class="tg-0lax">제 1회 정기관측회 개최<span class="lowerText">(with 구리어린이천문대)</span></td>
+          </tr>
+          <tr>
+            <td class="tg-0lax" id="line">06/29</td>
+            <td class="tg-0lax">2대 부회장 차이천 취임</td>
+          </tr>
+          <tr>
+            <td class="tg-0lax" id="line">06/30</td>
+            <td class="tg-0lax">외부 천문교육 수강<span class="lowerText">(with 일산어린이천문대)</span></td>
+          </tr>
+          <tr>
+            <td class="tg-0lax" id="line">07/01</td>
+            <td class="tg-0lax">제 1회 여름 MT 개최</td>
+          </tr>
+          <tr>
+            <td class="tg-0lax" id="line">08/03</td>
+            <td class="tg-0lax">공식 회칙 제정</td>
+          </tr>
+        </tbody>
+        </table></div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="/js/hostAddr.js"></script>
+<script type="text/javascript" src="/mobile/js/modalNavControl.js"></script>
+<script type="text/javascript" src="/js/jwtVerifier.js"></script>
+
+</html>
