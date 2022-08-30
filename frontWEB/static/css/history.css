@@ -189,7 +189,7 @@ a:hover{
     font-size: 1.3em;
     padding-left: 10px;
     font-family: 'Do Hyeon', sans-serif;
-
+    width: 5vw;
     font-weight: 400;
 }
 #year{
@@ -199,5 +199,8 @@ a:hover{
     padding-right: 20px;
     font-size: 1.5em;
     font-weight: 400;
+}
+.lowerText{
+    font-size: 0.8em;
 }
 @media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;}}
