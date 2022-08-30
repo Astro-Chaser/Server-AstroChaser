@@ -1,0 +1,20 @@
+.mobile-nav-bar-area{
+    position: fixed;
+    top: 0;
+    /* width: 100% */
+    left: 0;
+    right: 0;
+  
+    width: 100vw;
+    height: 5vh;
+  
+    z-index: 999;
+  }
+  #mobile-nav-bar-hamburger{
+    float: right;
+    width: 10%;
+    height: 100%;
+  
+    line-height: 5vh;
+    margin-right: 10px;
+  }
