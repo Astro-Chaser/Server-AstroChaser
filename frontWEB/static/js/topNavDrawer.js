@@ -19,7 +19,7 @@ function drawTopNav()
                 <a onclick="alert('준비중입니다.')" class="navbar-item" id="nav-owned-telescopes">
                 동아리소개
                 </a>
-                <a onclick="alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
+                <a href="/history" class="navbar-item" id="nav-setting-telescope">
                 연혁
                 </a>
                 <a onclick="alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
