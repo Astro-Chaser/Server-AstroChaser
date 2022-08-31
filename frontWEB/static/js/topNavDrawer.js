@@ -25,7 +25,7 @@ function drawTopNav()
                 <a onclick="alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
                 활동소개
                 </a>
-                <a onclick="alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
+                <a href="/organization-chart" class="navbar-item" id="nav-setting-telescope">
                 조직도
                 </a>
                 <a href="/rules" class="navbar-item" id="nav-setting-telescope">

@@ -1,0 +1,206 @@
+html{
+    background-color: #060b33;
+    width: 100vw;
+    height: 100%;
+    
+}
+
+.leftNavBar{
+    float: left;
+
+    margin-left: 8vw;
+    width: 30px;
+    height: 80vh;
+}
+
+.rightContentBox{
+   float: left;
+
+   /* border-left: 3px solid rgba(229, 229, 227, 0.6); */
+   
+   padding-left: 10px;
+   padding-right: 10px;
+
+    width: 80vw;
+    
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.leftNavContents{
+  position: relative;
+  width: 100%;
+  height: 70px;
+  margin-top: 10px;
+  
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+
+  border-radius: 10px;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.leftNavContents:hover{
+    background-color: rgb(217, 216, 216);
+    color: black;
+}
+
+.leftNavText{
+  margin-top: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.history-content{
+    width: 70vw;
+    min-width: 1000px;
+    margin-left: 15vw;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+    padding-top: 5vh;
+
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.15);
+    
+}
+
+.all-about{
+    margin-left: 20px;
+}
+
+body{
+    color:white;
+}
+
+.content h1,.content h2,.content h3, .content h4{
+    color: white;
+}
+
+a{
+    color:white; 
+    transition: 0.15;  
+}
+a:hover{
+    color: white;
+    font-weight: 600;
+}
+.list{
+    width: fit-content;
+    height: fit-content;
+    padding: 20px;
+    border: solid 1px;
+}
+.image-area{
+    margin-left: 10vw;
+    width: 60vw;
+    height: fit-content;
+
+    margin-top: 10px;
+    margin-bottom: 5px;
+
+    /*background-color: antiquewhite;*/
+}
+
+.picture-content{
+    margin-left: 10vw;
+    margin-right: 10vw;
+    white-space: pre-line;
+    color: white;
+}
+
+#main-title{
+    width: 100%;
+    height: 20%;
+    text-align: center;
+    font-family: 'Russo One', sans-serif;
+
+    font-size: 2.5em;
+}
+
+.year-content-area{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+
+    height: fit-content;
+}
+
+.year{
+    width: 5vw;
+    height: fit-content;
+    color: white;
+
+    background-color: antiquewhite;
+}
+
+.year-content{
+    width: 65vw;
+    height: fit-content;
+
+    background-color: darkgrey;
+}
+
+.hisotry-content{
+    width: 100%;
+    height: 7vh;
+    margin-top: 3px;
+
+    background-color: aqua;
+}
+
+/* Table */
+.tg {
+    margin-top: 3vh;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.tg td {
+    font-size: 14px;
+    overflow: hidden;
+    padding: 10px 5px;
+    word-break: normal;
+}
+
+.tg th {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    overflow: hidden;
+    padding: 10px 5px;
+    word-break: normal;
+}
+
+.tg .tg-0lax {
+    text-align: left;
+    vertical-align: top;
+    font-size: 1.1em;
+    font-weight: bolder;
+    
+    color: white;
+}
+
+#line{
+    border-left: 2px white solid;
+    font-size: 1.3em;
+    padding-left: 10px;
+    font-family: 'Do Hyeon', sans-serif;
+    width: 5vw;
+    font-weight: 400;
+}
+#year{
+    color: white;
+    font-family: 'Do Hyeon', sans-serif;
+    width: 10%;
+    padding-right: 20px;
+    font-size: 1.5em;
+    font-weight: 400;
+}
+.lowerText{
+    font-size: 0.8em;
+}
+@media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;}}
