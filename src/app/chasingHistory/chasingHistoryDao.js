@@ -77,10 +77,24 @@ async function getComment(connect, noticePage){
 
     return getCommentRes;
 }
+
+//6. 사진 전부 가져오기
+async function getAllPictures(connect){
+    const getPicturesQuery = `
+    SELECT *
+    FROM PictureNoticeBoardMedia
+    WHERE status = 'Activated';
+    `
+    const [getPicturesQueryRes] = await connect.query(getPicturesQuery);
+    
+    
+    return getPicturesQueryRes;
+}
 module.exports ={
     getChasingHistory,
     postChasingHistory,
     getChasingHistoryContent,
     postComment,
     getComment,
+    getAllPictures,
 }

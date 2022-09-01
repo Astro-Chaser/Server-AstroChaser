@@ -4,6 +4,7 @@ const chasingHistoryService = require("./chasingHistoryService");
 const response = require("../../../config/response");
 const baseResponse = require("../../../config/baseResponseStatus");
 const baseResponseStatus = require("../../../config/baseResponseStatus");
+const { ChimeSDKMessaging } = require("aws-sdk");
 
 
 exports.getChasingHistoryTitle = async function(req, res){
@@ -55,4 +56,15 @@ exports.postComment = async function(req, res){
     const getCommentRes = await chasingHistoryProvider.getComment(noticeNum);
 
     return res.send(getCommentRes);
+}
+/**
+ * 사진 전부 가져오기
+ * @param {*} req 
+ * @param {*} res 
+ * @returns 
+ */
+exports.getAllPictures = async function(req, res){
+    const getAllPicturesRes = await chasingHistoryProvider.getAllPictures();
+
+    return res.send(getAllPicturesRes);
 }
