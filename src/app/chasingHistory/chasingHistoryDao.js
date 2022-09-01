@@ -25,7 +25,7 @@ async function postChasingHistory(connect, postChasingHistoryParams){
         const insertMediaQuery = `INSERT INTO PictureNoticeBoardMedia(pictureBardId, mediaUrl) VALUES (${insertQueryRes[0].insertId}, ?)`
         for(var i in postChasingHistoryParams.pictureUrls)
         {
-            //console.log(postChasingHistoryParams.pictureUrls[i]);
+            // console.log(postChasingHistoryParams.pictureUrls[i]);
             const insertMediaQueryRes = await connect.query(insertMediaQuery, postChasingHistoryParams.pictureUrls[i])
             if(insertMediaQueryRes[0].affectedRows != 1) 
             {
@@ -77,10 +77,24 @@ async function getComment(connect, noticePage){
 
     return getCommentRes;
 }
+
+//6. 사진 전부 가져오기
+async function getAllPictures(connect){
+    const getPicturesQuery = `
+    SELECT *
+    FROM PictureNoticeBoardMedia
+    WHERE status = 'Activated';
+    `
+    const [getPicturesQueryRes] = await connect.query(getPicturesQuery);
+    
+    
+    return getPicturesQueryRes;
+}
 module.exports ={
     getChasingHistory,
     postChasingHistory,
     getChasingHistoryContent,
     postComment,
     getComment,
+    getAllPictures,
 }

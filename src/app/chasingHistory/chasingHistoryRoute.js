@@ -16,5 +16,8 @@ module.exports = function(app){
     app.post('/app/picture-board/comment', jwtMiddleware, chasingHistory.postComment);
 
     //5. 게시판 댓글 불러오기 API
-    app.get('/app/picture-board/comment/get', chasingHistory.getComment)
+    app.get('/app/picture-board/comment/get', chasingHistory.getComment);
+
+    //6. 게시판 사진 모두 불러오기 API
+    app.get('/app/picture-board/pictures/all', chasingHistory.getAllPictures);
 }

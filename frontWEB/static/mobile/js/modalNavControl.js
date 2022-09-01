@@ -114,3 +114,15 @@ window.addEventListener("keyup", e => {
         modalOff()
     }
 })
+
+const clubIntroBtn = document.getElementById("club-intro-btn");
+
+clubIntroBtn.onclick = function openIntro() {
+    var x = document.getElementById("activity-page");
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "block";
+      location.href="#activity-page";   
+    }
+}

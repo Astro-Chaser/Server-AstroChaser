@@ -58,3 +58,21 @@ exports.getChasingHistoryContent = async function(req){
         return errResponse(baseResponseStatus.DB_ERROR);
     }
 }
+
+/**
+ * 사진 전부 가져오기
+ * @returns DB저장된 사진게시판 사진 전부
+ */
+exports.getAllPictures = async function(){
+    try{
+        const connect = await pool.getConnection(async (conn) => conn);
+        const getAllPicturesRes = await chasingHistoryDao.getAllPictures(connect);
+
+        connect.release();
+
+        return response(baseResponseStatus.SUCCESS, getAllPicturesRes);
+    }
+    catch{
+        return errResponse(baseResponseStatus.DB_ERROR)
+    }
+}
