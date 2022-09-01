@@ -25,7 +25,7 @@ async function postChasingHistory(connect, postChasingHistoryParams){
         const insertMediaQuery = `INSERT INTO PictureNoticeBoardMedia(pictureBardId, mediaUrl) VALUES (${insertQueryRes[0].insertId}, ?)`
         for(var i in postChasingHistoryParams.pictureUrls)
         {
-            //console.log(postChasingHistoryParams.pictureUrls[i]);
+            // console.log(postChasingHistoryParams.pictureUrls[i]);
             const insertMediaQueryRes = await connect.query(insertMediaQuery, postChasingHistoryParams.pictureUrls[i])
             if(insertMediaQueryRes[0].affectedRows != 1) 
             {
