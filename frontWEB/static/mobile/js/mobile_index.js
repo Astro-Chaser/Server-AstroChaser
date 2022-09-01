@@ -45,16 +45,6 @@ async function showRandomGalleryPictures(){
             </div>
   `
   $('.show-gallery-top').append(showPicHtml);
-
-  showFooterHtml = `
-    <div class="content has-text-centered">
-      <p>
-        <strong style="color: white;">Astro Chaser Web</strong> by 전준휘&하윤지.<br>  <a href="https://github.com/BUZZINGPolarBear/Server-AstroChaser" style="color: rgb(129, 150, 255);">이곳</a>에서 소스코드를 보실 수 있습니다.
-        <br>개발자 Contact: jjh63360@gmail.com
-      </p>
-    </div>
-  `
-  $('footer').append(showFooterHtml);
 }
 
 //get API AS JSON
