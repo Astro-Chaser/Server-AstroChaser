@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,11 +14,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/mobile/css/noticeBoardContent.css">
-    <link rel="stylesheet" type="text/css" href="/css/topnav.css">
+    <link rel="stylesheet" type="text/css" href="/mobile/css/topNav.css">
     <title>KAU Astro Chaser</title>
 </head>
 <body>
-  <nav class="navbar is-dark" style="background-color: rgba(0, 0, 0, 0.7); height: 5vh;"> </nav>
+  <div class="mobile-nav-bar-area">
+    <a href="/">
+      <img src="/image/AC_logo_long_yj.png" alt="AC logo" width="170" height="70">
+    </a>
+    
+    <div id="mobile-nav-bar-hamburger">
+      <img src="/image/icons/noun-hamburger-menu-1164007.png" alt="더보기" width="200">
+    </div>
+    <div class="topNavUser"></div>
+  </div>
 
 
     <div class="contents">
@@ -51,7 +60,7 @@
   </div>
 </body>
 <script type="text/javascript" src="/js/hostAddr.js"></script>
-<script type="text/javascript" src="/js/jwtVerifier.js"></script>
-<script type="text/javascript" src="/js/topNavDrawer.js"></script>
+<script type="text/javascript" src="/mobile/js/modalNavControl.js"></script> 
+<script type="text/javascript" src="/mobile/js/jwtVerifier.js"></script>
 <script type="text/javascript" src="/js/chasingNoticeBoardContent.js"></script>
 </html>

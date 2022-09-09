@@ -28,7 +28,6 @@ sigupBtn.onclick = signupBtnClicked;
         member: memberOptionVal,
         generation: generationOptionVal
       };
-      console.log(signUpData.member)
       if(signUpData.member=='운영진') alert("운영진은 계정 활성을 위해 가입 승인이 필요합니다.\n 전준휘에게 연락주세요.");
 
       responseRes = await post(hostAddress, "app/users", signUpData)  
