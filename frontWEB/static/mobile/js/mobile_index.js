@@ -48,7 +48,7 @@ async function showRandomGalleryPictures(){
             <img class="image-thumbnail" src="${getRandomPictures.result[getRandomIntInclusive(0, getRandomPictures.result.length)].mediaUrl}">
             </div>
   `
-  $('.show-gallery-top').append(showPicHtml);
+  $('.show-gallery-top').append(showPicHtml);     
 }
 
 //get API AS JSON
