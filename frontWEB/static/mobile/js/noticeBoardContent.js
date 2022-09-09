@@ -86,7 +86,6 @@ async function showComment(pageNum){
       $(`#reply-${commentRes.result[i].upperCommentId}`).append(replyHtml);
     }
   }
-  console.log(titleRes)
   let titleHtml = '';
   for(var i in titleRes.result){
     if(titleRes.result[i].id == pageNum){
@@ -150,7 +149,6 @@ async function postComment(){
   const postCommentRes = await postAPI(hostAddress, 'app/notice/comment', requestOptions)
   if(postCommentRes.isSuccess == true) location.reload();
   else {
-    console.log(postCommentRes)
     alert(postCommentRes.message)
     location.reload();
   }
@@ -178,7 +176,6 @@ async function postReplyComment(upperId, textareaId){
   const postCommentRes = await postAPI(hostAddress, 'app/notice/comment', requestOptions)
   if(postCommentRes.isSuccess == true) location.reload();
   else {
-    console.log(postCommentRes)
     alert(postCommentRes.message)
     location.reload();
   }
@@ -236,7 +233,6 @@ async function getAPI(host, path, headers ={}) {
 //post API AS JSON
 async function postAPI(host, path, options) {
   const url = `http://${host}/${path}`;
-  console.log(url);
   const res = await fetch(url, options);
   const data = res.json();
   // console.log(res)

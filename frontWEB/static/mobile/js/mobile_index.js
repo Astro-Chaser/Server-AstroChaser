@@ -3,26 +3,30 @@ const navBarArea = document.getElementsByClassName('mobile-nav-bar-area')[0];
 showRandomGalleryPictures();
 window.onload= function(){
   showNormalNoticeBoard();
+  showChasingNoticeBoard();
   
 }
-
-window.addEventListener("scroll", function(event) {
-  
-  var top = this.scrollY;
-
-  navBarArea.style.backgroundColor = `rgba(0, 0, 0, ${(top/600000)*1000})`
-
-}, false);
 
 async function showNormalNoticeBoard(){
   const getTitleRes = await getAPI(hostAddress, 'app/notice/title/normal');
 
   html = ''
   for(var i in getTitleRes.result){
-      html += `<li onclick="location.href = '/notice/${getTitleRes.result[i].id}'"> ${getTitleRes.result[i].title} </li>`
-      if(i>8) break;
+      html += `<li onclick="location.href = '/notice/${getTitleRes.result[i].id}'"> 🌟 ${getTitleRes.result[i].title} </li>`
+      if(Number(i)>1) break;
   }
-  $('.notice-list').append(html)
+  $('#normalUl').append(html)
+}
+
+async function showChasingNoticeBoard(){
+  const getTitleRes = await getAPI(hostAddress, 'app/notice/title/chasing');
+
+  html = ''
+  for(var i in getTitleRes.result){
+      html += `<li onclick="location.href = '/notice/${getTitleRes.result[i].id}'"> 🔭 ${getTitleRes.result[i].title} </li>`
+      if(Number(i)>1) break;
+  }
+  $('#chasingUl').append(html)
 }
 
 async function showRandomGalleryPictures(){
