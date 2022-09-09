@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jquery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="/mobile/css/signin.css">
+    <link rel="stylesheet" type="text/css" href="/mobile/css/topNav.css">
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>AC 로그인</title>
+</head>
+<body>
+  <div class="mobile-nav-bar-area">
+    <a href="/">
+      <img src="/image/AC_logo_long_yj.png" alt="AC logo" width="170" height="70">
+    </a>
+    <div id="mobile-nav-bar-hamburger">
+      <img src="/image/icons/noun-hamburger-menu-1164007.png" alt="더보기" width="200">
+    </div>
+  </div>
+    <form class="box" id="login">
+        <div class="field">
+          <label class="label">Email</label>
+          <div class="control">
+            <input class="input" type="email" id="email" placeholder="e.g. astrochaser@example.com">
+          </div>
+        </div>
+      
+        <div class="field">
+          <label class="label">Password</label>
+          <div class="control">
+            <input class="input" type="password" id="password" placeholder="********">
+          </div>
+        </div>
+        <button class="button is-primary" id="signinBtn">Sign in</button>
+        <br>아직 회원이 아니시라면? <a href="/user/signup">Astro Chaser 회원가입하기</a>
+    </form>
+</body>
+<script type="text/javascript" src="/js/hostAddr.js"></script>
+<script type="text/javascript" src="/js/signin.js"></script>
+<script type="text/javascript" src="/mobile/js/modalNavControl.js"></script>  
+</html>

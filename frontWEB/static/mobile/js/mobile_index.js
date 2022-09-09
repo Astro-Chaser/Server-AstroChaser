@@ -1,9 +1,9 @@
 const navBarHamberger = document.getElementById('mobile-nav-bar-hamburger');
 const navBarArea = document.getElementsByClassName('mobile-nav-bar-area')[0];
-
+showRandomGalleryPictures();
 window.onload= function(){
   showNormalNoticeBoard();
-  showRandomGalleryPictures();
+  
 }
 
 window.addEventListener("scroll", function(event) {
