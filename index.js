@@ -37,7 +37,13 @@ app.get('/m', function(req, res) {
 })
 
 app.get('/user/signup', function(req, res) {
-    res.sendFile(__dirname+"/frontWEB/signup.html");
+    const md = new MobileDetect(req.headers['user-agent']);
+    if (md.mobile()) { 
+        res.sendFile(__dirname+"/frontWEB/m_signup.html");
+    }
+    else { 
+        res.sendFile(__dirname+"/frontWEB/signup.html");
+   }
 })
 
 //로그인 페이지

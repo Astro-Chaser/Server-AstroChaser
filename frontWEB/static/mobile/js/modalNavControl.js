@@ -1,5 +1,5 @@
 html = `
-<div id="modal" class="modal-overlay">
+<div id="modal" class="modal-overlay" style="z-index: 99999">
         <div class="modal-window">
             <div class="title" style="color:black">
                 <h2 onclick="location.href="'//'">Astro Chaser</h2>
