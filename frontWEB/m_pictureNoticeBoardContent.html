@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <!-- jquery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- 기타 CDN-->
+    <script src="https://unpkg.com/jwt-decode@3.1.2/build/jwt-decode.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" type="text/css" href="/css/pictureNoticeBoardContent.css"> -->
+    <link rel="stylesheet" type="text/css" href="/mobile/css/noticeBoardContent.css">
+    <link rel="stylesheet" type="text/css" href="/css/topnav.css">
+    <title>KAU Astro Chaser</title>
+</head>
+<body>
+  <nav class="navbar is-dark" style="background-color: rgba(0, 0, 0, 0.7); height: 5vh;">  </nav>
+
+
+<div class="contents">
+    <div class="rightContentBox">
+      <div class="noticeTitle">
+        <a href="/gallery" style="color: white;">
+          <h3 class="title is-3" style="color: white; margin-top: 4vh;">갤러리</h3>
+        </a>
+          
+      </div>
+        <div class="mainContents">
+        </div>
+        <hr class="contentHr">
+        <div class="wring-comment-area">
+          <div class="commentCount"></div>
+          <div class="control">
+            <textarea class="textarea has-fixed-size" id="comment-writing-textbox" placeholder="댓글을 작성해주세요."></textarea>
+          </div>
+          <button class="button is-light" id="comment-register-btn" onclick="postComment(0)">등록</button>
+        </div>
+
+        <div class="view-comment-area"></div>
+        <div class="noticeBoard-page-navigator">
+          <!-- <div class="notice-tab" id="notice-next-tab">
+            <span class="tab-title">다음글</span>
+            <span class="tab-content-title">어쩌구저쩌구 다음글</span>
+          </div>
+          <div class="notice-tab" id="notice-prev-tab">
+            <span class="tab-title">이전글</span>
+            <span class="tab-content-title">어쩌구저쩌구 이전글</span>
+          </div> -->
+        </div>
+    </div>
+</div>
+    
+</body>
+<script type="text/javascript" src="/js/hostAddr.js"></script>
+<script type="text/javascript" src="/js/jwtVerifier.js"></script>
+<script type="text/javascript" src="/js/topNavDrawer.js"></script>
+<script type="text/javascript" src="/js/pictureNoticeBoardContent.js"></script>
+</html>

@@ -1,0 +1,37 @@
+html{
+    background-color: #060b33;
+    width: 100vw;
+    height: 100%;
+    
+}
+
+.rightContentBox{
+    float: left;
+    width: 98vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    background-color: rgba(255, 255, 255, 0.15);
+
+    border-radius: 10px;
+}
+
+.mainContents{
+    margin-top: 10px;
+}
+
+.title-hr{
+    border: solid 1px rgba(235, 235, 235, 0.1)
+}
+
+.is-child.box{
+    cursor: pointer;
+}
+
+.noticeBtn{
+    float: right;
+}
+
+.control{
+    margin-top: 15px;
+    
+}
