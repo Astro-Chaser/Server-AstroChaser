@@ -11,9 +11,10 @@ html = `
                 <a href="/history"><p style="margin-left:3vw; width: 100%; text-align: center; color: #485fc7;">연혁</p></a>
                 <a href="/organization-chart"><p style="margin-left:3vw; width: 100%; text-align: center; color: #485fc7;">조직도</p></a>
 
-                <h3 style="color:black">공지사항</h3>
+                <h3 style="color:black">게시판</h3>
                 <a href="/notice"><p style="margin-left:3vw; width: 100%; text-align: center; color: #485fc7;">일반공지</p></a>
                 <a href="/chasing/notice"><p style="margin-left:3vw; width: 100%; text-align: center; color: #485fc7;">관측공지</p></a>
+                <a href="/gallery"><p style="margin-left:3vw; width: 100%; text-align: center; color: #485fc7;">갤러리</p></a>
 
                 <h3 style="color:black">회원</h3>
                 <a href="/user/signin"><p style="margin-left:3vw; width: 100%; text-align: center; color: #485fc7;">로그인</p></a>
