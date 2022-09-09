@@ -6,9 +6,9 @@
     right: 0;
   
     width: 100vw;
-    height: 5vh;
+    height: 4vh;
 
-   margin-bottom: 2vh;
+    background-color: black;
   
     z-index: 999;
   }
