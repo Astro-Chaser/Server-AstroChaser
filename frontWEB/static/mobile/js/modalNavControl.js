@@ -1,19 +1,19 @@
 html = `
 <div id="modal" class="modal-overlay">
         <div class="modal-window">
-            <div class="title">
+            <div class="title" style="color:black">
                 <h2>Astro Chaser</h2>
             </div>
             <div class="close-area">X</div>
             <div class="content">
-                <h3>소개</h3>
-                <a href="/rules"><p style="margin-left:3vw">회칙</p></a>
-                <a href="/history"><p style="margin-left:3vw">연혁</p></a>
-                <a href="/organization-chart"><p style="margin-left:3vw">조직도</p></a>
+                <h3 style="color:black">소개</h3>
+                <a href="/rules"><p style="margin-left:3vw; width: 100%; text-align: center; color: #485fc7;">회칙</p></a>
+                <a href="/history"><p style="margin-left:3vw; width: 100%; text-align: center; color: #485fc7;">연혁</p></a>
+                <a href="/organization-chart"><p style="margin-left:3vw; width: 100%; text-align: center; color: #485fc7;">조직도</p></a>
 
-                <h3>공지사항</h3>
-                <a href="/notice"><p style="margin-left:3vw">일반공지</p></a>
-                <a href="/chasing/notice"><p style="margin-left:3vw">관측공지</p></a>
+                <h3 style="color:black">공지사항</h3>
+                <a href="/notice"><p style="margin-left:3vw; width: 100%; text-align: center; color: #485fc7;">일반공지</p></a>
+                <a href="/chasing/notice"><p style="margin-left:3vw; width: 100%; text-align: center; color: #485fc7;">관측공지</p></a>
 
 
                 
