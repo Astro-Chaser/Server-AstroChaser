@@ -2,7 +2,7 @@ html = `
 <div id="modal" class="modal-overlay" style="z-index: 99999">
         <div class="modal-window">
             <div class="title" style="color:black">
-                <h2 onclick="location.href="'//'">Astro Chaser</h2>
+                <h2 onclick="location.href="'/'">Astro Chaser</h2>
             </div>
             <div class="close-area">X</div>
             <div class="content">
@@ -11,9 +11,10 @@ html = `
                 <a href="/history"><p style="margin-left:3vw; width: 100%; text-align: center; color: #485fc7;">연혁</p></a>
                 <a href="/organization-chart"><p style="margin-left:3vw; width: 100%; text-align: center; color: #485fc7;">조직도</p></a>
 
-                <h3 style="color:black">공지사항</h3>
+                <h3 style="color:black">게시판</h3>
                 <a href="/notice"><p style="margin-left:3vw; width: 100%; text-align: center; color: #485fc7;">일반공지</p></a>
                 <a href="/chasing/notice"><p style="margin-left:3vw; width: 100%; text-align: center; color: #485fc7;">관측공지</p></a>
+                <a href="/gallery"><p style="margin-left:3vw; width: 100%; text-align: center; color: #485fc7;">갤러리</p></a>
 
                 <h3 style="color:black">회원</h3>
                 <a href="/user/signin"><p style="margin-left:3vw; width: 100%; text-align: center; color: #485fc7;">로그인</p></a>
@@ -117,15 +118,3 @@ window.addEventListener("keyup", e => {
         modalOff()
     }
 })
-
-const clubIntroBtn = document.getElementById("club-intro-btn");
-
-clubIntroBtn.onclick = function openIntro() {
-    var x = document.getElementById("activity-page");
-    if (x.style.display === "block") {
-      x.style.display = "none";
-    } else {
-      x.style.display = "block";
-      location.href="#activity-page";   
-    }
-}
