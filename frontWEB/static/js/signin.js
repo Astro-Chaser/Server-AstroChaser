@@ -16,7 +16,6 @@ async function signinBtnClicked(event){
     .then((data) => {
         if(data.isSuccess == true)
         {
-          console.log(data.result)
             localStorage.setItem("email", data.result.email);
             localStorage.setItem("accessJWT", data.result.AccessJWT);
             localStorage.setItem("refreshJWT", data.result.RefreshJWT);
