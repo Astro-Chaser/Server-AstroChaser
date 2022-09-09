@@ -270,6 +270,7 @@ p{
 .innerExplain{
   color: white;
   text-align: left;
+  line-height: 1.5em;
 }
 
 .card.area{
