@@ -196,6 +196,21 @@
 
   
 </body>
+
+<script>
+  const clubIntroBtn = document.getElementById("club-intro-btn");
+
+  clubIntroBtn.onclick = function openIntro() {
+      var x = document.getElementById("activity-page");
+      if (x.style.display === "block") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "block";
+        location.href="#activity-page";   
+      }
+  }
+</script>
+
 <script type="text/javascript" src="./mobile/js/mobile_index.js"></script>    
 <script type="text/javascript" src="./mobile/js/modalNavControl.js"></script> 
 <script type="text/javascript" src="./mobile/js/jwtVerifier.js"></script>   
