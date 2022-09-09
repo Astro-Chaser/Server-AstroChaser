@@ -2,7 +2,7 @@ html = `
 <div id="modal" class="modal-overlay" style="z-index: 99999">
         <div class="modal-window">
             <div class="title" style="color:black">
-                <h2 onclick="location.href="'//'">Astro Chaser</h2>
+                <h2 onclick="location.href="'/'">Astro Chaser</h2>
             </div>
             <div class="close-area">X</div>
             <div class="content">
@@ -117,15 +117,3 @@ window.addEventListener("keyup", e => {
         modalOff()
     }
 })
-
-const clubIntroBtn = document.getElementById("club-intro-btn");
-
-clubIntroBtn.onclick = function openIntro() {
-    var x = document.getElementById("activity-page");
-    if (x.style.display === "block") {
-      x.style.display = "none";
-    } else {
-      x.style.display = "block";
-      location.href="#activity-page";   
-    }
-}
