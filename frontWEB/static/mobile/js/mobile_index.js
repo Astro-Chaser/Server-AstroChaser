@@ -23,7 +23,7 @@ async function showChasingNoticeBoard(){
 
   html = ''
   for(var i in getTitleRes.result){
-      html += `<li onclick="location.href = '/notice/${getTitleRes.result[i].id}'"> 🔭 ${getTitleRes.result[i].title} </li>`
+      html += `<li onclick="location.href = '/chasing/notice/${getTitleRes.result[i].id}'"> 🔭 ${getTitleRes.result[i].title} </li>`
       if(Number(i)>1) break;
   }
   $('#chasingUl').append(html)
