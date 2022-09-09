@@ -191,9 +191,41 @@
         <div class="show-gallery-area">
           <div class="show-gallery-top"><span>갤러리</span></div>
         </div>
-        
-  </main>
 
+        <div class="contWrap" id = "firstIntroduce" style="margin-top: 50px; height: 150vh;">
+          <div class="activity-title"><p>GUESTBOOK</p></div>
+          <div class="tile is-ancestor">
+            <div class="tile is-parent">
+              <article class="tile is-child box"  style="height: 120vh;">
+                <textarea class="textarea is-info has-fixed-size" 
+                          placeholder="방명록을 작성해주세요(200자 이내)" 
+                          style="height: 50px; width: 50px;"
+                          id="guestbookContent"></textarea> 
+                <div class="guestBookWriterInfoBox">
+                  <div id="guestbookCommit">
+                    <button class="button is-primary" id="guestbookCommitBtn">등록</button>
+                    <input class="input is-link" id="guestbookCommit_nickname" type="text" placeholder="닉네임" style="width: 40%;">
+                    
+                  </div>
+                </div>
+        
+                <hr>
+                <div class="guestbook-area">
+        
+                </div>
+                <div class="guestbook-page-navigator" style="margin-top: 2vh;">
+                  <button class="button is-responsive" id="guetbook-prev-btn" style="float: left;">
+                    이전글
+                  </button>
+                  <button class="button is-responsive" id="guetbook-next-btn" style="float: right;">
+                    다음글
+                  </button>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+  </main>
   
 </body>
 
@@ -213,5 +245,6 @@
 
 <script type="text/javascript" src="./mobile/js/mobile_index.js"></script>    
 <script type="text/javascript" src="./mobile/js/modalNavControl.js"></script> 
+<script type="text/javascript" src="./js/index_guestbook.js"></script>
 <script type="text/javascript" src="./mobile/js/jwtVerifier.js"></script>   
 </html>

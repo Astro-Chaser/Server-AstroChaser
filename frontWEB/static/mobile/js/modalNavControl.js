@@ -52,7 +52,7 @@ css = `
         border-radius: 10px;
         border: 1px solid rgba( 255, 255, 255, 0.18 );
         width: 400px;
-        height: 500px;
+        height: 550px;
         position: relative;
         margin-top: 5vh;
         padding: 10px;
