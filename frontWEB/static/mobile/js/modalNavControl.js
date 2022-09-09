@@ -2,7 +2,7 @@ html = `
 <div id="modal" class="modal-overlay">
         <div class="modal-window">
             <div class="title" style="color:black">
-                <h2>Astro Chaser</h2>
+                <h2 onclick="location.href="'//'">Astro Chaser</h2>
             </div>
             <div class="close-area">X</div>
             <div class="content">
