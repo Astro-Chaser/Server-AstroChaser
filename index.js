@@ -40,8 +40,15 @@ app.get('/user/signup', function(req, res) {
     res.sendFile(__dirname+"/frontWEB/signup.html");
 })
 
-app.get('/user/signin', function(req, res) {
-    res.sendFile(__dirname+"/frontWEB/signin.html");
+//로그인 페이지
+app.get('/user/signin', function(req, res){
+    const md = new MobileDetect(req.headers['user-agent']);
+         if (md.mobile()) { 
+            res.sendFile(__dirname+"/frontWEB/m_signin.html");
+         }
+         else { 
+            res.sendFile(__dirname+"/frontWEB/signin.html");
+        }
 })
 
 //2. 망원경 관련 페이지
@@ -124,7 +131,6 @@ app.get('/free-board/:pageNum', function(req, res){
 })
 
 //5. 회칙 페이지
-
 app.get('/rules', function(req, res){
     const md = new MobileDetect(req.headers['user-agent']);
          if (md.mobile()) { 
