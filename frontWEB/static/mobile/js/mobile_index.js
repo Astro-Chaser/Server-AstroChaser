@@ -6,14 +6,6 @@ window.onload= function(){
   
 }
 
-window.addEventListener("scroll", function(event) {
-  
-  var top = this.scrollY;
-
-  navBarArea.style.backgroundColor = `rgba(0, 0, 0, ${(top/600000)*1000})`
-
-}, false);
-
 async function showNormalNoticeBoard(){
   const getTitleRes = await getAPI(hostAddress, 'app/notice/title/normal');
 
