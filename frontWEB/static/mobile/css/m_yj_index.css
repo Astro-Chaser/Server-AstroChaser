@@ -501,3 +501,15 @@ p{
   height:100%;
   object-fit:cover;
 }
+
+.topNavUser{
+  float: right;
+  width: auto;
+  height: 100%;
+  color: white;
+  font-size: 1.2em;
+  font-weight: bolder;
+  font-family: 'Roboto', sans-serif;
+  margin-right: 2vw;
+  line-height: 4vh;
+}
