@@ -61,10 +61,9 @@ async function guestbookCommitBtnClicked(event){
   }
 //방명록 전시하기
 async function showGuestbookData(guestbookPageCnt){
-
-
     for(var i=0; i<5; i++)
     {
+      console.log(guestbookPageCnt*5+i);
       if((guestbookPageCnt*5+i)<guestbookData.result.length)
       {
         var writer = guestbookData.result[guestbookPageCnt*5+i].writer;
@@ -88,17 +87,19 @@ async function showGuestbookData(guestbookPageCnt){
   
   //방명록 이전, 다음 게시글 불러오기
   guetbookNextBtn.onclick = function(){
-    if((guestbookPageCnt+1)<=guestbookData.result.length%5)
+    if(((guestbookPageCnt+1)*5)<guestbookData.result.length)
     {
       $(".guestbook-area").empty();
-      showGuestbookData(guestbookPageCnt+=1);
+      guestbookPageCnt = Number(guestbookPageCnt+1);
+      showGuestbookData(Number(guestbookPageCnt));
     }
   }
   guetbookPrevBtn.onclick = function(){
     if((guestbookPageCnt-1)>=0)
     {
       $(".guestbook-area").empty();
-      showGuestbookData(guestbookPageCnt-=1);
+      guestbookPageCnt = Number(guestbookPageCnt-1);
+      showGuestbookData(Number(guestbookPageCnt));
     }
   }
   
