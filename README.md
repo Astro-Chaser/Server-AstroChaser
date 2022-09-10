@@ -1,6 +1,8 @@
 # Astro Chaser 웹페이지 만들기 프로젝트
 
-한국항공대 천문관측 동아리 Astro Chaser의 PC환경 웹페이지입니다. 모바일 환경은 준비중에 있습니다.
+한국항공대 천문관측 동아리 Astro Chaser의 웹페이지입니다. 
+
+PC환경에 최적화되어 있으며, 모바일 환경은 열람 기능에 집중되어 있습니다.
 
 [www.astrochaser.com](www.astrochaser.com)
 ## 참여
@@ -23,11 +25,14 @@
 ## 구조
 
  - 프론트
-	 - html , css, js, jquery
+	 - html, css, js, jquery
 	 - bulma
+	 - full calendar
  - 백엔드
 	 - Node.js + express
 	 - mysql
+	 - 공공데이터포탈 DB
  - 클라우드
 	 - AWS
 	 - ec2, rds, s3
+	 - 가비아 DNS
