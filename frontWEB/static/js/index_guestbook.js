@@ -63,7 +63,6 @@ async function guestbookCommitBtnClicked(event){
 async function showGuestbookData(guestbookPageCnt){
     for(var i=0; i<5; i++)
     {
-      console.log(guestbookPageCnt*5+i);
       if((guestbookPageCnt*5+i)<guestbookData.result.length)
       {
         var writer = guestbookData.result[guestbookPageCnt*5+i].writer;
