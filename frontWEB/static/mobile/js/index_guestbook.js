@@ -1,6 +1,5 @@
 const guestbookCommitBtn = document.getElementById("guestbookCommitBtn");
-const guetbookPrevBtn = document.getElementById("guetbook-prev-btn");
-const guetbookNextBtn = document.getElementById("guetbook-next-btn");
+
 
 let guestbookPageCnt = 0;
 let guestbookData;
@@ -82,9 +81,22 @@ async function showGuestbookData(guestbookPageCnt){
       }
       else break;
     }
-}
-  
-  //방명록 이전, 다음 게시글 불러오기
+    
+    html = `
+    <div class="guestbook-page-navigator" style="margin-top: 2vh;">
+      <button class="button is-responsive" id="guetbook-prev-btn" style="float: left;">
+        이전글
+      </button>
+      <button class="button is-responsive" id="guetbook-next-btn" style="float: right;">
+        다음글
+      </button>
+    </div>
+    `
+    $(".guestbook-area").append(html);
+
+    //방명록 이전, 다음 게시글 불러오기
+  const guetbookPrevBtn = document.getElementById("guetbook-prev-btn");
+  const guetbookNextBtn = document.getElementById("guetbook-next-btn");
   guetbookNextBtn.onclick = function(){
     if(((guestbookPageCnt+1)*5)<guestbookData.result.length)
     {
@@ -101,6 +113,9 @@ async function showGuestbookData(guestbookPageCnt){
       showGuestbookData(Number(guestbookPageCnt));
     }
   }
+}
+  
+ 
   
   //post API
   async function postAPI(host, path, body, headers = {}) {
