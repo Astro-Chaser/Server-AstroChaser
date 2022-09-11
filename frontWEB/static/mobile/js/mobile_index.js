@@ -35,18 +35,32 @@ async function showRandomGalleryPictures(){
   getRandomIntInclusive(0, getRandomPictures.result.length);
 
   showPicHtml = `
-            <div class="show-gallery-left">
-              <img class="image-thumbnail" src="${getRandomPictures.result[getRandomIntInclusive(0, getRandomPictures.result.length)].mediaUrl}">
-            </div>
-            <div class="show-gallery-right">
-            <img class="image-thumbnail" src="${getRandomPictures.result[getRandomIntInclusive(0, getRandomPictures.result.length)].mediaUrl}">
-            </div>
-            <div class="show-gallery-left">
-            <img class="image-thumbnail" src="${getRandomPictures.result[getRandomIntInclusive(0, getRandomPictures.result.length)].mediaUrl}">
-            </div>
-            <div class="show-gallery-right">
-            <img class="image-thumbnail" src="${getRandomPictures.result[getRandomIntInclusive(0, getRandomPictures.result.length)].mediaUrl}">
-            </div>
+    <div class="show-gallery-line">
+      <div class="show-gallery-image-left">
+        <img class="image-thumbnail" src="${getRandomPictures.result[getRandomIntInclusive(0, getRandomPictures.result.length)].mediaUrl}">
+      </div>
+      <div class="show-gallery-image-right">
+        <img class="image-thumbnail" src="${getRandomPictures.result[getRandomIntInclusive(0, getRandomPictures.result.length)].mediaUrl}">
+      </div>
+    </div>
+
+    <div class="show-gallery-line">
+      <div class="show-gallery-image-left">
+       <img class="image-thumbnail" src="${getRandomPictures.result[getRandomIntInclusive(0, getRandomPictures.result.length)].mediaUrl}">
+      </div>
+      <div class="show-gallery-image-right">
+        <img class="image-thumbnail" src="${getRandomPictures.result[getRandomIntInclusive(0, getRandomPictures.result.length)].mediaUrl}">
+      </div>
+    </div>
+
+  <div class="show-gallery-line">
+    <div class="show-gallery-image-left">
+      <img class="image-thumbnail" src="${getRandomPictures.result[getRandomIntInclusive(0, getRandomPictures.result.length)].mediaUrl}">
+    </div>
+    <div class="show-gallery-image-right">
+      <img class="image-thumbnail" src="${getRandomPictures.result[getRandomIntInclusive(0, getRandomPictures.result.length)].mediaUrl}">
+    </div>
+  </div>
   `
   $('.show-gallery-top').append(showPicHtml);     
 }
