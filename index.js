@@ -153,7 +153,14 @@ app.get('/free-board/editor', function(req, res){
     res.sendFile(__dirname + "/frontWEB/userFreeBoardEditor.html");
 })
 app.get('/free-board/:pageNum', function(req, res){
-    res.sendFile(__dirname + "/frontWEB/userFreeBoardContent.html");
+    const md = new MobileDetect(req.headers['user-agent']);
+    if (md.mobile()) { 
+        res.sendFile(__dirname + "/frontWEB/m_userFreeBoardContent.html");
+    }
+    else { 
+        res.sendFile(__dirname + "/frontWEB/userFreeBoardContent.html");
+   }
+    
 })
 
 //5. 회칙 페이지

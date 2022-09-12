@@ -15,7 +15,7 @@ noticeWriteBtn.onclick = function noticeWriteBtnClicked(event){
     console.log("ho")
     if(localStorage.getItem("member")=="운영진")
     {
-        location.href = `/notice/editor`;
+        location.href = `/free-board/editor`;
     }
     else
     {
@@ -34,7 +34,7 @@ async function showNormalNoticeBoardTitles(page){
             console.log(titleArr[Number((page*10)+i)].id)
             html += `
                 <div class="removeColumns">
-                    <div class="columns" onclick="location.href='/notice/${titleArr[Number((page*10)+i)].id}'">
+                    <div class="columns" onclick="location.href='/free-board/${titleArr[Number((page*10)+i)].id}'">
                         <div class="column is-full">
                             <div class="noticeCol iconCol">${titleArr[Number((page*10)+i)].id}</div>
                             <div class="noticeCol titleCol">${title}</div>
@@ -48,7 +48,7 @@ async function showNormalNoticeBoardTitles(page){
         }
         html += `
         <div class="removeColumns">
-            <div class="columns" onclick="location.href='/notice/${titleArr[Number((page*10)+i)].id}'">
+            <div class="columns" onclick="location.href='/free-board/${titleArr[Number((page*10)+i)].id}'">
                 <div class="column is-full">
                     <div class="noticeCol iconCol">${titleArr[Number((page*10)+i)].id}</div>
                     <div class="noticeCol titleCol">${title}</div>
