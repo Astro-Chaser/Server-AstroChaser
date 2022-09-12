@@ -140,7 +140,14 @@ app.get('/chasing/notice/:pageNum', function(req, res){
 })
 
 app.get('/free-board', function(req, res){
-    res.sendFile(__dirname + "/frontWEB/userFreeBoard.html");
+    const md = new MobileDetect(req.headers['user-agent']);
+    if (md.mobile()) { 
+        res.sendFile(__dirname + "/frontWEB/m_userFreeBoard.html");
+    }
+    else { 
+        res.sendFile(__dirname + "/frontWEB/userFreeBoard.html");
+   }
+    
 })
 app.get('/free-board/editor', function(req, res){
     res.sendFile(__dirname + "/frontWEB/userFreeBoardEditor.html");
