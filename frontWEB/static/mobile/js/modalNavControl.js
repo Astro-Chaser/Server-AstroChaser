@@ -15,11 +15,12 @@ html = `
                 <a href="/notice"><p style="margin-left:3vw; width: 100%; text-align: center; color: #485fc7;">일반공지</p></a>
                 <a href="/chasing/notice"><p style="margin-left:3vw; width: 100%; text-align: center; color: #485fc7;">관측공지</p></a>
                 <a href="/gallery"><p style="margin-left:3vw; width: 100%; text-align: center; color: #485fc7;">갤러리</p></a>
+                <a href="/free-board"><p style="margin-left:3vw; width: 100%; text-align: center; color: #485fc7;">자유게시판</p></a>
 
                 <h3 style="color:black">회원</h3>
                 <a href="/user/signin"><p style="margin-left:3vw; width: 100%; text-align: center; color: #485fc7;">로그인</p></a>
                 <a href="/user/signup"><p style="margin-left:3vw; width: 100%; text-align: center; color: #485fc7;">회원가입</p></a>
-
+                
                 
             </div>
         </div>
@@ -84,7 +85,8 @@ css = `
     }
 </style>
 `
-
+const favicon = `<link href="./image/icons/AClogoCroped.ico" rel="shortcut icon" type="image/x-icon">`
+$('head').append(favicon);
 $('head').append(css);
 $('body').append(html);
 
