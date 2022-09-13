@@ -11,6 +11,7 @@ const {connect} = require("http2");
 const res = require("express/lib/response");
 const baseResponseStatus = require("../../../config/baseResponseStatus");
 const { post } = require("request");
+var xss = require("xss");
 
 const AWS = require('aws-sdk');
 
@@ -36,8 +37,8 @@ exports.postNoticeBoard = async function(req, token){
         {
             s3Urls.push(req.files[i].location)
         }
-        postNoticeBoardParams.title = req.body.title;
-        postNoticeBoardParams.content = req.body.content;
+        postNoticeBoardParams.title = xss(req.body.title);
+        postNoticeBoardParams.content = xss(req.body.content);
         postNoticeBoardParams.folderName = req.body.folder;
         postNoticeBoardParams.writerid = token.id;
         postNoticeBoardParams.pictureUrls = s3Urls;
@@ -69,7 +70,7 @@ exports.postComment = async function(token, content, upperId, postId){
 
         postCommentParams.postId = postId
         postCommentParams.writerId = token.id;
-        postCommentParams.content = content;
+        postCommentParams.content = xss(content);
         postCommentParams.upperId = upperId;
 
         const connect = await pool.getConnection(async (conn) => conn);

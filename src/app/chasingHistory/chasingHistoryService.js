@@ -11,6 +11,7 @@ const {connect} = require("http2");
 const res = require("express/lib/response");
 const baseResponseStatus = require("../../../config/baseResponseStatus");
 const { post } = require("request");
+var xss = require("xss");
 
 exports.postChasingHistory = async function(req){
     try{
@@ -20,11 +21,11 @@ exports.postChasingHistory = async function(req){
         {
             s3Urls.push(req.files[i].location)
         }
-        postChasingHistoryParams.title = req.query.title;
+        postChasingHistoryParams.title = xss(req.query.title);
         postChasingHistoryParams.folderName = req.body.folder;
         postChasingHistoryParams.writerEmail = req.body.writer;
         postChasingHistoryParams.pictureUrls = s3Urls;
-        postChasingHistoryParams.content = req.body.content;
+        postChasingHistoryParams.content = xss(req.body.content);
 
         const connect = await pool.getConnection(async (conn) => conn);
         const insertResult = await chasingHistoryDao.postChasingHistory(connect, postChasingHistoryParams);
@@ -45,9 +46,10 @@ exports.postComment = async function(token, content, upperId, postId){
 
         postCommentParams.postId = postId
         postCommentParams.writerId = token.id;
-        postCommentParams.content = content;
+        postCommentParams.content = xss(content);
         postCommentParams.upperId = upperId;
 
+        console.log(postCommentParams.content);
         const connect = await pool.getConnection(async (conn) => conn);
         const postCommentResult = await chasingHistoryDao.postComment(connect, postCommentParams);
 
