@@ -36,6 +36,7 @@ async function guestbookCommitBtnClicked(event){
   
     var message="";
     if(guestbookContent.value=="") alert("방명록 내용을 입력해주세요.");
+    else if(guestbookContent.value.length>200) alert("200자 이내로 입력해주세요.");
     else{
       const postGuestbookData = {
         writer: nickname,
