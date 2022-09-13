@@ -37,6 +37,7 @@
         "request": "^2.88.2",
         "winston": "^3.2.1",
         "winston-daily-rotate-file": "^4.2.1",
-        "xml-js": "^1.6.11"
+        "xml-js": "^1.6.11",
+        "xss": "^1.0.14"
     }
 }

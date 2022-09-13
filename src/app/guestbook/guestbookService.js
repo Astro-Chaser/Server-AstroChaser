@@ -10,6 +10,7 @@ const guestbookProvider = require("./guestbookProvider");
 
 const {connect} = require("http2");
 const res = require("express/lib/response");
+var xss = require("xss");
 
 /**
  * 1. 방명록 작성 API
@@ -19,8 +20,7 @@ const res = require("express/lib/response");
  */
 exports.createGuestBook = async function (writer, content){
     try{
-       
-        const createGuestBookParams = [writer, content];
+        const createGuestBookParams = [writer, xss(content)];
         const connection = await pool.getConnection(async (conn) => conn);
         const createGuestBookResult = await guestbookDao.createGuestBook(connection, createGuestBookParams)
 
