@@ -4,7 +4,9 @@ async function getUserInfo(){
   let jwtCheckData;
   const userJWT = localStorage.getItem("accessJWT");
   const decodedJwt = jwt_decode(userJWT);
-  if(((new Date(decodedJwt.exp * 1000))-Date.now())/6000 > 30 )
+
+  // access Token이 30분 이상 남은 경우
+  if(((new Date(decodedJwt.exp * 1000))-Date.now())/60000 > 30 )
   {
     var myHeaders = new Headers();
     myHeaders.append("x-access-token", userJWT);
@@ -24,7 +26,7 @@ async function getUserInfo(){
       localStorage.setItem("member", jwtCheckData.result.member);
       localStorage.setItem("name", jwtCheckData.result.name);
   }
-  else if(((new Date(decodedJwt.exp * 1000))-Date.now())/6000 <= 30)
+  if(((new Date(decodedJwt.exp * 1000))-Date.now())/60000 <= 30 )
   {
     //ACCESS TOKEN의 기한이 지날 경우!!
     const local_email = localStorage.getItem("email");
