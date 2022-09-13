@@ -10,6 +10,7 @@ const chasingHistoryDao = require("./chasingHistoryDao");
 const {connect} = require("http2");
 const res = require("express/lib/response");
 const baseResponseStatus = require("../../../config/baseResponseStatus");
+var xss = require("xss");
 
 exports.getChasingHistory = async function(){
     try{
