@@ -210,9 +210,11 @@ exports.updateToken = async function(refreshToken, email){
             const refreshTokenSaveResult = await userDao.updateRefreshToken(connection, refreshTokenParams)
 
             connection.release();
-            return response(baseResponse.SUCCESS, {'email': email, 
-                                                   'AccessJWT': AccessToken,
-                                                    'RefreshJWT': RefreshToken});
+            return response(baseResponse.SUCCESS, {
+                'checkResult' : 'successed',
+                'email': email, 
+                'AccessJWT': AccessToken,
+                'RefreshJWT': RefreshToken});
             }
     }
     catch{
