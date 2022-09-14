@@ -4,6 +4,7 @@ const content = document.getElementById('contentEditor');
 
 var formdata = new FormData();
 
+adminCheck();
 pictureCommitBtn.onclick = pictureCommit;
 
 function previewImages() {
@@ -38,6 +39,8 @@ function previewImages() {
 
 async function pictureCommit(event){
     document.body.style.cursor='wait';
+    adminCheck();
+    
     formdata.append("writer",  localStorage.getItem("email"));
     formdata.append("content", content.value);
     var requestOptions = {
@@ -62,6 +65,27 @@ async function pictureCommit(event){
 
 document.querySelector('.file-input').addEventListener("change", previewImages);
 
+async function adminCheck(){
+    var myHeaders = new Headers();
+    myHeaders.append("x-access-token", localStorage.getItem("accessJWT"));
+    var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        body: formdata,
+        redirect: 'follow'
+    };
+    const adminCheckRes = await postAPI(hostAddress, 'app/users/auto-login', requestOptions);
+
+    console.log(adminCheckRes);
+    if(adminCheckRes.isSuccess == false){
+        alert("로그인이 필요합니다.");
+        location.href = "/user/signin";
+    }
+    if(adminCheckRes.result.member != "운영진") {
+        alert("운영진만 글을 쓸 수 있는 게시판입니다.");
+        location.href = "/";
+    }
+}
 
 //get API AS JSON
 async function postAPI(host, path, params, options) {
