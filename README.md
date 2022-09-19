@@ -4,7 +4,7 @@
 
 PC환경에 최적화되어 있으며, 모바일 환경은 열람 기능에 집중되어 있습니다.
 
-[www.astrochaser.com](www.astrochaser.com)
+[www.astrochaser.com](http://www.astrochaser.com)
 ## 참여
 
  - [BuzzingPolarBear](https://github.com/BUZZINGPolarBear)(전준휘)
