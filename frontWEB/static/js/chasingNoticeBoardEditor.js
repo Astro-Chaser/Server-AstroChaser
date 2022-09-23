@@ -73,12 +73,9 @@ async function adminCheck(){
     var requestOptions = {
         method: 'GET',
         headers: myHeaders,
-        body: formdata,
         redirect: 'follow'
     };
     const adminCheckRes = await postAPI(hostAddress, 'app/users/auto-login', requestOptions);
-
-    console.log(adminCheckRes);
     if(adminCheckRes.isSuccess == false){
         alert("로그인이 필요합니다.");
         location.href = "/user/signin";
