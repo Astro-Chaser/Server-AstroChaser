@@ -3,22 +3,15 @@ const noticePrevBtn = document.getElementById("notice-prev-btn");
 const noticeNextBtn = document.getElementById("notice-next-btn");
 const noticeWriteBtn = document.getElementById("notice-write-btn");
 let titleArr;
-
+var formdata = new FormData();
 
 window.onload = async function(){
     titleArr = await getChasingNoticeBoardTitles();
     showNormalNoticeBoardTitles(noticeBoardPage);
 }
 
-noticeWriteBtn.onclick = function noticeWriteBtnClicked(event){
-    if(localStorage.getItem("member")=="운영진")
-    {
-        location.href = `/chasing/notice/editor`;
-    }
-    else
-    {
-        alert("운영진만 글을 작성할 수 있는 게시판입니다.")
-    }
+noticeWriteBtn.onclick = async ()=>{
+    await adminCheck();
 }
 
 async function showNormalNoticeBoardTitles(page){
@@ -80,6 +73,28 @@ async function getChasingNoticeBoardTitles(){
 
 }
 
+async function adminCheck(){
+    var myHeaders = new Headers();
+    myHeaders.append("x-access-token", localStorage.getItem("accessJWT"));
+    var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
+    const adminCheckRes = await postAPI(hostAddress, 'app/users/auto-login', requestOptions);
+
+    if(adminCheckRes.isSuccess == false){
+        alert("로그인이 필요합니다.");
+        location.href = "/user/signin";
+    }
+    if(adminCheckRes.result.member != "운영진") {
+        alert("운영진만 글을 쓸 수 있는 게시판입니다.");
+        location.href = "/chasing/notice";
+    }
+    if(adminCheckRes.result.member == "운영진"){
+        location.href = "/chasing/notice/editor";
+    }
+}
 
 //get API AS JSON
 async function getAPI(host, path, headers ={}) {
@@ -99,3 +114,18 @@ async function getAPI(host, path, headers ={}) {
       throw new Error(data);
     }
   }
+
+  //post API AS JSON
+async function postAPI(host, path, options) {
+    const url = `http://${host}/${path}`;
+    console.log(url);
+    const res = await fetch(url, options);
+    const data = res.json();
+    // console.log(res)
+    // console.log(data)
+    if (res.ok) {
+        return data;
+    } else {
+        throw new Error(data);
+    }
+}
