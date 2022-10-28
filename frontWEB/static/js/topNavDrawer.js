@@ -88,7 +88,7 @@ function drawTopNav()
         <div class="navbar-end">
             <div class="navbar-item">
             <div class="buttons">
-                <a href="user/signup" class="button is-primary" id="nav-sign-up">
+                <a href="user/signup" class="button is-primary" id="nav-sign-up" style="background-color: rgb(229, 221, 200);color: rgb(50, 50, 50);">
                 <strong>회원가입</strong>
                 </a>
                 <a href="/user/signin" class="button is-light" id="nav-sign-in">
