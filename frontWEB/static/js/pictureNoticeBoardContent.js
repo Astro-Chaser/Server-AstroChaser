@@ -25,7 +25,11 @@ async function showContent(pageNum){
     {
         html += `
         <div class="image-area">
-            <img src="${contentRes.result[i].mediaUrl}" >
+            <img src="${contentRes.result[i].mediaUrl}" style="padding: 0;
+            display: block;
+            margin: 0 auto;
+            max-height: 100%;
+            max-width: 100%;">
         </div>
         `
     }

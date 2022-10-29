@@ -1,2 +1,2 @@
-//const hostAddress= '52.79.239.114:8000'
+//const hostAddress= 'astrochaser.com'
 const hostAddress = 'localhost:8000'
