@@ -30,7 +30,7 @@ async function showContent(pageNum){
       if(contentRes.result[i].mediaUrl == null) break;
         html += `
         <div class="image-area">
-            <img src="${contentRes.result[i].mediaUrl}" width="500" >
+            <img src="${contentRes.result[i].mediaUrl}" style="width: 100%;">
         </div>
         `
     }
