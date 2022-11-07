@@ -57,10 +57,6 @@ async function pictureCommit(event){
         alert("게시글을 다시 입력해주세요.");
         location.reload();
     }
-
-    
-    
-    console.log()
 }
 
 document.querySelector('.file-input').addEventListener("change", previewImages);
@@ -69,12 +65,12 @@ async function adminCheck(){
     var myHeaders = new Headers();
     myHeaders.append("x-access-token", localStorage.getItem("accessJWT"));
     var requestOptions = {
-        method: 'GET',
+        method: 'POST',
         headers: myHeaders,
         body: formdata,
         redirect: 'follow'
     };
-    const adminCheckRes = await postAPI(hostAddress, 'app/users/auto-login', requestOptions);
+    const adminCheckRes = await postAdminCheckAPI(hostAddress, 'app/users/auto-login', requestOptions);
 
     console.log(adminCheckRes);
     if(adminCheckRes.isSuccess == false){
@@ -101,6 +97,20 @@ async function postAPI(host, path, params, options) {
         throw new Error(data);
     }
 }
+
+//post API AS JSON
+async function postAdminCheckAPI(host, path, options) {
+    const url = `http://${host}/${path}`;
+    const res = await fetch(url, options);
+    const data = res.json();
+    // console.log(res)
+    // console.log(data)
+    if (res.ok) {
+        return data;
+    } else {
+        throw new Error(data);
+    }
+  }
 
 
   
