@@ -12,6 +12,7 @@ module.exports = function(app){
     app.post('/app/users/signin', user.signinUser);
 
     // 3. 유저 JWT 검중
+    app.post('/app/users/auto-login', jwtMiddleware, user.checkToken)
     app.get('/app/users/auto-login', jwtMiddleware, user.checkToken)
 
     // 4. 유저 JWT 검증 실패시 Refresh Token검증.
