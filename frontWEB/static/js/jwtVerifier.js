@@ -76,6 +76,8 @@ async function getUserInfo(){
             <div id="userInfo-nav-top" style="font-size: 18px;">
                 🌟 ${localStorage.getItem('generation')}기 ${localStorage.getItem("name")}
             </div>
+
+            <button class="button is-danger is-rounded" onclick="logout()" style="margin-left:10px;">로그아웃</button>            
         `
         
         ;
@@ -96,6 +98,12 @@ async function getUserInfo(){
 
 }
 
+async function logout(){
+  if(confirm("정말 로그아웃 하시겠습니까?")){
+    localStorage.clear();
+    location.reload();
+  }
+}
   //post API AS JSON
 async function postAPI(host, path, body) {
     const url = `http://${host}/${path}`;
