@@ -46,7 +46,7 @@ async function showContent(pageNum){
 async function showComment(pageNum){
   const commentRes = await getAPI(hostAddress, `app/notice/comment?pageNum=${pageNum}`);
   const titleRes = await getAPI(hostAddress, 'app/notice/title/user');
-  $('.commentCount').append(`댓글 ${commentRes.result.length}개`)
+  $('.commentCount').append(`댓글 ${commentRes.result.length}개`);
   html = '';
   replyHtml = '';
   for(var i in commentRes.result){
