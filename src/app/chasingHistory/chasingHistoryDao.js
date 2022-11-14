@@ -1,10 +1,15 @@
 //1. chasingHistory 대문 가져오기
 async function getChasingHistory(connection){
     const getChasingHistoryQuery = `
-    SELECT PNB.id id, PNB.createdAt createdAt, writerId, title, mediaUrl, PNB.state
-    FROM PictureNoticeBoard AS PNB INNER JOIN PictureNoticeBoardMedia AS PNBM on PNB.id = PNBM.pictureBardId
-    WHERE PNB.state = 'A'
-    GROUP BY title;
+    SELECT
+        PNB.id id, PNB.createdAt createdAt, writerId, title, mediaUrl, PNB.state
+    FROM
+        PictureNoticeBoard AS PNB INNER JOIN PictureNoticeBoardMedia AS PNBM on PNB.id = PNBM.pictureBardId
+    WHERE
+        PNB.state = 'A'
+    GROUP BY
+            title
+    ORDER BY createdAt DESC;
     `
     const [getChasingHistoryRow] = await connection.query(getChasingHistoryQuery);
 
