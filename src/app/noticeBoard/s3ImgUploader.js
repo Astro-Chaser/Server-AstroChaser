@@ -39,7 +39,7 @@ const imageUploader = multer({
       callback(null, `${uploadDirectory}/${Date.now()}_${file.originalname}`)
     },
     contentType: multerS3.AUTO_CONTENT_TYPE,
-    acl: 'public-read-write'
+    acl: 'public-read-write',
   }),
 })
 
