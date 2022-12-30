@@ -16,23 +16,14 @@ function drawTopNav()
                 소개
             </a>
             <div class="navbar-dropdown is-boxed">
-                <a onclick="alert('준비중입니다.')" class="navbar-item" id="nav-owned-telescopes">
-                동아리소개
-                </a>
                 <a href="/history" class="navbar-item" id="nav-setting-telescope">
                 연혁
-                </a>
-                <a onclick="alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
-                활동소개
                 </a>
                 <a href="/organization-chart" class="navbar-item" id="nav-setting-telescope">
                 조직도
                 </a>
                 <a href="/rules" class="navbar-item" id="nav-setting-telescope">
                 회칙
-                </a>
-                <a onclick="alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
-                별지기소개
                 </a>
             </div>
             </div>
