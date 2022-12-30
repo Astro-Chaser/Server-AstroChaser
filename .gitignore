@@ -99,3 +99,4 @@ serviceKey.js
 frontWEB/static/js/APIsecretKey.js
 
 log/
+hostAddr.js
