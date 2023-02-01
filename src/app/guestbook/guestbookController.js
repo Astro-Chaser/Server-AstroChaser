@@ -4,6 +4,7 @@ const guestbookService = require("./guestbookService");
 const response = require("../../../config/response");
 const baseResponse = require("../../../config/baseResponseStatus");
 const baseResponseStatus = require("../../../config/baseResponseStatus");
+const axios = require('axios');
 
 /**
  * 1. 방명록 작성 API
@@ -30,7 +31,6 @@ exports.postGuestbook = async function (req, res){
 
 
 exports.getGuestbook = async function (req, res){
-    
     const getGuestbookResponse = await guestbookProvider.getGuestbook();
 
     return res.send(getGuestbookResponse);
