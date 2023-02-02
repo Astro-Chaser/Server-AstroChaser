@@ -15,7 +15,7 @@ exports.getGuestbook = async function (){
     try{
         const connection = await pool.getConnection(async (conn) => conn);
         const getGuestbookResult = await guestbookDao.getGuestbook(connection);
-
+        
         connection.release();
 
         return response(baseResponse.SUCCESS, getGuestbookResult);

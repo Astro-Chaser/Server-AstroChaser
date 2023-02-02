@@ -94,7 +94,7 @@ exports.deleteNoticeBoard = async function(req, token){
         let preNoticeInfoRes = await noticeBoardDao.getNoticeBoardPictures(connect, req.body.noticeNum); 
 
         //작성자 주인이거나 관리자면 삭제 가능
-        if(preNoticeInfoRes.id == token.id || token.id == 1){  
+        if(preNoticeInfoRes.id == token.id || token.id == 1 || token.id == 2){  
 
             for(let i in preNoticeInfoRes)
             {
