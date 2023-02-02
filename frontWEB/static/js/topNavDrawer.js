@@ -52,26 +52,11 @@ function drawTopNav()
                 <a href="/astro-event" class="navbar-item" id="nav-setting-telescope">
                 천문학&천문소식
                 </a>
-                <a onclick="alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
-                별지기소식
-                </a>
+               
                 <a href="/gallery" class="navbar-item" id="nav-setting-telescope">
                 갤러리
                 </a>
-                <a onclick="alert('준비중입니다.')" class="navbar-item" id="nav-setting-telescope">
-                자료실
-                </a>
-            </div>
-            </div>
-
-            <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-                정보공개
-            </a>
-            <div class="navbar-dropdown is-boxed">
-                <a onclick="alert('준비중입니다.')" class="navbar-item" id="nav-owned-telescopes">
-                연간 예산회계
-                </a>
+                
             </div>
             </div>
         </div>
